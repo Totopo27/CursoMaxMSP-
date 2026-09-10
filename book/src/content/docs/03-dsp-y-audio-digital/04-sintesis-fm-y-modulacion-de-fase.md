@@ -116,7 +116,7 @@ x->phase += x->phase_step;                         // El paso fundamental perman
 ## ️ 5. 4 Escenarios del Mundo Real
 
 Abre el parche interactivo complementario:
-[`book/patches/modulo-03/laboratorio_10_sintesis_fm.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-03/laboratorio_10_sintesis_fm.maxpat)
+[`book/patches/modulo-03/laboratorio_10_sintesis_fm.maxpat`](/patches/modulo-03/laboratorio_10_sintesis_fm.maxpat)
 
 ### Escenario 1: El Clarinete Acústico Dinámico ($C:M = 1:2$)
 * **El Problema:** Sintetizar el timbre amaderado de un clarinete que suena puro al tocar piano y se llena de armónicos impares al tocar fuerte.
@@ -138,7 +138,7 @@ Abre el parche interactivo complementario:
 
 ## 6. 3 Desafíos de Ingeniería de Laboratorio
 
-Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_10_sintesis_fm.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-03/laboratorio_10_sintesis_fm.maxpat):
+Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_10_sintesis_fm.maxpat`](/patches/modulo-03/laboratorio_10_sintesis_fm.maxpat):
 
 ### ️ Ejercicio 1: El Calibrador de la Serie Armónica
 * **Objetivo:** Experimenta con las relaciones enteras de Chowning.

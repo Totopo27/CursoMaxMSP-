@@ -101,7 +101,7 @@ En física, ningún efecto puede ser su propia causa en el mismo instante tempor
 
 ##  4. Bajo el Capó: La Verdad Mecánica en C (Cycling '74 Max SDK)
 
-Para un Senior Architect, los conceptos teóricos tienen una implementación física concreta en memoria. Mirá cómo implementa Cycling '74 este diseño en el código fuente de [`sources/max-sdk/source/basics/plussz/plussz.c`](file:///d:/DocumentosDiscoD/CursoMaxMSP/sources/max-sdk/source/basics/plussz/plussz.c):
+Para un Senior Architect, los conceptos teóricos tienen una implementación física concreta en memoria. Mirá cómo implementa Cycling '74 este diseño en el código fuente de [`sources/max-sdk/source/basics/plussz/plussz.c`](https://github.com/Cycling74/max-sdk/blob/main/source/basics/plussz/plussz.c):
 
 ### 1. La Estructura de Memoria (`struct`)
 ```c
@@ -192,7 +192,7 @@ Para diseñar software profesional, determinista y mantenible a largo plazo, **l
 ##  4 Escenarios de la Vida Real (Casos de Estudio)
 
 Abre el parche interactivo:
-[`book/patches/modulo-01/laboratorio_01.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-01/laboratorio_01.maxpat)
+[`book/patches/modulo-01/laboratorio_01.maxpat`](/patches/modulo-01/laboratorio_01.maxpat)
 
 ### Escenario 1: Operaciones Aritméticas Dinámicas (`+`, `-`, `*`, `/`)
 * **Problema:** Duplicar una variable ($x + x$) conectando un número a ambos inlets genera resultados corruptos si la excitación caliente ocurre antes de la actualización del estado frío.
@@ -215,7 +215,7 @@ Abre el parche interactivo:
 
 ## 3 Ejercicios Prácticos de Laboratorio
 
-Realiza estos ejercicios en tu copia de Max utilizando el parche [`laboratorio_01.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-01/laboratorio_01.maxpat):
+Realiza estos ejercicios en tu copia de Max utilizando el parche [`laboratorio_01.maxpat`](/patches/modulo-01/laboratorio_01.maxpat):
 
 ### ️ Ejercicio 1: El Divisor Protegido contra División por Cero
 * **Objetivo:** Construir una calculadora de división (`/`) que reciba Numerador y Denominador.

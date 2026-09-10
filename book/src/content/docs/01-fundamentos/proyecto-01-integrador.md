@@ -83,7 +83,7 @@ Este proyecto integra **la totalidad de los conceptos teóricos y prácticos des
 ## 4. Guía de Interacción con el Parche
 
 Abre el parche en Max:
-[`book/patches/modulo-01/proyecto_01_secuenciador.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-01/proyecto_01_secuenciador.maxpat)
+[`book/patches/modulo-01/proyecto_01_secuenciador.maxpat`](/patches/modulo-01/proyecto_01_secuenciador.maxpat)
 
 1. **Encender el Motor de Audio:**
    - Haz clic en el botón de parlantitos `[ezdac~]` abajo a la derecha para encender el DSP (debe estar en azul/verde).

@@ -144,5 +144,5 @@ Construí una interfaz en el parche principal que consulte periódicamente cuán
 
 ## 7. Archivos del Laboratorio
 
-1. [`voz_polifonica.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-04/voz_polifonica.maxpat): Subparche atómico de voz con oscilador de sierra (`saw~`), filtro resonante, envolvente `adsr~` y conexión al protocolo `mute` / `busy` en `[thispoly~]`.
-2. [`laboratorio_16_poly.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-04/laboratorio_16_poly.maxpat): Parche maestro con teclado MIDI `kslider`, instanciación `poly~ voz_polifonica 8`, control de parámetros globales mediante `target 0` y monitoreo del consumo de CPU.
+1. [`voz_polifonica.maxpat`](/patches/modulo-04/voz_polifonica.maxpat): Subparche atómico de voz con oscilador de sierra (`saw~`), filtro resonante, envolvente `adsr~` y conexión al protocolo `mute` / `busy` en `[thispoly~]`.
+2. [`laboratorio_16_poly.maxpat`](/patches/modulo-04/laboratorio_16_poly.maxpat): Parche maestro con teclado MIDI `kslider`, instanciación `poly~ voz_polifonica 8`, control de parámetros globales mediante `target 0` y monitoreo del consumo de CPU.

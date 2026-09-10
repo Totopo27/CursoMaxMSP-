@@ -101,7 +101,7 @@ En **Options  Audio Status**, estas dos opciones configuran el comportamiento de
 
 ##  5. Bajo el Capó: `t_clock` y el Mecanismo de Cola `t_qelem` (Max SDK)
 
-Mirando las entrañas del Max SDK en [`sources/max-sdk/source/advanced/simplethread/simplethread.c`](file:///d:/DocumentosDiscoD/CursoMaxMSP/sources/max-sdk/source/advanced/simplethread/simplethread.c) y [`delay2.c`](file:///d:/DocumentosDiscoD/CursoMaxMSP/sources/max-sdk/source/basics/delay2/delay2.c):
+Mirando las entrañas del Max SDK en [`sources/max-sdk/source/advanced/simplethread/simplethread.c`](https://github.com/Cycling74/max-sdk/blob/main/source/advanced/simplethread/simplethread.c) y [`delay2.c`](https://github.com/Cycling74/max-sdk/blob/main/source/basics/delay2/delay2.c):
 
 ### 1. El Reloj de Alta Prioridad (`t_clock`)
 ```c
@@ -124,7 +124,7 @@ En el lenguaje visual de Max, este mecanismo en C se materializa a través de do
 ##  4 Escenarios de la Vida Real (Casos de Estudio)
 
 Abre el parche interactivo:
-[`book/patches/modulo-01/laboratorio_02_timing.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-01/laboratorio_02_timing.maxpat)
+[`book/patches/modulo-01/laboratorio_02_timing.maxpat`](/patches/modulo-01/laboratorio_02_timing.maxpat)
 
 ### Escenario 1: Medición de Jitter Rítmico con `[timer]`
 * **El Problema:** ¿Cómo verificar empíricamente si tu configuración de audio es sólida o si tu sistema sufre de fluctuaciones de reloj?
@@ -158,7 +158,7 @@ Abre el parche interactivo:
 
 ## 3 Ejercicios Prácticos de Laboratorio
 
-Realiza estos ejercicios en tu copia de Max utilizando el parche [`laboratorio_02_timing.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-01/laboratorio_02_timing.maxpat):
+Realiza estos ejercicios en tu copia de Max utilizando el parche [`laboratorio_02_timing.maxpat`](/patches/modulo-01/laboratorio_02_timing.maxpat):
 
 ### ️ Ejercicio 1: El Cuantizador de Rebotes (Debouncer de Hardware)
 * **Objetivo:** Cuando un botón físico o pedal se presiona, las vibraciones mecánicas de los contactos generan múltiples `bang`s falsos en menos de 10 ms.

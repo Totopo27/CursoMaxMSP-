@@ -127,7 +127,7 @@ void simplemsp_perform64(t_simplemsp *x, t_object *dsp64,
 ## ️ 4. 4 Escenarios del Mundo Real
 
 Abre el parche interactivo complementario:
-[`book/patches/modulo-03/laboratorio_07_audio_basics.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-03/laboratorio_07_audio_basics.maxpat)
+[`book/patches/modulo-03/laboratorio_07_audio_basics.maxpat`](/patches/modulo-03/laboratorio_07_audio_basics.maxpat)
 
 ### Escenario 1: Conversión de Macro a Micro-tiempo con `[sig~]`
 * **El Problema:** Tienes un slider de control (0 a 127) que envía mensajes esporádicos. Si conectas ese slider directamente a un multiplicador de señal `[*~]`, el volumen cambia en saltos bruscos que generan zumbidos y clicks de cuantización (zipper noise).
@@ -149,7 +149,7 @@ Abre el parche interactivo complementario:
 
 ## 5. 3 Desafíos de Ingeniería de Laboratorio
 
-Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_07_audio_basics.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-03/laboratorio_07_audio_basics.maxpat):
+Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_07_audio_basics.maxpat`](/patches/modulo-03/laboratorio_07_audio_basics.maxpat):
 
 ### ️ Ejercicio 1: Eliminación de Zipper Noise con `[line~]`
 * **Objetivo:** Conecta un generador sinusoidal continuo a un control de volumen.

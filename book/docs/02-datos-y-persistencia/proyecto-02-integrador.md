@@ -82,7 +82,7 @@ Este proyecto corona el **Módulo 2 (Estructuras de Datos, Persistencia y Comuni
 
 ## ️ 4. Guía de Operación y Validación
 
-1. **Apertura:** Abre [`book/patches/modulo-02/proyecto_02_morphing.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-02/proyecto_02_morphing.maxpat).
+1. **Apertura:** Abre [`book/patches/modulo-02/proyecto_02_morphing.maxpat`](/patches/modulo-02/proyecto_02_morphing.maxpat).
 2. **Encendido DSP:** Activa el botón de encendido del `[ezdac~]` y sube moderadamente el fader de `[gain~]`.
 3. **Escuchar Presets Discretos:** Presiona `recall 1`, `recall 2`, `recall 3` y `recall 4` para familiarizarte con los 4 extremos acústicos.
 4. **Validar Morphing Temporal:** Dispara el mensaje `recall 1 2 5000.` y observa cómo todas las perillas numéricas se mueven suavemente a 60 fps durante 5 segundos sin saltos tímbricos ni ruidos digitales.

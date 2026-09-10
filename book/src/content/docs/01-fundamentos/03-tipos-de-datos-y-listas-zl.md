@@ -114,7 +114,7 @@ Para resolver toda la manipulación de datos a nivel de memoria C contigua sin p
 ##  4 Escenarios de la Vida Real (Casos de Estudio)
 
 Abre el parche interactivo:
-[`book/patches/modulo-01/laboratorio_03_listas_zl.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-01/laboratorio_03_listas_zl.maxpat)
+[`book/patches/modulo-01/laboratorio_03_listas_zl.maxpat`](/patches/modulo-01/laboratorio_03_listas_zl.maxpat)
 
 ### Escenario 1: Desglose de Comandos y Payloads con `[zl.slice]`
 * **El Problema:** Al recibir paquetes por red (OSC/UDP) como `/filter/cutoff 1500 0.8`, debemos separar la dirección simbólica de los argumentos numéricos sin usar cadenas lentas de parsing de texto.
@@ -142,7 +142,7 @@ Abre el parche interactivo:
 
 ## 3 Ejercicios Prácticos de Laboratorio
 
-Realiza estos ejercicios en tu copia de Max utilizando el parche [`laboratorio_03_listas_zl.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-01/laboratorio_03_listas_zl.maxpat):
+Realiza estos ejercicios en tu copia de Max utilizando el parche [`laboratorio_03_listas_zl.maxpat`](/patches/modulo-01/laboratorio_03_listas_zl.maxpat):
 
 ### ️ Ejercicio 1: El Analizador Estadístico de Rango Dinámico
 * **Objetivo:** Construye un analizador que reciba una lista de números desordenados (ej. `45 12 89 3 67 99 21`).

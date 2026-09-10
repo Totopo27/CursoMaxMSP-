@@ -129,5 +129,5 @@ Diseñá una lógica de configuración que detecte la cantidad de núcleos dispo
 
 ## 7. Archivos del Laboratorio
 
-1. [`voz_dsp_pesada.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-04/voz_dsp_pesada.maxpat): Subparche con carga computacional densa (banco de 4 filtros resonantes en serie + distorsión no lineal polinómica) optimizado para poner a prueba el paralelismo.
-2. [`laboratorio_17_multicore.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-04/laboratorio_17_multicore.maxpat): Banco de pruebas comparativo A/B que permite conmutar en caliente entre ejecución monohilo tradicional y multiprocesamiento paralelo `@parallel 1`.
+1. [`voz_dsp_pesada.maxpat`](/patches/modulo-04/voz_dsp_pesada.maxpat): Subparche con carga computacional densa (banco de 4 filtros resonantes en serie + distorsión no lineal polinómica) optimizado para poner a prueba el paralelismo.
+2. [`laboratorio_17_multicore.maxpat`](/patches/modulo-04/laboratorio_17_multicore.maxpat): Banco de pruebas comparativo A/B que permite conmutar en caliente entre ejecución monohilo tradicional y multiprocesamiento paralelo `@parallel 1`.

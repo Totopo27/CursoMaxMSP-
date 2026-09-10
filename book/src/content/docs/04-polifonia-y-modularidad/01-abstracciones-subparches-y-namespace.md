@@ -120,5 +120,5 @@ Construí una abstracción que utilice un bus global (`[send master_heartbeat]`)
 ## 6. Archivos del Laboratorio
 
 Para este laboratorio disponemos de dos parches complementarios:
-1. [`mi_filtro_voz.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-04/mi_filtro_voz.maxpat): La abstracción reutilizable que implementa un generador oscilador + filtro `lores~` con argumentos `#1` (frecuencia) y `#2` (resonancia) y buses locales `#0_mod`.
-2. [`laboratorio_15_abstracciones.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-04/laboratorio_15_abstracciones.maxpat): El parche principal que instancia múltiples copias de la abstracción, demostrando la independencia absoluta de parámetros y la inmunidad contra colisiones de namespace.
+1. [`mi_filtro_voz.maxpat`](/patches/modulo-04/mi_filtro_voz.maxpat): La abstracción reutilizable que implementa un generador oscilador + filtro `lores~` con argumentos `#1` (frecuencia) y `#2` (resonancia) y buses locales `#0_mod`.
+2. [`laboratorio_15_abstracciones.maxpat`](/patches/modulo-04/laboratorio_15_abstracciones.maxpat): El parche principal que instancia múltiples copias de la abstracción, demostrando la independencia absoluta de parámetros y la inmunidad contra colisiones de namespace.

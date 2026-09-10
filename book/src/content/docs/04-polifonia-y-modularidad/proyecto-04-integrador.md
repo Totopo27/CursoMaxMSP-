@@ -85,5 +85,5 @@ Cada voz instanciada internamente cuenta con los siguientes componentes atómico
 
 ## 4. Archivos del Proyecto
 
-1. [`voz_sintetizador_completo.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-04/voz_sintetizador_completo.maxpat): La voz polifónica atómica estéreo con osciladores duales, filtro, envolvente y apagado en `thispoly~`.
-2. [`proyecto_04_sintetizador_polifonico.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-04/proyecto_04_sintetizador_polifonico.maxpat): El instrumento maestro ensamblado listo para tocar.
+1. [`voz_sintetizador_completo.maxpat`](/patches/modulo-04/voz_sintetizador_completo.maxpat): La voz polifónica atómica estéreo con osciladores duales, filtro, envolvente y apagado en `thispoly~`.
+2. [`proyecto_04_sintetizador_polifonico.maxpat`](/patches/modulo-04/proyecto_04_sintetizador_polifonico.maxpat): El instrumento maestro ensamblado listo para tocar.

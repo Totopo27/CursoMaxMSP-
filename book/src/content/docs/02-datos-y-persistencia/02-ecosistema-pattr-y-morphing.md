@@ -160,7 +160,7 @@ Durante el **morphing**, `[pattrstorage]` calcula los valores intermedios en mem
 ## ️ 4. 4 Escenarios del Mundo Real
 
 Abre el parche interactivo complementario:
-[`book/patches/modulo-02/laboratorio_05_pattr.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-02/laboratorio_05_pattr.maxpat)
+[`book/patches/modulo-02/laboratorio_05_pattr.maxpat`](/patches/modulo-02/laboratorio_05_pattr.maxpat)
 
 ### Escenario 1: Sistema de Snapshots y Presets para un Sintetizador
 * **El Problema:** Un sintetizador sustractivo tiene 12 parámetros (formas de onda, cutoff, resonancia, ADSR). El músico necesita cambiar de un sonido de "Bajo Agresivo" a un "Pad Celestial" en pleno concierto con un solo comando MIDI o botón.
@@ -182,7 +182,7 @@ Abre el parche interactivo complementario:
 
 ## 5. 3 Desafíos de Ingeniería de Laboratorio
 
-Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_05_pattr.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-02/laboratorio_05_pattr.maxpat):
+Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_05_pattr.maxpat`](/patches/modulo-02/laboratorio_05_pattr.maxpat):
 
 ### ️ Ejercicio 1: El Conmutador Inmune al Morphing (`@interp 0`)
 * **Objetivo:** Configura un sintetizador donde los filtros y frecuencias se interpolen continuamente durante un morphing de 3 segundos, pero el selector de forma de onda (que conmuta entre Sine = 0, Saw = 1, Square = 2) cambie de forma discreta sin pasar por valores fraccionarios intermedios (como 0.45 o 1.7).

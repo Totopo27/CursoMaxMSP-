@@ -134,7 +134,7 @@ $$\text{phase\_step} = \frac{440}{48000} \approx 0.009166$$
 ## ️ 4. 4 Escenarios del Mundo Real
 
 Abre el parche interactivo complementario:
-[`book/patches/modulo-03/laboratorio_08_osciladores.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-03/laboratorio_08_osciladores.maxpat)
+[`book/patches/modulo-03/laboratorio_08_osciladores.maxpat`](/patches/modulo-03/laboratorio_08_osciladores.maxpat)
 
 ### Escenario 1: El Test Auditivo de Aliasing (`[phasor~]` vs `[saw~]`)
 * **El Problema:** Quieres demostrar experimentalmente por qué el aliasing destruye la música.
@@ -156,7 +156,7 @@ Abre el parche interactivo complementario:
 
 ## 5. 3 Desafíos de Ingeniería de Laboratorio
 
-Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_08_osciladores.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-03/laboratorio_08_osciladores.maxpat):
+Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_08_osciladores.maxpat`](/patches/modulo-03/laboratorio_08_osciladores.maxpat):
 
 ### ️ Ejercicio 1: El Generador PWM Libre de Discontinuidades
 * **Objetivo:** Construye un oscilador de pulso con modulación de ancho (PWM).

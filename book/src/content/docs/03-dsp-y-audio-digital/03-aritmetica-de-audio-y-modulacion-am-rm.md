@@ -112,7 +112,7 @@ Max implementa optimizaciones **SIMD (Single Instruction, Multiple Data)** a niv
 ## ️ 4. 4 Escenarios del Mundo Real
 
 Abre el parche interactivo complementario:
-[`book/patches/modulo-03/laboratorio_09_modulacion_am_rm.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-03/laboratorio_09_modulacion_am_rm.maxpat)
+[`book/patches/modulo-03/laboratorio_09_modulacion_am_rm.maxpat`](/patches/modulo-03/laboratorio_09_modulacion_am_rm.maxpat)
 
 ### Escenario 1: La Voz de Dalek (Efecto Sci-Fi Clásico)
 * **El Problema:** Lograr la clásica voz robótica y deshumanizada de la serie *Doctor Who*.
@@ -136,7 +136,7 @@ Abre el parche interactivo complementario:
 
 ## 5. 3 Desafíos de Ingeniería de Laboratorio
 
-Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_09_modulacion_am_rm.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-03/laboratorio_09_modulacion_am_rm.maxpat):
+Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_09_modulacion_am_rm.maxpat`](/patches/modulo-03/laboratorio_09_modulacion_am_rm.maxpat):
 
 ### ️ Ejercicio 1: El Conmutador Morfológico RM / AM
 * **Objetivo:** Diseña un control continuo que permita pasar de Ring Modulation puro (bipolar) a Amplitude Modulation (unipolar) mediante un solo slider.

@@ -104,7 +104,7 @@ La experiencia colectiva de décadas en los foros de Cycling '74 resalta cuatro 
 ## ️ 4. 4 Escenarios del Mundo Real
 
 Abre el parche interactivo complementario:
-[`book/patches/modulo-02/laboratorio_06_comunicacion.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-02/laboratorio_06_comunicacion.maxpat)
+[`book/patches/modulo-02/laboratorio_06_comunicacion.maxpat`](/patches/modulo-02/laboratorio_06_comunicacion.maxpat)
 
 ### Escenario 1: Bus Maestro de Parada de Emergencia (Panic Global)
 * **El Problema:** Tienes 16 sintetizadores y cajas de percusión distribuidos en decenas de subpatchers. Ocurre una nota colgada (MIDI hanging note) y necesitas cortar todos los osciladores y envolventes instantáneamente.
@@ -126,7 +126,7 @@ Abre el parche interactivo complementario:
 
 ## 5. 3 Desafíos de Ingeniería de Laboratorio
 
-Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_06_comunicacion.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-02/laboratorio_06_comunicacion.maxpat):
+Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_06_comunicacion.maxpat`](/patches/modulo-02/laboratorio_06_comunicacion.maxpat):
 
 ### ️ Ejercicio 1: El Router de Mensajería con `[forward]`
 * **Objetivo:** Construye un sistema con 4 destinos nombrados (`canal_A`, `canal_B`, `canal_C`, `canal_D`).

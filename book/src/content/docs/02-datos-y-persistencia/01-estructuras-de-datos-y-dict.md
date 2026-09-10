@@ -88,7 +88,7 @@ Para consultar o modificar datos dentro de `[dict]`, no necesitas recorrer el á
 
 ##  4. Bajo el Capó: Diccionarios en C y Paso por Referencia (`dict.route.c`)
 
-Mirando las entrañas del Max SDK en [`sources/max-sdk/source/dictionary/dict.route/dict.route.c`](file:///d:/DocumentosDiscoD/CursoMaxMSP/sources/max-sdk/source/dictionary/dict.route/dict.route.c):
+Mirando las entrañas del Max SDK en [`sources/max-sdk/source/dictionary/dict.route/dict.route.c`](https://github.com/Cycling74/max-sdk/blob/main/source/dictionary/dict.route/dict.route.c):
 
 ### El Problema de la Clonación de Memoria
 Si un diccionario contiene 10.000 parámetros o la partitura entera de una sinfonía, **copiar todo el JSON de un objeto a otro a través de un cable congelaría el hilo de audio**.
@@ -131,7 +131,7 @@ En los foros de Cycling '74, el error más desconcertante con el que tropiezan l
 ##  4 Escenarios de la Vida Real (Casos de Estudio)
 
 Abre el parche interactivo:
-[`book/patches/modulo-02/laboratorio_04_persistencia.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-02/laboratorio_04_persistencia.maxpat)
+[`book/patches/modulo-02/laboratorio_04_persistencia.maxpat`](/patches/modulo-02/laboratorio_04_persistencia.maxpat)
 
 ### Escenario 1: Tabla de Escalamiento No Lineal de Sensibilidad con `[table]`
 * **El Problema:** La respuesta de la velocidad de las teclas de un controlador suele ser lineal (0 a 127), pero la audición humana del volumen es logarítmica. Tocando suave casi no se oye y tocando medio ya suena muy fuerte.
@@ -153,7 +153,7 @@ Abre el parche interactivo:
 
 ## 3 Ejercicios Prácticos de Laboratorio
 
-Realiza estos ejercicios en tu copia de Max utilizando el parche [`laboratorio_04_persistencia.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-02/laboratorio_04_persistencia.maxpat):
+Realiza estos ejercicios en tu copia de Max utilizando el parche [`laboratorio_04_persistencia.maxpat`](/patches/modulo-02/laboratorio_04_persistencia.maxpat):
 
 ### ️ Ejercicio 1: El Cuantizador de Escalas con `[table]`
 * **Objetivo:** Construye un corrector de afinación MIDI.
