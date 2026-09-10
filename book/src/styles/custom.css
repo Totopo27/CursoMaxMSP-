@@ -1,4 +1,7 @@
-﻿/* Custom typography & hierarchy adjustments for university-level technical book */
+/* KaTeX mathematical typesetting styles */
+@import 'katex/dist/katex.min.css';
+
+/* Custom typography & hierarchy adjustments for university-level technical book */
 
 :root {
   /* Escala tipográfica sobria y equilibrada */
