@@ -1,0 +1,9 @@
+{
+  "name": "modulo-06-node-for-max",
+  "version": "1.0.0",
+  "description": "Servidor asincrono y utilidades para Max MSP N4M",
+  "main": "servidor_analisis.js",
+  "dependencies": {
+    "max-api": "latest"
+  }
+}

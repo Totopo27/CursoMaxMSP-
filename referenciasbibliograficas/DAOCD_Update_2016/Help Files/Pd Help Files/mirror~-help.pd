@@ -1,0 +1,13 @@
+#N canvas 735 382 452 302 10;
+#X obj 27 100 mirror~;
+#X obj 27 48 osc~ 440;
+#X obj 27 73 *~ 0.05;
+#X obj 27 124 dac~;
+#X msg 135 86 \; pd dsp \$1;
+#X obj 135 57 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X connect 0 0 3 0;
+#X connect 0 0 3 1;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 5 0 4 0;

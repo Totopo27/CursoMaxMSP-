@@ -1,0 +1,19 @@
+#N canvas 564 335 452 302 12;
+#X obj 27 48 osc~ 440;
+#X obj 27 169 dac~;
+#X msg 142 150 \; pd dsp \$1;
+#X obj 142 127 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 162 127 click to turn on DACs;
+#X floatatom 103 50 5 0 0 0 - - -;
+#X obj 103 76 * 0.01;
+#X floatatom 103 103 5 0 0 0 - - -;
+#X obj 27 139 multy~;
+#X text 159 78 scale user input gain;
+#X connect 0 0 8 0;
+#X connect 3 0 2 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 1;
+#X connect 8 0 1 0;
+#X connect 8 0 1 1;

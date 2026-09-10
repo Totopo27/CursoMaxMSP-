@@ -1,0 +1,72 @@
+{
+  "title": "Jitter Geometry Tutorial",
+  "url": "https://docs.cycling74.com/learn/series/jitter_geometry/",
+  "articles": [
+    {
+      "title": "Getting Started with Jitter Geometry",
+      "slug": "geom-01",
+      "url": "https://docs.cycling74.com/learn/geom-01",
+      "description": ""
+    },
+    {
+      "title": "Manipulating Jitter Geometries",
+      "slug": "geom-02",
+      "url": "https://docs.cycling74.com/learn/geom-02",
+      "description": ""
+    },
+    {
+      "title": "Meshing and Multiplying",
+      "slug": "geom-03",
+      "url": "https://docs.cycling74.com/learn/geom-03",
+      "description": ""
+    },
+    {
+      "title": "JavaScript and the Half-edge Structure",
+      "slug": "geom-04",
+      "url": "https://docs.cycling74.com/learn/geom-04",
+      "description": ""
+    },
+    {
+      "title": "Drawing contours",
+      "slug": "geom-contours",
+      "url": "https://docs.cycling74.com/learn/geom-contours",
+      "description": ""
+    },
+    {
+      "title": "Differential growth",
+      "slug": "geom-differential.growth",
+      "url": "https://docs.cycling74.com/learn/geom-differential.growth",
+      "description": ""
+    },
+    {
+      "title": "Fractal geometry",
+      "slug": "geom-fractals",
+      "url": "https://docs.cycling74.com/learn/geom-fractals",
+      "description": ""
+    },
+    {
+      "title": "Open meshes",
+      "slug": "geom-open.mesh",
+      "url": "https://docs.cycling74.com/learn/geom-open.mesh",
+      "description": ""
+    },
+    {
+      "title": "Rainbow Point Cloud",
+      "slug": "geom-point-cloud",
+      "url": "https://docs.cycling74.com/learn/geom-point-cloud",
+      "description": ""
+    },
+    {
+      "title": "Extrusion",
+      "slug": "geom-thickness",
+      "url": "https://docs.cycling74.com/learn/geom-thickness",
+      "description": ""
+    },
+    {
+      "title": "Fun with Twisting Geometries",
+      "slug": "geom-twisting",
+      "url": "https://docs.cycling74.com/learn/geom-twisting",
+      "description": ""
+    }
+  ]
+}

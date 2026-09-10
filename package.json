@@ -1,0 +1,17 @@
+{
+  "name": "curso-maxmsp-pipeline",
+  "version": "1.0.0",
+  "description": "Pipeline de extracción, análisis y generación de contenido para el curso exhaustivo de Max/MSP",
+  "type": "module",
+  "scripts": {
+    "scrape:tutorials": "tsx pipeline/scripts/scrape_series.ts"
+  },
+  "dependencies": {
+    "playwright": "^1.48.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.4.0"
+  }
+}

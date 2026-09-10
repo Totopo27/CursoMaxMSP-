@@ -1,0 +1,21 @@
+#N canvas 594 437 562 447 12;
+#X obj 257 70 windowvec~;
+#X msg 341 272 \; pd dsp \$1;
+#X obj 341 246 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 258 157 tabwrite~ display-window;
+#X msg 277 114 bang;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array display-window 64 float 2;
+#X coords 0 1 64 -1 200 140 1;
+#X restore 61 251 graph;
+#X obj 257 38 sig~ 1;
+#X text 10 34 windowvec~ applies a window the length of a signal vector
+to its input.;
+#X msg 283 371 \; display-window resize 64;
+#X text 280 329 set size to Pd default signal vector size;
+#X text 322 112 record to display window;
+#X connect 0 0 3 0;
+#X connect 2 0 1 0;
+#X connect 4 0 3 0;
+#X connect 6 0 0 0;

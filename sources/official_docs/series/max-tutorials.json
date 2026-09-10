@@ -1,0 +1,264 @@
+{
+  "title": "Max Tutorials",
+  "url": "https://docs.cycling74.com/learn/series/max-tutorials/",
+  "articles": [
+    {
+      "title": "Max Basic Tutorial 1: Hello",
+      "slug": "basicchapter01",
+      "url": "https://docs.cycling74.com/learn/basicchapter01",
+      "description": ""
+    },
+    {
+      "title": "Max Basic Tutorial 2: Bang!",
+      "slug": "basicchapter02",
+      "url": "https://docs.cycling74.com/learn/basicchapter02",
+      "description": ""
+    },
+    {
+      "title": "Max Basic Tutorial 3: Numbers and Lists",
+      "slug": "basicchapter03",
+      "url": "https://docs.cycling74.com/learn/basicchapter03",
+      "description": ""
+    },
+    {
+      "title": "Max Basic Tutorial 4: Metro and Toggle",
+      "slug": "basicchapter04",
+      "url": "https://docs.cycling74.com/learn/basicchapter04",
+      "description": ""
+    },
+    {
+      "title": "Max Basic Tutorial 5: Message Order and Debugging",
+      "slug": "basicchapter05",
+      "url": "https://docs.cycling74.com/learn/basicchapter05",
+      "description": ""
+    },
+    {
+      "title": "Max Basic Tutorial 6: Simple Math in Max",
+      "slug": "basicchapter06",
+      "url": "https://docs.cycling74.com/learn/basicchapter06",
+      "description": ""
+    },
+    {
+      "title": "Max Basic Tutorial 7: Numerical User Interfaces",
+      "slug": "basicchapter07",
+      "url": "https://docs.cycling74.com/learn/basicchapter07",
+      "description": ""
+    },
+    {
+      "title": "Max Basic Tutorial 8: Keyboard and Mouse Input",
+      "slug": "basicchapter08",
+      "url": "https://docs.cycling74.com/learn/basicchapter08",
+      "description": ""
+    },
+    {
+      "title": "Max Basic Tutorial 9: Mouse Drawing",
+      "slug": "basicchapter09",
+      "url": "https://docs.cycling74.com/learn/basicchapter09",
+      "description": ""
+    },
+    {
+      "title": "Max Basic Tutorial 10: Random Drawing",
+      "slug": "basicchapter10",
+      "url": "https://docs.cycling74.com/learn/basicchapter10",
+      "description": ""
+    },
+    {
+      "title": "Max Basic Tutorial 11: Procedural Drawing",
+      "slug": "basicchapter11",
+      "url": "https://docs.cycling74.com/learn/basicchapter11",
+      "description": ""
+    },
+    {
+      "title": "Max Basic Tutorial 12: Movie Playback",
+      "slug": "basicchapter12",
+      "url": "https://docs.cycling74.com/learn/basicchapter12",
+      "description": ""
+    },
+    {
+      "title": "Max Basic Tutorial 13: Movie Sequencing",
+      "slug": "basicchapter13",
+      "url": "https://docs.cycling74.com/learn/basicchapter13",
+      "description": ""
+    },
+    {
+      "title": "Max Basic Tutorial 14: Encapsulation",
+      "slug": "basicchapter14",
+      "url": "https://docs.cycling74.com/learn/basicchapter14",
+      "description": ""
+    },
+    {
+      "title": "Max Basic Tutorial 15: Abstractions",
+      "slug": "basicchapter15",
+      "url": "https://docs.cycling74.com/learn/basicchapter15",
+      "description": ""
+    },
+    {
+      "title": "Max Basic Tutorial 16: Remote Messaging",
+      "slug": "basicchapter16",
+      "url": "https://docs.cycling74.com/learn/basicchapter16",
+      "description": ""
+    },
+    {
+      "title": "Max Basic Tutorial 17: Data Structures And Probability",
+      "slug": "basicchapter17",
+      "url": "https://docs.cycling74.com/learn/basicchapter17",
+      "description": ""
+    },
+    {
+      "title": "Max Basic Tutorial 18: Data Collections",
+      "slug": "basicchapter18",
+      "url": "https://docs.cycling74.com/learn/basicchapter18",
+      "description": ""
+    },
+    {
+      "title": "Max Basic Tutorial 19: Timing",
+      "slug": "basicchapter19",
+      "url": "https://docs.cycling74.com/learn/basicchapter19",
+      "description": ""
+    },
+    {
+      "title": "Max Basic Tutorial 20: Presentation Mode",
+      "slug": "basicchapter20",
+      "url": "https://docs.cycling74.com/learn/basicchapter20",
+      "description": ""
+    },
+    {
+      "title": "Max Basic Tutorial 21: Controlling Data Flow",
+      "slug": "basicchapter21",
+      "url": "https://docs.cycling74.com/learn/basicchapter21",
+      "description": ""
+    },
+    {
+      "title": "Max Basic Tutorial 22: Designing Equations",
+      "slug": "basicchapter22",
+      "url": "https://docs.cycling74.com/learn/basicchapter22",
+      "description": ""
+    },
+    {
+      "title": "Max Comm Tutorial 1: Human-Interface Devices",
+      "slug": "communicationschapter01",
+      "url": "https://docs.cycling74.com/learn/communicationschapter01",
+      "description": ""
+    },
+    {
+      "title": "Max Comm Tutorial 2: Serial Communication",
+      "slug": "communicationschapter02",
+      "url": "https://docs.cycling74.com/learn/communicationschapter02",
+      "description": ""
+    },
+    {
+      "title": "Max Comm Tutorial 3: UDP Networking",
+      "slug": "communicationschapter03",
+      "url": "https://docs.cycling74.com/learn/communicationschapter03",
+      "description": ""
+    },
+    {
+      "title": "Max Data Tutorial 1: Data Viewing",
+      "slug": "datachapter01",
+      "url": "https://docs.cycling74.com/learn/datachapter01",
+      "description": ""
+    },
+    {
+      "title": "Max Data Tutorial 2: Data Scaling",
+      "slug": "datachapter02",
+      "url": "https://docs.cycling74.com/learn/datachapter02",
+      "description": ""
+    },
+    {
+      "title": "Max Data Tutorial 3: Gesture Capture",
+      "slug": "datachapter03",
+      "url": "https://docs.cycling74.com/learn/datachapter03",
+      "description": ""
+    },
+    {
+      "title": "Max Data Tutorial 4: Cellblock",
+      "slug": "datachapter04",
+      "url": "https://docs.cycling74.com/learn/datachapter04",
+      "description": ""
+    },
+    {
+      "title": "Max Data Tutorial 5: List Processing",
+      "slug": "datachapter05",
+      "url": "https://docs.cycling74.com/learn/datachapter05",
+      "description": ""
+    },
+    {
+      "title": "Max Interface Tutorial 1: bpatchers",
+      "slug": "interfacechapter01",
+      "url": "https://docs.cycling74.com/learn/interfacechapter01",
+      "description": ""
+    },
+    {
+      "title": "Max Interface Tutorial 2: Picture UI Elements",
+      "slug": "interfacechapter02",
+      "url": "https://docs.cycling74.com/learn/interfacechapter02",
+      "description": ""
+    },
+    {
+      "title": "Max JS Tutorial 1: Basic JavaScript",
+      "slug": "javascriptchapter01",
+      "url": "https://docs.cycling74.com/learn/javascriptchapter01",
+      "description": ""
+    },
+    {
+      "title": "Max JS Tutorial 2: JavaScript Scripting",
+      "slug": "javascriptchapter02",
+      "url": "https://docs.cycling74.com/learn/javascriptchapter02",
+      "description": ""
+    },
+    {
+      "title": "Max JS Tutorial 3: JavaScript Tasks, Arguments, and Globals",
+      "slug": "javascriptchapter03",
+      "url": "https://docs.cycling74.com/learn/javascriptchapter03",
+      "description": ""
+    },
+    {
+      "title": "Max JS Tutorial 4: Designing User Interfaces in JavaScript",
+      "slug": "javascriptchapter04",
+      "url": "https://docs.cycling74.com/learn/javascriptchapter04",
+      "description": ""
+    },
+    {
+      "title": "Max MIDI Tutorial 1: Basic MIDI",
+      "slug": "midichapter01",
+      "url": "https://docs.cycling74.com/learn/midichapter01",
+      "description": ""
+    },
+    {
+      "title": "Max MIDI Tutorial 2: MIDI Note Management",
+      "slug": "midichapter02",
+      "url": "https://docs.cycling74.com/learn/midichapter02",
+      "description": ""
+    },
+    {
+      "title": "Max MIDI Tutorial 3: MIDI Parsing",
+      "slug": "midichapter03",
+      "url": "https://docs.cycling74.com/learn/midichapter03",
+      "description": ""
+    },
+    {
+      "title": "Max MIDI Tutorial 4: MIDI Basic Sequencing",
+      "slug": "midichapter04",
+      "url": "https://docs.cycling74.com/learn/midichapter04",
+      "description": ""
+    },
+    {
+      "title": "Max MIDI Tutorial 5: MIDI Advanced Sequencing",
+      "slug": "midichapter05",
+      "url": "https://docs.cycling74.com/learn/midichapter05",
+      "description": ""
+    },
+    {
+      "title": "Max pattr Tutorial 1: Patcher Storage",
+      "slug": "pattrchapter01",
+      "url": "https://docs.cycling74.com/learn/pattrchapter01",
+      "description": ""
+    },
+    {
+      "title": "Max pattr Tutorial 2: Automatic Bindings and Storage",
+      "slug": "pattrchapter02",
+      "url": "https://docs.cycling74.com/learn/pattrchapter02",
+      "description": ""
+    }
+  ]
+}

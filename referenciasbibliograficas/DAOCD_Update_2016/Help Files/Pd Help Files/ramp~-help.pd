@@ -1,0 +1,32 @@
+#N canvas 597 55 439 366 10;
+#X obj 52 257 ramp~;
+#X obj 84 228 sig~ 44100;
+#X obj 20 185 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 52 208 tabplay~ impulse;
+#X msg 18 137 \; impulse read ./imp.txt;
+#X text 89 113 contents of imp.txt:;
+#X text 230 114 1 0 0 0;
+#N canvas 0 22 450 300 (subpatch) 0;
+#X array recordme 44100 float 2;
+#X coords 0 1 44099 -1 100 70 1;
+#X restore 198 235 graph;
+#X obj 52 288 tabwrite~ recordme;
+#X obj 18 112 loadbang;
+#N canvas 0 22 450 300 (subpatch) 0;
+#X array impulse 4 float 3;
+#A 0 1 0 0 0;
+#X coords 0 1 4 -1 100 50 1;
+#X restore 19 49 graph;
+#X text 41 184 trigger a ramp \, and record it.;
+#X msg 325 276 \; pd dsp \$1;
+#X obj 325 249 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 54 317 ramp~ sends a click-triggered ramp;
+#X connect 0 0 8 0;
+#X connect 1 0 0 1;
+#X connect 2 0 3 0;
+#X connect 2 0 8 0;
+#X connect 3 0 0 0;
+#X connect 9 0 4 0;
+#X connect 13 0 12 0;

@@ -1,0 +1,384 @@
+{
+  "title": "MSP Tutorials",
+  "url": "https://docs.cycling74.com/learn/series/msp-tutorials/",
+  "articles": [
+    {
+      "title": "MSP: Introduction",
+      "slug": "01_mspintro",
+      "url": "https://docs.cycling74.com/learn/01_mspintro",
+      "description": ""
+    },
+    {
+      "title": "MSP: How Digital Audio Works",
+      "slug": "02_mspdigitalaudio",
+      "url": "https://docs.cycling74.com/learn/02_mspdigitalaudio",
+      "description": ""
+    },
+    {
+      "title": "MSP: How MSP Works",
+      "slug": "03_msphowmspworks",
+      "url": "https://docs.cycling74.com/learn/03_msphowmspworks",
+      "description": ""
+    },
+    {
+      "title": "MSP: Audio Input and Output",
+      "slug": "04_mspaudioio",
+      "url": "https://docs.cycling74.com/learn/04_mspaudioio",
+      "description": ""
+    },
+    {
+      "title": "MSP Basics Tutorial 1: Test Tone",
+      "slug": "05_mspbasicchapter01",
+      "url": "https://docs.cycling74.com/learn/05_mspbasicchapter01",
+      "description": ""
+    },
+    {
+      "title": "MSP Basics Tutorial 2: Adjustable Oscillator",
+      "slug": "05_mspbasicchapter02",
+      "url": "https://docs.cycling74.com/learn/05_mspbasicchapter02",
+      "description": ""
+    },
+    {
+      "title": "MSP Basics Tutorial 3: Wavetable Oscillator",
+      "slug": "05_mspbasicchapter03",
+      "url": "https://docs.cycling74.com/learn/05_mspbasicchapter03",
+      "description": ""
+    },
+    {
+      "title": "MSP Basics Tutorial 4: Routing Signals",
+      "slug": "05_mspbasicchapter04",
+      "url": "https://docs.cycling74.com/learn/05_mspbasicchapter04",
+      "description": ""
+    },
+    {
+      "title": "MSP Basics Tutorial 5: A Review of Fundamentals",
+      "slug": "05_mspbasicchapter05",
+      "url": "https://docs.cycling74.com/learn/05_mspbasicchapter05",
+      "description": ""
+    },
+    {
+      "title": "MSP Synthesis Tutorial 1 : Additive Synthesis",
+      "slug": "06_synthesischapter01",
+      "url": "https://docs.cycling74.com/learn/06_synthesischapter01",
+      "description": ""
+    },
+    {
+      "title": "MSP Synthesis Tutorial 2: Tremolo and Ring Modulation",
+      "slug": "06_synthesischapter02",
+      "url": "https://docs.cycling74.com/learn/06_synthesischapter02",
+      "description": ""
+    },
+    {
+      "title": "MSP Synthesis Tutorial 3: Using Amplitude Modulation",
+      "slug": "06_synthesischapter03",
+      "url": "https://docs.cycling74.com/learn/06_synthesischapter03",
+      "description": ""
+    },
+    {
+      "title": "MSP Synthesis Tutorial 4: Vibrato and FM",
+      "slug": "06_synthesischapter04",
+      "url": "https://docs.cycling74.com/learn/06_synthesischapter04",
+      "description": ""
+    },
+    {
+      "title": "MSP Synthesis Tutorial 5: Frequency Modulation",
+      "slug": "06_synthesischapter05",
+      "url": "https://docs.cycling74.com/learn/06_synthesischapter05",
+      "description": ""
+    },
+    {
+      "title": "MSP Sampling Tutorial 1: Recording and Playback",
+      "slug": "07_samplingchapter01",
+      "url": "https://docs.cycling74.com/learn/07_samplingchapter01",
+      "description": ""
+    },
+    {
+      "title": "MSP Sampling Tutorial 2: Playing Back From Multiple Sample Points",
+      "slug": "07_samplingchapter02",
+      "url": "https://docs.cycling74.com/learn/07_samplingchapter02",
+      "description": ""
+    },
+    {
+      "title": "MSP Sampling Tutorial 3: Playback with Loops",
+      "slug": "07_samplingchapter03",
+      "url": "https://docs.cycling74.com/learn/07_samplingchapter03",
+      "description": ""
+    },
+    {
+      "title": "MSP Sampling Tutorial 4: Variable-length Wavetable",
+      "slug": "07_samplingchapter04",
+      "url": "https://docs.cycling74.com/learn/07_samplingchapter04",
+      "description": ""
+    },
+    {
+      "title": "MSP Sampling Tutorial 5: Waveshaping",
+      "slug": "07_samplingchapter05",
+      "url": "https://docs.cycling74.com/learn/07_samplingchapter05",
+      "description": ""
+    },
+    {
+      "title": "MSP Sampling Tutorial 6: Record and Play Audio Files",
+      "slug": "07_samplingchapter06",
+      "url": "https://docs.cycling74.com/learn/07_samplingchapter06",
+      "description": ""
+    },
+    {
+      "title": "MSP Sampling Tutorial 7: Sampling Review",
+      "slug": "07_samplingchapter07",
+      "url": "https://docs.cycling74.com/learn/07_samplingchapter07",
+      "description": ""
+    },
+    {
+      "title": "MSP Filter Tutorial 1 : Simple Filters",
+      "slug": "08_filterchapter01",
+      "url": "https://docs.cycling74.com/learn/08_filterchapter01",
+      "description": ""
+    },
+    {
+      "title": "MSP Filter Tutorial 2 : Variable Type Filters",
+      "slug": "08_filterchapter02",
+      "url": "https://docs.cycling74.com/learn/08_filterchapter02",
+      "description": ""
+    },
+    {
+      "title": "MSP Filter Tutorial 3 : Analog-Style Synthesis",
+      "slug": "08_filterchapter03",
+      "url": "https://docs.cycling74.com/learn/08_filterchapter03",
+      "description": ""
+    },
+    {
+      "title": "MSP Filter Tutorial 4: Subtractive Synthesis",
+      "slug": "08_filterchapter04",
+      "url": "https://docs.cycling74.com/learn/08_filterchapter04",
+      "description": ""
+    },
+    {
+      "title": "MSP Filter Tutorial 5: Parallel Filters",
+      "slug": "08_filterchapter05",
+      "url": "https://docs.cycling74.com/learn/08_filterchapter05",
+      "description": ""
+    },
+    {
+      "title": "MSP Dynamics Tutorial 1: Envelope Following",
+      "slug": "09_dynamicschapter01",
+      "url": "https://docs.cycling74.com/learn/09_dynamicschapter01",
+      "description": ""
+    },
+    {
+      "title": "MSP Dynamics Tutorial 2: Dynamics Processing",
+      "slug": "09_dynamicschapter02",
+      "url": "https://docs.cycling74.com/learn/09_dynamicschapter02",
+      "description": ""
+    },
+    {
+      "title": "MSP Dynamics Tutorial 3: Distortion",
+      "slug": "09_dynamicschapter03",
+      "url": "https://docs.cycling74.com/learn/09_dynamicschapter03",
+      "description": ""
+    },
+    {
+      "title": "MSP MIDI Tutorial 1: Mapping MIDI to MSP",
+      "slug": "10_midichapter01",
+      "url": "https://docs.cycling74.com/learn/10_midichapter01",
+      "description": ""
+    },
+    {
+      "title": "MSP MIDI Tutorial 2: MIDI Synthesizer",
+      "slug": "10_midichapter02",
+      "url": "https://docs.cycling74.com/learn/10_midichapter02",
+      "description": ""
+    },
+    {
+      "title": "MSP MIDI Tutorial 3: MIDI Sampler",
+      "slug": "10_midichapter03",
+      "url": "https://docs.cycling74.com/learn/10_midichapter03",
+      "description": ""
+    },
+    {
+      "title": "MSP Polyphony Tutorial 1: Using the poly~ Object",
+      "slug": "11_polychapter01",
+      "url": "https://docs.cycling74.com/learn/11_polychapter01",
+      "description": ""
+    },
+    {
+      "title": "MSP Polyphony Tutorial 2: Granular Synthesis",
+      "slug": "11_polychapter02",
+      "url": "https://docs.cycling74.com/learn/11_polychapter02",
+      "description": ""
+    },
+    {
+      "title": "MSP Polyphony Tutorial 3: Audio-Rate Control Data",
+      "slug": "11_polychapter03",
+      "url": "https://docs.cycling74.com/learn/11_polychapter03",
+      "description": ""
+    },
+    {
+      "title": "MSP Sequencing Tutorial 1: Audio-Rate Sequencing",
+      "slug": "12_sequencingchapter01",
+      "url": "https://docs.cycling74.com/learn/12_sequencingchapter01",
+      "description": ""
+    },
+    {
+      "title": "MSP Panning Tutorial 1: Simple panning",
+      "slug": "13_panningchapter01",
+      "url": "https://docs.cycling74.com/learn/13_panningchapter01",
+      "description": ""
+    },
+    {
+      "title": "MSP Panning Tutorial 2: Stereo panning",
+      "slug": "13_panningchapter02",
+      "url": "https://docs.cycling74.com/learn/13_panningchapter02",
+      "description": ""
+    },
+    {
+      "title": "MSP panning Tutorial 3: Multi-channel panning",
+      "slug": "13_panningchapter03",
+      "url": "https://docs.cycling74.com/learn/13_panningchapter03",
+      "description": ""
+    },
+    {
+      "title": "MSP Analysis Tutorial 1: Signals and Meters",
+      "slug": "14_analysischapter01",
+      "url": "https://docs.cycling74.com/learn/14_analysischapter01",
+      "description": ""
+    },
+    {
+      "title": "MSP Analysis Tutorial 2: Oscilloscope and Spectroscope",
+      "slug": "14_analysischapter02",
+      "url": "https://docs.cycling74.com/learn/14_analysischapter02",
+      "description": ""
+    },
+    {
+      "title": "MSP Analysis Tutorial 3: Using the FFT",
+      "slug": "14_analysischapter03",
+      "url": "https://docs.cycling74.com/learn/14_analysischapter03",
+      "description": ""
+    },
+    {
+      "title": "MSP Analysis Tutorial 4: Signal Processing with pfft~",
+      "slug": "14_analysischapter04",
+      "url": "https://docs.cycling74.com/learn/14_analysischapter04",
+      "description": ""
+    },
+    {
+      "title": "MSP Delay Tutorial 1: Delay Lines",
+      "slug": "15_delaychapter01",
+      "url": "https://docs.cycling74.com/learn/15_delaychapter01",
+      "description": ""
+    },
+    {
+      "title": "MSP Delay Tutorial 2: Delay Lines with Feedback",
+      "slug": "15_delaychapter02",
+      "url": "https://docs.cycling74.com/learn/15_delaychapter02",
+      "description": ""
+    },
+    {
+      "title": "MSP Delay Tutorial 3: Feedback with Automatic Gain Control",
+      "slug": "15_delaychapter03",
+      "url": "https://docs.cycling74.com/learn/15_delaychapter03",
+      "description": ""
+    },
+    {
+      "title": "MSP Delay Tutorial 4: Flanging",
+      "slug": "15_delaychapter04",
+      "url": "https://docs.cycling74.com/learn/15_delaychapter04",
+      "description": ""
+    },
+    {
+      "title": "MSP Delay Tutorial 5: Chorus",
+      "slug": "15_delaychapter05",
+      "url": "https://docs.cycling74.com/learn/15_delaychapter05",
+      "description": ""
+    },
+    {
+      "title": "MSP Delay Tutorial 6: Comb Filter",
+      "slug": "15_delaychapter06",
+      "url": "https://docs.cycling74.com/learn/15_delaychapter06",
+      "description": ""
+    },
+    {
+      "title": "MSP plug-in Tutorial 1: Effects",
+      "slug": "16_pluginchapter01",
+      "url": "https://docs.cycling74.com/learn/16_pluginchapter01",
+      "description": ""
+    },
+    {
+      "title": "MSP Plugin Tutorial 2: Instruments",
+      "slug": "16_pluginchapter02",
+      "url": "https://docs.cycling74.com/learn/16_pluginchapter02",
+      "description": ""
+    },
+    {
+      "title": "MSP Plugin Tutorial 3: AMXD Plug-ins",
+      "slug": "16_pluginchapter03",
+      "url": "https://docs.cycling74.com/learn/16_pluginchapter03",
+      "description": ""
+    },
+    {
+      "title": "MSP Compression Introduction: What is Compression?",
+      "slug": "17_msp_compress_00",
+      "url": "https://docs.cycling74.com/learn/17_msp_compress_00",
+      "description": ""
+    },
+    {
+      "title": "MSP Compression Tutorial 1: Peak Limiting",
+      "slug": "17_msp_compress_01",
+      "url": "https://docs.cycling74.com/learn/17_msp_compress_01",
+      "description": ""
+    },
+    {
+      "title": "MSP Compression Tutorial 2: Basic Compression",
+      "slug": "17_msp_compress_02",
+      "url": "https://docs.cycling74.com/learn/17_msp_compress_02",
+      "description": ""
+    },
+    {
+      "title": "MSP Compression Tutorial 3: Tweaking Compression",
+      "slug": "17_msp_compress_03",
+      "url": "https://docs.cycling74.com/learn/17_msp_compress_03",
+      "description": ""
+    },
+    {
+      "title": "MSP Compression Tutorial 4: Compression on Real Instruments",
+      "slug": "17_msp_compress_04",
+      "url": "https://docs.cycling74.com/learn/17_msp_compress_04",
+      "description": ""
+    },
+    {
+      "title": "MSP Compression Tutorial 5: Multiband Compression 1",
+      "slug": "17_msp_compress_05",
+      "url": "https://docs.cycling74.com/learn/17_msp_compress_05",
+      "description": ""
+    },
+    {
+      "title": "MSP Compression Tutorial 6: Multiband Compression 2",
+      "slug": "17_msp_compress_06",
+      "url": "https://docs.cycling74.com/learn/17_msp_compress_06",
+      "description": ""
+    },
+    {
+      "title": "MSP Compression Tutorial 7: Keying",
+      "slug": "17_msp_compress_07",
+      "url": "https://docs.cycling74.com/learn/17_msp_compress_07",
+      "description": ""
+    },
+    {
+      "title": "MSP Compression Tutorial 8: Microsounds",
+      "slug": "17_msp_compress_08",
+      "url": "https://docs.cycling74.com/learn/17_msp_compress_08",
+      "description": ""
+    },
+    {
+      "title": "MSP Compression Tutorial 9: Ducking",
+      "slug": "17_msp_compress_09",
+      "url": "https://docs.cycling74.com/learn/17_msp_compress_09",
+      "description": ""
+    },
+    {
+      "title": "MSP Compression Tutorial 10: Controlling Feedback",
+      "slug": "17_msp_compress_10",
+      "url": "https://docs.cycling74.com/learn/17_msp_compress_10",
+      "description": ""
+    }
+  ]
+}
