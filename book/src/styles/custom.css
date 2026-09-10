@@ -4,6 +4,10 @@
 /* Custom typography & hierarchy adjustments for university-level technical book */
 
 :root {
+  /* Ancho de lectura optimizado: expandir el cuerpo central para aprovechar el espacio */
+  --sl-content-width: 60rem; /* Aumentado de 45rem a 60rem (~960px) */
+  --sl-sidebar-width: 17.5rem; /* Índice izquierdo compacto y nítido */
+
   /* Escala tipográfica sobria y equilibrada */
   --sl-text-h1: 1.75rem; /* Título principal de página (antes ~2.5rem - 3rem) */
   --sl-text-h2: 1.35rem; /* Secciones principales (antes ~2rem) */
