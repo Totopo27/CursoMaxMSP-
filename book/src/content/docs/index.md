@@ -9,31 +9,40 @@ hero:
       link: /00-prologo/03-audio-driver-windows/
       icon: right-arrow
       variant: primary
-    - text: Ver Repositorio en GitHub
-      link: https://github.com/Cycling74/max-sdk
-      icon: external
+    - text: Repositorio en GitHub
+      link: https://github.com/Totopo27/CursoMaxMSP-
+      icon: github
 ---
 
-## 🎯 Pilares del Curso
+import { Card, CardGrid } from '@astrojs/starlight/components';
 
-### 1. Conceptos > Código
-Entender en profundidad la arquitectura de memoria, los árboles de precedencia, el Scheduler y el hilo de audio en tiempo real antes de conectar cables al azar.
+## Pilares de la Arquitectura
 
-### 2. Bajo el Capó (Bajo Nivel)
-Cada objeto de Max (`cycle~`, `poly~`, `dict`, `gen~`) se desmitifica analizando cómo opera la memoria en C, los structs de estado de Cycling '74 y la computación vectorial SIMD.
-
-### 3. Laboratorios Interactivos Funcionales
-Cada lección cuenta con su propio parche interactivo descargable (`.maxpat`) con protecciones acústicas anti-clipping de grado profesional.
+<CardGrid stagger>
+  <Card title="Conceptos sobre Código" icon="seti:graphql">
+    Comprensión rigurosa de la computación en tiempo real, el Scheduler determinista, colas de baja prioridad y el Audio Thread antes de interconectar objetos.
+  </Card>
+  <Card title="Bajo Nivel (C Engine)" icon="seti:c">
+    Análisis del motor en C de Cycling '74, estructuras de memoria, punteros a buffers de señal y funciones de procesamiento vectorial SIMD (`perform64`).
+  </Card>
+  <Card title="Laboratorios sin Clipping" icon="seti:audio">
+    Cada lección incluye parches interactivos reproducibles (`.maxpat`) con márgenes de headroom nominal (-12 dB) y limitadores anti-clipping de grado estudio.
+  </Card>
+  <Card title="Ecosistema de Extensibilidad" icon="puzzle">
+    Integración multiplataforma con C++ moderno (Min-DevKit), Shaders en GPU (Jitter), microcontroladores (Arduino), TouchDesigner e Inteligencia Artificial (FluCoMa / nn~).
+  </Card>
+</CardGrid>
 
 ---
 
-## 📚 Estructura de Módulos
+## Contenido del Programa
 
-- **Módulo 0:** Prólogo, Instalación y Configuración del Entorno de Audio.
-- **Módulo 1:** El Paradigma Dataflow y el Motor de Eventos (Max Core).
-- **Módulo 2:** Estructuras de Datos, Persistencia y Presets (`dict` y `pattr`).
-- **Módulo 3:** El Universo DSP y Audio Digital (MSP).
-- **Módulo 4:** Modularidad, Abstracciones y Polifonía Avanzada (`poly~`).
-- **Módulo 5:** DSP a Nivel de Muestra (`gen~` y GenExpr).
-- **Módulo 6:** Del Patch al Código Nativo (JavaScript, Node for Max y C SDK).
-- **Apéndices Especializados:** Jitter 3D, TouchDesigner, Arduino/Instalaciones, Min-DevKit, IA (FluCoMa/nn~) y Audio Espacial 3D (Spat5/Ambisonics).
+- **Módulo 0:** Prólogo, Arquitectura del Sistema y Configuración del Driver de Audio.
+- **Módulo 1:** El Paradigma Dataflow, Orden de Ejecución y el Scheduler Temporal.
+- **Módulo 2:** Estructuras de Datos en RAM, Persistencia y Presets (`dict` y `pattr`).
+- **Módulo 3:** Procesamiento de Señal Digital y Audio en Tiempo Real (MSP).
+- **Módulo 4:** Modularidad, Abstracciones y Computación Paralela Multicore (`poly~`).
+- **Módulo 5:** Procesamiento Muestra a Muestra y Compilación JIT (`gen~`).
+- **Módulo 6:** Del Patch al Código de Producción (JavaScript, Node for Max y C SDK).
+- **Apéndices Especializados:** Computación Visual (Jitter), TouchDesigner, Computación Física (Arduino), C++17 (Min-DevKit), Machine Learning y Audio Espacial 3D.
+
