@@ -124,3 +124,61 @@ h1#_top {
   width: 1.15rem !important;
   height: 1.15rem !important;
 }
+
+/* Landing Page Pillars Grid */
+.landing-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+.landing-card {
+  background-color: var(--sl-color-gray-6, rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--sl-color-gray-5, rgba(255, 255, 255, 0.1));
+  border-radius: 0.5rem;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.landing-card:hover {
+  border-color: var(--sl-color-accent);
+  transform: translateY(-2px);
+}
+
+.landing-card .card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.landing-card .card-badge {
+  font-family: var(--sl-font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.25rem;
+  background-color: var(--sl-color-accent-low, rgba(99, 102, 241, 0.15));
+  color: var(--sl-color-accent-high, #818cf8);
+  border: 1px solid var(--sl-color-accent, #6366f1);
+  line-height: 1;
+}
+
+.landing-card h3 {
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  margin: 0 !important;
+  color: var(--sl-color-white, #fff);
+  border-bottom: none !important;
+}
+
+.landing-card p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--sl-color-gray-2, #a1a1aa);
+  margin: 0 !important;
+}
+

@@ -14,24 +14,38 @@ hero:
       icon: github
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
-
 ## Pilares de la Arquitectura
 
-<CardGrid stagger>
-  <Card title="Conceptos sobre Código" icon="seti:graphql">
-    Comprensión rigurosa de la computación en tiempo real, el Scheduler determinista, colas de baja prioridad y el Audio Thread antes de interconectar objetos.
-  </Card>
-  <Card title="Bajo Nivel (C Engine)" icon="seti:c">
-    Análisis del motor en C de Cycling '74, estructuras de memoria, punteros a buffers de señal y funciones de procesamiento vectorial SIMD (`perform64`).
-  </Card>
-  <Card title="Laboratorios sin Clipping" icon="seti:audio">
-    Cada lección incluye parches interactivos reproducibles (`.maxpat`) con márgenes de headroom nominal (-12 dB) y limitadores anti-clipping de grado estudio.
-  </Card>
-  <Card title="Ecosistema de Extensibilidad" icon="puzzle">
-    Integración multiplataforma con C++ moderno (Min-DevKit), Shaders en GPU (Jitter), microcontroladores (Arduino), TouchDesigner e Inteligencia Artificial (FluCoMa / nn~).
-  </Card>
-</CardGrid>
+<div class="landing-cards-grid">
+  <div class="landing-card">
+    <div class="card-header">
+      <span class="card-badge">01</span>
+      <h3>Conceptos sobre Código</h3>
+    </div>
+    <p>Comprensión rigurosa de la computación en tiempo real, el Scheduler determinista, colas de baja prioridad y el Audio Thread antes de interconectar objetos.</p>
+  </div>
+  <div class="landing-card">
+    <div class="card-header">
+      <span class="card-badge">02</span>
+      <h3>Bajo Nivel (C Engine)</h3>
+    </div>
+    <p>Análisis del motor en C de Cycling '74, estructuras de memoria, punteros a buffers de señal y funciones de procesamiento vectorial SIMD (<code>perform64</code>).</p>
+  </div>
+  <div class="landing-card">
+    <div class="card-header">
+      <span class="card-badge">03</span>
+      <h3>Laboratorios sin Clipping</h3>
+    </div>
+    <p>Cada lección incluye parches interactivos reproducibles (<code>.maxpat</code>) con márgenes de headroom nominal (-12 dB) y limitadores anti-clipping de grado estudio.</p>
+  </div>
+  <div class="landing-card">
+    <div class="card-header">
+      <span class="card-badge">04</span>
+      <h3>Ecosistema de Extensibilidad</h3>
+    </div>
+    <p>Integración multiplataforma con C++ moderno (Min-DevKit), Shaders en GPU (Jitter), microcontroladores (Arduino), TouchDesigner e Inteligencia Artificial (FluCoMa / nn~).</p>
+  </div>
+</div>
 
 ---
 
