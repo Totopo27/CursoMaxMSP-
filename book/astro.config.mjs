@@ -16,7 +16,7 @@ export default defineConfig({
         },
       },
       social: {
-        github: 'https://github.com/Cycling74/max-sdk',
+        github: 'https://github.com/Totopo27/CursoMaxMSP-',
       },
       sidebar: [
         {
