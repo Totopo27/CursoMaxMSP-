@@ -3,14 +3,14 @@
 
 ---
 
-## 🎯 Filosofía del Curso
+## Filosofía del Curso
 1. **Conceptos > Código:** Entender la computación en tiempo real y el flujo de datos antes de conectar cables al azar.
 2. **Bajo el Capó:** Cada módulo conecta la interfaz gráfica de Max con la arquitectura del motor en C (vía `Cycling74/max-sdk`).
 3. **Práctica Rigurosa:** Cada lección cuenta con patches `.maxpat` reproducibles, ejercicios de debugging y proyectos finales de módulo.
 
 ---
 
-## 📚 Estructura de Módulos (Índice Maestro)
+## Estructura de Módulos (Índice Maestro)
 
 ### MÓDULO 0: Prólogo e Instalación del Entorno
 * **0.1** ¿Qué es Max/MSP? Historia, filosofía de Dataflow y paradigmas.
@@ -26,7 +26,7 @@
 * **1.4** El Scheduler de Max: Eventos discretos, Overdrive, Priority Threads y la cola `qelem`.
 * **1.5** Timing y Relojes: `[metro]`, `[delay]`, `[pipe]`, `[tempo]`. Errores comunes de sincronización.
 * **1.6** Manipulación avanzada de listas y datos con `[zl]`.
-* **🧪 Proyecto Módulo 1:** Construcción de un secuenciador por pasos polirrítmico robusto y determinista.
+* **Proyecto Módulo 1:** Construcción de un secuenciador por pasos polirrítmico robusto y determinista.
 
 ---
 
@@ -35,7 +35,7 @@
 * **2.2** El estándar moderno: Árboles y diccionarios con `[dict]` (manipulación de JSON en tiempo real).
 * **2.3** Gestión de presets y estado: El ecosistema `[pattr]`, `[pattrstorage]` y preset interpolation.
 * **2.4** Comunicación inter-patch sin cables: `[send]`/`[receive]`, `[forward]`, `[value]`.
-* **🧪 Proyecto Módulo 2:** Motor de presets jerárquico con morphing de parámetros por interpolación.
+* **Proyecto Módulo 2:** Motor de presets jerárquico con morphing de parámetros por interpolación.
 
 ---
 
@@ -49,7 +49,7 @@
 * **3.7** Filtrado Digital: Filtros biquad, `[lores~]`, `[svf~]`, polos, ceros y respuesta en frecuencia.
 * **3.8** Delays, Buffers y Modulación Temporal: `[tapin~]`, `[tapout~]`, `[comb~]`, Flangers, Chorus y Feedback loops.
 * **3.9** Manejo de Muestras en RAM: `[buffer~]`, `[play~]`, `[groove~]`, `[wave~]` y windowing.
-* **🧪 Proyecto Módulo 3:** Sintetizador FM híbrido completo de 2 operadores con efectos de modulación temporal y delay analógico simulado.
+* **Proyecto Módulo 3:** Sintetizador FM híbrido completo de 2 operadores con efectos de modulación temporal y delay analógico simulado.
 
 ---
 
@@ -58,7 +58,7 @@
 * **4.2** Interfaces gráficas reutilizables con `[bpatcher]`.
 * **4.3** Polifonía escalable con `[poly~]`: Voice allocation, voice stealing, mensajes `target` y `midievent`.
 * **4.4** Multiprocesamiento real: El atributo `@parallel 1` en `[poly~]` y cómo balancear la carga de CPU entre núcleos.
-* **🧪 Proyecto Módulo 4:** Sintetizador polifónico de 8 voces con multihilo real y control MPE (MIDI Polyphonic Expression).
+* **Proyecto Módulo 4:** Sintetizador polifónico de 8 voces con multihilo real y control MPE (MIDI Polyphonic Expression).
 
 ---
 
@@ -67,7 +67,7 @@
 * **5.2** GenExpr: Programación textual de DSP dentro de Max.
 * **5.3** Creación de osciladores Anti-Aliasing (Band-Limited Waveforms) con `[gen~]`.
 * **5.4** Filtros no lineales y modelos analógicos: Saturación, Wavefolding y Oversampling.
-* **🧪 Proyecto Módulo 5:** Filtro ladder virtual-analógico (Moog style) con resonancia no lineal en `[gen~]`.
+* **Proyecto Módulo 5:** Filtro ladder virtual-analógico (Moog style) con resonancia no lineal en `[gen~]`.
 
 ---
 
@@ -77,7 +77,7 @@
 * **6.3** Creando un objeto de control: Registro de métodos y manejo de inlets fríos/calientes.
 * **6.4** Creando un objeto MSP: La rutina de audio `perform64` en C.
 * **6.5** C++ Moderno con Min-DevKit: Atributos declarativos y lambdas.
-* **🧪 Proyecto Módulo 6:** Compilación de un plugin external propio en C++ integrado y funcionando en Max.
+* **Proyecto Módulo 6:** Compilación de un plugin external propio en C++ integrado y funcionando en Max.
 
 ---
 
@@ -91,7 +91,7 @@
 
 ---
 
-## 🛠️ Arquitectura Técnica del Proyecto
+## Arquitectura Técnica del Proyecto
 
 ```
 CursoMaxMSP/

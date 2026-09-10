@@ -4,7 +4,7 @@
 
 ---
 
-## 🏛️ 1. Fundamento Teórico: Tipado Dinámico por Etiquetas y Localidad Espacial
+## ️ 1. Fundamento Teórico: Tipado Dinámico por Etiquetas y Localidad Espacial
 
 *(Inspirado en la arquitectura de Miller Puckette y los fundamentos de Todd Winkler, MIT Press)*
 
@@ -40,7 +40,7 @@ typedef struct atom {
 
 ---
 
-## 🔑 2. Teoría de Símbolos: Inmutabilidad y Tablas Hash $O(1)$
+##  2. Teoría de Símbolos: Inmutabilidad y Tablas Hash $O(1)$
 
 En la mayoría de los entornos de programación (como Python o JavaScript), los strings son cadenas dinámicas de caracteres. Comparar dos strings requiere recorrerlos caracter por caracter:
 $$\text{Costo de comparación} = O(N)$$
@@ -62,7 +62,7 @@ En Max, un `symbol` **NO es un string convencional en el heap**:
 
 ---
 
-## 📦 3. Listas y el Costo de la Des-serialización Gráfica
+## 3. Listas y el Costo de la Des-serialización Gráfica
 
 Una lista en Max es una secuencia contigua de dos o más átomos:
 ```
@@ -87,7 +87,7 @@ Muchos principiantes manipulan listas utilizando cadenas masivas de objetos grá
 
 ---
 
-## ⚙️ 4. La Familia `[zl]`: Operaciones Vectoriales de Alto Rendimiento
+## ️ 4. La Familia `[zl]`: Operaciones Vectoriales de Alto Rendimiento
 
 Para resolver toda la manipulación de datos a nivel de memoria C contigua sin penalización gráfica, Cycling '74 creó el objeto maestro **`[zl]`** (desarrollado originalmente por Norbert Schnell en el IRCAM).
 
@@ -106,7 +106,7 @@ Para resolver toda la manipulación de datos a nivel de memoria C contigua sin p
 
 ---
 
-## 🔬 4 Escenarios de la Vida Real (Casos de Estudio)
+##  4 Escenarios de la Vida Real (Casos de Estudio)
 
 Abre el parche interactivo:
 [`book/patches/modulo-01/laboratorio_03_listas_zl.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-01/laboratorio_03_listas_zl.maxpat)
@@ -135,25 +135,25 @@ Abre el parche interactivo:
 
 ---
 
-## 🧪 3 Ejercicios Prácticos de Laboratorio
+## 3 Ejercicios Prácticos de Laboratorio
 
 Realiza estos ejercicios en tu copia de Max utilizando el parche [`laboratorio_03_listas_zl.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-01/laboratorio_03_listas_zl.maxpat):
 
-### 🏋️ Ejercicio 1: El Analizador Estadístico de Rango Dinámico
+### ️ Ejercicio 1: El Analizador Estadístico de Rango Dinámico
 * **Objetivo:** Construye un analizador que reciba una lista de números desordenados (ej. `45 12 89 3 67 99 21`).
 * **Desafío:** Utilizando exclusivamente `[zl.sort]` y `[zl.slice]`, extrae en dos cajas numéricas separadas el valor mínimo y el valor máximo, y calcula el rango dinámico total.
 
-### 🏋️ Ejercicio 2: El Inversor de Acordes Diatónico
+### ️ Ejercicio 2: El Inversor de Acordes Diatónico
 * **Objetivo:** Recibe una lista de 3 o 4 notas MIDI.
 * **Desafío:** Utilizando `[zl.rot 1]` y el operador de lista `[+ 12]`, toma la nota que rotó a la primera posición y transpónla una octava arriba (+12 semitonos) para generar la primera inversión formal del acorde.
 
-### 🏋️ Ejercicio 3: Deserializador Rítmico con `[zl.iter]` y `[pipe]`
+### ️ Ejercicio 3: Deserializador Rítmico con `[zl.iter]` y `[pipe]`
 * **Objetivo:** Recibe una lista completa de 8 notas musicales agrupadas.
 * **Desafío:** Transfórmala en una secuencia de notas individuales espaciadas en el tiempo a 125 ms cada una utilizando `[zl.iter 1]` combinado con `[pipe]`.
 
 ---
 
-## 💡 Resumen de Principios Arquitectónicos
+## Resumen de Principios Arquitectónicos
 1. **Los átomos (`t_atom`) son valores etiquetados:** combinan seguridad de tipos dinámica con contigüidad espacial de memoria en RAM.
 2. **Los símbolos son inmutables y de costo $O(1)$:** se resuelven en una tabla hash global; comparar dos símbolos solo compara dos direcciones de memoria.
 3. **Evita el cableado masivo de `unpack`/`pack`:** genera overhead de despacho y destruye la localidad de caché.

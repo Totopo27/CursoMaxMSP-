@@ -9,7 +9,7 @@ description: "Capítulo del curso universitario de Max/MSP"
 
 ---
 
-## 🏛️ 1. Fundamento Acústico: Series de Fourier y el Espectro Armónico
+## ️ 1. Fundamento Acústico: Series de Fourier y el Espectro Armónico
 
 *(Inspirado en Miller Puckette, *Theory and Technique of Electronic Music*, y Cipriani & Giri, *Electronic Music and Sound Design*, Vol. 1)*
 
@@ -44,7 +44,7 @@ $$x(t) = \sum_{k=1}^{\infty} A_k \sin(2\pi k f_0 t + \phi_k)$$
 
 ---
 
-## ⚡ 2. El Peligro del Aliasing y Osciladores con Banda Limitada (Band-Limited)
+## 2. El Peligro del Aliasing y Osciladores con Banda Limitada (Band-Limited)
 
 En el mundo matemático analógico, las ondas cuadradas y de sierra tienen esquinas infinitamente afiladas. En el dominio digital, una discontinuidad vertical infinita genera armónicos que sobrepasan con creces la frecuencia de Nyquist ($f_N = f_s / 2 = 24.000\text{ Hz}$).
 
@@ -54,7 +54,7 @@ Si tocas una nota aguda de sierra a $5.000\text{ Hz}$:
 * 2º armónico: $10.000\text{ Hz}$ (OK)
 * 3º armónico: $15.000\text{ Hz}$ (OK)
 * 4º armónico: $20.000\text{ Hz}$ (OK)
-* 5º armónico: $25.000\text{ Hz}$ ➔ **¡SUPERA NYQUIST!**
+* 5º armónico: $25.000\text{ Hz}$  **¡SUPERA NYQUIST!**
 
 En lugar de desaparecer, esa energía **rebota como un espejo**:
 $$f_{\text{aliased}} = |48.000 - 25.000| = 23.000\text{ Hz}$$
@@ -77,7 +77,7 @@ El resultado son decenas de frecuencias espurias **inarmónicas** que suenan com
 
 ---
 
-## ⚙️ 3. Under the Hood (Max C SDK): Tablas de Onda y Acumuladores de Fase
+## ️ 3. Under the Hood (Max C SDK): Tablas de Onda y Acumuladores de Fase
 
 *(Basado en `simpwave~.c` del Max SDK)*
 
@@ -125,7 +125,7 @@ $$\text{phase\_step} = \frac{440}{48000} \approx 0.009166$$
 
 ---
 
-### ⚠️ Gotchas Críticos de los Foros Oficiales de Cycling '74
+### Gotchas Críticos de los Foros Oficiales de Cycling '74
 
 1. **`[cycle~]` arranca en Fase de Coseno (1.0, no 0.0):**
    - Históricamente en Max, `[cycle~]` es un **coseno**: su fase $0.0$ equivale a amplitud $+1.0$. Si disparas audio desde silencio absoluto reseteando la fase a 0, producirás un **click instantáneo**. Para arrancarlo en cero de fase seno, debes desfasarlo un cuarto de ciclo ($0.75$).
@@ -136,7 +136,7 @@ $$\text{phase\_step} = \frac{440}{48000} \approx 0.009166$$
 
 ---
 
-## 🎛️ 4. 4 Escenarios del Mundo Real
+## ️ 4. 4 Escenarios del Mundo Real
 
 Abre el parche interactivo complementario:
 [`book/patches/modulo-03/laboratorio_08_osciladores.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-03/laboratorio_08_osciladores.maxpat)
@@ -159,25 +159,25 @@ Abre el parche interactivo complementario:
 
 ---
 
-## 🧪 5. 3 Desafíos de Ingeniería de Laboratorio
+## 5. 3 Desafíos de Ingeniería de Laboratorio
 
 Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_08_osciladores.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-03/laboratorio_08_osciladores.maxpat):
 
-### 🏋️ Ejercicio 1: El Generador PWM Libre de Discontinuidades
+### ️ Ejercicio 1: El Generador PWM Libre de Discontinuidades
 * **Objetivo:** Construye un oscilador de pulso con modulación de ancho (PWM).
 * **Desafío:** Usa dos ondas `[saw~]` en desfase relativo restadas entre sí (`[-~]`), o modula el atributo de ciclo de `[rect~]`. Compara el resultado espectral contra el PWM naive hecho con `[>~]`.
 
-### 🏋️ Ejercicio 2: El Sintetizador de Viento / Mar con Ruido Filtrado
+### ️ Ejercicio 2: El Sintetizador de Viento / Mar con Ruido Filtrado
 * **Objetivo:** Simula el sonido del oleaje del mar.
 * **Desafío:** Toma `[noise~]` y pásalo a través de un filtro resonante `[reson~]` o `[lores~]`. Modula la frecuencia de corte muy lentamente (0.1 Hz) usando un `[cycle~ 0.1]` escalado entre $200\text{ Hz}$ y $1500\text{ Hz}$.
 
-### 🏋️ Ejercicio 3: Fase Cero Senoidal vs Cosenoidal
+### ️ Ejercicio 3: Fase Cero Senoidal vs Cosenoidal
 * **Objetivo:** Demuestra la fase inicial de `[cycle~]`.
 * **Desafío:** Conecta `[cycle~]` a un `[scope~]`. Envía un mensaje `0.` al inlet derecho de fase y observa dónde arranca la onda. Luego envía `0.75` y observa cómo se convierte en una onda senoidal pura que nace en cero sin producir click de inicio.
 
 ---
 
-## 💡 Resumen de Principios Arquitectónicos
+## Resumen de Principios Arquitectónicos
 1. **Fourier Gobierna la Síntesis:** Toda forma de onda compleja es una suma de sinusoides. El timbre depende de qué armónicos existen y con qué amplitud relativa ($1/k$ en sierra y cuadrada).
 2. **Aliasing es Inevitable si no hay Banda Limitada:** Las esquinas matemáticas perfectas no existen en digital; usa `[saw~]` y `[rect~]` para audio y reserva `[phasor~]` para modulación y fase.
 3. **Wavetables en RAM para Alta Velocidad:** Los osciladores en C recorren buffers indexados por un acumulador de fase `step = f0 / fs`.

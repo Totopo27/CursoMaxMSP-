@@ -4,7 +4,7 @@ Este protocolo rige la metodología de trabajo para la redacción de todas las u
 
 ---
 
-## 🎯 1. Principio Rector: "El Triángulo del Conocimiento"
+## 1. Principio Rector: "El Triángulo del Conocimiento"
 Cada lección del curso debe construirse cruzando obligatoriamente tres perspectivas:
 
 ```
@@ -24,10 +24,10 @@ Cada lección del curso debe construirse cruzando obligatoriamente tres perspect
 
 ---
 
-## 🔄 2. Procedimiento de Ingesta Continua (Nuevos Libros y Materiales)
+##  2. Procedimiento de Ingesta Continua (Nuevos Libros y Materiales)
 
 El usuario agregará progresivamente nuevos libros, artículos y documentos en diferentes formatos (`.pdf`, `.epub`, `.mobi`, `.txt`, `.maxpat`) dentro de la carpeta:
-📁 `D:\DocumentosDiscoD\CursoMaxMSP\referenciasbibliograficas\`
+ `D:\DocumentosDiscoD\CursoMaxMSP\referenciasbibliograficas\`
 
 ### Pasos automáticos ante nuevo material:
 1. **Escaneo Automático:**
@@ -42,7 +42,7 @@ El usuario agregará progresivamente nuevos libros, artículos y documentos en d
 
 ---
 
-## 📝 3. Estructura Estándar Obligatoria por Capítulo
+##  3. Estructura Estándar Obligatoria por Capítulo
 Para mantener el nivel de calidad inspirado en `rust-course`:
 1. **Introducción Conceptual:** Fundamento teórico acústico/musical citando la literatura canónica.
 2. **La Arquitectura en Max:** Explicación de los objetos oficiales involucrados.

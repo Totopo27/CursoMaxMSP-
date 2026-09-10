@@ -4,7 +4,7 @@
 
 ---
 
-## 🏛️ 1. Fundamento Epistemológico: Ruptura con el Modelo Von Neumann
+## ️ 1. Fundamento Epistemológico: Ruptura con el Modelo Von Neumann
 
 Para entender Max en profundidad, primero debemos desaprender cómo programan los lenguajes tradicionales.
 
@@ -39,7 +39,7 @@ Max no es imperativo ni lineal; implementa el modelo de **Computación por Flujo
 
 ---
 
-## 🎻 2. Organología de Sistemas: Estado (State) vs. Excitación (Trigger)
+##  2. Organología de Sistemas: Estado (State) vs. Excitación (Trigger)
 
 *(Inspirado en la teoría acústica de Alessandro Cipriani & Maurizio Giri)*
 
@@ -70,7 +70,7 @@ Para que la cuerda suene, necesitas aplicar **energía cinética**: frotar el ar
 
 ---
 
-## ⚡ 3. Teoría de Grafos: Grafos Acíclicos Dirigidos (DAG) y Recursión en $t = 0$
+## 3. Teoría de Grafos: Grafos Acíclicos Dirigidos (DAG) y Recursión en $t = 0$
 
 *(Inspirado en los fundamentos de Miller Puckette y Todd Winkler, MIT Press)*
 
@@ -99,7 +99,7 @@ En física, ningún efecto puede ser su propia causa en el mismo instante tempor
 
 ---
 
-## 💻 4. Bajo el Capó: La Verdad Mecánica en C (Cycling '74 Max SDK)
+##  4. Bajo el Capó: La Verdad Mecánica en C (Cycling '74 Max SDK)
 
 Para un Senior Architect, los conceptos teóricos tienen una implementación física concreta en memoria. Mirá cómo implementa Cycling '74 este diseño en el código fuente de [`sources/max-sdk/source/basics/plussz/plussz.c`](file:///d:/DocumentosDiscoD/CursoMaxMSP/sources/max-sdk/source/basics/plussz/plussz.c):
 
@@ -138,7 +138,7 @@ El inlet caliente no es una metáfora; es una invocación directa a la rutina de
 
 ---
 
-## 📐 5. La Regla Espacial vs. El Determinismo de `[trigger]`
+##  5. La Regla Espacial vs. El Determinismo de `[trigger]`
 
 Cuando un solo outlet se bifurca hacia múltiples inlets, el compilador dinámico de Max resuelve el orden de ejecución basándose en la posición espacial de los objetos en pantalla:
 
@@ -189,7 +189,7 @@ Para diseñar software profesional, determinista y mantenible a largo plazo, **l
 
 ---
 
-## 🔬 4 Escenarios de la Vida Real (Casos de Estudio)
+##  4 Escenarios de la Vida Real (Casos de Estudio)
 
 Abre el parche interactivo:
 [`book/patches/modulo-01/laboratorio_01.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-01/laboratorio_01.maxpat)
@@ -213,28 +213,28 @@ Abre el parche interactivo:
 
 ---
 
-## 🧪 3 Ejercicios Prácticos de Laboratorio
+## 3 Ejercicios Prácticos de Laboratorio
 
 Realiza estos ejercicios en tu copia de Max utilizando el parche [`laboratorio_01.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-01/laboratorio_01.maxpat):
 
-### 🏋️ Ejercicio 1: El Divisor Protegido contra División por Cero
+### ️ Ejercicio 1: El Divisor Protegido contra División por Cero
 * **Objetivo:** Construir una calculadora de división (`/`) que reciba Numerador y Denominador.
 * **Desafío:** Si el usuario ingresa un `0` en el denominador, el divisor debe advertir con un mensaje de error en consola y NO ejecutar la división.
 * **Requisito:** Utiliza `[trigger]` para evaluar el denominador antes de permitir que el numerador golpee el inlet caliente de `/`.
 
-### 🏋️ Ejercicio 2: El Acumulador Rítmico con Límite (Step Sequencer Core)
+### ️ Ejercicio 2: El Acumulador Rítmico con Límite (Step Sequencer Core)
 * **Objetivo:** Cada vez que pulses una tecla espaciadora (`[key]`), un contador debe sumar `1`.
 * **Desafío:** Cuando llegue a `16`, debe resetearse automáticamente a `1`.
 * **Requisito:** Orquesta la retroalimentación de la suma con un `[i 0]` y `[t b i]` para evitar el error de recursión infinita (stack overflow en $t=0$) en el scheduler de Max.
 
-### 🏋️ Ejercicio 3: Enrutador A/B con Preservación de Estado
+### ️ Ejercicio 3: Enrutador A/B con Preservación de Estado
 * **Objetivo:** Construir un sistema con 2 potenciómetros y un selector (A o B).
 * **Desafío:** Al conmutar entre A y B, la salida debe actualizarse inmediatamente con el último valor conocido del canal seleccionado, sin requerir que muevas de nuevo el potenciómetro.
 * **Requisito:** Utiliza dos objetos `[i]` (como memoria de estado para A y B) y conéctalos a un `[gate 2]` o un selector orquestado por `[trigger]`.
 
 ---
 
-## 💡 Resumen de Principios Arquitectónicos
+## Resumen de Principios Arquitectónicos
 1. **Dataflow es reactivo:** no hay bucles bloqueantes; los objetos despiertan solo ante la llegada de mensajes.
 2. **Inlet frío = Parámetro de estado (longitud de la cuerda / `x->val = n`).**
 3. **Inlet caliente = Excitación cinética (golpe de arco / `outlet_int()`).**

@@ -9,7 +9,7 @@ description: "Capítulo del curso universitario de Max/MSP"
 
 ---
 
-## 🏛️ 1. Fundamento Psicoacústico: Las Tres Escalas del Tiempo Sonoro
+## ️ 1. Fundamento Psicoacústico: Las Tres Escalas del Tiempo Sonoro
 
 *(Inspirado en los tratados de David Creasey y Miller Puckette)*
 
@@ -19,16 +19,16 @@ En la computación musical clásica y la ingeniería de audio, el tiempo no se p
 ┌────────────────────────────────────────────────────────────────────────┐
 │                   LAS TRES ESCALAS TEMPORALES                          │
 ├────────────────────────────────────────────────────────────────────────┤
-│ 1. MICRO-TIEMPO (< 20 ms) ➔ DOMINIO DEL TIMBRE Y LA FASE               │
+│ 1. MICRO-TIEMPO (< 20 ms)  DOMINIO DEL TIMBRE Y LA FASE               │
 │    • El cerebro no distingue eventos separados.                        │
 │    • Las oscilaciones se perciben como ALTURA (Pitch) o COLOR TIMBRAL. │
 │    • Es el territorio exclusivo del AUDIO THREAD (MSP a 48 kHz).       │
 │                                                                        │
-│ 2. MESO-TIEMPO (20 ms a 100 ms) ➔ RETARDOS Y ESPACIALIDAD              │
+│ 2. MESO-TIEMPO (20 ms a 100 ms)  RETARDOS Y ESPACIALIDAD              │
 │    • Efecto Haas, ecos tempranos, flanging y transitorios de ataque.   │
 │    • Límite perceptivo del retraso táctil en teclados MIDI.            │
 │                                                                        │
-│ 3. MACRO-TIEMPO (> 100 ms) ➔ DOMINIO DEL RITMO Y LA FORMA              │
+│ 3. MACRO-TIEMPO (> 100 ms)  DOMINIO DEL RITMO Y LA FORMA              │
 │    • Sucesión de pulsos perceptibles como eventos musicales discretos. │
 │    • Es el territorio del SCHEDULER THREAD ([metro], [delay], [pipe]). │
 └────────────────────────────────────────────────────────────────────────┘
@@ -38,7 +38,7 @@ En la computación musical clásica y la ingeniería de audio, el tiempo no se p
 
 ---
 
-## ⏱️ 2. El Problema del Jitter Temporal y la Percepción Rítmica Humana
+## ️ 2. El Problema del Jitter Temporal y la Percepción Rítmica Humana
 
 *(Inspirado en Geoffrey Kidde, "Learning Music Theory with Max", Routledge)*
 
@@ -51,7 +51,7 @@ En un sistema operativo de propósito general como Windows o macOS, la CPU está
 
 ---
 
-## 🧵 3. La Arquitectura Tripartita de Hilos en Max
+##  3. La Arquitectura Tripartita de Hilos en Max
 
 Para garantizar determinismo rítmico inmutable frente a la carga del sistema operativo, Cycling '74 diseñó una arquitectura estricta de **tres hilos concurrentes**:
 
@@ -78,9 +78,9 @@ Para garantizar determinismo rítmico inmutable frente a la carga del sistema op
 
 ---
 
-## ⚡ 4. Modos de Operación: Overdrive y Scheduler in Audio Interrupt (SIAI)
+## 4. Modos de Operación: Overdrive y Scheduler in Audio Interrupt (SIAI)
 
-En **Options ➔ Audio Status**, estas dos opciones configuran el comportamiento del planificador de tareas:
+En **Options  Audio Status**, estas dos opciones configuran el comportamiento del planificador de tareas:
 
 ### Overdrive
 * **Desactivado (Off):** El Scheduler corre dentro del Main Thread. Compartir el tiempo con la interfaz gráfica significa que cualquier dibujo pesado en pantalla introduce *Jitter* y destruye el tempo.
@@ -91,7 +91,7 @@ En **Options ➔ Audio Status**, estas dos opciones configuran el comportamiento
 * En lugar de usar el reloj de la placa madre de la PC, los eventos de Max se calculan en el instante exacto en que la tarjeta de sonido solicita el siguiente bloque de muestras de audio.
 * **Beneficio:** Cero desviación de reloj entre eventos MIDI/control y señales continuas de audio de MSP.
 
-> **⚠️ Gotcha Crítico de los Foros Oficiales (JavaScript y UI Timing):**
+> **Gotcha Crítico de los Foros Oficiales (JavaScript y UI Timing):**
 > Un error clásico debatido en la comunidad es programar secuenciadores rítmicos dentro de objetos `[js]` (JavaScript) o disparar metros a través de botones de UI. 
 > - **El motor de JavaScript (`[js]`) y la Live API corren obligatoriamente en el Main Thread (baja prioridad).**
 > - Aunque tengas `Overdrive` y `SIAI` activados, si el pulso pasa por código JS o depende de un elemento de interfaz, sufrirá jitter inmediato cada vez que muevas el mouse o abras un menú.
@@ -99,7 +99,7 @@ En **Options ➔ Audio Status**, estas dos opciones configuran el comportamiento
 
 ---
 
-## 💻 5. Bajo el Capó: `t_clock` y el Mecanismo de Cola `t_qelem` (Max SDK)
+##  5. Bajo el Capó: `t_clock` y el Mecanismo de Cola `t_qelem` (Max SDK)
 
 Mirando las entrañas del Max SDK en [`sources/max-sdk/source/advanced/simplethread/simplethread.c`](file:///d:/DocumentosDiscoD/CursoMaxMSP/sources/max-sdk/source/advanced/simplethread/simplethread.c) y [`delay2.c`](file:///d:/DocumentosDiscoD/CursoMaxMSP/sources/max-sdk/source/basics/delay2/delay2.c):
 
@@ -121,7 +121,7 @@ En el lenguaje visual de Max, este mecanismo en C se materializa a través de do
 
 ---
 
-## 🔬 4 Escenarios de la Vida Real (Casos de Estudio)
+##  4 Escenarios de la Vida Real (Casos de Estudio)
 
 Abre el parche interactivo:
 [`book/patches/modulo-01/laboratorio_02_timing.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-01/laboratorio_02_timing.maxpat)
@@ -156,26 +156,26 @@ Abre el parche interactivo:
 
 ---
 
-## 🧪 3 Ejercicios Prácticos de Laboratorio
+## 3 Ejercicios Prácticos de Laboratorio
 
 Realiza estos ejercicios en tu copia de Max utilizando el parche [`laboratorio_02_timing.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-01/laboratorio_02_timing.maxpat):
 
-### 🏋️ Ejercicio 1: El Cuantizador de Rebotes (Debouncer de Hardware)
+### ️ Ejercicio 1: El Cuantizador de Rebotes (Debouncer de Hardware)
 * **Objetivo:** Cuando un botón físico o pedal se presiona, las vibraciones mecánicas de los contactos generan múltiples `bang`s falsos en menos de 10 ms.
 * **Desafío:** Construye un subcircuito con `[delay]` y `[gate]` que deje pasar el primer `bang`, cierre la compuerta inmediatamente durante 50 ms y luego la vuelva a abrir automáticamente.
 
-### 🏋️ Ejercicio 2: El Tap Tempo con Detección de Inactividad
+### ️ Ejercicio 2: El Tap Tempo con Detección de Inactividad
 * **Objetivo:** Calcula los milisegundos entre dos pulsaciones seguidas de una tecla para sincronizar el tempo musical.
 * **Desafío:** Si el usuario no presiona nada durante más de 2000 ms, el sistema debe resetear el cálculo para no promediar tiempos absurdamente lentos.
 * **Requisito:** Utiliza `[timer]` para medir el delta y `[delay 2000]` para disparar el reset por inactividad.
 
-### 🏋️ Ejercicio 3: Eco MIDI con Desvanecimiento Exponencial de Velocidad
+### ️ Ejercicio 3: Eco MIDI con Desvanecimiento Exponencial de Velocidad
 * **Objetivo:** Construye una máquina de delay MIDI de 3 repeticiones utilizando `[pipe]`.
 * **Desafío:** Cada repetición debe ocurrir a 250 ms y su velocidad MIDI debe multiplicarse por `0.7` (haciendo que el eco suene cada vez más suave hasta extinguirse de forma natural).
 
 ---
 
-## 💡 Resumen de Principios Arquitectónicos
+## Resumen de Principios Arquitectónicos
 1. **El micro-tiempo (<20 ms) pertenece al Audio Thread; el macro-tiempo (>100 ms) pertenece al Scheduler.**
 2. **El Jitter rítmico destruye el groove musical:** activa siempre *Overdrive* en entornos de producción y en vivo.
 3. **`[delay]` reemplaza eventos; `[pipe]` encola estructuras FIFO completas.**

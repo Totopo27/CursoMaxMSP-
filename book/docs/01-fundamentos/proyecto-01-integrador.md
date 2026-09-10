@@ -4,7 +4,7 @@
 
 ---
 
-## 🎯 1. Visión y Objetivos del Proyecto
+## 1. Visión y Objetivos del Proyecto
 
 Este proyecto integra **la totalidad de los conceptos teóricos y prácticos desarrollados a lo largo del Módulo 1**:
 1. **Computación Dataflow determinista:** Orden de ejecución inmutable orquestado con `[trigger]`, previniendo cualquier condición de carrera visual o recursión en $t=0$.
@@ -15,7 +15,7 @@ Este proyecto integra **la totalidad de los conceptos teóricos y prácticos des
 
 ---
 
-## 🏛️ 2. Diagrama de Arquitectura del Sistema
+## ️ 2. Diagrama de Arquitectura del Sistema
 
 ```
 ┌───────────────────────────────────────────────────────────────────────────┐
@@ -53,7 +53,7 @@ Este proyecto integra **la totalidad de los conceptos teóricos y prácticos des
 
 ---
 
-## 🔬 3. Desglose de Componentes
+##  3. Desglose de Componentes
 
 ### Componente A: El Master Clock y el Generador Polirrítmico
 * En lugar de usar dos metrónomos desincronizados, usamos un **reloj maestro único** a 125 ms (equivalente a semicorcheas a 120 BPM).
@@ -75,7 +75,7 @@ Este proyecto integra **la totalidad de los conceptos teóricos y prácticos des
 
 ---
 
-## 🧪 4. Guía de Interacción con el Parche
+## 4. Guía de Interacción con el Parche
 
 Abre el parche en Max:
 [`book/patches/modulo-01/proyecto_01_secuenciador.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-01/proyecto_01_secuenciador.maxpat)
@@ -93,7 +93,7 @@ Abre el parche en Max:
 
 ---
 
-## 💡 5. Conclusiones del Módulo 1
+## 5. Conclusiones del Módulo 1
 Has construido un sistema donde:
 - No hay condiciones de carrera visuales: todo pulso se bifurca deterministamente con `[trigger]`.
 - No hay bucles infinitos en $t=0$: la retroalimentación está gobernada por el Scheduler.

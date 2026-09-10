@@ -4,7 +4,7 @@
 
 ---
 
-## 🏛️ 1. Fundamento Acústico y Computacional: De Eventos Discretos al Continuo Numérico
+## ️ 1. Fundamento Acústico y Computacional: De Eventos Discretos al Continuo Numérico
 
 *(Inspirado en Miller Puckette, *Theory and Technique of Electronic Music*, y Alessandro Cipriani & Maurizio Giri, *Electronic Music and Sound Design*, Vol. 1)*
 
@@ -41,7 +41,7 @@ Si intentamos representar una señal por encima de la frecuencia de Nyquist ($f_
 
 ---
 
-## ⚙️ 2. Anatomía del Audio Thread: Vector Sizes y Latencia
+## ️ 2. Anatomía del Audio Thread: Vector Sizes y Latencia
 
 El procesador de tu computadora no puede interrumpir sus registros 48.000 veces por segundo para calcular una muestra a la vez; el costo de cambio de contexto (*context switching*) consumiría el 100% de la CPU.
 
@@ -78,7 +78,7 @@ Por ello, MSP procesa el audio en **bloques o vectores de muestras** (*Sample Fr
 
 ---
 
-## 💻 3. Bajo el Capó (Max C SDK): La Función `perform64`
+##  3. Bajo el Capó (Max C SDK): La Función `perform64`
 
 *(Basado en el análisis de `simplemsp~.c` en `Cycling74/max-sdk`)*
 
@@ -109,7 +109,7 @@ void simplemsp_perform64(t_simplemsp *x, t_object *dsp64,
 
 ---
 
-### ⚠️ Gotchas Críticos de los Foros Oficiales de Cycling '74
+### Gotchas Críticos de los Foros Oficiales de Cycling '74
 
 1. **Jitter en Disparos de Audio desde el Macro-tiempo:**
    - Si disparas un grano o envolvente con un botón de control o un `[metro]` normal, el instante exacto en que comienza el sonido se alinea con el inicio del próximo bloque I/O. 
@@ -124,7 +124,7 @@ void simplemsp_perform64(t_simplemsp *x, t_object *dsp64,
 
 ---
 
-## 🎛️ 4. 4 Escenarios del Mundo Real
+## ️ 4. 4 Escenarios del Mundo Real
 
 Abre el parche interactivo complementario:
 [`book/patches/modulo-03/laboratorio_07_audio_basics.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-03/laboratorio_07_audio_basics.maxpat)
@@ -147,25 +147,25 @@ Abre el parche interactivo complementario:
 
 ---
 
-## 🧪 5. 3 Desafíos de Ingeniería de Laboratorio
+## 5. 3 Desafíos de Ingeniería de Laboratorio
 
 Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_07_audio_basics.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-03/laboratorio_07_audio_basics.maxpat):
 
-### 🏋️ Ejercicio 1: Eliminación de Zipper Noise con `[line~]`
+### ️ Ejercicio 1: Eliminación de Zipper Noise con `[line~]`
 * **Objetivo:** Conecta un generador sinusoidal continuo a un control de volumen.
 * **Desafío:** Compara dos métodos de atenuación: mover un slider directamente conectado a `[sig~]` vs. pasar el valor por un mensaje `$1 20` hacia `[line~]`. Observa en el osciloscopio `[scope~]` cómo el escalón discontinuo desaparece convirtiéndose en una rampa continua.
 
-### 🏋️ Ejercicio 2: El Sonda de Muestreo Cuántico con `[snapshot~]`
+### ️ Ejercicio 2: El Sonda de Muestreo Cuántico con `[snapshot~]`
 * **Objetivo:** Captura el estado de un LFO de audio ultra-lento (`[cycle~ 0.5]`).
 * **Desafío:** Usa un `[metro 50]` para muestrear la señal con `[snapshot~]` y muestra el valor en pantalla. Comprueba matemáticamente que los valores capturados oscilan exactamente entre $-1.0$ y $+1.0$.
 
-### 🏋️ Ejercicio 3: Prueba de Esfuerzo Vectorial
+### ️ Ejercicio 3: Prueba de Esfuerzo Vectorial
 * **Objetivo:** Experimenta con la carga de CPU y la latencia.
 * **Desafío:** Abre la ventana Audio Status. Cambia el I/O Vector Size de 64 a 1024 muestras y observa cómo cambia el tiempo de respuesta y el indicador de CPU en Max.
 
 ---
 
-## 💡 Resumen de Principios Arquitectónicos
+## Resumen de Principios Arquitectónicos
 1. **Control es Discreto, Audio es Continuo:** Los cables normales transportan eventos bajo demanda; los cables con tilde transportan bloques contiguos de 64 muestras a la frecuencia de muestreo.
 2. **El Audio Thread es Sagrado:** En `perform64` no se imprime, no se aloca memoria y no se interactúa con el sistema operativo para evitar dropouts.
 3. **I/O Vector manda en la Latencia Externa:** Signal Vector manda en el cálculo interno y la resolución de feedback.

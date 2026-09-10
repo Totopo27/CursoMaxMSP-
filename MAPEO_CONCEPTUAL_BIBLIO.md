@@ -14,7 +14,7 @@ A partir del análisis sistemático y exhaustivo de los textos clave en `referen
 ---
 
 ## 2. Aportes de Alessandro Cipriani & Maurizio Giri (*Electronic Music and Sound Design*, Vols. 1 y 2)
-* **Concepto Clave Incorporado: El "Contrato Formativo" (Teoría Acústica ➔ Práctica Rigurosa en MSP).**
+* **Concepto Clave Incorporado: El "Contrato Formativo" (Teoría Acústica  Práctica Rigurosa en MSP).**
   * En lugar de decir *"conectá cycle~ a *~"*, Cipriani y Giri demuestran la física del sonido:
     * Relación logarítmica entre frecuencia (Hz) y afinación (MIDI/centésimas).
     * Cálculo exacto de las bandas laterales en modulación de amplitud ($f_c \pm f_m$) y modulación de frecuencia ($I = \Delta f / f_m$).

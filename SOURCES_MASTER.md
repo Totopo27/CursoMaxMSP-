@@ -4,7 +4,7 @@ Este documento centraliza todas las fuentes de información primarias, secundari
 
 ---
 
-## 🌐 1. Ecosistema Oficial Web de Cycling '74
+##  1. Ecosistema Oficial Web de Cycling '74
 
 ### 1.1 Documentación Activa y Tutoriales
 * **Documentación Central:** [docs.cycling74.com](https://docs.cycling74.com/)
@@ -34,7 +34,7 @@ Este documento centraliza todas las fuentes de información primarias, secundari
 
 ---
 
-## 💻 2. Fuentes de Código Fuente y Arquitectura Interna (Bajo el Capó)
+##  2. Fuentes de Código Fuente y Arquitectura Interna (Bajo el Capó)
 
 * **Cycling '74 Max SDK:** [github.com/Cycling74/max-sdk](https://github.com/Cycling74/max-sdk) *(Clonado localmente en `sources/max-sdk/`)*
   * Código fuente C de ejemplos oficiales:
@@ -47,7 +47,7 @@ Este documento centraliza todas las fuentes de información primarias, secundari
 
 ---
 
-## 📖 3. Bibliografía Académica y Tratados Canónicos
+##  3. Bibliografía Académica y Tratados Canónicos
 
 * **"Electronic Music and Sound Design" (Vols. 1, 2 y 3) — Alessandro Cipriani & Maurizio Giri:**
   * Fundamento teórico de acústica, matemáticas del audio digital, síntesis interactiva y diseño de sistemas complejos en Max.
@@ -58,7 +58,7 @@ Este documento centraliza todas las fuentes de información primarias, secundari
 
 ---
 
-## ⚙️ 4. Estrategia de Ingesta Automatizada (Pipeline)
+## ️ 4. Estrategia de Ingesta Automatizada (Pipeline)
 
 | Módulo de Ingesta | Destino | Herramienta | Contenido Extraído |
 | :--- | :--- | :--- | :--- |

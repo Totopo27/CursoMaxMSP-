@@ -9,7 +9,7 @@ description: "Capítulo del curso universitario de Max/MSP"
 
 ---
 
-## 🏛️ 1. Fundamento Teórico: Los Tres Niveles de Persistencia en Computación Musical
+## ️ 1. Fundamento Teórico: Los Tres Niveles de Persistencia en Computación Musical
 
 *(Inspirado en Todd Winkler, MIT Press y Cipriani & Giri, Vol. 2)*
 
@@ -19,15 +19,15 @@ En la interacción en tiempo real, un sistema musical no puede depender únicame
 ┌────────────────────────────────────────────────────────────────────────┐
 │                   JERARQUÍA DE MEMORIA EN MAX                          │
 ├────────────────────────────────────────────────────────────────────────┤
-│ 1. MEMORIA DE ÍNDICES DIRECTOS (Numérica / Arrays) ➔ [table]           │
-│    • Mapeo estricto Entero ➔ Entero. Complejidad O(1).                 │
+│ 1. MEMORIA DE ÍNDICES DIRECTOS (Numérica / Arrays)  [table]           │
+│    • Mapeo estricto Entero  Entero. Complejidad O(1).                 │
 │    • Tablas de ondas (Wavetables), curvas de velocidad, escalas.       │
 │                                                                        │
-│ 2. MEMORIA ASOCIATIVA Y TABLAS DE SÍMBOLOS ➔ [coll]                    │
-│    • Mapeo Clave (Int o Símbolo) ➔ Lista heterogénea de átomos.        │
+│ 2. MEMORIA ASOCIATIVA Y TABLAS DE SÍMBOLOS  [coll]                    │
+│    • Mapeo Clave (Int o Símbolo)  Lista heterogénea de átomos.        │
 │    • Secuencias polifónicas, eventos con timestamp, bases de datos CSV.│
 │                                                                        │
-│ 3. MEMORIA JERÁRQUICA Y ÁRBOLES JSON ➔ [dict]                          │
+│ 3. MEMORIA JERÁRQUICA Y ÁRBOLES JSON  [dict]                          │
 │    • Árboles anidados (Key-Value Trees), arrays heterogéneos y objetos.│
 │    • Estado global de sintetizadores, configuraciones de sesión, REST. │
 └────────────────────────────────────────────────────────────────────────┘
@@ -35,7 +35,7 @@ En la interacción en tiempo real, un sistema musical no puede depender únicame
 
 ---
 
-## 📊 2. Objetos de Almacenamiento Clásicos: `[value]`, `[table]` y `[coll]`
+##  2. Objetos de Almacenamiento Clásicos: `[value]`, `[table]` y `[coll]`
 
 ### A. Memoria Global Compartida: `[value]` (`[v]`)
 * Almacena un único valor (número o lista corta) asociado a un **nombre global inmutable**.
@@ -58,7 +58,7 @@ En la interacción en tiempo real, un sistema musical no puede depender únicame
 
 ---
 
-## 🌳 3. El Estándar Moderno: Árboles Jerárquicos con `[dict]` y JSON
+##  3. El Estándar Moderno: Árboles Jerárquicos con `[dict]` y JSON
 
 En aplicaciones de gran escala (como Max for Live o sintetizadores con cientos de parámetros), las listas planas de `[coll]` se quedan cortas.
 
@@ -81,12 +81,12 @@ El ecosistema **`[dict]`** de Cycling '74 introduce **estructuras de datos basad
 
 ### La Sintaxis de Rutas (Dot-Notation y Slash-Notation):
 Para consultar o modificar datos dentro de `[dict]`, no necesitas recorrer el árbol manualmente. Usas rutas:
-* `get filter::cutoff` ➔ Devuelve `1850.5`.
-* `set filter::resonance 0.85` ➔ Modifica el valor sin tocar el resto del árbol.
+* `get filter::cutoff`  Devuelve `1850.5`.
+* `set filter::resonance 0.85`  Modifica el valor sin tocar el resto del árbol.
 
 ---
 
-## 💻 4. Bajo el Capó: Diccionarios en C y Paso por Referencia (`dict.route.c`)
+##  4. Bajo el Capó: Diccionarios en C y Paso por Referencia (`dict.route.c`)
 
 Mirando las entrañas del Max SDK en [`sources/max-sdk/source/dictionary/dict.route/dict.route.c`](file:///d:/DocumentosDiscoD/CursoMaxMSP/sources/max-sdk/source/dictionary/dict.route/dict.route.c):
 
@@ -108,7 +108,7 @@ void dict_route_dictionary(t_dict_route* x, t_symbol* s) {
 
 ---
 
-### ⚠️ Gotchas de la Comunidad Oficial: Nombres Efímeros y Diccionarios Anónimos
+### Gotchas de la Comunidad Oficial: Nombres Efímeros y Diccionarios Anónimos
 
 En los foros de Cycling '74, el error más desconcertante con el que tropiezan los desarrolladores es precisamente ese:
 `"unable to reference dictionary named u123456789"`.
@@ -128,7 +128,7 @@ En los foros de Cycling '74, el error más desconcertante con el que tropiezan l
 
 ---
 
-## 🔬 4 Escenarios de la Vida Real (Casos de Estudio)
+##  4 Escenarios de la Vida Real (Casos de Estudio)
 
 Abre el parche interactivo:
 [`book/patches/modulo-02/laboratorio_04_persistencia.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-02/laboratorio_04_persistencia.maxpat)
@@ -151,26 +151,26 @@ Abre el parche interactivo:
 
 ---
 
-## 🧪 3 Ejercicios Prácticos de Laboratorio
+## 3 Ejercicios Prácticos de Laboratorio
 
 Realiza estos ejercicios en tu copia de Max utilizando el parche [`laboratorio_04_persistencia.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-02/laboratorio_04_persistencia.maxpat):
 
-### 🏋️ Ejercicio 1: El Cuantizador de Escalas con `[table]`
+### ️ Ejercicio 1: El Cuantizador de Escalas con `[table]`
 * **Objetivo:** Construye un corrector de afinación MIDI.
 * **Desafío:** Llena una tabla de 128 posiciones donde cada nota cromática entrante se redirija a la nota de la escala mayor más cercana (ej. si entra 61, devuelve 60 o 62).
 * **Requisito:** Al tocar cualquier teclado MIDI desordenado, la salida debe sonar 100% diatónica en tiempo real.
 
-### 🏋️ Ejercicio 2: Grabador / Reproductor de Eventos en Vivo con `[coll]`
+### ️ Ejercicio 2: Grabador / Reproductor de Eventos en Vivo con `[coll]`
 * **Objetivo:** Graba una secuencia de notas improvisada por el usuario con sus marcas de tiempo exactas.
 * **Desafío:** Al presionar "Record", utiliza `[timer]` para medir el delta entre notas y guárdalas en `[coll]` con formato `índice, nota vel delta;`. Al presionar "Play", reproduce la secuencia con el timing exacto usando `[pipe]`.
 
-### 🏋️ Ejercicio 3: Serializador JSON de Sesión con `[dict]`
+### ️ Ejercicio 3: Serializador JSON de Sesión con `[dict]`
 * **Objetivo:** Construye un panel de administración de usuario que guarde: nombre del artista, BPM actual, escala seleccionada y volumen maestro.
 * **Desafío:** Implementa botones para "Guardar en Disco" (`write session.json`) y "Cargar desde Disco" (`read session.json`), y verifica que al reabrir el parche los valores se restauren automáticamente.
 
 ---
 
-## 💡 Resumen de Principios Arquitectónicos
+## Resumen de Principios Arquitectónicos
 1. **`[table]` para arrays numéricos $O(1)$:** ideal para tablas de ondas, mapeo de curvas y cuantización directa.
 2. **`[coll]` para bases de datos relacionales simples:** perfecto para secuencias de partituras, listas de acordes y eventos en el tiempo.
 3. **`[dict]` es el estándar de oro de la industria:** maneja árboles JSON anidados legibles, exportables y universales.

@@ -4,7 +4,7 @@
 
 ---
 
-## 🏛️ 1. Fundamento Teórico: Paradigmas de Acoplamiento y Espacios de Nombres
+## ️ 1. Fundamento Teórico: Paradigmas de Acoplamiento y Espacios de Nombres
 
 *(Inspirado en Miller Puckette, *Theory and Technique of Electronic Music*, y Todd Winkler, *Composing Interactive Music*, MIT Press)*
 
@@ -35,7 +35,7 @@ Cuando instanciarás un objeto `[send mi_filtro]` o `[v mi_tempo]`, el símbolo 
 
 ---
 
-## 🧩 2. La Tríada de Comunicación Remota de Max
+##  2. La Tríada de Comunicación Remota de Max
 
 Max ofrece tres niveles progresivos de enrutamiento sin cables:
 
@@ -58,7 +58,7 @@ Max ofrece tres niveles progresivos de enrutamiento sin cables:
 
 ---
 
-## ⚙️ 3. Under the Hood (Max C SDK): Tablas Hash y Despacho en C
+## ️ 3. Under the Hood (Max C SDK): Tablas Hash y Despacho en C
 
 *(Basado en el análisis de `ext_obex.h` y el sistema de mensajería del Max SDK)*
 
@@ -82,7 +82,7 @@ struct symbol {
 
 ---
 
-### ⚠️ Trampas Críticas de la Comunidad y Foros Oficiales (Remote Gotchas)
+### Trampas Críticas de la Comunidad y Foros Oficiales (Remote Gotchas)
 
 La experiencia colectiva de décadas en los foros de Cycling '74 resalta cuatro problemas vitales:
 
@@ -101,7 +101,7 @@ La experiencia colectiva de décadas en los foros de Cycling '74 resalta cuatro 
 
 ---
 
-## 🎛️ 4. 4 Escenarios del Mundo Real
+## ️ 4. 4 Escenarios del Mundo Real
 
 Abre el parche interactivo complementario:
 [`book/patches/modulo-02/laboratorio_06_comunicacion.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-02/laboratorio_06_comunicacion.maxpat)
@@ -124,25 +124,25 @@ Abre el parche interactivo complementario:
 
 ---
 
-## 🧪 5. 3 Desafíos de Ingeniería de Laboratorio
+## 5. 3 Desafíos de Ingeniería de Laboratorio
 
 Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_06_comunicacion.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-02/laboratorio_06_comunicacion.maxpat):
 
-### 🏋️ Ejercicio 1: El Router de Mensajería con `[forward]`
+### ️ Ejercicio 1: El Router de Mensajería con `[forward]`
 * **Objetivo:** Construye un sistema con 4 destinos nombrados (`canal_A`, `canal_B`, `canal_C`, `canal_D`).
 * **Desafío:** Utiliza un solo objeto `[forward]` y un selector numérico para despachar listas de datos al canal elegido en tiempo real. Comprueba con medidores independientes que solo el canal activo recibe los datos.
 
-### 🏋️ Ejercicio 2: Diagnóstico de Colisión de Nombres
+### ️ Ejercicio 2: Diagnóstico de Colisión de Nombres
 * **Objetivo:** Reproduce intencionalmente un conflicto de variables globales.
 * **Desafío:** Crea dos cajas `[receive volumen]` en diferentes esquinas de tu parche. Envía un valor desde `[send volumen]`. Intenta depender del orden en que reciben el dato para encender una luz y luego reproducir un sonido. Verifica por qué esto falla y rediséñalo usando un único `[receive]` con `[trigger]`.
 
-### 🏋️ Ejercicio 3: Inyección de Presets con `[pattrforward]`
+### ️ Ejercicio 3: Inyección de Presets con `[pattrforward]`
 * **Objetivo:** Controla a distancia el filtro de un subpatcher encapsulado (`[p audio_engine]`).
 * **Desafío:** Asigna un Scripting Name al subpatcher y al dial de frecuencia. Utiliza `[pattrforward]` desde el parche principal para modular la frecuencia en tiempo real mediante un slider, sin tirar cables hacia el subpatcher.
 
 ---
 
-## 💡 Resumen de Principios Arquitectónicos
+## Resumen de Principios Arquitectónicos
 1. **Cables para Causalidad y Orden:** Si una operación matemática o lógica depende de que $A$ ocurra antes que $B$, usa cables directos con `[trigger]`.
 2. **`[send]` / `[receive]` para Emisión de Eventos Desacoplados:** Ideal para buses globales de control, transporte, pánico o señales que muchos módulos escuchan pasivamente.
 3. **Aislamiento Obligatorio con `#0`:** En cualquier módulo o abstracción destinada a ser duplicada, los canales remotos deben llevar el prefijo `#0` para evitar la polución del espacio de nombres global.

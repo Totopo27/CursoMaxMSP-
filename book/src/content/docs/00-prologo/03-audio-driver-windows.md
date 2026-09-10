@@ -13,10 +13,10 @@ En Windows, la arquitectura de audio es muy diferente a la de macOS (CoreAudio).
 
 | Driver | Latencia típica | Estabilidad | Recomendación |
 | :--- | :--- | :--- | :--- |
-| **ASIO Nativo** (Focusrite, Motu, Behringer, etc.) | Ultra baja (3 a 8 ms) | ⭐️⭐️⭐️⭐️⭐️ Máxima | **La mejor opción indiscutible** si tienes una interfaz de audio dedicada. |
-| **FL Studio ASIO** | Baja/Media (10 a 20 ms) | ⭐️⭐️⭐️⭐️ Muy buena | **La mejor opción si NO tienes interfaz externa** y usas los parlantes de la PC. Permite audio compartido. |
-| **ASIO4ALL** | Muy baja (5 a 12 ms) | ⭐️⭐️⭐️ Buena | Emula ASIO sobre WDM. La desventaja es que suele tomar **control exclusivo** de la tarjeta (si abres YouTube o Spotify, se silencia o crashea). |
-| **MME / DirectSound** | Altísima (50 a 150 ms) | ⭐️ Inutilizable para sintes | **Evitar a toda costa.** Solo para pruebas sin audio en tiempo real. |
+| **ASIO Nativo** (Focusrite, Motu, Behringer, etc.) | Ultra baja (3 a 8 ms) | ***** Máxima | **La mejor opción indiscutible** si tienes una interfaz de audio dedicada. |
+| **FL Studio ASIO** | Baja/Media (10 a 20 ms) | **** Muy buena | **La mejor opción si NO tienes interfaz externa** y usas los parlantes de la PC. Permite audio compartido. |
+| **ASIO4ALL** | Muy baja (5 a 12 ms) | *** Buena | Emula ASIO sobre WDM. La desventaja es que suele tomar **control exclusivo** de la tarjeta (si abres YouTube o Spotify, se silencia o crashea). |
+| **MME / DirectSound** | Altísima (50 a 150 ms) | * Inutilizable para sintes | **Evitar a toda costa.** Solo para pruebas sin audio en tiempo real. |
 
 ---
 
@@ -39,7 +39,7 @@ Te recomiendo instalar **FL Studio ASIO** o **FlexASIO**:
 Para configurar el driver en Max:
 
 1. Abre Max.
-2. En el menú superior, ve a: **Options** ➔ **Audio Status...** (o atajo `Ctrl + Shift + A`).
+2. En el menú superior, ve a: **Options**  **Audio Status...** (o atajo `Ctrl + Shift + A`).
 3. Verás la ventana de **Audio Status**. Configura los siguientes parámetros:
 
 ```

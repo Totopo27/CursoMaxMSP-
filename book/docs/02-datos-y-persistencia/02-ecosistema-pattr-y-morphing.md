@@ -4,7 +4,7 @@
 
 ---
 
-## 🏛️ 1. Fundamento Teórico: El Espacio de Estados y la Interpolación N-Dimensional
+## ️ 1. Fundamento Teórico: El Espacio de Estados y la Interpolación N-Dimensional
 
 *(Inspirado en Todd Winkler, *Composing Interactive Music*, MIT Press, y Cipriani & Giri, *Electronic Music and Sound Design*, Vol. 2)*
 
@@ -47,7 +47,7 @@ El ecosistema **`[pattr]`** de Max/MSP fue creado precisamente para resolver est
 
 ---
 
-## 🧩 2. La Anatomía del Ecosistema `[pattr]`
+##  2. La Anatomía del Ecosistema `[pattr]`
 
 El sistema `pattr` no es un único objeto; es un protocolo distribuido compuesto por cuatro pilares fundamentales:
 
@@ -91,7 +91,7 @@ El sistema `pattr` no es un único objeto; es un protocolo distribuido compuesto
 
 ---
 
-### ⚠️ Trampas Críticas de la Comunidad y Foros Oficiales (Pattr Gotchas)
+### Trampas Críticas de la Comunidad y Foros Oficiales (Pattr Gotchas)
 
 La experiencia de años en los foros de Cycling '74 destaca tres problemas recurrentes que paralizan proyectos reales si no se conocen:
 
@@ -109,7 +109,7 @@ La experiencia de años en los foros de Cycling '74 destaca tres problemas recur
 
 ---
 
-## ⚙️ 3. Under the Hood (Max C SDK): Obex, Notificaciones y Attributes
+## ️ 3. Under the Hood (Max C SDK): Obex, Notificaciones y Attributes
 
 *(Basado en el análisis de `ext_obex.h` y `shepherd.c` en `Cycling74/max-sdk`)*
 
@@ -152,7 +152,7 @@ Durante el **morphing**, `[pattrstorage]` calcula los valores intermedios en mem
 
 ---
 
-## 🎛️ 4. 4 Escenarios del Mundo Real
+## ️ 4. 4 Escenarios del Mundo Real
 
 Abre el parche interactivo complementario:
 [`book/patches/modulo-02/laboratorio_05_pattr.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-02/laboratorio_05_pattr.maxpat)
@@ -175,25 +175,25 @@ Abre el parche interactivo complementario:
 
 ---
 
-## 🧪 5. 3 Desafíos de Ingeniería de Laboratorio
+## 5. 3 Desafíos de Ingeniería de Laboratorio
 
 Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_05_pattr.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-02/laboratorio_05_pattr.maxpat):
 
-### 🏋️ Ejercicio 1: El Conmutador Inmune al Morphing (`@interp 0`)
+### ️ Ejercicio 1: El Conmutador Inmune al Morphing (`@interp 0`)
 * **Objetivo:** Configura un sintetizador donde los filtros y frecuencias se interpolen continuamente durante un morphing de 3 segundos, pero el selector de forma de onda (que conmuta entre Sine = 0, Saw = 1, Square = 2) cambie de forma discreta sin pasar por valores fraccionarios intermedios (como 0.45 o 1.7).
 * **Pista:** Investiga el atributo `@interp` dentro del inspector de `[pattr]` o a través de la ventana `clientwindow` de `[pattrstorage]`.
 
-### 🏋️ Ejercicio 2: Automatización LFO de Morphing
+### ️ Ejercicio 2: Automatización LFO de Morphing
 * **Objetivo:** Conecta un oscilador de baja frecuencia (`[phasor~]` o un `[metro]` con `[line]`) a la entrada de interpolación continua de `[pattrstorage]` para crear un timbre que respire cíclicamente entre el Preset 1 y el Preset 2 cada 8 segundos.
 * **Pista:** Escala una señal normalizada de 0.0 a 1.0 al mensaje `recall 1 2 $1`.
 
-### 🏋️ Ejercicio 3: Serializador y Restaurador Automático de Sesión
+### ️ Ejercicio 3: Serializador y Restaurador Automático de Sesión
 * **Objetivo:** Configura `[pattrstorage]` con los atributos `@savemode 2` y `@autorestore 1`.
 * **Desafío:** Comprueba que al modificar sliders en el parche y guardar el archivo `.maxpat`, al cerrarlo y volverlo a abrir, Max reconstruye con precisión quirúrgica el último preset activo sin necesidad de presionar ningún botón manual.
 
 ---
 
-## 💡 Resumen de Principios Arquitectónicos
+## Resumen de Principios Arquitectónicos
 1. **Desacoplamiento UI / Lógica:** Los controles gráficos no deben comunicarse punto a punto con cables hacia el motor de almacenamiento; deben unirse a través del protocolo Obex de `[pattr]`.
 2. **Espacio de Estados Vectorial:** Los presets son coordenadas $\mathbb{R}^N$. La interpolación lineal (Lerp) permite navegar infinitos estados intermedios imposibles de diseñar a mano uno por uno.
 3. **Control de Interpolación Selectiva:** No todos los parámetros son continuos. Los conmutadores lógicos, modos discretos y rutas deben protegerse con `@interp 0`.

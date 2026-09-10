@@ -9,7 +9,7 @@ description: "Capítulo del curso universitario de Max/MSP"
 
 ---
 
-## 🎯 1. Visión y Objetivos del Proyecto
+## 1. Visión y Objetivos del Proyecto
 
 Este proyecto corona el **Módulo 2 (Estructuras de Datos, Persistencia y Comunicación Remota)**, sintetizando en un sistema de producción real todos los pilares arquitectónicos aprendidos:
 1. **Persistencia Estructurada con `[dict]`:** Almacenamiento jerárquico de metadatos de sesión (autor, BPM, clave de escala, comentarios) exportables a archivos JSON estándar.
@@ -23,7 +23,7 @@ Este proyecto corona el **Módulo 2 (Estructuras de Datos, Persistencia y Comuni
 
 ---
 
-## 🏛️ 2. Diagrama de Arquitectura del Sistema
+## ️ 2. Diagrama de Arquitectura del Sistema
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -63,7 +63,7 @@ Este proyecto corona el **Módulo 2 (Estructuras de Datos, Persistencia y Comuni
 
 ---
 
-## 🔬 3. Desglose de Subsistemas
+##  3. Desglose de Subsistemas
 
 ### A. Subsistema de Espacio de Estados (`[pattrstorage]` + `[nodes]`)
 * **`lab02_storage`:** Nombre del gestor central. Almacena en memoria RAM 4 presets fundamentales:
@@ -85,7 +85,7 @@ Este proyecto corona el **Módulo 2 (Estructuras de Datos, Persistencia y Comuni
 
 ---
 
-## 🎛️ 4. Guía de Operación y Validación
+## ️ 4. Guía de Operación y Validación
 
 1. **Apertura:** Abre [`book/patches/modulo-02/proyecto_02_morphing.maxpat`](file:///d:/DocumentosDiscoD/CursoMaxMSP/book/patches/modulo-02/proyecto_02_morphing.maxpat).
 2. **Encendido DSP:** Activa el botón de encendido del `[ezdac~]` y sube moderadamente el fader de `[gain~]`.
