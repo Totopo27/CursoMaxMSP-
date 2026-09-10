@@ -3,7 +3,6 @@ title: "Módulo 2.3: Comunicación Inter-Patch sin Cables, Enrutamiento Dinámic
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Módulo 2.3: Comunicación Inter-Patch sin Cables, Enrutamiento Dinámico y Espacios de Nombres (`[send]`, `[receive]`, `[forward]`, `[pattrforward]`)
 
 > *"Tirar un cable en Max crea una autopista determinista; eliminar el cable crea un éter de difusión. Quien no comprende el alcance de sus variables globales, construye sistemas caóticos que colapsan al escalar."*
 

@@ -3,7 +3,6 @@ title: "Proyecto Integrador 04: Sintetizador Polifónico Multicore de 8 Voces co
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Proyecto Integrador 04: Sintetizador Polifónico Multicore de 8 Voces con Asignación Dinámica y Mute Automático
 
 > *"Un gran sintetizador polifónico no se define únicamente por su sonido solista, sino por la elegancia con la que sus voces coexisten en el espacio armónico. La distribución simétrica de hilos, el apagado instantáneo de la energía cuando una nota concluye y la cohesión de su arquitectura determinan si estamos ante un instrumento o ante un juguete."*  
 > — **Curtis Roads**, *The Computer Music Tutorial*

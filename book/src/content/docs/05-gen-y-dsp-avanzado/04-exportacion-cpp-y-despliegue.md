@@ -3,7 +3,6 @@ title: "Módulo 5.4: Exportación de Código C++ y Despliegue Embebido"
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Módulo 5.4: Exportación de Código C++ y Despliegue Embebido
 
 Uno de los pilares arquitectónicos más revolucionarios de `gen~` dentro del ecosistema Cycling '74 es su capacidad de desacoplamiento total del host. Cuando diseñamos un algoritmo en `gen~`, no estamos simplemente atados a Max/MSP: estamos utilizando un meta-compilador de procesamiento de señal en tiempo real capaz de traducir su árbol de sintaxis abstracta (AST) a **código fuente C++ estándar ISO (C++11/C++14)** portable, libre de dependencias propietarias de Max, estructurado como una clase de bajo nivel orientada a computación muestra a muestra (`perform()`).
 

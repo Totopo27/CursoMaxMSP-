@@ -3,7 +3,6 @@ title: "Módulo 1.3: Tipos de Datos (Los Átomos de Max), Estructuras de Memoria
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Módulo 1.3: Tipos de Datos (Los Átomos de Max), Estructuras de Memoria y Manipulación con `[zl]`
 
 > *"En la computación de flujo de datos, la eficiencia no se mide en líneas de código, sino en la contigüidad espacial de la memoria y en el costo de serialización de cada mensaje."*
 

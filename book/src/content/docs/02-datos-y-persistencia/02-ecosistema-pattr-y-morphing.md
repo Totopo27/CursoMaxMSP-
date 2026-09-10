@@ -3,7 +3,6 @@ title: "Módulo 2.2: Gestión de Presets Globales, Morphing de Parámetros e Int
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Módulo 2.2: Gestión de Presets Globales, Morphing de Parámetros e Interpolación con el Ecosistema `[pattr]`
 
 > *"Un preset no es una fotografía estática del pasado; es un punto vectorial en un espacio n-dimensional por el que podemos viajar continuamente."*
 

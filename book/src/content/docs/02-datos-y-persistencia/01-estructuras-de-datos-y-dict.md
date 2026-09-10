@@ -3,7 +3,6 @@ title: "Módulo 2.1: Memoria Persistente, Estructuras de Datos (`[table]`, `[col
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Módulo 2.1: Memoria Persistente, Estructuras de Datos (`[table]`, `[coll]`, `[dict]`) y Manejo de Estado
 
 > *"Un algoritmo sin memoria es solo una función reactiva; con memoria se convierte en un sistema musical vivo."*
 

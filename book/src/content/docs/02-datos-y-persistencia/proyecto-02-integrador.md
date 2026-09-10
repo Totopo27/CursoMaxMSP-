@@ -3,7 +3,6 @@ title: "Proyecto Integrador 2: Motor de Presets Jerárquico con Morphing por Int
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Proyecto Integrador 2: Motor de Presets Jerárquico con Morphing por Interpolación Multidimensional
 
 > *"Un sintetizador profesional no es solo un conjunto de osciladores y filtros; es un gestor de estados capaz de viajar fluidamente por un hiperespacio de timbres sin artefactos, caídas de audio ni saltos espurios."*
 

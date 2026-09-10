@@ -3,7 +3,6 @@ title: "Proyecto Integrador 06: Sistema Híbrido Multicapa (JS + N4M + DSP de Al
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Proyecto Integrador 06: Sistema Híbrido Multicapa (JS + N4M + DSP de Alto Rendimiento)
 
 Bienvenidos al proyecto cumbre del **Módulo 6**. En este proyecto integramos todas las capas de extensibilidad de Max en una sola arquitectura modular de grado industrial:
 1. **Capa de Red Asíncrona (Node for Max)**: Ingesta de telemetría y control remoto mediante API REST / HTTP en un proceso aislado libre de bloqueos.

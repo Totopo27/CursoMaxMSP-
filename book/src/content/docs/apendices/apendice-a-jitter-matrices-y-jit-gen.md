@@ -3,7 +3,6 @@ title: "Apéndice A: Computación Visual y Espacial: Jitter, Matrices y `jit.gen
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Apéndice A: Computación Visual y Espacial: Jitter, Matrices y `jit.gen`
 
 Mientras que MSP manipula flujos unidimensionales de audio a frecuencias de muestreo elevadas ($f_s = 48\text{ kHz}$), **Jitter** es la extensión de Max diseñada para el procesamiento multidimensional de datos a velocidades de cuadro (*framerate* de control o video, típicamente de 30 a 120 fps). 
 

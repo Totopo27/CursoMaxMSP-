@@ -52,7 +52,7 @@ export default defineConfig({
           autogenerate: { directory: 'apendices' },
         },
       ],
-      customCss: [],
+      customCss: ['./src/styles/custom.css'],
     }),
   ],
 });

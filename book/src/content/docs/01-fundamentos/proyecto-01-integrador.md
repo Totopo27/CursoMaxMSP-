@@ -3,7 +3,6 @@ title: "Proyecto Integrador 1: Secuenciador Polirrítmico Diatónico Autónomo"
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Proyecto Integrador 1: Secuenciador Polirrítmico Diatónico Autónomo
 
 > *"La madurez de un ingeniero de software y sonido en Max se demuestra cuando el sistema puede generar música compleja y viva a partir de reglas arquitectónicas mínimas, elegantes y matemáticamente estables."*
 

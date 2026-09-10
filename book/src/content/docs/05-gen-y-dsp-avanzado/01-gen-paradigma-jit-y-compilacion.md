@@ -3,7 +3,6 @@ title: "Lección 5.1: Gen~ y el Paradigma JIT: Compilación en Tiempo Real, Bucl
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Lección 5.1: Gen~ y el Paradigma JIT: Compilación en Tiempo Real, Bucles Muestra a Muestra y LLVM
 
 > *"En MSP tradicional estás encadenando cajas negras que se comunican mediante vectores de 64 muestras: la retroalimentación de una sola muestra es físicamente imposible sin introducir un retraso de bloque entero. Con `gen~`, el lienzo visual se traduce directamente a código C++ de bajo nivel y se compila a instrucciones de máquina en nanosegundos mediante LLVM: la barrera entre el parcheo visual y la programación nativa ha desaparecido."*  
 > — **Graham Wakefield & Gregory Taylor**, *Generating Sound & Organizing Time*

@@ -3,7 +3,6 @@ title: "Lección 4.3: Paralelismo y Concurrencia Real: El Atributo @parallel 1, 
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Lección 4.3: Paralelismo y Concurrencia Real: El Atributo @parallel 1, Hilos del Sistema Operativo y Afinidad de CPU
 
 > *"El aumento de frecuencia de reloj en los procesadores tocó un muro térmico hace más de dos décadas. El poder de cálculo contemporáneo no reside en hacer una tarea más rápido en un hilo, sino en distribuir el trabajo simultáneamente en 8, 16 o 32 núcleos de hardware. Si tu motor DSP corre en un solo hilo, estás desperdiciando el 85% de tu silicio."*  
 > — **Herb Sutter**, *The Free Lunch Is Over: A Fundamental Turn Toward Concurrency in Software*

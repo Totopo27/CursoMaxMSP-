@@ -3,7 +3,6 @@ title: "Módulo 1.1: El Paradigma Dataflow, Semántica de Estado vs. Disparo y O
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Módulo 1.1: El Paradigma Dataflow, Semántica de Estado vs. Disparo y Orden de Ejecución
 
 > *"En Max, el orden de las cosas no está en las líneas de texto, sino en la teoría de grafos, en la organología acústica y en la pila de llamadas del procesador."*
 

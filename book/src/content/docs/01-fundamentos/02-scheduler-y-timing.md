@@ -3,7 +3,6 @@ title: "Módulo 1.2: El Scheduler de Max, Jerarquía Temporal y Psicoacústica d
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Módulo 1.2: El Scheduler de Max, Jerarquía Temporal y Psicoacústica del Ritmo
 
 > *"El tiempo en la música por computadora no es una línea uniforme; es una jerarquía de velocidades que va desde el micro-tiempo del timbre hasta el macro-tiempo de la forma musical."*
 

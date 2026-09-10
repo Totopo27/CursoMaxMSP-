@@ -3,7 +3,6 @@ title: "Lección 4.2: Polifonía Dinámica con poly~: Asignación de Voces, Enru
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Lección 4.2: Polifonía Dinámica con poly~: Asignación de Voces, Enrutamiento (target), mute y thispoly~
 
 > *"Un sintetizador monofónico es una línea melódica solitaria; la polifonía es arquitectura armónica en el tiempo. Pero multiplicar 16 voces de síntesis por la fuerza bruta de copiar y pegar parches es la bancarrota del CPU: la polifonía digital profesional exige asignación dinámica, reciclaje de voces y apagado absoluto de hilos inactivos."*  
 > — **F. Richard Moore**, *Elements of Computer Music*

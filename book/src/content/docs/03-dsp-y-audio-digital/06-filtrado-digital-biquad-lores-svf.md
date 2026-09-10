@@ -3,7 +3,6 @@ title: "Lección 3.6: Filtrado Digital: Polos, Ceros, biquad~, lores~ y State Va
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Lección 3.6: Filtrado Digital: Polos, Ceros, biquad~, lores~ y State Variable Filters (svf~)
 
 > *"Un filtro digital no elimina frecuencias de forma mágica: retrasa la señal de entrada, la multiplica por coeficientes algebraicos cuidadosamente calibrados y la realimenta sobre sí misma. La diferencia de fase resultante cancela destructivamente ciertas frecuencias y refuerza constructivamente otras."*  
 > — **Richard Boulanger**, *The Audio Programming Book*

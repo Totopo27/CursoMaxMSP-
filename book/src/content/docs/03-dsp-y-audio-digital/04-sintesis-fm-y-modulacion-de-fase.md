@@ -3,7 +3,6 @@ title: "Módulo 3.4: Modulación de Frecuencia (FM), Modulación de Fase (PM) y 
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Módulo 3.4: Modulación de Frecuencia (FM), Modulación de Fase (PM) y la Matemática de John Chowning
 
 > *"La síntesis FM es la alquimia del audio digital: con solo dos osciladores sinusoidales simples, podemos generar desde la calidez armónica de un clarinete hasta el brillo metálico de un gong tibetano."*
 

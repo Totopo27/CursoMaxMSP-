@@ -3,7 +3,6 @@ title: "Módulo 6.3: El SDK de C de Max: Anatomía de un Objeto Externo Nativo"
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Módulo 6.3: El SDK de C de Max: Anatomía de un Objeto Externo Nativo
 
 Llegamos a la capa más profunda y fundamental de toda la plataforma: **el Cycling '74 Max C SDK**.
 Todos los objetos que usamos habitualmente en Max (`[cycle~]`, `[metro]`, `[biquad~]`, `[dict]`) no son magia negra: son librerías dinámicas (`.mxe64` en Windows, `.mxo` bundle en macOS) compiladas en C o C++ que implementan una interfaz binaria de aplicación (ABI) estricta contra el motor central de Max.

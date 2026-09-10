@@ -3,7 +3,6 @@ title: "Lección 5.2: Programación Textual en GenExpr: Funciones, Bucles For/Wh
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Lección 5.2: Programación Textual en GenExpr: Funciones, Bucles For/While, Condicionales y Kernels DSP
 
 > *"El parcheo visual es insuperable para la macro-arquitectura de un sintetizador, pero para implementar un algoritmo iterativo, una convolución polinómica o un solver numérico Runge-Kutta, colocar 50 cajas y 80 cables es contraproducente e ilegible. GenExpr ofrece la concisión del texto compilado a máquina con la modularidad del flujo de datos."*  
 > — **Gregory Taylor**, *Step by Step: Adventures in Sequencing with Max*

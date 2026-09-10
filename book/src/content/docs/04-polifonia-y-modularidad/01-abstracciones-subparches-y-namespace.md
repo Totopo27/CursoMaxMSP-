@@ -3,7 +3,6 @@ title: "Lección 4.1: Arquitectura Modular: Subparches [p], Abstracciones, Argum
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Lección 4.1: Arquitectura Modular: Subparches [p], Abstracciones, Argumentos (#1..#9) y Aislamiento de Namespaces (#0)
 
 > *"El código espagueti no es un problema exclusivo del texto; en entornos visuales basados en flujo de datos es todavía más pernicioso. La diferencia entre un aficionado y un arquitecto de sistemas en Max radica en la capacidad de crear módulos atómicos, reutilizables y con aislamiento estricto de memoria."*  
 > — **David Zicarelli**, *Architectural Evolution of Max*

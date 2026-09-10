@@ -3,7 +3,6 @@ title: "Proyecto Integrador 03: Sintetizador Híbrido FM-Sustractivo con Procesa
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Proyecto Integrador 03: Sintetizador Híbrido FM-Sustractivo con Procesador de Retardo Analógico
 
 > *"Un sintetizador completo no es un agregado aleatorio de objetos DSP: es una arquitectura balanceada donde la generación de armónicos por modulación no lineal, el filtrado dinámico dependiente de la velocidad y el espacio acústico temporal convergen en un único instrumento expresivo."*  
 > — **Jean-Claude Risset**, *Computer Music Pioneer*

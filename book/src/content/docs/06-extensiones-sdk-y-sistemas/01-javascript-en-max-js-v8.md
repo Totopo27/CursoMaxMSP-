@@ -3,7 +3,6 @@ title: "Módulo 6.1: JavaScript en Max: Arquitectura de los Motores `[js]` y `[v
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Módulo 6.1: JavaScript en Max: Arquitectura de los Motores `[js]` y `[v8]`
 
 A lo largo de los módulos anteriores cubrimos exhaustivamente el paradigma de flujo de datos síncrono (Max Control), el paradigma asíncrono de colas/prioridades (Scheduler vs Low-priority Queue), la computación vectorial en DSP (MSP) y el procesamiento compilado muestra a muestra (`gen~`).
 

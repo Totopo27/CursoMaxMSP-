@@ -3,7 +3,6 @@ title: "Módulo 6.2: Node for Max (N4M): Procesamiento Asíncrono e IPC"
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Módulo 6.2: Node for Max (N4M): Procesamiento Asíncrono e IPC
 
 Mientras que el objeto `[js]` corre dentro del propio proceso e hilos de Max (restringido al Scheduler/Main thread sin acceso a bibliotecas de red externas o npm), **Node for Max (N4M)** implementa un paradigma arquitectónico radicalmente distinto: **la separación de procesos mediante IPC (Inter-Process Communication)**.
 

@@ -3,7 +3,6 @@ title: "Apéndice C: Computación Física: Arduino, Sensores e Instalaciones Int
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Apéndice C: Computación Física: Arduino, Sensores e Instalaciones Interactivas 24/7
 
 Llevar Max/MSP fuera de la pantalla de la computadora hacia el espacio arquitectónico, museos, escenarios y galerías de arte requiere dominar la **Computación Física (*Physical Computing*)**.
 

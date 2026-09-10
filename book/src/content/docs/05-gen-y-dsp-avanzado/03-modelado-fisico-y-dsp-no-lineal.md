@@ -3,7 +3,6 @@ title: "Lección 5.3: Modelado Físico y DSP No Lineal: Cuerdas Karplus-Strong, 
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Lección 5.3: Modelado Físico y DSP No Lineal: Cuerdas Karplus-Strong, Waveguides y Ecuaciones Diferenciales
 
 > *"La síntesis aditiva y sustractiva parten de formas de onda abstractas y las esculpen. El modelado físico parte de la física del mundo real: la elasticidad de una cuerda de nylon tensada, la fricción no lineal de las cerdas de un arco impregnadas en colofonia, y la pérdida de energía dispersiva en el puente de una guitarra. No sintetizamos el sonido: simulamos el instrumento."*  
 > — **Julius O. Smith III**, *Physical Audio Signal Processing*

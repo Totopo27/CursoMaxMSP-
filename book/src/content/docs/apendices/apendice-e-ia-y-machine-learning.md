@@ -3,7 +3,6 @@ title: "Apéndice E: Inteligencia Artificial y Machine Learning en Max (`FluCoMa
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Apéndice E: Inteligencia Artificial y Machine Learning en Max (`FluCoMa` y `nn~`)
 
 La integración del Machine Learning (ML) y el Deep Learning (DL) en Max/MSP transformó radicalmente la música interactiva, la síntesis sonora y el diseño de instrumentos digitales. Ya no estamos limitados a reglas heurísticas lineales escritas a mano (`if/else` o mapeos rígidos con `scale`); ahora podemos **entrenar redes neuronales que aprenden relaciones complejas entre gestos humanos y síntesis sonora**, segmentar corpus de audio gigantescos y ejecutar modelos generativos en tiempo real.
 

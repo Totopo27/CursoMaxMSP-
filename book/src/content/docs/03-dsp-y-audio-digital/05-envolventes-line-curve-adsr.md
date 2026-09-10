@@ -3,7 +3,6 @@ title: "Lección 3.5: Envolventes Temporales: line~, curve~, adsr~ y Control de 
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Lección 3.5: Envolventes Temporales: line~, curve~, adsr~ y Control de Amplitud Antialias
 
 > *"Una forma de onda pura sin control dinámico de amplitud no es música: es una señal de prueba de laboratorio. La música vive en la evolución temporal de su energía, en el ataque que define su timbre inicial y en la caída que emula la fricción de la materia."*  
 > — **Miller Puckette**, *The Theory and Technique of Electronic Music*

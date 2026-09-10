@@ -3,7 +3,6 @@ title: "Guía de Configuración de Audio en Windows para Max/MSP"
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Guía de Configuración de Audio en Windows para Max/MSP
 
 En Windows, la arquitectura de audio es muy diferente a la de macOS (CoreAudio). Si no configuras el driver adecuado, vas a sufrir de **alta latencia, ruidos (clicks/pops) o bloqueos del hilo de audio**.
 

@@ -3,7 +3,6 @@ title: "Lección 3.7: Delays, Buffers Circulares y Modulación Temporal: tapin~,
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Lección 3.7: Delays, Buffers Circulares y Modulación Temporal: tapin~, tapout~, Comb Filters, Flanger y Chorus
 
 > *"El tiempo en audio no es una constante inmutable; es una cinta elástica. Si retrasás una señal unos pocos milisegundos y la sumás consigo misma, obtenés un filtro peine. Si modulás ese tiempo con un LFO, hacés cantar a la física mediante el efecto Doppler."*  
 > — **Curtis Roads**, *The Computer Music Tutorial*

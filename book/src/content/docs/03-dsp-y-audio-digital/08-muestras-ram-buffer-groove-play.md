@@ -3,7 +3,6 @@ title: "Lección 3.8: Manejo de Muestras en RAM: buffer~, groove~, play~, index~
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Lección 3.8: Manejo de Muestras en RAM: buffer~, groove~, play~, index~ y Manipulación Varispeed
 
 > *"La grabación en cinta permitía cambiar la velocidad alterando las revoluciones del motor, cambiando tanto la afinación como la duración simultáneamente. En el dominio digital, una muestra cargada en RAM es un arreglo arbitrario de números flotantes que podemos recorrer a cualquier velocidad, en reversa o en fragmentos de microsegundos con precisión de fase perfecta."*  
 > — **Curtis Roads**, *Microsound*

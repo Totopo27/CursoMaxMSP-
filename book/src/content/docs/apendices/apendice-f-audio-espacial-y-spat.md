@@ -3,7 +3,6 @@ title: "Apéndice F: Espacialización Sonora y Audio Inmersivo 3D (`IRCAM Spat5`
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Apéndice F: Espacialización Sonora y Audio Inmersivo 3D (`IRCAM Spat5` y `Ambisonics`)
 
 El sonido en el mundo físico no es un fenómeno estéreo ni una línea que sale de dos monitores de estudio: es un campo de presión acústica tridimensional continuo que interactúa con la geometría del espacio, los materiales y la fisionomía de nuestra cabeza y pabellón auditivo.
 

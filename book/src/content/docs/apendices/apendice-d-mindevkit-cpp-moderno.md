@@ -3,7 +3,6 @@ title: "Apéndice D: Desarrollo en C++ Moderno con Min-DevKit (C++17)"
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Apéndice D: Desarrollo en C++ Moderno con Min-DevKit (C++17)
 
 En el Módulo 6 exploramos la anatomía del C SDK tradicional (`ext.h`, `t_object`, tablas de despacho con punteros a funciones y macros de C). Aunque el SDK clásico es ultrarrápido y compatible con 30 años de código histórico, programar objetos complejos en C puro puede volverse verboso, propenso a fugas de memoria (*memory leaks*) y vulnerable a errores de casteo de punteros opacos (`void *`).
 

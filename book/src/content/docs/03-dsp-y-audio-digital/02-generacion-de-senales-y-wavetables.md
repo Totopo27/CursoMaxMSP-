@@ -3,7 +3,6 @@ title: "Módulo 3.2: Generación de Señales Básicas (`[cycle~]`, `[phasor~]`, 
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Módulo 3.2: Generación de Señales Básicas (`[cycle~]`, `[phasor~]`, `[saw~]`, `[noise~]`), Tablas de Onda y Anti-Aliasing
 
 > *"En matemáticas, una onda de diente de sierra tiene un salto instantáneo vertical con infinitos armónicos; en audio digital, los infinitos armónicos rebotan contra el límite de Nyquist y destruyen tu timbre. Quien no comprende el aliasing, programa generadores de ruido en lugar de sintetizadores."*
 

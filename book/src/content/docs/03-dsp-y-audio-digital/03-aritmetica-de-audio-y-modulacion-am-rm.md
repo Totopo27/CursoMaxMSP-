@@ -3,7 +3,6 @@ title: "Módulo 3.3: Aritmética de Audio, Modulación en Anillo (Ring Modulatio
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Módulo 3.3: Aritmética de Audio, Modulación en Anillo (Ring Modulation) y Modulación de Amplitud (AM)
 
 > *"Multiplicar dos señales de audio no es un simple control de volumen; es una colisión trigonométrica que crea nuevas frecuencias que jamás existieron en los osciladores originales."*
 

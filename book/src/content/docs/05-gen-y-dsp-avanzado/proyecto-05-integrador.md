@@ -3,7 +3,6 @@ title: "Proyecto Integrador 05: Sintetizador de Modelado Físico Digital en Gen~
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Proyecto Integrador 05: Sintetizador de Modelado Físico Digital en Gen~ (Guía de Onda / Waveguide Mesh)
 
 Bienvenidos al proyecto cumbre del **Módulo 5**. Aquí abandonamos definitivamente las limitaciones del procesamiento por bloques vectoriales ($N = 64$) de MSP y consolidamos la potencia del paradigma JIT de `gen~`.
 

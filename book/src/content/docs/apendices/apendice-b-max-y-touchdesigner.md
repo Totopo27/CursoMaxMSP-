@@ -3,7 +3,6 @@ title: "Apéndice B: Interoperabilidad Multimedia: Max/MSP y TouchDesigner"
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Apéndice B: Interoperabilidad Multimedia: Max/MSP y TouchDesigner
 
 En la industria de las artes electrónicas, escenografía interactiva e instalaciones a gran escala, la arquitectura más potente consiste en dividir especialidades:
 - **Max/MSP**: Como el cerebro central de computación de audio, sincronización rítmica, secuenciación determinista e interfaz con hardware analógico.

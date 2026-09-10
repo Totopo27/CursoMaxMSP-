@@ -1,0 +1,51 @@
+﻿/* Custom typography & hierarchy adjustments for university-level technical book */
+
+:root {
+  /* Escala tipográfica sobria y equilibrada */
+  --sl-text-h1: 1.75rem; /* Título principal de página (antes ~2.5rem - 3rem) */
+  --sl-text-h2: 1.35rem; /* Secciones principales (antes ~2rem) */
+  --sl-text-h3: 1.15rem; /* Subsecciones (antes ~1.5rem) */
+  --sl-text-h4: 1.05rem; /* Subapartados */
+  --sl-text-h5: 0.95rem;
+  --sl-text-body: 0.975rem; /* Texto legible de párrafos */
+}
+
+/* Ajuste específico de pesos y espaciados para evitar títulos gigantes */
+.sl-markdown-content h1,
+h1#_top {
+  font-size: var(--sl-text-h1) !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.25rem !important;
+  font-weight: 700;
+}
+
+.sl-markdown-content h2 {
+  font-size: var(--sl-text-h2) !important;
+  line-height: 1.3 !important;
+  margin-top: 2rem !important;
+  margin-bottom: 0.75rem !important;
+  font-weight: 600;
+}
+
+.sl-markdown-content h3 {
+  font-size: var(--sl-text-h3) !important;
+  line-height: 1.35 !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.5rem !important;
+  font-weight: 600;
+}
+
+.sl-markdown-content h4 {
+  font-size: var(--sl-text-h4) !important;
+  line-height: 1.4 !important;
+  margin-top: 1.25rem !important;
+  font-weight: 600;
+}
+
+/* Párrafos balanceados */
+.sl-markdown-content p,
+.sl-markdown-content li {
+  line-height: 1.7;
+  color: var(--sl-color-gray-2);
+}

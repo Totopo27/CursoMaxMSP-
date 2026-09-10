@@ -3,7 +3,6 @@ title: "Módulo 3.1: Señal vs. Control (`~`), Anatomía del Audio Thread y la F
 description: "Capítulo del curso universitario de Max/MSP"
 ---
 
-# Módulo 3.1: Señal vs. Control (`~`), Anatomía del Audio Thread y la Función `perform64` en C
 
 > *"En el mundo del control, el tiempo avanza a saltos cuando un evento ocurre; en el mundo de la señal, el tiempo es un río inmutable de 48.000 muestras por segundo que jamás puede detenerse."*
 
