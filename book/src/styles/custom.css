@@ -4,9 +4,9 @@
 /* Custom typography & hierarchy adjustments for university-level technical book */
 
 :root {
-  /* Ancho de lectura optimizado: expandir el cuerpo central para aprovechar el espacio */
-  --sl-content-width: 60rem; /* Aumentado de 45rem a 60rem (~960px) */
-  --sl-sidebar-width: 17.5rem; /* Índice izquierdo compacto y nítido */
+  /* Ancho de lectura optimizado: expandir el cuerpo central */
+  --sl-content-width: 68rem; /* Aumentado a 68rem (~1088px) */
+  --sl-sidebar-width: 18rem;
 
   /* Escala tipográfica sobria y equilibrada */
   --sl-text-h1: 1.75rem; /* Título principal de página (antes ~2.5rem - 3rem) */
@@ -15,6 +15,33 @@
   --sl-text-h4: 1.05rem; /* Subapartados */
   --sl-text-h5: 0.95rem;
   --sl-text-body: 0.975rem; /* Texto legible de párrafos */
+}
+
+/* Distribuir las columnas de manera continua sin huecos artificiales */
+@media (min-width: 72rem) {
+  /* La barra derecha (TOC) se ancla al borde derecho con ancho definido */
+  .right-sidebar-container {
+    width: 18rem !important;
+  }
+  .right-sidebar {
+    width: 18rem !important;
+  }
+  .right-sidebar-panel .sl-container {
+    max-width: 18rem !important;
+    width: 100% !important;
+  }
+
+  /* El panel principal ocupa todo el espacio central disponible entre ambas barras */
+  :global([data-has-sidebar][data-has-toc]) .main-pane {
+    width: calc(100% - 18rem) !important;
+    --sl-content-margin-inline: 0 auto;
+  }
+
+  /* El contenedor interior se expande libremente hasta el máximo de lectura */
+  .content-panel .sl-container {
+    max-width: 100% !important;
+    padding-inline: 2rem 3rem !important;
+  }
 }
 
 /* Ajuste específico de pesos y espaciados para evitar títulos gigantes */
