@@ -8,7 +8,7 @@ description: "Capítulo del curso universitario de Max/MSP"
 
 ---
 
-## ️ 1. Fundamento Teórico: Paradigmas de Acoplamiento y Espacios de Nombres
+##  1. Fundamento Teórico: Paradigmas de Acoplamiento y Espacios de Nombres
 
 *(Inspirado en Miller Puckette, *Theory and Technique of Electronic Music*, y Todd Winkler, *Composing Interactive Music*, MIT Press)*
 
@@ -62,7 +62,7 @@ Max ofrece tres niveles progresivos de enrutamiento sin cables:
 
 ---
 
-## ️ 3. Under the Hood (Max C SDK): Tablas Hash y Despacho en C
+##  3. Under the Hood (Max C SDK): Tablas Hash y Despacho en C
 
 *(Basado en el análisis de `ext_obex.h` y el sistema de mensajería del Max SDK)*
 
@@ -105,7 +105,7 @@ La experiencia colectiva de décadas en los foros de Cycling '74 resalta cuatro 
 
 ---
 
-## ️ 4. 4 Escenarios del Mundo Real
+##  4. 4 Escenarios del Mundo Real
 
 Abre el parche interactivo complementario:
 [`book/patches/modulo-02/laboratorio_06_comunicacion.maxpat`](/patches/modulo-02/laboratorio_06_comunicacion.maxpat)
@@ -132,15 +132,15 @@ Abre el parche interactivo complementario:
 
 Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_06_comunicacion.maxpat`](/patches/modulo-02/laboratorio_06_comunicacion.maxpat):
 
-### ️ Ejercicio 1: El Router de Mensajería con `[forward]`
+###  Ejercicio 1: El Router de Mensajería con `[forward]`
 * **Objetivo:** Construye un sistema con 4 destinos nombrados (`canal_A`, `canal_B`, `canal_C`, `canal_D`).
 * **Desafío:** Utiliza un solo objeto `[forward]` y un selector numérico para despachar listas de datos al canal elegido en tiempo real. Comprueba con medidores independientes que solo el canal activo recibe los datos.
 
-### ️ Ejercicio 2: Diagnóstico de Colisión de Nombres
+###  Ejercicio 2: Diagnóstico de Colisión de Nombres
 * **Objetivo:** Reproduce intencionalmente un conflicto de variables globales.
 * **Desafío:** Crea dos cajas `[receive volumen]` en diferentes esquinas de tu parche. Envía un valor desde `[send volumen]`. Intenta depender del orden en que reciben el dato para encender una luz y luego reproducir un sonido. Verifica por qué esto falla y rediséñalo usando un único `[receive]` con `[trigger]`.
 
-### ️ Ejercicio 3: Inyección de Presets con `[pattrforward]`
+###  Ejercicio 3: Inyección de Presets con `[pattrforward]`
 * **Objetivo:** Controla a distancia el filtro de un subpatcher encapsulado (`[p audio_engine]`).
 * **Desafío:** Asigna un Scripting Name al subpatcher y al dial de frecuencia. Utiliza `[pattrforward]` desde el parche principal para modular la frecuencia en tiempo real mediante un slider, sin tirar cables hacia el subpatcher.
 

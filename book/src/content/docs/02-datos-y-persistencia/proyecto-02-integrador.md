@@ -22,7 +22,7 @@ Este proyecto corona el **Módulo 2 (Estructuras de Datos, Persistencia y Comuni
 
 ---
 
-## ️ 2. Diagrama de Arquitectura del Sistema
+##  2. Diagrama de Arquitectura del Sistema
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -84,7 +84,7 @@ Este proyecto corona el **Módulo 2 (Estructuras de Datos, Persistencia y Comuni
 
 ---
 
-## ️ 4. Guía de Operación y Validación
+##  4. Guía de Operación y Validación
 
 1. **Apertura:** Abre [`book/patches/modulo-02/proyecto_02_morphing.maxpat`](/patches/modulo-02/proyecto_02_morphing.maxpat).
 2. **Encendido DSP:** Activa el botón de encendido del `[ezdac~]` y sube moderadamente el fader de `[gain~]`.

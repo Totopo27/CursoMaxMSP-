@@ -8,7 +8,7 @@ description: "Capítulo del curso universitario de Max/MSP"
 
 ---
 
-## ️ 1. Fundamento Acústico: Series de Fourier y el Espectro Armónico
+##  1. Fundamento Acústico: Series de Fourier y el Espectro Armónico
 
 *(Inspirado en Miller Puckette, *Theory and Technique of Electronic Music*, y Cipriani & Giri, *Electronic Music and Sound Design*, Vol. 1)*
 
@@ -76,7 +76,7 @@ El resultado son decenas de frecuencias espurias **inarmónicas** que suenan com
 
 ---
 
-## ️ 3. Under the Hood (Max C SDK): Tablas de Onda y Acumuladores de Fase
+##  3. Under the Hood (Max C SDK): Tablas de Onda y Acumuladores de Fase
 
 *(Basado en `simpwave~.c` del Max SDK)*
 
@@ -135,7 +135,7 @@ $$\text{phase\_step} = \frac{440}{48000} \approx 0.009166$$
 
 ---
 
-## ️ 4. 4 Escenarios del Mundo Real
+##  4. 4 Escenarios del Mundo Real
 
 Abre el parche interactivo complementario:
 [`book/patches/modulo-03/laboratorio_08_osciladores.maxpat`](/patches/modulo-03/laboratorio_08_osciladores.maxpat)
@@ -162,15 +162,15 @@ Abre el parche interactivo complementario:
 
 Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_08_osciladores.maxpat`](/patches/modulo-03/laboratorio_08_osciladores.maxpat):
 
-### ️ Ejercicio 1: El Generador PWM Libre de Discontinuidades
+###  Ejercicio 1: El Generador PWM Libre de Discontinuidades
 * **Objetivo:** Construye un oscilador de pulso con modulación de ancho (PWM).
 * **Desafío:** Usa dos ondas `[saw~]` en desfase relativo restadas entre sí (`[-~]`), o modula el atributo de ciclo de `[rect~]`. Compara el resultado espectral contra el PWM naive hecho con `[>~]`.
 
-### ️ Ejercicio 2: El Sintetizador de Viento / Mar con Ruido Filtrado
+###  Ejercicio 2: El Sintetizador de Viento / Mar con Ruido Filtrado
 * **Objetivo:** Simula el sonido del oleaje del mar.
 * **Desafío:** Toma `[noise~]` y pásalo a través de un filtro resonante `[reson~]` o `[lores~]`. Modula la frecuencia de corte muy lentamente (0.1 Hz) usando un `[cycle~ 0.1]` escalado entre $200\text{ Hz}$ y $1500\text{ Hz}$.
 
-### ️ Ejercicio 3: Fase Cero Senoidal vs Cosenoidal
+###  Ejercicio 3: Fase Cero Senoidal vs Cosenoidal
 * **Objetivo:** Demuestra la fase inicial de `[cycle~]`.
 * **Desafío:** Conecta `[cycle~]` a un `[scope~]`. Envía un mensaje `0.` al inlet derecho de fase y observa dónde arranca la onda. Luego envía `0.75` y observa cómo se convierte en una onda senoidal pura que nace en cero sin producir click de inicio.
 

@@ -8,7 +8,7 @@ description: "Capítulo del curso universitario de Max/MSP"
 
 ---
 
-## ️ 1. Fundamento Teórico: Los Tres Niveles de Persistencia en Computación Musical
+##  1. Fundamento Teórico: Los Tres Niveles de Persistencia en Computación Musical
 
 *(Inspirado en Todd Winkler, MIT Press y Cipriani & Giri, Vol. 2)*
 
@@ -154,16 +154,16 @@ Abre el parche interactivo:
 
 Realiza estos ejercicios en tu copia de Max utilizando el parche [`laboratorio_04_persistencia.maxpat`](/patches/modulo-02/laboratorio_04_persistencia.maxpat):
 
-### ️ Ejercicio 1: El Cuantizador de Escalas con `[table]`
+###  Ejercicio 1: El Cuantizador de Escalas con `[table]`
 * **Objetivo:** Construye un corrector de afinación MIDI.
 * **Desafío:** Llena una tabla de 128 posiciones donde cada nota cromática entrante se redirija a la nota de la escala mayor más cercana (ej. si entra 61, devuelve 60 o 62).
 * **Requisito:** Al tocar cualquier teclado MIDI desordenado, la salida debe sonar 100% diatónica en tiempo real.
 
-### ️ Ejercicio 2: Grabador / Reproductor de Eventos en Vivo con `[coll]`
+###  Ejercicio 2: Grabador / Reproductor de Eventos en Vivo con `[coll]`
 * **Objetivo:** Graba una secuencia de notas improvisada por el usuario con sus marcas de tiempo exactas.
 * **Desafío:** Al presionar "Record", utiliza `[timer]` para medir el delta entre notas y guárdalas en `[coll]` con formato `índice, nota vel delta;`. Al presionar "Play", reproduce la secuencia con el timing exacto usando `[pipe]`.
 
-### ️ Ejercicio 3: Serializador JSON de Sesión con `[dict]`
+###  Ejercicio 3: Serializador JSON de Sesión con `[dict]`
 * **Objetivo:** Construye un panel de administración de usuario que guarde: nombre del artista, BPM actual, escala seleccionada y volumen maestro.
 * **Desafío:** Implementa botones para "Guardar en Disco" (`write session.json`) y "Cargar desde Disco" (`read session.json`), y verifica que al reabrir el parche los valores se restauren automáticamente.
 

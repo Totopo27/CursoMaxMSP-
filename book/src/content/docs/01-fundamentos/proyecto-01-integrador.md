@@ -19,7 +19,7 @@ Este proyecto integra **la totalidad de los conceptos teóricos y prácticos des
 
 ---
 
-## ️ 2. Diagrama de Arquitectura del Sistema
+##  2. Diagrama de Arquitectura del Sistema
 
 ```
 ┌───────────────────────────────────────────────────────────────────────────┐

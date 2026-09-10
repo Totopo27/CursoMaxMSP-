@@ -8,7 +8,7 @@ description: "Capítulo del curso universitario de Max/MSP"
 
 ---
 
-## ️ 1. Fundamento Psicoacústico: Las Tres Escalas del Tiempo Sonoro
+##  1. Fundamento Psicoacústico: Las Tres Escalas del Tiempo Sonoro
 
 *(Inspirado en los tratados de David Creasey y Miller Puckette)*
 
@@ -37,7 +37,7 @@ En la computación musical clásica y la ingeniería de audio, el tiempo no se p
 
 ---
 
-## ️ 2. El Problema del Jitter Temporal y la Percepción Rítmica Humana
+##  2. El Problema del Jitter Temporal y la Percepción Rítmica Humana
 
 *(Inspirado en Geoffrey Kidde, "Learning Music Theory with Max", Routledge)*
 
@@ -159,16 +159,16 @@ Abre el parche interactivo:
 
 Realiza estos ejercicios en tu copia de Max utilizando el parche [`laboratorio_02_timing.maxpat`](/patches/modulo-01/laboratorio_02_timing.maxpat):
 
-### ️ Ejercicio 1: El Cuantizador de Rebotes (Debouncer de Hardware)
+###  Ejercicio 1: El Cuantizador de Rebotes (Debouncer de Hardware)
 * **Objetivo:** Cuando un botón físico o pedal se presiona, las vibraciones mecánicas de los contactos generan múltiples `bang`s falsos en menos de 10 ms.
 * **Desafío:** Construye un subcircuito con `[delay]` y `[gate]` que deje pasar el primer `bang`, cierre la compuerta inmediatamente durante 50 ms y luego la vuelva a abrir automáticamente.
 
-### ️ Ejercicio 2: El Tap Tempo con Detección de Inactividad
+###  Ejercicio 2: El Tap Tempo con Detección de Inactividad
 * **Objetivo:** Calcula los milisegundos entre dos pulsaciones seguidas de una tecla para sincronizar el tempo musical.
 * **Desafío:** Si el usuario no presiona nada durante más de 2000 ms, el sistema debe resetear el cálculo para no promediar tiempos absurdamente lentos.
 * **Requisito:** Utiliza `[timer]` para medir el delta y `[delay 2000]` para disparar el reset por inactividad.
 
-### ️ Ejercicio 3: Eco MIDI con Desvanecimiento Exponencial de Velocidad
+###  Ejercicio 3: Eco MIDI con Desvanecimiento Exponencial de Velocidad
 * **Objetivo:** Construye una máquina de delay MIDI de 3 repeticiones utilizando `[pipe]`.
 * **Desafío:** Cada repetición debe ocurrir a 250 ms y su velocidad MIDI debe multiplicarse por `0.7` (haciendo que el eco suene cada vez más suave hasta extinguirse de forma natural).
 

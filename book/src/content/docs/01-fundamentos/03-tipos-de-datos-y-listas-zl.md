@@ -8,7 +8,7 @@ description: "Capítulo del curso universitario de Max/MSP"
 
 ---
 
-## ️ 1. Fundamento Teórico: Tipado Dinámico por Etiquetas y Localidad Espacial
+##  1. Fundamento Teórico: Tipado Dinámico por Etiquetas y Localidad Espacial
 
 *(Inspirado en la arquitectura de Miller Puckette y los fundamentos de Todd Winkler, MIT Press)*
 
@@ -91,7 +91,7 @@ Muchos principiantes manipulan listas utilizando cadenas masivas de objetos grá
 
 ---
 
-## ️ 4. La Familia `[zl]`: Operaciones Vectoriales de Alto Rendimiento
+##  4. La Familia `[zl]`: Operaciones Vectoriales de Alto Rendimiento
 
 Para resolver toda la manipulación de datos a nivel de memoria C contigua sin penalización gráfica, Cycling '74 creó el objeto maestro **`[zl]`** (desarrollado originalmente por Norbert Schnell en el IRCAM).
 
@@ -143,15 +143,15 @@ Abre el parche interactivo:
 
 Realiza estos ejercicios en tu copia de Max utilizando el parche [`laboratorio_03_listas_zl.maxpat`](/patches/modulo-01/laboratorio_03_listas_zl.maxpat):
 
-### ️ Ejercicio 1: El Analizador Estadístico de Rango Dinámico
+###  Ejercicio 1: El Analizador Estadístico de Rango Dinámico
 * **Objetivo:** Construye un analizador que reciba una lista de números desordenados (ej. `45 12 89 3 67 99 21`).
 * **Desafío:** Utilizando exclusivamente `[zl.sort]` y `[zl.slice]`, extrae en dos cajas numéricas separadas el valor mínimo y el valor máximo, y calcula el rango dinámico total.
 
-### ️ Ejercicio 2: El Inversor de Acordes Diatónico
+###  Ejercicio 2: El Inversor de Acordes Diatónico
 * **Objetivo:** Recibe una lista de 3 o 4 notas MIDI.
 * **Desafío:** Utilizando `[zl.rot 1]` y el operador de lista `[+ 12]`, toma la nota que rotó a la primera posición y transpónla una octava arriba (+12 semitonos) para generar la primera inversión formal del acorde.
 
-### ️ Ejercicio 3: Deserializador Rítmico con `[zl.iter]` y `[pipe]`
+###  Ejercicio 3: Deserializador Rítmico con `[zl.iter]` y `[pipe]`
 * **Objetivo:** Recibe una lista completa de 8 notas musicales agrupadas.
 * **Desafío:** Transfórmala en una secuencia de notas individuales espaciadas en el tiempo a 125 ms cada una utilizando `[zl.iter 1]` combinado con `[pipe]`.
 

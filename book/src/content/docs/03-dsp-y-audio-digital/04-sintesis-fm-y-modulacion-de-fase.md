@@ -8,7 +8,7 @@ description: "Capítulo del curso universitario de Max/MSP"
 
 ---
 
-## ️ 1. Fundamento Acústico y Matemático: El Descubrimiento de John Chowning (Stanford, 1973)
+##  1. Fundamento Acústico y Matemático: El Descubrimiento de John Chowning (Stanford, 1973)
 
 *(Inspirado en John Chowning, *The Synthesis of Complex Audio Spectra by Means of Frequency Modulation*, y Cipriani & Giri, Vol. 1)*
 
@@ -57,7 +57,7 @@ Amplitud
 
 ---
 
-## ️ 3. La Relación Armónica (Harmonicity Ratio $C:M$)
+##  3. La Relación Armónica (Harmonicity Ratio $C:M$)
 
 La naturaleza tímbrica del sonido final (si suena a un instrumento musical tradicional o a un efecto metálico disonante) está dictada por el cociente entre ambas frecuencias:
 
@@ -112,7 +112,7 @@ x->phase += x->phase_step;                         // El paso fundamental perman
 
 ---
 
-## ️ 5. 4 Escenarios del Mundo Real
+##  5. 4 Escenarios del Mundo Real
 
 Abre el parche interactivo complementario:
 [`book/patches/modulo-03/laboratorio_10_sintesis_fm.maxpat`](/patches/modulo-03/laboratorio_10_sintesis_fm.maxpat)
@@ -139,15 +139,15 @@ Abre el parche interactivo complementario:
 
 Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_10_sintesis_fm.maxpat`](/patches/modulo-03/laboratorio_10_sintesis_fm.maxpat):
 
-### ️ Ejercicio 1: El Calibrador de la Serie Armónica
+###  Ejercicio 1: El Calibrador de la Serie Armónica
 * **Objetivo:** Experimenta con las relaciones enteras de Chowning.
 * **Desafío:** Configura una portadora a $200\text{ Hz}$ y prueba las razones $1:1$, $1:2$, $1:3$ y $1:4$. Comprueba en el osciloscopio y analizador de espectro cómo cada razón genera una familia tímbrica clásica (diente de sierra, clarinete, nasal, hueco).
 
-### ️ Ejercicio 2: El Envolvente Tímbrico Dinámico
+###  Ejercicio 2: El Envolvente Tímbrico Dinámico
 * **Objetivo:** Desacopla la envolvente de amplitud de la envolvente tímbrica.
 * **Desafío:** Usa dos objetos `[line~]`: uno para el volumen final y otro para el índice de modulación $I$. Ajusta los tiempos para que el timbre se vuelva más brillante a mitad de la nota (efecto *brass swell*).
 
-### ️ Ejercicio 3: Diagnóstico de Rebote de Frecuencias Negativas
+###  Ejercicio 3: Diagnóstico de Rebote de Frecuencias Negativas
 * **Objetivo:** Visualiza la cancelación de armónicos por frecuencias negativas.
 * **Desafío:** Con $f_c = 100\text{ Hz}$ y $f_m = 250\text{ Hz}$, sube el índice $I$ por encima de $4.0$. Observa cómo la banda $-150\text{ Hz}$ rebota como $+150\text{ Hz}$ y genera batimientos acústicos audibles con el resto de parciales.
 

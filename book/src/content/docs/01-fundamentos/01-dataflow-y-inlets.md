@@ -8,7 +8,7 @@ description: "Capítulo del curso universitario de Max/MSP"
 
 ---
 
-## ️ 1. Fundamento Epistemológico: Ruptura con el Modelo Von Neumann
+##  1. Fundamento Epistemológico: Ruptura con el Modelo Von Neumann
 
 Para entender Max en profundidad, primero debemos desaprender cómo programan los lenguajes tradicionales.
 
@@ -221,17 +221,17 @@ Abre el parche interactivo:
 
 Realiza estos ejercicios en tu copia de Max utilizando el parche [`laboratorio_01.maxpat`](/patches/modulo-01/laboratorio_01.maxpat):
 
-### ️ Ejercicio 1: El Divisor Protegido contra División por Cero
+###  Ejercicio 1: El Divisor Protegido contra División por Cero
 * **Objetivo:** Construir una calculadora de división (`/`) que reciba Numerador y Denominador.
 * **Desafío:** Si el usuario ingresa un `0` en el denominador, el divisor debe advertir con un mensaje de error en consola y NO ejecutar la división.
 * **Requisito:** Utiliza `[trigger]` para evaluar el denominador antes de permitir que el numerador golpee el inlet caliente de `/`.
 
-### ️ Ejercicio 2: El Acumulador Rítmico con Límite (Step Sequencer Core)
+###  Ejercicio 2: El Acumulador Rítmico con Límite (Step Sequencer Core)
 * **Objetivo:** Cada vez que pulses una tecla espaciadora (`[key]`), un contador debe sumar `1`.
 * **Desafío:** Cuando llegue a `16`, debe resetearse automáticamente a `1`.
 * **Requisito:** Orquesta la retroalimentación de la suma con un `[i 0]` y `[t b i]` para evitar el error de recursión infinita (stack overflow en $t=0$) en el scheduler de Max.
 
-### ️ Ejercicio 3: Enrutador A/B con Preservación de Estado
+###  Ejercicio 3: Enrutador A/B con Preservación de Estado
 * **Objetivo:** Construir un sistema con 2 potenciómetros y un selector (A o B).
 * **Desafío:** Al conmutar entre A y B, la salida debe actualizarse inmediatamente con el último valor conocido del canal seleccionado, sin requerir que muevas de nuevo el potenciómetro.
 * **Requisito:** Utiliza dos objetos `[i]` (como memoria de estado para A y B) y conéctalos a un `[gate 2]` o un selector orquestado por `[trigger]`.

@@ -8,7 +8,7 @@ description: "Capítulo del curso universitario de Max/MSP"
 
 ---
 
-## ️ 1. Fundamento Teórico: El Espacio de Estados y la Interpolación N-Dimensional
+##  1. Fundamento Teórico: El Espacio de Estados y la Interpolación N-Dimensional
 
 *(Inspirado en Todd Winkler, *Composing Interactive Music*, MIT Press, y Cipriani & Giri, *Electronic Music and Sound Design*, Vol. 2)*
 
@@ -113,7 +113,7 @@ La experiencia de años en los foros de Cycling '74 destaca tres problemas recur
 
 ---
 
-## ️ 3. Under the Hood (Max C SDK): Obex, Notificaciones y Attributes
+##  3. Under the Hood (Max C SDK): Obex, Notificaciones y Attributes
 
 *(Basado en el análisis de `ext_obex.h` y `shepherd.c` en `Cycling74/max-sdk`)*
 
@@ -156,7 +156,7 @@ Durante el **morphing**, `[pattrstorage]` calcula los valores intermedios en mem
 
 ---
 
-## ️ 4. 4 Escenarios del Mundo Real
+##  4. 4 Escenarios del Mundo Real
 
 Abre el parche interactivo complementario:
 [`book/patches/modulo-02/laboratorio_05_pattr.maxpat`](/patches/modulo-02/laboratorio_05_pattr.maxpat)
@@ -183,15 +183,15 @@ Abre el parche interactivo complementario:
 
 Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_05_pattr.maxpat`](/patches/modulo-02/laboratorio_05_pattr.maxpat):
 
-### ️ Ejercicio 1: El Conmutador Inmune al Morphing (`@interp 0`)
+###  Ejercicio 1: El Conmutador Inmune al Morphing (`@interp 0`)
 * **Objetivo:** Configura un sintetizador donde los filtros y frecuencias se interpolen continuamente durante un morphing de 3 segundos, pero el selector de forma de onda (que conmuta entre Sine = 0, Saw = 1, Square = 2) cambie de forma discreta sin pasar por valores fraccionarios intermedios (como 0.45 o 1.7).
 * **Pista:** Investiga el atributo `@interp` dentro del inspector de `[pattr]` o a través de la ventana `clientwindow` de `[pattrstorage]`.
 
-### ️ Ejercicio 2: Automatización LFO de Morphing
+###  Ejercicio 2: Automatización LFO de Morphing
 * **Objetivo:** Conecta un oscilador de baja frecuencia (`[phasor~]` o un `[metro]` con `[line]`) a la entrada de interpolación continua de `[pattrstorage]` para crear un timbre que respire cíclicamente entre el Preset 1 y el Preset 2 cada 8 segundos.
 * **Pista:** Escala una señal normalizada de 0.0 a 1.0 al mensaje `recall 1 2 $1`.
 
-### ️ Ejercicio 3: Serializador y Restaurador Automático de Sesión
+###  Ejercicio 3: Serializador y Restaurador Automático de Sesión
 * **Objetivo:** Configura `[pattrstorage]` con los atributos `@savemode 2` y `@autorestore 1`.
 * **Desafío:** Comprueba que al modificar sliders en el parche y guardar el archivo `.maxpat`, al cerrarlo y volverlo a abrir, Max reconstruye con precisión quirúrgica el último preset activo sin necesidad de presionar ningún botón manual.
 

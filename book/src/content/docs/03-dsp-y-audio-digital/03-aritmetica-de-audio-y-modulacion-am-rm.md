@@ -8,7 +8,7 @@ description: "Capítulo del curso universitario de Max/MSP"
 
 ---
 
-## ️ 1. Fundamento Matemático: Trigonometría de la Multiplicación de Señales
+##  1. Fundamento Matemático: Trigonometría de la Multiplicación de Señales
 
 *(Inspirado en Miller Puckette, *Theory and Technique of Electronic Music*, y Cipriani & Giri, *Electronic Music and Sound Design*, Vol. 1)*
 
@@ -108,7 +108,7 @@ Max implementa optimizaciones **SIMD (Single Instruction, Multiple Data)** a niv
 
 ---
 
-## ️ 4. 4 Escenarios del Mundo Real
+##  4. 4 Escenarios del Mundo Real
 
 Abre el parche interactivo complementario:
 [`book/patches/modulo-03/laboratorio_09_modulacion_am_rm.maxpat`](/patches/modulo-03/laboratorio_09_modulacion_am_rm.maxpat)
@@ -137,15 +137,15 @@ Abre el parche interactivo complementario:
 
 Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_09_modulacion_am_rm.maxpat`](/patches/modulo-03/laboratorio_09_modulacion_am_rm.maxpat):
 
-### ️ Ejercicio 1: El Conmutador Morfológico RM / AM
+###  Ejercicio 1: El Conmutador Morfológico RM / AM
 * **Objetivo:** Diseña un control continuo que permita pasar de Ring Modulation puro (bipolar) a Amplitude Modulation (unipolar) mediante un solo slider.
 * **Pista:** Usa un multiplicador para atenuar o inyectar el offset de corriente continua con `[+~]`.
 
-### ️ Ejercicio 2: El Generador de Campana con Decaimiento Tímbrico
+###  Ejercicio 2: El Generador de Campana con Decaimiento Tímbrico
 * **Objetivo:** Modula la profundidad de las bandas laterales en el tiempo.
 * **Desafío:** Haz que el índice de modulación comience muy alto al presionar una tecla (produciendo un impacto metálico muy brillante) y decaiga rápidamente a cero con una envolvente `[line~]`, dejando únicamente la frecuencia portadora pura en el sustain.
 
-### ️ Ejercicio 3: Detección y Escucha de Frecuencias Negativas (Foldover)
+###  Ejercicio 3: Detección y Escucha de Frecuencias Negativas (Foldover)
 * **Objetivo:** Comprueba auditivamente el rebote de frecuencias negativas.
 * **Desafío:** Fija la portadora en $300\text{ Hz}$ y sube la moduladora lentamente de $200\text{ Hz}$ a $500\text{ Hz}$. Escucha con atención cómo la banda inferior desciende hasta $0\text{ Hz}$ y luego, al pasar los $300\text{ Hz}$, vuelve a subir como frecuencia positiva rebotada.
 
