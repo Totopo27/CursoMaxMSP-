@@ -19,27 +19,38 @@
 
 /* Distribuir las columnas de manera continua sin huecos artificiales */
 @media (min-width: 72rem) {
-  /* La barra derecha (TOC) se ancla al borde derecho con ancho definido */
+  /* La barra derecha (TOC) se ancla al borde derecho absoluto */
   .right-sidebar-container {
-    width: 18rem !important;
+    width: 19rem !important;
+    flex-shrink: 0 !important;
   }
+
   .right-sidebar {
-    width: 18rem !important;
+    right: 0 !important;
+    left: auto !important;
+    width: 19rem !important;
+    border-inline-start: 1px solid var(--sl-color-hairline) !important;
   }
+
+  .right-sidebar-panel {
+    padding: 1.5rem 1.25rem !important;
+  }
+
   .right-sidebar-panel .sl-container {
-    max-width: 18rem !important;
+    max-width: 100% !important;
     width: 100% !important;
   }
 
-  /* El panel principal ocupa todo el espacio central disponible entre ambas barras */
+  /* El panel central ocupa el resto del ancho entre el menú izquierdo y el TOC derecho */
   :global([data-has-sidebar][data-has-toc]) .main-pane {
-    width: calc(100% - 18rem) !important;
-    --sl-content-margin-inline: 0 auto;
+    width: calc(100% - 19rem) !important;
+    --sl-content-margin-inline: 0 !important;
   }
 
-  /* El contenedor interior se expande libremente hasta el máximo de lectura */
+  /* El contenido se expande cómodamente aprovechando todo el ancho */
   .content-panel .sl-container {
     max-width: 100% !important;
+    margin-inline: 0 !important;
     padding-inline: 2rem 3rem !important;
   }
 }
