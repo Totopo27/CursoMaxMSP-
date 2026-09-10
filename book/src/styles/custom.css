@@ -41,17 +41,28 @@
     width: 100% !important;
   }
 
-  /* El panel central ocupa el resto del ancho entre el menú izquierdo y el TOC derecho */
-  :global([data-has-sidebar][data-has-toc]) .main-pane {
+  /* El panel central ocupa el 100% restante entre la barra izquierda y la barra derecha */
+  [data-has-sidebar][data-has-toc] .main-pane,
+  .main-pane {
     width: calc(100% - 19rem) !important;
+    max-width: calc(100% - 19rem) !important;
     --sl-content-margin-inline: 0 !important;
   }
 
-  /* El contenido se expande cómodamente aprovechando todo el ancho */
-  .content-panel .sl-container {
+  /* El contenedor interior se expande libremente ocupando el espacio disponible */
+  .content-panel {
+    padding: 1.5rem 2.5rem !important;
+  }
+
+  .content-panel .sl-container,
+  .sl-container {
     max-width: 100% !important;
+    width: 100% !important;
     margin-inline: 0 !important;
-    padding-inline: 2rem 3rem !important;
+  }
+
+  .sl-markdown-content {
+    max-width: 100% !important;
   }
 }
 
