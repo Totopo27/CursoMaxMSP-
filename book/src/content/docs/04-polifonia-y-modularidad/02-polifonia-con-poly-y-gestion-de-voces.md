@@ -54,9 +54,9 @@ Dentro del subparche de voz instanciado por `poly~`, los inlets y outlets están
 
 ## 2. El Ciclo de Vida de una Voz: `thispoly~` y el Protocolo `mute`
 
-El error más común en principiantes es dejar que las 16 o 32 voces de un sintetizador corran constantemente en segundo plano. Aunque no suenen, multiplicar ceros en filtros y osciladores consume la misma cantidad de ciclos de instrucción por muestra que tocar un acorde masivo.
+Un error recurrente en el diseño de sintetizadores es permitir que la totalidad de las voces (ej. 16 o 32) permanezca activa de forma continua en segundo plano. Aun en ausencia de señal audible, evaluar ecuaciones de diferencias y multiplicar ceros en filtros y osciladores consume la misma cantidad de ciclos de instrucción por muestra que computar un pasaje polifónico completo.
 
-Para solucionar esto, cada voz incluye un objeto `[thispoly~]`:
+Para mitigar este costo computacional, cada instancia de voz incorpora un objeto `[thispoly~]`:
 
 ```
           [adsr~ 10. 150. 0.5 300.]

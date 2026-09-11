@@ -86,22 +86,22 @@ struct symbol {
 
 ---
 
-### Trampas Críticas de la Comunidad y Foros Oficiales (Remote Gotchas)
+### Consideraciones Críticas en Sistemas Distribuidos (Enrutamiento Remoto)
 
-La experiencia colectiva de décadas en los foros de Cycling '74 resalta cuatro problemas vitales:
+Cuatro factores técnicos indispensables para preservar la predictibilidad y el determinismo en la comunicación remota:
 
-1. **No-Determinismo de Múltiples `[receive]`:**
-   - Si tienes un `[send nota]` y tres objetos `[receive nota]`, **el orden en que los tres reciben el mensaje NO es determinista**.
-   - No sigue la regla visual Right-to-Left ni Bottom-to-Top porque no hay cables. Depende del orden en que los objetos fueron creados en el archivo JSON del parche.
-   - **Regla de oro:** Si el orden de ejecución importa (ej. fijar valor y luego disparar cálculo), **NUNCA uses múltiples `[receive]`**; usa un solo `[receive]` conectado a un `[trigger]`.
+1. **No-Determinismo en Múltiples Receptores (`[receive]`):**
+   - Cuando un emisor `[send nota]` despacha datos hacia múltiples receptores `[receive nota]`, **el orden secuencial de recepción no es determinista**.
+   - Al no existir cables, no aplica la convención visual Right-to-Left ni Bottom-to-Top. El orden de despacho queda subordinado al orden interno de instanciación en el archivo serializado del parche.
+   - **Criterio de diseño:** Cuando el orden de procesamiento sea crítico (por ejemplo, definir un valor de estado antes de excitar una operación), debe emplearse un único nodo `[receive]` vinculado inmediatamente a un objeto `[trigger]`.
 
-2. **El Argumento Salvador `#0` (Local Namespace):**
-   - En abstracciones reutilizables (ej: `mi_filtro.maxpat`), nunca nombres un canal `[send volumen]`.
-   - Debes nombrarlo **`[send #0_volumen]`** y **`[receive #0_volumen]`**.
-   - En tiempo de instanciación, Max sustituye `#0` por un número entero único de 4 dígitos generado aleatoriamente (ej: `1042_volumen`). Esto aísla las variables dentro de esa instancia, evitando que una copia interfiera con otra.
+2. **Aislamiento de Ámbito Local Mediante el Prefijo `#0`:**
+   - En abstracciones modulares reutilizables, los canales de comunicación global nunca deben utilizar identificadores genéricos (`[send volumen]`).
+   - Se debe anteponer el comodín local: **`[send #0_volumen]`** y **`[receive #0_volumen]`**.
+   - Durante la instanciación, Max sustituye de manera determinista `#0` por un identificador numérico único de la instancia. Esto previene la colisión de espacios de nombres (*namespace collisions*) entre múltiples clones de un mismo módulo.
 
-3. **Latencia Vectorial en `[send~]` / `[receive~]` (Audio Thread):**
-   - En señales de audio (`MSP`), un par `[send~]` / `[receive~]` no procesa muestras instantáneamente: introduce un retraso de **1 Signal Vector Size (ej. 64 muestras)** cuando se usa para cerrar bucles de retroalimentación (feedback).
+3. **Retardo Vectorial en Conexiones Remotas de Señal (`[send~]` / `[receive~]`):**
+   - En el procesamiento de audio (`MSP`), un par de comunicación remota introduce un retardo inherente equivalente exactamente a **un Signal Vector Size (típicamente 64 muestras)** cuando conforma un ciclo cerrado de retroalimentación (*feedback loop*).
 
 ---
 

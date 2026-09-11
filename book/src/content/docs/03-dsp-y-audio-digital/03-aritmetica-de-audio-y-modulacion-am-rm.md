@@ -98,13 +98,13 @@ Max implementa optimizaciones **SIMD (Single Instruction, Multiple Data)** a niv
 
 ---
 
-### Gotchas Críticos de los Foros Oficiales de Cycling '74
+### Comportamientos Críticos en Modulación y Aritmética de Audio
 
-1. **Bandas Laterales Negativas y Aliasing (Foldover):**
-   - Si $f_m > f_c$, la banda inferior resulta negativa: $440\text{ Hz} - 600\text{ Hz} = -160\text{ Hz}$.
-   - En audio analógico y digital, una frecuencia negativa no se cancela: **se refleja con fase invertida como $+160\text{ Hz}$**. Si no vigilas las frecuencias, crearás armónicos impredecibles en el registro grave.
-2. **Multiplicación Control vs Multiplicación Señal:**
-   - Si multiplicas una señal `cycle~` por un número de control usando el inlet derecho de `[*~ 0.]`, Max conmuta internamente a la rutina `scale_perform64_method` (un solo escalar para todo el vector). Pero si cambias ese número bruscamente desde un slider, cada bloque de 64 muestras tendrá un salto escalonado que producirá **ruido de cremallera (zipper clicks)**. Para automatización limpia, conecta siempre una señal generada con `[line~]`.
+1. **Bandas Laterales Negativas y Aliasing Espectral (Foldover):**
+   - Cuando $f_m > f_c$, la banda lateral inferior arroja un valor algebraico negativo: por ejemplo, $440\text{ Hz} - 600\text{ Hz} = -160\text{ Hz}$.
+   - En el dominio de señales reales, una componente de frecuencia negativa no desaparece: **se refleja en el espectro positivo con inversión de fase de $180^\circ$ como $+160\text{ Hz}$**. Si no se calculan analíticamente las relaciones armónicas, estos componentes reflejados introducen frecuencias espurias en el registro grave.
+2. **Multiplicación Escalar vs. Multiplicación Señal a Señal:**
+   - Al multiplicar una señal de audio por un valor de control en el inlet derecho de `[*~ 0.]`, Max conmuta internamente a la rutina `scale_perform64_method` (aplicando un único escalar invariable a todo el vector). No obstante, si dicho valor cambia abruptamente desde la interfaz gráfica, cada bloque de 64 muestras sufrirá una discontinuidad escalonada que introduce **ruido de cremallera (*zipper noise*)**. Para transiciones continuas sin artefactos audibles, la modulación debe modularse siempre a tasa de audio mediante rampas suavizadas con `[line~]`.
 
 ---
 

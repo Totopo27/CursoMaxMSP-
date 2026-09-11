@@ -138,14 +138,14 @@ Para leer una posición fraccionaria $i + \alpha$ (donde $i$ es la parte entera 
 
 ---
 
-### Gotchas Críticos de los Foros Oficiales de Cycling '74
+### Consideraciones Técnicas en la Generación de Señales
 
-1. **`[cycle~]` arranca en Fase de Coseno (1.0, no 0.0):**
-   - Históricamente en Max, `[cycle~]` es un **coseno**: su fase $0.0$ equivale a amplitud $+1.0$. Si disparas audio desde silencio absoluto reseteando la fase a 0, producirás un **click instantáneo**. Para arrancarlo en cero de fase seno, debes desfasarlo un cuarto de ciclo ($0.75$).
-2. **Uso Erróneo de `[phasor~]` como Audio Audible:**
-   - La comunidad insiste: `[phasor~]` es un **generador de tiempo/fase**, no un oscilador para los parlantes. Úsalo para indexar tablas (`[2d.wave~]`, `[wave~]`), disparar ventanas granulares o modular filtros, pero usa `[saw~]` para escuchar timbres de sierra limpios.
-3. **Hard-Sync y Clicks en Cosenos:**
-   - Reiniciar la fase de `[cycle~]` abruptamente con un pulso de sincronía provoca una discontinuidad vertical que genera ruido armónico. Para hard-sync limpio se requieren ventanas de suavizado o técnicas PolyBLEP en `[gen~]`.
+1. **Fase Inicial Cosenoidal en `[cycle~]` (Amplitud +1.0):**
+   - Por definición matemática en la arquitectura de Max, `[cycle~]` evalúa una función **coseno**: una fase de $0.0$ corresponde a una amplitud instantánea de $+1.0$. Si se inicializa la señal desde silencio absoluto reseteando la fase a cero sin rampa, se generará una discontinuidad brusca (*click* transitorio). Para iniciar la oscilación en cruce por cero equivalente a una función seno, debe aplicarse un desfase de tres cuartos de ciclo ($0.75$).
+2. **Distinción entre Generadores de Fase y Osciladores de Audio:**
+   - Por definición arquitectónica, `[phasor~]` es una señal rampa de control temporal o índice de fase, no un oscilador de audio de banda limitada. Debe emplearse para indexar tablas de ondas (`[2d.wave~]`, `[wave~]`), temporizar ventanas granulares o modular filtros; para reproducción audible de ondas sierra con supresión de aliasing debe utilizarse `[saw~]`.
+3. **Discontinuidad por Sincronización Dura (Hard-Sync):**
+   - Reiniciar la fase de un oscilador sinusoidal de manera instantánea mediante un pulso de sincronía genera una discontinuidad en la derivada que introduce componentes inarmónicos espurios. La implementación de sincronización dura de alta fidelidad exige el empleo de técnicas de suavizado de bordes o formulaciones PolyBLEP en `[gen~]`.
 
 ---
 

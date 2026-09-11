@@ -91,7 +91,7 @@ Por ello, MSP procesa el audio en **bloques o vectores de muestras** (*Sample Fr
 
 *(Basado en el análisis de `simplemsp~.c` en `Cycling74/max-sdk`)*
 
-¿Cómo se ejecuta físicamente un objeto de audio en el kernel de Max? Mirá el código fuente real del SDK:
+La ejecución física de un objeto de audio en el núcleo de Max queda determinada por su función de procesamiento vectorial en el SDK:
 
 ```c
 // simplemsp~.c del Cycling '74 Max SDK
@@ -118,18 +118,18 @@ void simplemsp_perform64(t_simplemsp *x, t_object *dsp64,
 
 ---
 
-### Gotchas Críticos de los Foros Oficiales de Cycling '74
+### Consideraciones Críticas de Rendimiento y Sincronización en MSP
 
-1. **Jitter en Disparos de Audio desde el Macro-tiempo:**
-   - Si disparas un grano o envolvente con un botón de control o un `[metro]` normal, el instante exacto en que comienza el sonido se alinea con el inicio del próximo bloque I/O. 
-   - Con un I/O Vector de 512 muestras, hay una incertidumbre temporal (jitter) de hasta $10.6\text{ ms}$.
-   - **Solución:** Si requieres precisión de muestra (*sample-accurate*), la rampa o disparo debe generarse con señales continuas (`[phasor~]`, `[click~]`, `[line~]`).
+1. **Incertidumbre Temporal (Jitter) en Disparos de Audio desde el Dominio de Control:**
+   - Si se dispara un grano o envolvente mediante un mensaje de control o un objeto `[metro]`, el instante temporal exacto de inicio se alinea necesariamente con el límite del próximo bloque I/O.
+   - Con un I/O Vector de 512 muestras a 48 kHz, existe una ventana de incertidumbre de hasta $10.6\text{ ms}$.
+   - **Solución técnica:** Para garantizar sincronía a nivel de muestra individual (*sample-accurate*), la activación y las curvas temporales deben modularse exclusivamente mediante señales de audio continuas (`[phasor~]`, `[click~]`, `[line~]`).
 
-2. **La Regla de las Potencias de 2:**
-   - Configurar buffers que no sean potencias de 2 (como 300 o 500 muestras) desestabiliza los drivers ASIO y provoca caídas de sincronización. Usa siempre $64, 128, 256, 512, 1024$.
+2. **Alineamiento en Potencias de 2:**
+   - La asignación de tamaños de búfer que no sigan potencias exactas de base 2 (como 300 o 500 muestras) introduce inestabilidad en las capas de controladores ASIO/CoreAudio y provoca desincronización en las rutinas SIMD. Deben emplearse siempre valores de la serie $64, 128, 256, 512, 1024$.
 
-3. **Demora de Feedback en `send~` / `receive~`:**
-   - Todo bucle de retroalimentación cerrado sin cables directos añade exactamente **1 Signal Vector Size de retraso** (a 64 muestras, $1.33\text{ ms}$ de desfase).
+3. **Latencia de Retroalimentación en Enlaces Remotos (`send~` / `receive~`):**
+   - Cualquier topología de bucle cerrado de retroalimentación resuelta sin conexiones explícitas directas incorpora un retardo fijo inherente de **un Signal Vector Size** ($1.33\text{ ms}$ a 64 muestras y 48 kHz).
 
 ---
 

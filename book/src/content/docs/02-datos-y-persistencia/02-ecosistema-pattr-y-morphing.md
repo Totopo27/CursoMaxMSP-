@@ -95,21 +95,21 @@ El sistema `pattr` no es un único objeto; es un protocolo distribuido compuesto
 
 ---
 
-### Trampas Críticas de la Comunidad y Foros Oficiales (Pattr Gotchas)
+### Consideraciones Críticas en la Gestión de Estados (Arquitectura de Pattr)
 
-La experiencia de años en los foros de Cycling '74 destaca tres problemas recurrentes que paralizan proyectos reales si no se conocen:
+Tres factores determinantes en el diseño de arquitecturas con `pattr` que condicionan la estabilidad del sistema:
 
-1. **El Bucle Recursivo Infinito de `autopattr` (Stack Overflow):**
-   - Si creas un número o slider para enviar el comando `recall $1` a `[pattrstorage]` y ese slider tiene un scripting name o es absorbido por `[autopattr]`, **crearás un bucle mortal**: al restaurar el preset, `pattrstorage` actualiza el slider, el slider envía un nuevo `recall`, y Max se congela por stack overflow en $t=0$.
-   - **Regla de oro:** El control de disparo/recall **NUNCA** debe ser cliente de su propio `[pattrstorage]`.
+1. **Recursión Infinita por Auto-vinculación (Stack Overflow):**
+   - Si un elemento de interfaz (como un dial o caja numérica) que despacha comandos `recall $1` hacia `[pattrstorage]` posee un `varname` y es registrado como cliente por `[autopattr]`, se genera un ciclo de retroalimentación inmediata: al restaurar el preset, `pattrstorage` actualiza el elemento, este reenvía un nuevo `recall`, y el hilo de ejecución colapsa por desbordamiento de pila en $t=0$.
+   - **Criterio de diseño:** El objeto emisor del comando de restauración (`recall`) debe excluirse rigurosamente de la lista de clientes del almacén de estados.
 
-2. **Orden de Restauración y la Columna `Priority`:**
-   - Si un objeto depende de otro (por ejemplo, la cantidad de columnas de una matriz debe crearse antes de cargar los datos de cada celda), no puedes confiar en el orden alfabético de los nombres.
-   - En la ventana `clientwindow` de `[pattrstorage]`, debes asignar valores a la columna **Priority** (números más bajos se restauran primero, ej: `0` para dimensiones, `1` para parámetros hijos).
+2. **Secuencia Determinista de Carga y Atributo `priority`:**
+   - En estructuras donde existen dependencias de inicialización (por ejemplo, definir la dimensión de una matriz antes de inyectar los coeficientes en sus celdas), no es viable asumir un orden arbitrario o alfabético.
+   - En la interfaz de gestión (`clientwindow`) de `[pattrstorage]`, debe configurarse explícitamente el atributo **Priority** (los valores numéricos menores se restauran de manera prioritaria; por ejemplo, prioridad `0` para dimensiones y `1` para parámetros dependientes).
 
-3. **Sobrecarga de CPU en Morphing Masivo y Max for Live (M4L):**
-   - Si interpolas 300 parámetros usando un objeto `[line]` a 10 ms, saturas la cola del Main Thread provocando tartamudeos visuales.
-   - En **Max for Live**, si los parámetros tienen activado *Parameter Mode Enabled* en el Inspector, el morphing rápido colisiona con el historial de Undo/Redo de Ableton Live. En M4L se recomienda desacoplar la interpolación continua de los controles directamente expuestos al DAW.
+3. **Sobrecarga de Despacho en Morphing Multivariable y Max for Live (M4L):**
+   - La interpolación simultánea de cientos de parámetros con generadores de rampa de alta frecuencia (`[line]`) puede saturar la cola de eventos del hilo principal (*Main Thread*).
+   - En entornos como **Max for Live**, cuando los objetos tienen habilitado *Parameter Mode Enabled*, las variaciones continuas de alta tasa interfieren con el motor de automatización y el búfer de deshacer/rehacer del DAW anfitrión. En estos contextos se recomienda desacoplar la interpolación continua interna respecto a los controles directamente expuestos al host.
 
 ---
 

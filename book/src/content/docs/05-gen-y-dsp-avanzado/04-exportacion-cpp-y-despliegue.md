@@ -141,15 +141,15 @@ int main(void) {
 
 ---
 
-## 4. Prácticas Profesionales y Trampas Frecuentes
+## 4. Consideraciones de Implementación y Rendimiento en C++ Embebido
 
-1. **Memoria y Buffers Externos en Embebido**:
-   - Si tu `gen~` utiliza un operador `data` o referencia un `buffer~` gigante (por ejemplo, 10 minutos de audio), ese buffer en C++ requerirá RAM estática. La Daisy Seed tiene 64 MB de SDRAM externa y 512 KB de SRAM interna rápida. Si definís buffers enormes en memoria interna, el microcontrolador sufrirá un *HardFault* o desbordamiento de pila (*Stack Overflow*). Configurá `data` con el tamaño exacto indispensable.
-2. **Denormales en ARM**:
-   - En procesadores embebidos sin hardware especializado para manejo de números denormales (valores en punto flotante extremadamente cercanos a cero como $10^{-38}$ generados por colas de reverb), el CPU puede ralentizarse por órdenes de magnitud calculando subnormales en software.
-   - **Solución en gen~**: Utilizá el operador `dcblock` o sumá una micro-corriente de ruido inaudible (`noise * 1e-18`) antes de bucles de retroalimentación infinita.
-3. **Determinismo y Memory Allocations**:
-   - Nunca intentes invocar llamadas al sistema operativo (`printf`, `std::cout`, `malloc`, `free`) dentro del código embebido en el audio callback. El código generado por `gen~` es puramente determinista y *allocation-free*, garantizando cero jitter temporal.
+1. **Gestión de Memoria Estática y Buffers en Sistemas Embebidos**:
+   - Cuando un algoritmo en `gen~` utiliza operadores `data` o referencia un `buffer~` de gran extensión temporal, dicha estructura requerirá asignación estática de memoria RAM en el código C++ resultante. Microcontroladores como Daisy Seed disponen de 64 MB de SDRAM externa y 512 KB de SRAM interna de acceso ultrarrápido. La asignación de búferes voluminosos en memoria interna no mapeada puede desencadenar una excepción de fallo de hardware (*HardFault*) o desbordamiento de pila (*Stack Overflow*). Es imperativo dimensionar los objetos `data` con la capacidad estrictamente indispensable.
+2. **Tratamiento de Números Subnormales (Denormales) en Arquitecturas ARM**:
+   - En microprocesadores embebidos carentes de unidades especializadas para punto flotante subnormal (valores infinitesimales como $10^{-38}$ recurrentes en las colas asintóticas de filtros IIR y reverberaciones), la CPU puede sufrir caídas drásticas de rendimiento al emular dichos cálculos por software.
+   - **Mitigación en gen~**: Conviene incorporar un filtro bloqueador de continua (`dcblock`) o inyectar una señal residual inaudible de ruido blanco (`noise * 1e-18`) previo a la retroalimentación en bucles recursivos.
+3. **Determinismo Temporal y Supresión de Alojamientos Dinámicos**:
+   - En el *callback* de audio de un firmware embebido está rigurosamente desaconsejada la invocación de llamadas al sistema operativo (`printf`, `std::cout`, `malloc`, `free`). El código C++ generado por el compilador de `gen~` es puramente determinista y exento de alojamientos dinámicos (*allocation-free*), lo que asegura una ejecución con fluctuación temporal nula (*zero jitter*).
 
 ---
 

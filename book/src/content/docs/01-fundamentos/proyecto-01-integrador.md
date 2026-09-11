@@ -4,7 +4,7 @@ description: "Capítulo del curso universitario de Max/MSP"
 ---
 
 
-> *"La madurez de un ingeniero de software y sonido en Max se demuestra cuando el sistema puede generar música compleja y viva a partir de reglas arquitectónicas mínimas, elegantes y matemáticamente estables."*
+> *"La robustez de un sistema en Max se demuestra cuando el parche es capaz de generar procesos musicales complejos a partir de reglas arquitectónicas mínimas, deterministas y matemáticamente estables."*
 
 ---
 

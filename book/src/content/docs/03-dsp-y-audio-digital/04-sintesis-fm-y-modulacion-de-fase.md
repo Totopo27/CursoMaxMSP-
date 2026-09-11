@@ -103,12 +103,12 @@ x->phase += x->phase_step;                         // El paso fundamental perman
 
 ---
 
-### Gotchas Críticos de los Foros Oficiales de Cycling '74
+### Comportamientos Espectrales Críticos en Síntesis FM y PM
 
-1. **El Desvío hacia Frecuencias Negativas:**
-   - Si el índice $I$ es alto o la portadora es grave ($f_c < f_m$), parciales inferiores ($f_c - k \cdot f_m$) caen en números negativos. En el plano complejo, una frecuencia negativa es una rotación en sentido horario: **rebota en $0\text{ Hz}$ como positiva con inversión de fase de $180^\circ$**. Si no controlas el índice, estos parciales rebotados cancelan destructivamente armónicos existentes creando huecos tímbricos misteriosos.
-2. **Explosión por Feedback Infinito:**
-   - La retroalimentación de un oscilador hacia sí mismo en Max (`cycle~` a través de un cable a su inlet derecho de fase) requiere un escalado cuidadoso ($\le 0.2$). Superar ese umbral convierte inmediatamente la sinusoide en ruido blanco áspero con aliasing destructivo.
+1. **Reflexión de Frecuencias Negativas y Cancelación de Fase:**
+   - Cuando el índice de modulación $I$ es elevado o la frecuencia portadora es inferior a la moduladora ($f_c < f_m$), los componentes de las bandas laterales inferiores ($f_c - k \cdot f_m$) adoptan valores algebraicamente negativos. En el plano complejo, una frecuencia negativa describe una rotación de fase horaria: **se refleja en el eje de $0\text{ Hz}$ hacia el dominio positivo con inversión de fase de $180^\circ$**. De no preverse analíticamente, estos parciales reflejados provocan interferencias destructivas con armónicos preexistentes, originando atenuaciones pronunciadas en la respuesta tímbrica.
+2. **Inestabilidad por Retroalimentación de Fase (Feedback PM):**
+   - La retroalimentación directa de un oscilador sobre su propio puerto de modulación de fase (`[cycle~]`) exige una atenuación estricta del factor de ganancia ($\beta \le 0.2$). Exceder dicho margen desestabiliza la función de transferencia y precipita la señal a un régimen de ruido caótico con aliasing destructivo no lineal.
 
 ---
 

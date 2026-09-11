@@ -107,21 +107,21 @@ void dict_route_dictionary(t_dict_route* x, t_symbol* s) {
 
 ---
 
-### Gotchas de la Comunidad Oficial: Nombres Efímeros y Diccionarios Anónimos
+### Comportamientos Clave en la Gestión de Instancias: Nombres Efímeros y Diccionarios Anónimos
 
-En los foros de Cycling '74, el error más desconcertante con el que tropiezan los desarrolladores es precisamente ese:
+Un factor crítico en el ciclo de vida de los datos estructurados en Max se manifiesta en el mensaje de error:
 `"unable to reference dictionary named u123456789"`.
 
-¿Por qué ocurre y cómo evitarlo?
+Mecanismos subyacentes y pautas de diseño:
 1. **Diccionarios Anónimos vs. Nombrados:**
-   - Si creas un `[dict]` sin argumentos, Max le asigna un nombre efímero generado (`u` seguido de un número hash único).
-   - Si ese sub-árbol se crea dinámicamente o se desconecta el cable, el recolector de basura lo destruye y cualquier `[dict.unpack]` o `[dict.view]` aguas abajo arroja el error fatal.
-   - **Regla de oro:** En arquitectura de producción, asigna siempre un nombre explícito a tus diccionarios maestros (`[dict mi_sintetizador]`).
-2. **Consultas Profundas (`get`) vs. Desempaquetado (`dict.unpack`):**
-   - Para consultar una clave anidada muy profunda (ej. `filter::resonance`), los desarrolladores experimentados recomiendan usar **mensajes `get path::to::key`** directos en vez de encadenar múltiples `[dict.unpack]`. Es más rápido, más limpio y no requiere registrar sub-diccionarios intermedios.
-3. **Arrays de Diccionarios en JSON:**
-   - `[dict.unpack]` no puede extraer directamente una lista de objetos JSON `[ { "id": 1 }, { "id": 2 } ]`.
-   - Debes iterar con `[dict.iter]` o consultar por índice directo: `get features[0]::id`.
+   - Al instanciar un `[dict]` sin argumentos, Max le asigna un identificador efímero generado dinámicamente (`u` seguido de un valor hash único).
+   - Si dicho sub-árbol se crea de forma transitoria o se interrumpe la referencia, el objeto es recolectado por el gestor de memoria interno, provocando que cualquier `[dict.unpack]` o `[dict.view]` aguas abajo falle al intentar acceder a un puntero ya invalidado.
+   - **Criterio de diseño:** En arquitecturas de producción, se debe asignar siempre un identificador explícito a los diccionarios principales (`[dict mi_sintetizador]`).
+2. **Consultas Directas (`get`) vs. Desempaquetado (`dict.unpack`):**
+   - Para consultar claves anidadas en profundidad (por ejemplo, `filter::resonance`), el enfoque óptimo consiste en despachar **mensajes `get path::to::key`** directos en lugar de encadenar múltiples `[dict.unpack]`. Este método reduce la sobrecarga de despacho gráfico y no requiere instanciar receptores intermedios.
+3. **Manejo de Arreglos de Diccionarios:**
+   - `[dict.unpack]` no procesa de forma plana una lista de objetos JSON `[ { "id": 1 }, { "id": 2 } ]`.
+   - Se debe iterar formalmente mediante `[dict.iter]` o direccionar por índice explícito: `get features[0]::id`.
 
 > **Principio Arquitectónico:** *Cuando conectas un cable entre objetos `dict`, viaja un puntero de 8 bytes, no megabytes de datos. La manipulación de árboles gigantes en Max es instantánea y de costo cero.*
 
