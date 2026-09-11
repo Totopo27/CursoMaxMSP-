@@ -15,15 +15,7 @@ Aprender a programar objetos externos (*externals*) en C te da control total sob
 
 Un objeto de Max en C sigue una arquitectura clásica orientada a objetos en C puro mediante structs opacos y tablas de despacho:
 
-```mermaid
-graph TD
-    A["Max inicia / Carga DLL"] --> B["ext_main(void *r)"]
-    B -->|Registra Clase| C["class_new('mi_objeto', ...)"]
-    C -->|Asocia Métodos| D["class_addmethod()"]
-    D -->|Instanciación en Patcher| E["mi_objeto_new()"]
-    E --> F["Ciclo de Vida / Mensajes: bang(), int(), float()"]
-    F -->|Destrucción del objeto| G["mi_objeto_free()"]
-```
+![FIG 6.3 · ext_main, class_new & Tabla de Despacho en Memoria](/assets/diagrams/diagrama_c_sdk_ciclo_vida.svg)
 
 ### 1.1. Los Cuatro Elementos del Código Fuente C
 

@@ -18,26 +18,7 @@ $$\psi(x, t) = \psi^+(t - x/c) + \psi^-(t + x/c)$$
 
 En tiempo discreto, esto se sintetiza mediante dos líneas de retardo acopladas con reflexión en los extremos, filtros de dispersión y pérdidas de energía acústica:
 
-```mermaid
-graph LR
-    subgraph Excitacion
-        Exc["Generador de Impulso / Ruido / Arco"]
-    end
-
-    subgraph GuiaDeOndaGen["Núcleo DSP gen~ (z^-1 exacto)"]
-        DelayRight["Delay Superior: Onda Derecha (+)"]
-        DelayLeft["Delay Inferior: Onda Izquierda (-)"]
-        ReflectL["Reflexión Izquierda: R1"]
-        ReflectR["Reflexión Derecha: R2 + Filtro Lowpass (Pérdidas)"]
-        Dispersion["Allpass de Dispersión (Rigidez)"]
-        NonLinear["Saturación Tanh (Amortiguamiento no lineal)"]
-    end
-
-    Exc -->|Suma en Puente| DelayRight
-    DelayRight --> Dispersion --> ReflectR --> DelayLeft
-    DelayLeft --> NonLinear --> ReflectL --> DelayRight
-    DelayRight -->|Pick-up Posicional| Out["Salida Audio L/R"]
-```
+![FIG 5.2 · Karplus-Strong Extendido & Bucle No Lineal](/assets/diagrams/diagrama_waveguide_gen.svg)
 
 ### 1.1. Los Módulos del Algoritmo en GenExpr
 

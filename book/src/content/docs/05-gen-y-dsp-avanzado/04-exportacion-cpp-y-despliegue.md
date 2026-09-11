@@ -14,16 +14,7 @@ Este paradigma habilita el flujo moderno de ingeniería de audio: **prototipado 
 
 Al enviar el mensaje `exportcode` a un objeto `gen~` (o configurarlo en la ventana de inspector del patcher `gen~`), el compilador interno genera una carpeta con una estructura estandarizada de archivos C++.
 
-```mermaid
-graph TD
-    A["gen~ Patcher / GenExpr"] -->|Mensaje 'exportcode'| B["Gen Code Generator Engine"]
-    B --> C["gen_exported.h / .cpp"]
-    B --> D["genlib.h / genlib.cpp"]
-    B --> E["genlib_ops.h"]
-    C --> F["Host Target: JUCE / C++ SDK"]
-    C --> G["Embedded Target: Electro-Smith Daisy Seed"]
-    C --> H["Web Target: WebAudio C++ to Wasm"]
-```
+![FIG 5.1 · Gen~ Code Generator & Embedded Targets](/assets/diagrams/diagrama_gen_export_pipeline.svg)
 
 ### 1.1. Los Archivos Fundamentales
 

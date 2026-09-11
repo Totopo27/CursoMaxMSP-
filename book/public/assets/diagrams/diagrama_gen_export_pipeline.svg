@@ -1,0 +1,86 @@
+﻿<svg viewBox="0 0 940 310" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">PIPELINE DE META-COMPILACIÓN JIT Y EXPORTACIÓN C++</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 5.1 · GEN~ CODE GENERATOR &amp; EMBEDDED TARGETS</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- ETAPA 1: FUENTE GEN~ -->
+  <g transform="translate(25, 45)">
+    <rect width="200" height="180" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="200" height="22" rx="5" fill="#27272a" />
+    <rect y="17" width="200" height="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">ENTORNO ORIGINAL</text>
+    <text x="10" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11.5" font-weight="600">[gen~] Patcher</text>
+    <text x="10" y="62" fill="#a1a1aa" font-size="8.5">Algoritmo en GenExpr</text>
+    <rect x="10" y="74" width="180" height="42" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+    <text x="16" y="92" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="8">History z1; Out1 = In1 + z1;</text>
+    <text x="16" y="106" fill="#71717a" font-family="ui-monospace, monospace" font-size="7.5">Muestra a muestra (Sample-by-sample)</text>
+    <text x="10" y="136" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5">Mensaje: 'exportcode'</text>
+  </g>
+
+  <!-- FLECHA A MOTOR -->
+  <path d="M 225 135 L 265 135" fill="none" stroke="#eb6c36" stroke-width="1.4" marker-end="url(#arr-accent)" />
+
+  <!-- ETAPA 2: MOTOR DE GENERACIÓN C++ (ACCENT FOCAL) -->
+  <g transform="translate(265, 45)">
+    <rect width="220" height="180" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="220" height="22" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+    <rect y="17" width="220" height="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="10" y="15" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700">MOTOR JIT COMPILER</text>
+    <text x="10" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="700">Gen Code Generator</text>
+    <text x="10" y="62" fill="#fed7aa" font-size="8.5">Traducción a C++ ISO 11 puro</text>
+    
+    <rect x="10" y="74" width="200" height="88" rx="3" fill="#121318" stroke="#eb6c36" stroke-width="0.8" />
+    <text x="16" y="92" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8">gen_exported.cpp / .h</text>
+    <text x="16" y="106" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5">• Clase State (memoria plana)</text>
+    <text x="16" y="120" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5">• perform() desacoplado</text>
+    <text x="16" y="136" fill="#71717a" font-family="ui-monospace, monospace" font-size="7.5">genlib.h / genlib_ops.h</text>
+    <text x="16" y="150" fill="#22c55e" font-family="ui-monospace, monospace" font-size="7.5">0 llamadas al kernel de Max</text>
+  </g>
+
+  <!-- FLECHAS DE DESPLIEGUE -->
+  <path d="M 485 90 L 525 90" fill="none" stroke="#71717a" stroke-width="1.2" marker-end="url(#arr-neutral)" />
+  <path d="M 485 135 L 525 135" fill="none" stroke="#eb6c36" stroke-width="1.2" marker-end="url(#arr-accent)" />
+  <path d="M 485 180 L 525 180" fill="none" stroke="#71717a" stroke-width="1.2" marker-end="url(#arr-neutral)" />
+
+  <!-- ETAPA 3: DESTINOS DE DESPLIEGUE (TARGETS) -->
+  <g transform="translate(525, 45)">
+    <!-- Target 1: JUCE / Audio Plugin -->
+    <rect x="0" y="0" width="390" height="52" rx="4" fill="#18181b" stroke="#3f3f46" stroke-width="1" />
+    <text x="12" y="20" fill="#f4f4f5" font-size="10.5" font-weight="600">Audio Plugin Host · JUCE / VST3 / AU</text>
+    <text x="12" y="36" fill="#a1a1aa" font-size="8.5">Integración directa en processBlock() de plugins de audio comercial para DAWs.</text>
+    <rect x="300" y="10" width="78" height="18" rx="2" fill="#27272a" />
+    <text x="339" y="22" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5" font-weight="600" text-anchor="middle">DAW / Plugin</text>
+
+    <!-- Target 2: Embedded Daisy Seed (ACCENT FOCAL) -->
+    <rect x="0" y="64" width="390" height="52" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.2" />
+    <text x="12" y="84" fill="#f4f4f5" font-size="10.5" font-weight="600">Hardware Embebido · Daisy Seed (ARM Cortex-M7)</text>
+    <text x="12" y="100" fill="#fed7aa" font-size="8.5">Compilación con arm-none-eabi-gcc para pedales de guitarra y módulos Eurorack.</text>
+    <rect x="300" y="74" width="78" height="18" rx="2" fill="rgba(235, 108, 54, 0.25)" />
+    <text x="339" y="86" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700" text-anchor="middle">ARM Cortex</text>
+
+    <!-- Target 3: WebAssembly -->
+    <rect x="0" y="128" width="390" height="52" rx="4" fill="#18181b" stroke="#3f3f46" stroke-width="1" />
+    <text x="12" y="148" fill="#f4f4f5" font-size="10.5" font-weight="600">Web Target · WebAudio AudioWorklet (Wasm)</text>
+    <text x="12" y="164" fill="#a1a1aa" font-size="8.5">Compilado con Emscripten a binario WebAssembly ejecutado en navegadores.</text>
+    <rect x="300" y="138" width="78" height="18" rx="2" fill="#27272a" />
+    <text x="339" y="150" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5" font-weight="600" text-anchor="middle">Web Wasm</text>
+  </g>
+
+  <!-- PANEL INFERIOR -->
+  <g transform="translate(25, 240)">
+    <rect width="890" height="54" rx="4" fill="#151518" stroke="#27272a" stroke-width="1" />
+    <text x="20" y="22" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">VENTAJA ARQUITECTÓNICA DE EXPORTCODE:</text>
+    <text x="265" y="22" fill="#d4d4d8" font-size="8.5">El código C++ resultante es completamente agnóstico a Max. Puede compilarse en cualquier procesador sin licencias runtime.</text>
+    <text x="20" y="40" fill="#71717a" font-family="ui-monospace, monospace" font-size="8">Zero-overhead inlining: El compilador GCC / Clang aplica vectorización automática AVX/NEON sobre el bucle perform().</text>
+  </g>
+</svg>

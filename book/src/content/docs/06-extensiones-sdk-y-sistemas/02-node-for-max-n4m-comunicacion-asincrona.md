@@ -14,29 +14,7 @@ A través del objeto `[node.script]`, Max lanza un proceso independiente de **No
 
 El diseño de N4M resuelve la regla dorada de los sistemas en tiempo real: **el hilo de audio y el planificador temporal jamás deben bloquearse esperando una operación de entrada/salida (I/O) de red o disco**.
 
-```mermaid
-graph LR
-    subgraph MaxProcess["Proceso de Max/MSP (Main & Audio Thread)"]
-        Patcher["Max Patcher Canvas"]
-        NodeObject["[node.script servidor.js]"]
-        Patcher <-->|Mensajes Max| NodeObject
-    end
-
-    subgraph OS_IPC["Tubería IPC / Sockets del SO"]
-        Pipes["Standard I/O Streams / UNIX Domain Sockets"]
-    end
-
-    subgraph NodeProcess["Proceso Externo Node.js"]
-        N4MLib["max-api (SDK)"]
-        EventLoop["Node.js Event Loop"]
-        NPMModules["Paquetes npm (ws, express, axios, tfjs)"]
-        N4MLib <--> EventLoop
-        EventLoop <--> NPMModules
-    end
-
-    NodeObject <-->|JSON / Buffers| Pipes
-    Pipes <-->|JSON / Buffers| N4MLib
-```
+![FIG 6.2 · Zero-Blocking Audio & WebSocket/REST Integration](/assets/diagrams/diagrama_node_max_ipc.svg)
 
 ### 1.1. Las Dos Vías de la API `max-api`
 

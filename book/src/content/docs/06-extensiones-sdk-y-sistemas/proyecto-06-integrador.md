@@ -13,17 +13,7 @@ Bienvenidos al proyecto cumbre del **Módulo 6**. En este proyecto integramos to
 
 ## 1. Arquitectura del Sistema
 
-```mermaid
-graph TD
-    Client["Cliente Web / Sensor Externo"] -->|HTTP POST JSON| N4M["Node for Max (Proceso Externo)"]
-    N4M -->|IPC Streams| MaxRouter["Max Router & Unpack"]
-    MaxRouter -->|Configuración de Escala / Modo| JSLogic["JavaScript Engine: Generador Polirrítmico"]
-    Metro["Reloj Maestro Metro (Scheduler Thread)"] --> JSLogic
-    JSLogic -->|Paso Musical & Velocidad| VoiceMidi["Controlador de Voz"]
-    VoiceMidi --> ResonSynth["Síntesis Resonante MSP"]
-    ResonSynth --> Headroom["Atenuador Anti-Clipping (-12 dB)"]
-    Headroom --> MasterDac["DAC Audio Output"]
-```
+![FIG 6.4 · End-to-End Hybrid Architecture Pipeline](/assets/diagrams/diagrama_sistema_integrado_sdk.svg)
 
 ---
 

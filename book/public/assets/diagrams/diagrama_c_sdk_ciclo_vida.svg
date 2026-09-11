@@ -1,0 +1,102 @@
+﻿<svg viewBox="0 0 940 310" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">CICLO DE VIDA Y ANATOMÍA DE UN EXTERNAL EN C SDK</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 6.3 · EXT_MAIN, CLASS_NEW &amp; TABLA DE DESPACHO EN MEMORIA</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- SECUENCIA DE 4 FASES DEL EXTERNAL -->
+  <!-- Fase 1: Carga DLL y ext_main -->
+  <g transform="translate(25, 45)">
+    <rect width="200" height="185" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="200" height="22" rx="5" fill="#27272a" />
+    <rect y="17" width="200" height="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">1. CARGA BINARIA</text>
+    
+    <text x="10" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="600">ext_main(void *r)</text>
+    <text x="10" y="60" fill="#a1a1aa" font-size="8.5">Punto de entrada exportado</text>
+    
+    <rect x="10" y="74" width="180" height="95" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+    <text x="16" y="92" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8">class_new()</text>
+    <text x="16" y="106" fill="#71717a" font-size="8">• Reserva nombre clase</text>
+    <text x="16" y="120" fill="#71717a" font-size="8">• Puntero al constructor</text>
+    <text x="16" y="134" fill="#71717a" font-size="8">• Puntero al destructor</text>
+    <text x="16" y="152" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5">sizeof(t_mi_objeto)</text>
+  </g>
+
+  <path d="M 225 137 L 255 137" fill="none" stroke="#71717a" stroke-width="1.2" marker-end="url(#arr-neutral)" />
+
+  <!-- Fase 2: Registro de Métodos -->
+  <g transform="translate(255, 45)">
+    <rect width="200" height="185" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="200" height="22" rx="5" fill="#27272a" />
+    <rect y="17" width="200" height="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">2. TABLA DE MÉTODOS</text>
+    
+    <text x="10" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="600">class_addmethod()</text>
+    <text x="10" y="60" fill="#a1a1aa" font-size="8.5">Enlace dinámico de mensajes</text>
+    
+    <rect x="10" y="74" width="180" height="95" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+    <text x="16" y="92" fill="#22c55e" font-family="ui-monospace, monospace" font-size="7.5">class_addmethod(c, bang)</text>
+    <text x="16" y="108" fill="#22c55e" font-family="ui-monospace, monospace" font-size="7.5">class_addmethod(c, int)</text>
+    <text x="16" y="124" fill="#22c55e" font-family="ui-monospace, monospace" font-size="7.5">class_addmethod(c, float)</text>
+    <text x="16" y="146" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8">class_register()</text>
+    <text x="16" y="160" fill="#71717a" font-size="7.5">Publicación en CLASS_BOX</text>
+  </g>
+
+  <path d="M 455 137 L 485 137" fill="none" stroke="#eb6c36" stroke-width="1.4" marker-end="url(#arr-accent)" />
+
+  <!-- Fase 3: Instanciación en Patcher (ACCENT FOCAL) -->
+  <g transform="translate(485, 45)">
+    <rect width="215" height="185" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="215" height="22" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+    <rect y="17" width="215" height="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="10" y="15" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700">3. INSTANCIACIÓN MEMORIA</text>
+    
+    <text x="10" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">mi_objeto_new()</text>
+    <text x="10" y="60" fill="#fed7aa" font-size="8.5">Alocación en heap por caja</text>
+    
+    <rect x="10" y="74" width="195" height="95" rx="3" fill="#121318" stroke="#eb6c36" stroke-width="0.8" />
+    <text x="16" y="92" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="7.5">object_alloc(mi_class);</text>
+    <text x="16" y="108" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5">• t_object ob (cabecera)</text>
+    <text x="16" y="122" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5">• Creación outlets con outlet_new()</text>
+    <text x="16" y="136" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5">• Inicialización de variables</text>
+    <text x="16" y="154" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="7.5">Retorna puntero opaco (t_mi_objeto*)</text>
+  </g>
+
+  <path d="M 700 137 L 730 137" fill="none" stroke="#71717a" stroke-width="1.2" marker-end="url(#arr-neutral)" />
+
+  <!-- Fase 4: Ciclo de Vida y Destrucción -->
+  <g transform="translate(730, 45)">
+    <rect width="185" height="185" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="185" height="22" rx="5" fill="#27272a" />
+    <rect y="17" width="185" height="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">4. MENSAJES Y DESTROY</text>
+    
+    <text x="10" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="600">Ejecución &amp; Free</text>
+    <text x="10" y="60" fill="#a1a1aa" font-size="8.5">Despacho de eventos en tiempo real</text>
+    
+    <rect x="10" y="74" width="165" height="95" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+    <text x="14" y="92" fill="#22c55e" font-family="ui-monospace, monospace" font-size="7.5">mi_objeto_bang(x)</text>
+    <text x="14" y="106" fill="#22c55e" font-family="ui-monospace, monospace" font-size="7.5">mi_objeto_int(x, n)</text>
+    <text x="14" y="126" fill="#ef4444" font-family="ui-monospace, monospace" font-size="7.5">mi_objeto_free(x)</text>
+    <text x="14" y="140" fill="#71717a" font-size="7.5">• Libera memoria dinámica</text>
+    <text x="14" y="154" fill="#71717a" font-size="7.5">• sysmem_freeptr()</text>
+  </g>
+
+  <!-- PANEL INFERIOR: REGLA DE HERENCIA BINARIA C -->
+  <g transform="translate(25, 240)">
+    <rect width="890" height="54" rx="4" fill="#151518" stroke="#27272a" stroke-width="1" />
+    <text x="20" y="22" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">PRINCIPIO DE POLIMORFISMO BINARIO EN C SDK:</text>
+    <text x="290" y="22" fill="#d4d4d8" font-size="8.5">El primer campo del struct debe ser obligatoriamente `t_object ob` (control) o `t_pxobject ob` (audio MSP).</text>
+    <text x="20" y="40" fill="#71717a" font-family="ui-monospace, monospace" font-size="8">Esto garantiza que un puntero `(t_mi_objeto*)` pueda ser casteado de forma segura a `(t_object*)` por el despachador de Max.</text>
+  </g>
+</svg>

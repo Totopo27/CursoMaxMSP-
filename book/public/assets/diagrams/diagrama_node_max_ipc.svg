@@ -1,0 +1,77 @@
+﻿<svg viewBox="0 0 940 310" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">NODE FOR MAX (N4M): COMUNICACIÓN ASÍNCRONA POR TUBERÍAS IPC</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 6.2 · ZERO-BLOCKING AUDIO &amp; WEBSOCKET/REST INTEGRATION</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- PROCESO 1: PROCESO MAX/MSP -->
+  <g transform="translate(25, 45)">
+    <rect width="260" height="185" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="260" height="22" rx="5" fill="#27272a" />
+    <rect y="17" width="260" height="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">PROCESO MAX/MSP (KERNEL)</text>
+    <text x="10" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="600">Max Patcher Canvas</text>
+    <text x="10" y="60" fill="#22c55e" font-size="8.5">Audio Thread + Scheduler en tiempo real</text>
+
+    <rect x="10" y="74" width="240" height="90" rx="3" fill="#121318" stroke="#3f3f46" stroke-width="0.8" />
+    <text x="16" y="94" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5">[node.script servidor.js]</text>
+    <text x="16" y="112" fill="#fed7aa" font-size="8">• Recibe mensajes de control</text>
+    <text x="16" y="126" fill="#fed7aa" font-size="8">• Emite datos JSON hacia el canvas</text>
+    <text x="16" y="146" fill="#71717a" font-size="7.5">Cero interferencia con el DAC</text>
+  </g>
+
+  <!-- TUBERÍA IPC (ACCENT FOCAL) -->
+  <g transform="translate(310, 75)">
+    <rect width="320" height="125" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="320" height="22" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+    <rect y="17" width="320" height="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="10" y="15" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700">CANAL IPC (INTER-PROCESS COMMUNICATION)</text>
+    
+    <text x="15" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5">Stdin / Stdout Streams (JSON Framing)</text>
+    <text x="15" y="60" fill="#d4d4d8" font-size="8.5">Tuberías UNIX / Named Pipes en Windows</text>
+
+    <!-- Flujo bidireccional -->
+    <path d="M 20 85 L 295 85" fill="none" stroke="#eb6c36" stroke-width="1.5" marker-end="url(#arr-accent)" />
+    <text x="155" y="78" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="7.5" text-anchor="middle">Max -> Node: Handler Dispatch</text>
+
+    <path d="M 295 105 L 20 105" fill="none" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arr-neutral)" />
+    <text x="155" y="118" fill="#22c55e" font-family="ui-monospace, monospace" font-size="7.5" text-anchor="middle">Node -> Max: maxAPI.outlet()</text>
+  </g>
+
+  <path d="M 285 137 L 310 137" fill="none" stroke="#eb6c36" stroke-width="1.2" />
+  <path d="M 630 137 L 655 137" fill="none" stroke="#eb6c36" stroke-width="1.2" />
+
+  <!-- PROCESO 2: PROCESO EXTERNO NODE.JS -->
+  <g transform="translate(655, 45)">
+    <rect width="260" height="185" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="260" height="22" rx="5" fill="#27272a" />
+    <rect y="17" width="260" height="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">PROCESO EXTERNO NODE.JS</text>
+    <text x="10" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="600">max-api (SDK) + Event Loop</text>
+    <text x="10" y="60" fill="#a1a1aa" font-size="8.5">Proceso SO separado con su propio PID</text>
+
+    <rect x="10" y="74" width="240" height="90" rx="3" fill="#121318" stroke="#3f3f46" stroke-width="0.8" />
+    <text x="16" y="92" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8">Ecosistema npm habilitado:</text>
+    <text x="16" y="108" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8">• ws / Socket.io (WebSockets)</text>
+    <text x="16" y="122" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8">• axios / fetch (APIs REST)</text>
+    <text x="16" y="136" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8">• @tensorflow/tfjs (Machine Learning)</text>
+    <text x="16" y="152" fill="#71717a" font-size="7.5">I/O no bloqueante de red y disco</text>
+  </g>
+
+  <!-- PANEL INFERIOR: GARANTÍA ARQUITECTÓNICA -->
+  <g transform="translate(25, 240)">
+    <rect width="890" height="54" rx="4" fill="#151518" stroke="#27272a" stroke-width="1" />
+    <text x="20" y="22" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">PRINCIPIO DE AISLAMIENTO DE CONCURRENCIA:</text>
+    <text x="280" y="22" fill="#d4d4d8" font-size="8.5">Si una petición HTTP a una API de internet demora 3 segundos o el servidor se cae, Node.js se congela en su proceso aislado.</text>
+    <text x="20" y="40" fill="#71717a" font-family="ui-monospace, monospace" font-size="8">El Audio Thread de Max continúa calculando muestras a 48 kHz y 64 bits sin el menor parpadeo ni pérdida de audio.</text>
+  </g>
+</svg>

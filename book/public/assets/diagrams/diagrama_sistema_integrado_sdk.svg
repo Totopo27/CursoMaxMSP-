@@ -1,0 +1,116 @@
+﻿<svg viewBox="0 0 940 310" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+    <marker id="arr-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#22c55e"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">SISTEMA INTEGRADO: TOPOLOGÍA ASÍNCRONA N4M + MOTOR JS + SÍNTESIS MSP</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 6.4 · END-TO-END HYBRID ARCHITECTURE PIPELINE</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- NODO 1: RED EXTERNA -->
+  <g transform="translate(25, 45)">
+    <rect width="180" height="90" rx="4" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="180" height="20" rx="4" fill="#27272a" />
+    <text x="8" y="14" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700">CLIENTE REMOTO</text>
+    <text x="8" y="40" fill="#f4f4f5" font-size="10.5" font-weight="600">Web / IoT Sensor</text>
+    <text x="8" y="56" fill="#a1a1aa" font-size="8">HTTP POST JSON / WS</text>
+    <text x="8" y="72" fill="#71717a" font-family="ui-monospace, monospace" font-size="7.5">Telemetría asíncrona</text>
+  </g>
+
+  <!-- FLECHA A N4M -->
+  <path d="M 205 90 L 235 90" fill="none" stroke="#eb6c36" stroke-width="1.2" marker-end="url(#arr-accent)" />
+
+  <!-- NODO 2: PROCESO NODE FOR MAX (ACCENT FOCAL) -->
+  <g transform="translate(235, 45)">
+    <rect width="210" height="90" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="210" height="20" rx="4" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="8" y="14" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700">NODE FOR MAX (PROCESO EXT)</text>
+    <text x="8" y="40" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">[node.script servidor.js]</text>
+    <text x="8" y="56" fill="#fed7aa" font-size="8">maxAPI.outlet("params", data)</text>
+    <text x="8" y="72" fill="#22c55e" font-size="7.5">Aislamiento total del Audio Thread</text>
+  </g>
+
+  <!-- FLECHA A ROUTER -->
+  <path d="M 445 90 L 475 90" fill="none" stroke="#eb6c36" stroke-width="1.2" marker-end="url(#arr-accent)" />
+
+  <!-- NODO 3: ROUTER EN MAX -->
+  <g transform="translate(475, 45)">
+    <rect width="200" height="90" rx="4" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="200" height="20" rx="4" fill="#27272a" />
+    <text x="8" y="14" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700">DESERIALIZADOR MAX</text>
+    <text x="8" y="40" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="600">[dict.unpack / route]</text>
+    <text x="8" y="56" fill="#a1a1aa" font-size="8">Extracción atómica de escala</text>
+    <text x="8" y="72" fill="#71717a" font-family="ui-monospace, monospace" font-size="7.5">Validación de rangos</text>
+  </g>
+
+  <!-- FLECHA A MOTOR JS -->
+  <path d="M 675 90 L 705 90" fill="none" stroke="#eb6c36" stroke-width="1.2" marker-end="url(#arr-accent)" />
+
+  <!-- NODO 4: MOTOR JS POLIRRÍTMICO -->
+  <g transform="translate(705, 45)">
+    <rect width="210" height="90" rx="4" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="210" height="20" rx="4" fill="#27272a" />
+    <text x="8" y="14" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700">COMPOSICIÓN ALGORÍTMICA</text>
+    <text x="8" y="40" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="600">[v8 generador_ritmo.js]</text>
+    <text x="8" y="56" fill="#fed7aa" font-size="8">Cálculo de pasos euclidianos</text>
+    <text x="8" y="72" fill="#71717a" font-size="7.5">Disparado por [metro] del Scheduler</text>
+  </g>
+
+  <!-- SEGUNDA FILA: AUDIO DSP MSP -->
+  <!-- RELOJ SCHEDULER -->
+  <g transform="translate(25, 160)">
+    <rect width="180" height="74" rx="4" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <text x="10" y="24" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10" font-weight="600">[metro 16n @active 1]</text>
+    <text x="10" y="42" fill="#eb6c36" font-size="8">Scheduler Thread (Overdrive)</text>
+    <text x="10" y="58" fill="#71717a" font-family="ui-monospace, monospace" font-size="7.5">Precisión sub-milisegundo</text>
+  </g>
+
+  <path d="M 205 197 L 700 197 L 700 135" fill="none" stroke="#eb6c36" stroke-dasharray="3,3" stroke-width="1.2" marker-end="url(#arr-accent)" />
+
+  <!-- SÍNTESIS RESONANTE MSP -->
+  <g transform="translate(235, 160)">
+    <rect width="210" height="74" rx="4" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <text x="10" y="24" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="600">[reson~] / [poly~ 8]</text>
+    <text x="10" y="42" fill="#22c55e" font-size="8">Audio Thread (48.000 Hz, 64-bit)</text>
+    <text x="10" y="58" fill="#71717a" font-size="7.5">Modelado acústico resonante</text>
+  </g>
+
+  <!-- Salida JS hacia Síntesis MSP -->
+  <path d="M 810 135 L 810 245 L 340 245 L 340 234" fill="none" stroke="#22c55e" stroke-width="1.2" marker-end="url(#arr-green)" />
+
+  <!-- ATENUADOR ANTI-CLIPPING -->
+  <g transform="translate(475, 160)">
+    <rect width="200" height="74" rx="4" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <text x="10" y="24" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="600">Headroom (-12 dB) [*~ 0.25]</text>
+    <text x="10" y="42" fill="#a1a1aa" font-size="8">Protección de saturación DAC</text>
+    <text x="10" y="58" fill="#71717a" font-size="7.5">Rampa suave con [line~ 10]</text>
+  </g>
+
+  <path d="M 445 197 L 475 197" fill="none" stroke="#22c55e" stroke-width="1.4" marker-end="url(#arr-green)" />
+
+  <!-- SALIDA MASTER DAC -->
+  <g transform="translate(705, 160)">
+    <rect width="210" height="74" rx="4" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <text x="10" y="24" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">DAC Master Output</text>
+    <text x="10" y="42" fill="#22c55e" font-family="ui-monospace, monospace" font-size="9">[ezdac~] Salida L / R</text>
+    <text x="10" y="58" fill="#71717a" font-size="7.5">Driver ASIO a monitores</text>
+  </g>
+
+  <path d="M 675 197 L 705 197" fill="none" stroke="#22c55e" stroke-width="1.4" marker-end="url(#arr-green)" />
+
+  <!-- PANEL INFERIOR -->
+  <g transform="translate(25, 252)">
+    <rect width="890" height="42" rx="4" fill="#151518" stroke="#27272a" stroke-width="1" />
+    <text x="20" y="24" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">DESACOPLE MULTINIVEL:</text>
+    <text x="180" y="24" fill="#a1a1aa" font-size="8.5">Red externa (Node) -> Scheduler rítmico (Max) -> Bucle vectorial DSP (MSP). Cada capa corre en su propio dominio de tiempo.</text>
+  </g>
+</svg>

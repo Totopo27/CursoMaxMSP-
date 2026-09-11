@@ -1,0 +1,89 @@
+﻿<svg viewBox="0 0 940 310" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">ARQUITECTURA DE EXTENSIÓN JAVASCRIPT EN MAX</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 6.1 · SPIDERMONKEY [JS] VS GOOGLE V8 [V8] &amp; MAX-API</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- NODO 1: INLETS Y DISPATCHER -->
+  <g transform="translate(25, 45)">
+    <rect width="210" height="185" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="210" height="22" rx="5" fill="#27272a" />
+    <rect y="17" width="210" height="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">DESPACHO DE EVENTOS</text>
+    <text x="10" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="600">Inlets de Max</text>
+    <text x="10" y="60" fill="#a1a1aa" font-size="8.5">Entero, Flotante, Lista, Bang</text>
+    
+    <rect x="10" y="74" width="190" height="90" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+    <text x="18" y="92" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8">inlets = 2;</text>
+    <text x="18" y="108" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5">Inlet 0: Disparo principal</text>
+    <text x="18" y="122" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5">Inlet 1: Configuración / Modo</text>
+    <text x="18" y="142" fill="#71717a" font-family="ui-monospace, monospace" font-size="7.5">setinletassist() tooltips</text>
+  </g>
+
+  <!-- FLECHA A MOTOR JS -->
+  <path d="M 235 135 L 275 135" fill="none" stroke="#eb6c36" stroke-width="1.4" marker-end="url(#arr-accent)" />
+
+  <!-- NODO 2: ENTORNO JS / V8 (ACCENT FOCAL) -->
+  <g transform="translate(275, 45)">
+    <rect width="390" height="185" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="390" height="22" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+    <rect y="17" width="390" height="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="10" y="15" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700">SCOPE GLOBAL JS (CONTEXTO MAX) · GOOGLE V8 ENGINE</text>
+    
+    <g transform="translate(12, 35)">
+      <!-- Funciones globales -->
+      <rect x="0" y="0" width="175" height="62" rx="3" fill="#121318" stroke="#eb6c36" stroke-width="0.8" />
+      <text x="8" y="18" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8.5" font-weight="600">Handlers de Mensajes</text>
+      <text x="8" y="34" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="8">bang(), msg_int(val)</text>
+      <text x="8" y="48" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5">list(), anything()</text>
+
+      <!-- Max API & Scripting -->
+      <rect x="190" y="0" width="175" height="62" rx="3" fill="#121318" stroke="#eb6c36" stroke-width="0.8" />
+      <text x="8" y="18" transform="translate(190,0)" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8.5" font-weight="600">API Max &amp; Scripting</text>
+      <text x="8" y="34" transform="translate(190,0)" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="8">this.patcher.newdefault()</text>
+      <text x="8" y="48" transform="translate(190,0)" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5">post(), outlet(n, val)</text>
+
+      <!-- Max 9 V8 Features -->
+      <rect x="0" y="70" width="365" height="66" rx="3" fill="#18181b" stroke="#3f3f46" stroke-width="0.8" />
+      <text x="8" y="18" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">[v8] Max 9: Modern ECMAScript 2024+</text>
+      <text x="8" y="34" fill="#d4d4d8" font-size="8">• Async/Await sin congelar la UI de Max</text>
+      <text x="8" y="48" fill="#d4d4d8" font-size="8">• ES Modules nativos (`import / export`), Clases y TypedArrays</text>
+    </g>
+  </g>
+
+  <!-- FLECHA A OUTLETS -->
+  <path d="M 665 135 L 705 135" fill="none" stroke="#eb6c36" stroke-width="1.4" marker-end="url(#arr-accent)" />
+
+  <!-- NODO 3: OUTLETS -->
+  <g transform="translate(705, 45)">
+    <rect width="210" height="185" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="210" height="22" rx="5" fill="#27272a" />
+    <rect y="17" width="210" height="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">SALIDAS AL GRAFO</text>
+    <text x="10" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="600">Outlets de Max</text>
+    <text x="10" y="60" fill="#a1a1aa" font-size="8.5">Eventos tipados hacia el canvas</text>
+
+    <rect x="10" y="74" width="190" height="90" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+    <text x="18" y="94" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8.5">outlet(0, resultado);</text>
+    <text x="18" y="112" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="8.5">outlet(1, "bang");</text>
+    <text x="18" y="134" fill="#71717a" font-size="8">Despacho en Main Thread (o Worker en [v8])</text>
+  </g>
+
+  <!-- PANEL INFERIOR: COMPARATIVA MOTORES -->
+  <g transform="translate(25, 240)">
+    <rect width="890" height="54" rx="4" fill="#151518" stroke="#27272a" stroke-width="1" />
+    <text x="20" y="22" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5">[js] Legacy (SpiderMonkey 1.8.5):</text>
+    <text x="250" y="22" fill="#71717a" font-size="8.5">ES5 clásico. Ejecución monohilo en Main Thread. Ideal para compatibilidad retroactiva con Max 7 y 8.</text>
+    <text x="20" y="40" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5">[v8] Moderno (Google V8 Max 9):</text>
+    <text x="250" y="40" fill="#d4d4d8" font-size="8.5">Compilación JIT instantánea a código máquina. Soporte para microtareas Promise, Web Workers y alto throughput.</text>
+  </g>
+</svg>

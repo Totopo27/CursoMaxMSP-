@@ -28,18 +28,7 @@ Históricamente, Max integró el motor **SpiderMonkey** (Mozilla) en el objeto `
 
 Cuando Max carga un script `.js`, crea una instancia del intérprete vinculada al entorno del patcher. Existen variables globales reservadas inyectadas por Max en el scope global del script:
 
-```mermaid
-graph TD
-    Inlet["Inlet de Max (Entero, Flotante, Lista, Bang)"] -->|Despacho de Eventos| JSDispatcher["Dispatcher JS Interno"]
-    subgraph EntornoJS["Scope Global JS (Max Context)"]
-        Inlets["inlets = 2; outlets = 2;"]
-        GlobalFuncs["bang(), msg_int(val), list()"]
-        MaxAPI["max.pcall(), post(), outlet(n, val)"]
-        PatcherScripting["this.patcher (Traversals & Scripting)"]
-    end
-    JSDispatcher --> GlobalFuncs
-    GlobalFuncs --> Outlets["outlet(0, resultado)"]
-```
+![FIG 6.1 · SpiderMonkey [js] vs Google V8 [v8] & max-api](/assets/diagrams/diagrama_js_v8_arquitectura.svg)
 
 ### 2.1. Puertos de Entrada y Salida Dinámicos
 
