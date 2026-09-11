@@ -34,16 +34,7 @@ $$y(x,t) = y^+(t - x/c) + y^-(t + x/c)$$
 
 En el dominio digital, esto se traduce en **dos líneas de retardo acopladas que viajan en sentidos contrarios**, reflejándose en los extremos fijos con inversión de fase (coeficiente de reflexión $R = -1.0$).
 
-```
-                Extremo Fijo (Cejuela)                       Extremo Fijo (Puente)
-             +-----[ R = -1 ]<-------------------\                     |
-             |                                    \                    |
-             v                                     \                   v
-   +--->[ Delay Line Superior y+(t - x/c) ]---------\------------>[ Bridge Filter ]---+
-   |                                                 \                                 |
-   |                                                  \                                |
-   +---[ Inversión ]<----------------------------------\----[ Delay Line Inferior y- ]-+
-```
+![FIG 5.2 · Digital Waveguide: Ondas Viajeras Bidireccionales y Reflexión de Fase](/assets/diagrams/diagrama_digital_waveguide.svg)
 
 ---
 

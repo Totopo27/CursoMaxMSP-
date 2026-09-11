@@ -1,0 +1,70 @@
+﻿<svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">PIPELINE GRÁFICO ACELERADO EN GPU · JITTER GL</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG A.2 · ARQUITECTURA DE RENDER LOOP Y SHADERS JIT.GL</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- CONTENEDOR PRINCIPAL DEL PIPELINE GPU -->
+  <g transform="translate(25, 45)">
+    <rect width="890" height="260" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="890" height="24" rx="6" fill="#27272a" />
+    <rect y="19" width="890" height="5" fill="#27272a" />
+    <text x="12" y="16" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">PIPELINE GRÁFICO DE BAJA LATENCIA (DIRECTX 11 / METAL / OPENGL)</text>
+
+    <!-- NODO MAESTRO: JIT.WORLD (FOCAL ACCENT) -->
+    <g transform="translate(20, 40)">
+      <rect width="250" height="135" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+      <rect width="250" height="20" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+      <rect y="15" width="250" height="5" fill="rgba(235, 108, 54, 0.18)" />
+      <text x="10" y="14" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">CONTEXTO MAESTRO: [JIT.WORLD]</text>
+      
+      <text x="12" y="42" fill="#f4f4f5" font-size="11" font-weight="600">Render Loop a 60 / 120 FPS</text>
+      <text x="12" y="60" fill="#fed7aa" font-size="9">• Unifica ventana GLFW, GPU context y V-Sync.</text>
+      <text x="12" y="76" fill="#fed7aa" font-size="9">• Emite bang a cada frame para sincronía.</text>
+      <text x="12" y="94" fill="#fed7aa" font-size="9">• Atributos: @enable 1, @floating 1.</text>
+      <text x="12" y="118" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5">Salida directa a pantalla / Proyector</text>
+    </g>
+
+    <!-- CONECTORES A 3 ETAPAS GPU -->
+    <path d="M 270 65 L 340 65" stroke="#71717a" stroke-width="1.3" fill="none" marker-end="url(#arr-neutral)" />
+    <path d="M 270 107 L 340 107" stroke="#eb6c36" stroke-width="1.4" fill="none" marker-end="url(#arr-accent)" />
+    <path d="M 270 150 L 340 150" stroke="#71717a" stroke-width="1.3" fill="none" marker-end="url(#arr-neutral)" />
+
+    <!-- ETAPA 1: GEOMETRÍA (JIT.GL.GRIDSHAPE) -->
+    <g transform="translate(345, 42)">
+      <rect width="520" height="46" rx="4" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="12" y="18" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">1. GENERACIÓN DE GEOMETRÍA 3D: [JIT.GL.GRIDSHAPE]</text>
+      <text x="12" y="34" fill="#f4f4f5" font-size="9.5">Mallas poligonales: Esfera, toro, cubo, planos · Vertex Buffers en VRAM</text>
+    </g>
+
+    <!-- ETAPA 2: PROCESAMIENTO GLSL / JIT.GL.PIX (FOCAL) -->
+    <g transform="translate(345, 96)">
+      <rect width="520" height="50" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.2" />
+      <text x="12" y="18" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">2. SHADERS Y TRANSFORMACIÓN GPU: [JIT.GL.PIX] / [JIT.GEN]</text>
+      <text x="12" y="36" fill="#f4f4f5" font-size="9.5">Cálculo masivo paralelo píxel a píxel · Shaders compilados JIT a código nativo SPIR-V / HLSL</text>
+    </g>
+
+    <!-- ETAPA 3: ESCENA Y COMPOSICIÓN: [JIT.GL.NODE] -->
+    <g transform="translate(345, 154)">
+      <rect width="520" height="46" rx="4" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="12" y="18" fill="#a78bfa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">3. COMPOSICIÓN JERÁRQUICA: [JIT.GL.NODE]</text>
+      <text x="12" y="34" fill="#f4f4f5" font-size="9.5">Sub-escenas con cámara virtual, iluminación espacial y capas de post-procesamiento</text>
+    </g>
+
+    <!-- FOOTER RESUMEN DE FLUJO -->
+    <g transform="translate(20, 210)">
+      <rect width="845" height="38" rx="4" fill="#141417" stroke="#27272a" stroke-width="1" />
+      <text x="12" y="16" fill="#f4f4f5" font-size="9" font-weight="600">Zero-Copy GPU Sharing:</text>
+      <text x="12" y="28" fill="#a1a1aa" font-size="8">Los datos se procesan en texturas en memoria gráfica sin transferirse de vuelta al bus PCIe ni a la CPU del sistema operativo.</text>
+    </g>
+  </g>
+</svg>

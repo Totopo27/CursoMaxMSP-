@@ -25,23 +25,7 @@ description: "Capítulo del curso universitario de Max/MSP"
 `poly~ [nombre_subparche_voz] [cantidad_de_voces]`
 Ejemplo: `poly~ voz_polifonica 8`
 
-```
-                      [ Patch Principal ]
-                               | (midievent / target)
-                               v
-                     +-------------------+
-                     |      poly~ 8      |
-                     +-------------------+
-                     | Voz 1 (Activa)    | ---> perform64() (CPU ON)
-                     | Voz 2 (Activa)    | ---> perform64() (CPU ON)
-                     | Voz 3 (Muteada)   | ---> [Bypass]    (CPU 0%)
-                     | Voz 4 (Muteada)   | ---> [Bypass]    (CPU 0%)
-                     | ...               |
-                     +-------------------+
-                               | (Suma de Audio out~)
-                               v
-                            [out~ 1]
-```
+![FIG 4.2 · Gestión de Voces y Silenciado Automático (mute) en poly~](/assets/diagrams/diagrama_poly_voice_stealing.svg)
 
 ### Los Objetos Especiales de Comunicación Interna
 Dentro del subparche de voz instanciado por `poly~`, los inlets y outlets estándar se reemplazan por:

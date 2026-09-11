@@ -28,18 +28,7 @@ Imagina un sintetizador o procesador de efectos que tiene $N$ parámetros contin
 Cada estado o preset $P_k$ es un vector en un espacio euclidiano $\mathbb{R}^N$:
 $$\vec{P}_k = \begin{bmatrix} p_{1,k} \\ p_{2,k} \\ \vdots \\ p_{N,k} \end{bmatrix}$$
 
-```
-   Parámetro 2 (Resonancia)
-        ▲
-        │          Preset 2 [P2] (0.8, 0.9)
-        │             ●
-        │            /
-        │           /  ◄── Trayectoria de Interpolación (Morphing continuo)
-        │          /
-        │         ● 
-        │     Preset 1 [P1] (0.2, 0.3)
-        └────────────────────────► Parámetro 1 (Cutoff)
-```
+![FIG 2.1 · Espacio de Estados N-Dimensional y Morphing Continuo](/assets/diagrams/diagrama_morphing_espacio_estados.svg)
 
 Si queremos viajar suavemente del **Preset 1** al **Preset 2**, no saltamos: aplicamos una función de **interpolación lineal** (Lerp) gobernada por una variable escalar continua $\alpha \in [0.0, 1.0]$:
 

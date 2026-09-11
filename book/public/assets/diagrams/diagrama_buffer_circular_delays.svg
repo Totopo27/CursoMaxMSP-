@@ -1,0 +1,86 @@
+﻿<svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">ARQUITECTURA DE MEMORIA TEMPORAL · BUFFER CIRCULAR (RING BUFFER)</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 3.8 · PUNTEROS ROTATIVOS (TAPIN~ / TAPOUT~) EN RAM</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <g transform="translate(25, 45)">
+    <rect width="890" height="260" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="890" height="24" rx="6" fill="#27272a" />
+    <rect y="19" width="890" height="5" fill="#27272a" />
+    <text x="12" y="16" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">ARREGLO CONTIGUO EN MEMORIA RAM · OPERACIÓN MÓDULO O(1) SIN ASIGNACIONES</text>
+
+    <!-- DIAGRAMA CIRCULAR (RING BUFFER) A LA IZQUIERDA -->
+    <g transform="translate(140, 140)">
+      <!-- Anillo del buffer -->
+      <circle cx="0" cy="0" r="75" fill="none" stroke="#27272a" stroke-width="26" />
+      <circle cx="0" cy="0" r="75" fill="none" stroke="#52525b" stroke-width="2" stroke-dasharray="4 4" />
+
+      <!-- Celdas de Muestras Clave -->
+      <!-- Celda [0] -->
+      <circle cx="0" cy="-75" r="12" fill="#222226" stroke="#38bdf8" stroke-width="1.5" />
+      <text x="0" y="-71" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8" text-anchor="middle">[0]</text>
+
+      <!-- Celda [1] -->
+      <circle cx="53" cy="-53" r="10" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="53" y="-50" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5" text-anchor="middle">[1]</text>
+
+      <!-- Celda [2] -->
+      <circle cx="75" cy="0" r="10" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="75" y="3" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5" text-anchor="middle">[2]</text>
+
+      <!-- Celda [N-2] -->
+      <circle cx="-75" cy="0" r="10" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="-75" y="3" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7" text-anchor="middle">[N-2]</text>
+
+      <!-- Celda [N-1] -->
+      <circle cx="-53" cy="-53" r="10" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="-53" y="-50" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7" text-anchor="middle">[N-1]</text>
+
+      <!-- Puntero Escritura (Write Pointer - Tapin~) -->
+      <line x1="0" y1="0" x2="45" y2="-45" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arr-neutral)" />
+      <text x="50" y="-25" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="8" font-weight="700">Write Ptr (tapin~)</text>
+      <text x="50" y="-14" fill="#a1a1aa" font-size="7.5">Avanza a fs (48 kHz)</text>
+
+      <!-- Puntero Lectura (Read Pointer - Tapout~) - FOCAL -->
+      <line x1="0" y1="0" x2="-45" y2="45" stroke="#eb6c36" stroke-width="2.5" marker-end="url(#arr-accent)" />
+      <text x="-135" y="55" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700">Read Ptr (tapout~)</text>
+      <text x="-135" y="66" fill="#fed7aa" font-size="7.5">D muestras de retraso</text>
+
+      <!-- Centro de control -->
+      <circle cx="0" cy="0" r="14" fill="#1c1613" stroke="#eb6c36" stroke-width="1.2" />
+      <text x="0" y="3" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="7.5" text-anchor="middle">mod N</text>
+    </g>
+
+    <!-- PANEL DERECHO: DETALLES DE INGENIERÍA DSP (FOCAL ACCENT) -->
+    <g transform="translate(340, 38)">
+      <rect width="530" height="200" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+      <rect width="530" height="22" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+      <rect y="17" width="530" height="5" fill="rgba(235, 108, 54, 0.18)" />
+      <text x="12" y="15" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">MECÁNICA VECTORIAL EN EL AUDIO THREAD (C99 / PERFORM64)</text>
+
+      <g transform="translate(15, 32)">
+        <text x="0" y="16" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">index_read = (index_write - D) % N</text>
+        <text x="0" y="32" fill="#fed7aa" font-size="9">• D = (tau_ms / 1000) * fs (Distancia angular entre punteros en muestras).</text>
+        <text x="0" y="48" fill="#a1a1aa" font-size="9">• Cero Reasignación Dinámica: El buffer de tapin~ se aloca UNA sola vez al inicio.</text>
+        <text x="0" y="64" fill="#a1a1aa" font-size="9">• Múltiples salidas tapout~ pueden leer el mismo buffer con offsets distintos.</text>
+
+        <!-- Interpolación no entera -->
+        <rect x="0" y="80" width="500" height="52" rx="4" fill="#2a1b14" stroke="#eb6c36" stroke-width="1" />
+        <text x="10" y="98" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">MODULACIÓN CONTINUA Y EFECTO DOPPLER:</text>
+        <text x="10" y="112" fill="#fed7aa" font-size="8.5">Al modular el tiempo D con una señal LFO continua, tapout~ interpola muestras</text>
+        <text x="10" y="125" fill="#f4f4f5" font-size="8.5">fraccionarias (Hermite o lineal) produciendo chorus, flanging y pitch shifting.</text>
+      </g>
+    </g>
+  </g>
+</svg>

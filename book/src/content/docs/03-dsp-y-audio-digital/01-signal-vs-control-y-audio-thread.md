@@ -14,23 +14,7 @@ description: "Capítulo del curso universitario de Max/MSP"
 
 Para entender el procesamiento digital de señales (DSP) en Max, debemos comprender la fractura ontológica entre dos reinos temporales:
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                       LOS DOS REINOS TEMPORALES DE MAX                      │
-├─────────────────────────────────────────────────────────────────────────────┤
-│ 1. EL REINO DEL CONTROL (Eventos Asíncronos / Macro-tiempo)                 │
-│    • Objetos estándar de Max (sin tilde: [metro], [+], [counter]).          │
-│    • Los mensajes viajan por cables finos solo cuando algo cambia.          │
-│    • Si no tocas una tecla, la tasa de cómputo es CERO (CPU en reposo).     │
-│    • Resolución temporal típica: ~1 milisegundo (1.000 Hz).                 │
-│                                                                             │
-│ 2. EL REINO DEL AUDIO / MSP (Señales Síncronas / Micro-tiempo)              │
-│    • Objetos con tilde (~): [cycle~], [+~], [lores~], [ezdac~].             │
-│    • Cables amarillos/negros rayados que transportan un flujo continuo.     │
-│    • La CPU calcula valores ininterrumpidamente, haya o no sonido.          │
-│    • A 48.000 Hz (Sample Rate), cada muestra dura apenas 20.83 microsegundos│
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+![FIG 3.0 · Los Dos Reinos Temporales de Max: Control vs. Señal MSP](/assets/diagrams/diagrama_reinos_control_audio.svg)
 
 ### El Teorema de Muestreo de Nyquist-Shannon
 

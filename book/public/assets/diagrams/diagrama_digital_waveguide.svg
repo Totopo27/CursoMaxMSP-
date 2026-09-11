@@ -1,0 +1,83 @@
+﻿<svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">MODELADO FÍSICO DE GUÍAS DE ONDAS · D'ALEMBERT Y JULIUS SMITH</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 5.2 · DIGITAL WAVEGUIDE (ONDAS VIAJERAS BIDIRECCIONALES Y REFLEXIÓN)</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- CONTENEDOR PRINCIPAL DEL INSTRUMENTO / CUERDA -->
+  <g transform="translate(25, 45)">
+    <rect width="890" height="260" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="890" height="24" rx="6" fill="#27272a" />
+    <rect y="19" width="890" height="5" fill="#27272a" />
+    <text x="12" y="16" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">MODELO DE CUERDA VIBRANTE DE 1 DIMENSIÓN · LAZO CERRADO DISCRETO</text>
+
+    <!-- EXTREMO FIJO IZQUIERDO: CEJUELA (NUT) -->
+    <g transform="translate(20, 45)">
+      <rect width="130" height="150" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.2" />
+      <text x="12" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">EXTREMO CEJUELA</text>
+      <text x="12" y="38" fill="#f4f4f5" font-size="10" font-weight="600">Condición Dirichlet</text>
+      
+      <!-- Inversion block R = -1 -->
+      <g transform="translate(15, 60)">
+        <rect width="100" height="50" rx="4" fill="#2a1b14" stroke="#eb6c36" stroke-width="1" />
+        <text x="50" y="22" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="9" font-weight="700" text-anchor="middle">Reflexión R</text>
+        <text x="50" y="38" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">R = -1.0</text>
+      </g>
+      <text x="12" y="132" fill="#71717a" font-size="8">Inversión de fase 180°</text>
+    </g>
+
+    <!-- LINEA DE RETARDO SUPERIOR: y+(t - x/c) -->
+    <g transform="translate(180, 50)">
+      <rect width="500" height="55" rx="5" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="15" y="20" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="9" font-weight="700">DELAY LINE SUPERIOR · ONDA VIAJERA ADELANTE: y+(t - x/c)</text>
+      <text x="15" y="38" fill="#f4f4f5" font-size="10">Propagación acústica hacia la derecha [delay N/2]</text>
+    </g>
+
+    <!-- LINEA DE RETARDO INFERIOR: y-(t + x/c) -->
+    <g transform="translate(180, 135)">
+      <rect width="500" height="55" rx="5" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="15" y="20" fill="#a78bfa" font-family="ui-monospace, monospace" font-size="9" font-weight="700">DELAY LINE INFERIOR · ONDA VIAJERA RETORNO: y-(t + x/c)</text>
+      <text x="15" y="38" fill="#f4f4f5" font-size="10">Propagación acústica reflejada hacia la izquierda [delay N/2]</text>
+    </g>
+
+    <!-- EXTREMO FIJO DERECHO: PUENTE Y FILTRO (BRIDGE FILTER) - FOCAL ACCENT -->
+    <g transform="translate(710, 45)">
+      <rect width="160" height="150" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+      <rect width="160" height="20" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+      <rect y="15" width="160" height="5" fill="rgba(235, 108, 54, 0.18)" />
+      <text x="10" y="14" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700">EXTREMO PUENTE (BRIDGE)</text>
+      
+      <!-- Bridge Filter -->
+      <g transform="translate(15, 36)">
+        <rect width="130" height="58" rx="4" fill="#2a1b14" stroke="#eb6c36" stroke-width="1.2" />
+        <text x="10" y="18" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700">Bridge Filter H(z)</text>
+        <text x="10" y="34" fill="#fed7aa" font-size="8.5">Paso-bajo dispersivo</text>
+        <text x="10" y="48" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8">Pérdida por fricción</text>
+      </g>
+      <text x="10" y="118" fill="#fed7aa" font-size="8.5">Amortiguamiento de</text>
+      <text x="10" y="132" fill="#fed7aa" font-size="8.5">altas frecuencias</text>
+    </g>
+
+    <!-- CONEXIONES ORTOGONALES DE LAZO CERRADO -->
+    <!-- Salida de cejuela hacia delay superior -->
+    <path d="M 150 78 L 180 78" stroke="#38bdf8" stroke-width="1.5" fill="none" marker-end="url(#arr-neutral)" />
+    <!-- Salida de delay superior hacia puente -->
+    <path d="M 680 78 L 710 78" stroke="#38bdf8" stroke-width="1.5" fill="none" marker-end="url(#arr-accent)" />
+    <!-- Salida de puente hacia delay inferior -->
+    <path d="M 790 120 L 790 162 L 680 162" stroke="#eb6c36" stroke-width="1.5" fill="none" marker-end="url(#arr-accent)" />
+    <!-- Salida de delay inferior hacia cejuela -->
+    <path d="M 180 162 L 85 162 L 85 110" stroke="#a78bfa" stroke-width="1.5" fill="none" marker-end="url(#arr-neutral)" />
+
+    <!-- FOOTER EXPLICATIVO -->
+    <text x="20" y="235" fill="#71717a" font-size="8.5">Ecuación de onda de d'Alembert discretizada: La suma y+(t) + y-(t) reproduce armónicos, inarmonicidad por rigidez y caída física real.</text>
+  </g>
+</svg>

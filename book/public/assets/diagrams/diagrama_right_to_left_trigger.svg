@@ -1,0 +1,95 @@
+﻿<svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">COMPILADOR DINÁMICO Y ORDEN DE DESPACHO · MAX GRAPH</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 1.1D · REGLA ESPACIAL RIGHT-TO-LEFT VS. EL OBJETO TRIGGER [T]</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- PANEL IZQUIERDO: REGLA ESPACIAL R-TO-L (FRAGILE PATCH) -->
+  <g transform="translate(25, 45)">
+    <rect width="430" height="260" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="430" height="24" rx="6" fill="#27272a" />
+    <rect y="19" width="430" height="5" fill="#27272a" />
+    <text x="12" y="16" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">1. ORDEN ESPACIAL DINÁMICO (RIGHT-TO-LEFT / BOTTOM-TO-TOP)</text>
+
+    <!-- NODO FUENTE [BANG] -->
+    <g transform="translate(155, 38)">
+      <rect width="120" height="38" rx="4" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="60" y="23" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">[bang]</text>
+    </g>
+
+    <!-- BIFURCACIÓN DE CABLES CON PRIORIDAD ESPACIAL -->
+    <path d="M 190 76 L 190 105 L 100 105 L 100 120" stroke="#71717a" stroke-width="1.3" fill="none" marker-end="url(#arr-neutral)" />
+    <path d="M 230 76 L 230 105 L 320 105 L 320 120" stroke="#eb6c36" stroke-width="1.5" fill="none" marker-end="url(#arr-accent)" />
+    
+    <!-- DESTINO IZQ (SEGUNDO) -->
+    <g transform="translate(40, 120)">
+      <rect width="130" height="42" rx="4" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="65" y="20" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" text-anchor="middle">2° EN EJECUTAR</text>
+      <text x="65" y="34" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="600" text-anchor="middle">[print Dos]</text>
+    </g>
+
+    <!-- DESTINO DER (PRIMERO - FOCAL) -->
+    <g transform="translate(255, 120)">
+      <rect width="140" height="42" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.2" />
+      <text x="70" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700" text-anchor="middle">1° EN EJECUTAR (R-to-L)</text>
+      <text x="70" y="34" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="600" text-anchor="middle">[print Uno]</text>
+    </g>
+
+    <!-- NOTA DE CONDICIÓN DE CARRERA -->
+    <g transform="translate(20, 180)">
+      <rect width="390" height="65" rx="4" fill="#141417" stroke="#3f3f46" stroke-width="1" />
+      <text x="10" y="16" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">THE FRAGILE PATCH PROBLEM</text>
+      <text x="10" y="32" fill="#71717a" font-size="8.5">Mover [print Uno] 2 píxeles hacia la izquierda invierte la ejecución.</text>
+      <text x="10" y="46" fill="#71717a" font-size="8.5">Genera condiciones de carrera invisibles y bugs intermitentes.</text>
+    </g>
+  </g>
+
+  <!-- PANEL DERECHO: DETERMINISMO ESTRUCTURAL CON TRIGGER [T] - FOCAL ACCENT -->
+  <g transform="translate(485, 45)">
+    <rect width="430" height="260" rx="6" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="430" height="24" rx="6" fill="rgba(235, 108, 54, 0.18)" />
+    <rect y="19" width="430" height="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="12" y="16" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">2. DETERMINISMO INMUTABLE: EL OBJETO [TRIGGER] ([T])</text>
+
+    <!-- NODO FUENTE [T B B] -->
+    <g transform="translate(145, 38)">
+      <rect width="150" height="42" rx="4" fill="#2a1b14" stroke="#eb6c36" stroke-width="1.2" />
+      <text x="75" y="26" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="12" font-weight="700" text-anchor="middle">[trigger b b]</text>
+    </g>
+
+    <!-- CABLES DESDE OUTLETS DEDICADOS -->
+    <path d="M 180 80 L 180 105 L 105 105 L 105 120" stroke="#71717a" stroke-width="1.3" fill="none" marker-end="url(#arr-neutral)" />
+    <path d="M 260 80 L 260 105 L 325 105 L 325 120" stroke="#eb6c36" stroke-width="1.5" fill="none" marker-end="url(#arr-accent)" />
+    <text x="175" y="98" fill="#71717a" font-family="ui-monospace, monospace" font-size="8">Outlet 1 (2° paso)</text>
+    <text x="265" y="98" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8">Outlet 2 (1° paso)</text>
+
+    <!-- DESTINO IZQ -->
+    <g transform="translate(45, 120)">
+      <rect width="130" height="42" rx="4" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="65" y="26" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="600" text-anchor="middle">[print Dos]</text>
+    </g>
+
+    <!-- DESTINO DER -->
+    <g transform="translate(255, 120)">
+      <rect width="140" height="42" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.2" />
+      <text x="70" y="26" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="600" text-anchor="middle">[print Uno]</text>
+    </g>
+
+    <!-- NOTA DE INMUTABILIDAD -->
+    <g transform="translate(20, 180)">
+      <rect width="390" height="65" rx="4" fill="#18181b" stroke="#eb6c36" stroke-width="1" />
+      <text x="10" y="16" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">DETERMINISMO BINARIO GARANTIZADO</text>
+      <text x="10" y="32" fill="#f4f4f5" font-size="8.5">Los outlets de [trigger] se evalúan estrictamente de derecha a izquierda</text>
+      <text x="10" y="46" fill="#fed7aa" font-size="8.5">independientemente de cómo o hacia dónde se muevan las cajas en el lienzo.</text>
+    </g>
+  </g>
+</svg>

@@ -18,28 +18,7 @@ $$x(t) = \sum_{k=1}^{\infty} A_k \sin(2\pi k f_0 t + \phi_k)$$
 
 ### El ADN Espectral de las Formas de Onda Clásicas:
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                       ORGANOLOGÍA ESPECTRAL DE ONDAS                        │
-├─────────────────────────────────────────────────────────────────────────────┤
-│ 1. SINUSOIDE PURA ([cycle~])                                                │
-│    • Contiene ÚNICAMENTE el primer armónico (la fundamental f0).            │
-│    • Espectro: Una sola línea vertical en f0. Cero distorsión armónica.     │
-│                                                                             │
-│ 2. DIENTE DE SIERRA / SAWTOOTH ([saw~])                                     │
-│    • Contiene TODOS los armónicos (pares e impares: 1, 2, 3, 4, 5...).      │
-│    • Amplitud del k-ésimo armónico: A_k = 1 / k                             │
-│    • Timbre brillante, cortante y rico (ideal para bajos y leads).          │
-│                                                                             │
-│ 3. ONDA CUADRADA / SQUARE ([rect~])                                         │
-│    • Contiene ÚNICAMENTE armónicos IMPARES (1, 3, 5, 7, 9...).              │
-│    • Amplitud del k-ésimo armónico: A_k = 1 / k                             │
-│    • Timbre hueco, nasal y metálico (similar al clarinete).                 │
-│                                                                             │
-│ 4. RUIDO BLANCO ([noise~])                                                  │
-│    • Densidad espectral plana: todas las frecuencias con energía aleatoria. │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+![FIG 3.1 · Organología Espectral de las Formas de Onda Clásicas](/assets/diagrams/diagrama_organologia_espectral.svg)
 
 ---
 

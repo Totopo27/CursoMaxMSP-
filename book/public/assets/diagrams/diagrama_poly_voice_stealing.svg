@@ -1,0 +1,84 @@
+﻿<svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">ASIGNACIÓN DINÁMICA DE RECURSOS · MOTOR POLY~</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 4.2 · GESTIÓN DE VOCES Y SILENCIADO AUTOMÁTICO (MUTE)</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- NODO SUPERIOR: PATCH PRINCIPAL -->
+  <g transform="translate(370, 40)">
+    <rect width="200" height="38" rx="4" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <text x="100" y="23" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" text-anchor="middle">[ Patch Principal ]</text>
+  </g>
+
+  <!-- CONNECTOR TO POLY~ -->
+  <path d="M 470 78 L 470 100" stroke="#eb6c36" stroke-width="1.4" fill="none" marker-end="url(#arr-accent)" />
+  <text x="480" y="93" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="8.5">midievent / target</text>
+
+  <!-- CONTENEDOR POLY~ 8 -->
+  <g transform="translate(100, 102)">
+    <rect width="740" height="150" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="740" height="24" rx="6" fill="#27272a" />
+    <rect y="19" width="740" height="5" fill="#27272a" />
+    <text x="15" y="16" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">CONTENEDOR POLIFÓNICO: [POLY~ VOZ_POLIFONICA 8]</text>
+
+    <!-- 4 VOCES ILUSTRADAS -->
+    <!-- VOZ 1 (ACTIVA - FOCAL) -->
+    <g transform="translate(15, 34)">
+      <rect width="170" height="100" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.2" />
+      <text x="10" y="18" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="9" font-weight="700">VOZ 1 · ACTIVA</text>
+      <text x="10" y="36" fill="#f4f4f5" font-size="9.5">Nota MIDI: 60 (C4)</text>
+      <text x="10" y="52" fill="#fed7aa" font-size="8.5">perform64() activo</text>
+      <text x="10" y="72" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8">DSP ON · Cómputo CPU</text>
+      <text x="10" y="88" fill="#71717a" font-size="8">thispoly~ mute 0</text>
+    </g>
+
+    <!-- VOZ 2 (ACTIVA - FOCAL) -->
+    <g transform="translate(195, 34)">
+      <rect width="170" height="100" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.2" />
+      <text x="10" y="18" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="9" font-weight="700">VOZ 2 · ACTIVA</text>
+      <text x="10" y="36" fill="#f4f4f5" font-size="9.5">Nota MIDI: 64 (E4)</text>
+      <text x="10" y="52" fill="#fed7aa" font-size="8.5">perform64() activo</text>
+      <text x="10" y="72" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8">DSP ON · Cómputo CPU</text>
+      <text x="10" y="88" fill="#71717a" font-size="8">thispoly~ mute 0</text>
+    </g>
+
+    <!-- VOZ 3 (MUTEADA - REPOSO) -->
+    <g transform="translate(375, 34)">
+      <rect width="170" height="100" rx="4" fill="#141417" stroke="#27272a" stroke-width="1" />
+      <text x="10" y="18" fill="#71717a" font-family="ui-monospace, monospace" font-size="9" font-weight="700">VOZ 3 · MUTEADA</text>
+      <text x="10" y="36" fill="#52525b" font-size="9.5">Sin evento de nota</text>
+      <text x="10" y="52" fill="#52525b" font-size="8.5">Bypass de cálculo</text>
+      <text x="10" y="72" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8">CPU 0% · CERO CARGA</text>
+      <text x="10" y="88" fill="#71717a" font-size="8">thispoly~ mute 1</text>
+    </g>
+
+    <!-- VOZ 4..8 (POOL EN REPOSO) -->
+    <g transform="translate(555, 34)">
+      <rect width="170" height="100" rx="4" fill="#141417" stroke="#27272a" stroke-width="1" stroke-dasharray="3 3" />
+      <text x="10" y="18" fill="#71717a" font-family="ui-monospace, monospace" font-size="9" font-weight="700">VOCES 4 HASTA 8</text>
+      <text x="10" y="36" fill="#52525b" font-size="9.5">Pool de Reserva</text>
+      <text x="10" y="52" fill="#52525b" font-size="8.5">Voice Allocation Pool</text>
+      <text x="10" y="72" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8">CPU 0% · Muteadas</text>
+      <text x="10" y="88" fill="#71717a" font-size="8">Listas para Voice Stealing</text>
+    </g>
+  </g>
+
+  <!-- CONNECTOR TO OUTLET -->
+  <path d="M 470 252 L 470 278" stroke="#71717a" stroke-width="1.4" fill="none" marker-end="url(#arr-neutral)" />
+  <text x="480" y="270" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5">Suma Vectorial de Salida (out~ 1)</text>
+
+  <!-- NODO INFERIOR: OUT~ 1 -->
+  <g transform="translate(370, 280)">
+    <rect width="200" height="36" rx="4" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <text x="100" y="22" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" text-anchor="middle">[out~ 1] (Mezcla DAC)</text>
+  </g>
+</svg>

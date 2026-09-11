@@ -14,24 +14,7 @@ description: "Capítulo del curso universitario de Max/MSP"
 
 En la computación musical clásica y la ingeniería de audio, el tiempo no se procesa como un único continuo. El oído y el cerebro humano perciben los intervalos temporales de maneras radicalmente distintas según su escala de magnitud:
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                   LAS TRES ESCALAS TEMPORALES                          │
-├────────────────────────────────────────────────────────────────────────┤
-│ 1. MICRO-TIEMPO (< 20 ms)  DOMINIO DEL TIMBRE Y LA FASE               │
-│    • El cerebro no distingue eventos separados.                        │
-│    • Las oscilaciones se perciben como ALTURA (Pitch) o COLOR TIMBRAL. │
-│    • Es el territorio exclusivo del AUDIO THREAD (MSP a 48 kHz).       │
-│                                                                        │
-│ 2. MESO-TIEMPO (20 ms a 100 ms)  RETARDOS Y ESPACIALIDAD              │
-│    • Efecto Haas, ecos tempranos, flanging y transitorios de ataque.   │
-│    • Límite perceptivo del retraso táctil en teclados MIDI.            │
-│                                                                        │
-│ 3. MACRO-TIEMPO (> 100 ms)  DOMINIO DEL RITMO Y LA FORMA              │
-│    • Sucesión de pulsos perceptibles como eventos musicales discretos. │
-│    • Es el territorio del SCHEDULER THREAD ([metro], [delay], [pipe]). │
-└────────────────────────────────────────────────────────────────────────┘
-```
+![FIG 1.0 · Las Tres Escalas del Tiempo Sonoro: Micro, Meso y Macro-tiempo](/assets/diagrams/diagrama_escalas_tiempo_sonoro.svg)
 
 > **La Consecuencia Arquitectónica:** Intentar procesar el *micro-tiempo* con objetos de control (`[metro]`, `[delay]`) genera **Jitter masivo y distorsión**, porque el sistema operativo no puede despachar interrupciones de software a 48.000 veces por segundo sin colapsar. Para el micro-tiempo existe **MSP** y **`gen~`**. Para el macro-tiempo existe el **Scheduler**.
 

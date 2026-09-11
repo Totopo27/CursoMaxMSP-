@@ -37,16 +37,7 @@ $$H(z) = \frac{b_0 + b_1 z^{-1} + b_2 z^{-2}}{1 + a_1 z^{-1} + a_2 z^{-2}}$$
   $$|p_k| < 1 \quad \forall k$$
   Si un polo toca el círculo ($|p| = 1$), el sistema se convierte en un oscilador senoidal puro no amortiguado (auto-oscilación). Si cruza hacia afuera ($|p| > 1$), los valores de amplitud crecen exponencialmente hasta saturar los registros flotantes de 64 bits en `+inf` o `NaN`, silenciando el motor de audio de Max.
 
-```
-       Im(z)
-         |     x (Polo fuera: ¡EXPLOSIÓN!)
-      1.0|   .---.
-         |  /  x  \  (Polo dentro: Estable y resonante)
-   ------+-(---+---)+------ Re(z)
-         |  \     /
-     -1.0|   '---' (Círculo Unitario |z|=1)
-         |
-```
+![FIG 3.7 · Estabilidad Asintótica en el Plano Complejo Z y Círculo Unitario](/assets/diagrams/diagrama_plano_z_estabilidad_filtros.svg)
 
 ---
 

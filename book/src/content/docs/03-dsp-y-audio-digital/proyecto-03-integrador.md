@@ -19,51 +19,7 @@ description: "Capítulo del curso universitario de Max/MSP"
 
 ## 1. Diagrama de Arquitectura del Instrumento
 
-```
-                    +-----------------------+
-                    |  MIDI / kslider Note  |
-                    +-----------------------+
-                      |                   |
-               (Freq fc)                  (Gate / Velocity)
-                      |                   |
-            +---------v---------+  +------v------+
-            |  C:M Ratio Math   |  |   ADSR~     | ---> [VCA Principal]
-            +-------------------+  |  Envolvente |
-             | (fc)        | (fm)  +-------------+
-             |      +------v------+
-             |      | Modulador   |
-             |      |  cycle~     |
-             |      +------+------+
-             |             |
-             |      +------v------+
-             |      |  FM Index   | <--- [ADSR~ Timbre Env]
-             |      |  Multiplic. |
-             |      +------+------+
-             |             | (d(t))
-            +v-------------v----+
-            |     Carrier       |
-            |     cycle~        |
-            +---------+---------+
-                      | (FM Signal)
-            +---------v---------+
-            |  Filtro Resonante | <--- [LFO Modulación Corte]
-            |      lores~       |
-            +---------+---------+
-                      |
-            +---------v---------+
-            |   VCA Amplitud    | <--- [*~ Headroom 0.35]
-            +---------+---------+
-                      |
-            +---------v---------+
-            | Tape Delay Stereo | <--- [tapin~ / tapout~ con LFO Doppler]
-            +----+---------+----+
-                 |         |
-               (Left)   (Right)
-                 |         |
-            +----v---------v----+
-            |      ezdac~       |
-            +-------------------+
-```
+![FIG 3.5 · Arquitectura DSP del Sintetizador Híbrido FM-Sustractivo (Proyecto Integrador 03)](/assets/diagrams/diagrama_proyecto_03_arquitectura.svg)
 
 ---
 

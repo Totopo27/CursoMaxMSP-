@@ -31,14 +31,7 @@ typedef struct atom {
 } t_atom;
 ```
 
-```
-┌────────────────────────────────────────────────────────┐
-│                   ESTRUCTURA T_ATOM                    │
-├──────────────────────────┬─────────────────────────────┤
-│  a_type (2 bytes)        │  a_w (8 bytes - Union)      │
-│  Identificador de Tipo   │  Almacena long, float o ptr │
-└──────────────────────────┴─────────────────────────────┘
-```
+![FIG 1.2 · Disposición Binaria del Struct t_atom](/assets/diagrams/diagrama_atom_c_struct.svg)
 
 > **Principio de Localidad de Caché:** Un array de átomos en Max (`t_atom argv[]`) es un bloque **contiguo de memoria RAM**. Esto permite que la CPU lo cargue directamente en su memoria caché L1/L2, permitiendo que una lista de 100 números se transmita entre objetos en apenas unos pocos nanosegundos.
 

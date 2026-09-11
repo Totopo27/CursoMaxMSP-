@@ -1,0 +1,79 @@
+﻿<svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">SISTEMAS EMBEBIDOS · COMPILACIÓN CRUZADA PARA HARDWARE</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 5.3 · DESPLIEGUE AUTÓNOMO EN DAISY SEED (ARM CORTEX-M7)</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- CONTENEDOR DE LA PLACA DAISY SEED -->
+  <g transform="translate(25, 45)">
+    <rect width="890" height="260" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="890" height="24" rx="6" fill="#27272a" />
+    <rect y="19" width="890" height="5" fill="#27272a" />
+    <text x="12" y="16" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">ELECTRO-SMITH DAISY SEED (ARM CORTEX-M7 @ 480 MHZ · CÓDEC 24-BIT / 96 KHZ)</text>
+
+    <!-- COLUMNA 1: ENTRADAS FÍSICAS -->
+    <g transform="translate(20, 45)">
+      <!-- ADC Pots -->
+      <rect width="180" height="55" rx="4" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="10" y="18" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">CONVERSIÓN ANALÓGICA</text>
+      <text x="10" y="34" fill="#f4f4f5" font-size="9.5" font-weight="600">ADC / Potenciómetros (12-bit)</text>
+      <text x="10" y="47" fill="#71717a" font-size="8">Tensión 0.0V - 3.3V</text>
+
+      <!-- Audio In -->
+      <g transform="translate(0, 80)">
+        <rect width="180" height="55" rx="4" fill="#222226" stroke="#52525b" stroke-width="1" />
+        <text x="10" y="18" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="8" font-weight="700">ENTRADAS DE AUDIO</text>
+        <text x="10" y="34" fill="#f4f4f5" font-size="9.5" font-weight="600">Audio IN L / R (I2S DMA)</text>
+        <text x="10" y="47" fill="#71717a" font-size="8">Códec AK4556 Estéreo</text>
+      </g>
+    </g>
+
+    <!-- COLUMNA 2: HAL LIBDAISY & CALLBACK -->
+    <g transform="translate(250, 45)">
+      <rect width="220" height="135" rx="5" fill="#141417" stroke="#27272a" stroke-width="1" />
+      <text x="12" y="20" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">CAPA DE ABSTRACCIÓN (LIBDAISY)</text>
+      <text x="12" y="42" fill="#f4f4f5" font-size="10.5" font-weight="600">Hardware Abstraction Layer</text>
+      <text x="12" y="60" fill="#a1a1aa" font-size="9">• Mapeo de parámetros continuos.</text>
+      <text x="12" y="76" fill="#a1a1aa" font-size="9">• Búferes DMA sin bloqueo de CPU.</text>
+      <text x="12" y="98" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="8.5">AudioCallback(float **in, float **out)</text>
+    </g>
+
+    <!-- COLUMNA 3: GEN_EXPORTED C++ PERFORM ENGINE (FOCAL ACCENT) -->
+    <g transform="translate(520, 45)">
+      <rect width="350" height="135" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+      <rect width="350" height="20" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+      <rect y="15" width="350" height="5" fill="rgba(235, 108, 54, 0.18)" />
+      <text x="12" y="14" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">NÚCLEO DSP COMPILADO: [GEN~ EXPORTCODE]</text>
+
+      <text x="14" y="42" fill="#f4f4f5" font-size="11" font-weight="600">Bucle Perform C++ Optimizado para Cortex-M7</text>
+      <text x="14" y="60" fill="#fed7aa" font-size="9">• Código C++ ISO puro generado sin dependencias de Max.</text>
+      <text x="14" y="76" fill="#fed7aa" font-size="9">• Instrucciones hardware FPU a 480 MHz en punto flotante.</text>
+      <text x="14" y="92" fill="#fed7aa" font-size="9">• Salidas procesadas hacia buffers DMA de audio estéreo.</text>
+      <text x="14" y="118" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5">Salida física: Jacks Audio OUT L / R (EuroRack / Pedal)</text>
+    </g>
+
+    <!-- CONEXIONES ORTOGONALES ENTRE COLUMNAS -->
+    <!-- ADC a HAL -->
+    <path d="M 200 72 L 250 72" stroke="#71717a" stroke-width="1.3" fill="none" marker-end="url(#arr-neutral)" />
+    <!-- Audio In a Callback -->
+    <path d="M 200 152 L 250 152" stroke="#38bdf8" stroke-width="1.4" fill="none" marker-end="url(#arr-neutral)" />
+    <!-- HAL a Gen Exported -->
+    <path d="M 470 112 L 520 112" stroke="#eb6c36" stroke-width="1.5" fill="none" marker-end="url(#arr-accent)" />
+
+    <!-- FOOTER RESUMEN DE FLUJO -->
+    <g transform="translate(20, 200)">
+      <rect width="850" height="42" rx="4" fill="#141417" stroke="#27272a" stroke-width="1" />
+      <text x="12" y="18" fill="#f4f4f5" font-size="9.5" font-weight="600">Ciclo Completo de Despliegue:</text>
+      <text x="12" y="32" fill="#a1a1aa" font-size="8.5">Prototipado en Max/MSP  Exportación C++  Compilación con arm-none-eabi-gcc  Flasheo DFU por USB  Operación 100% autónoma sin computadora.</text>
+    </g>
+  </g>
+</svg>

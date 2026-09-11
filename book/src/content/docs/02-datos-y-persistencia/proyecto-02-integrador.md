@@ -24,41 +24,7 @@ Este proyecto corona el **Módulo 2 (Estructuras de Datos, Persistencia y Comuni
 
 ##  2. Diagrama de Arquitectura del Sistema
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                    PROYECTO 2: MORPHING PRESET ENGINE                       │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│   [nodes] (Pad 2D) ──────────► [prepend recall multi]                       │
-│                                           │                                 │
-│   Comandos Temporales ────────────────────┼──────────► [pattrstorage]       │
-│   ('recall 1 2 4000.')                    │                    ▲            │
-│                                           ▼                    │            │
-│   Archivos JSON ─────────────► write/read banco.json           │ (Obex)     │
-│                                                                ▼            │
-│                                                        [autopattr]          │
-│                                                                │            │
-│            ┌───────────────────┬───────────────────┬───────────┴───────┐    │
-│            ▼                   ▼                   ▼                   ▼    │
-│     [varname cutoff]   [varname res]      [varname mod]       [varname amp] │
-│            │                   │                   │                   │    │
-│            └───────────────────┼───────────────────┼───────────────────┘    │
-│                                │                   │                        │
-│                                ▼                   ▼                        │
-│                       ┌─────────────────────────────────────┐               │
-│                       │      MOTOR ACÚSTICO MULTI-MODO      │               │
-│                       │  cycle~ (Carrier) + cycle~ (Mod FM) │               │
-│                       │  Filtro lores~ + Envolvente line~   │               │
-│                       │  Atenuador *~ 0.5 (Anti-clipping)   │               │
-│                       └──────────────────┬──────────────────┘               │
-│                                          │                                  │
-│                                          ▼                                  │
-│                       ┌─────────────────────────────────────┐               │
-│                       │     STAGE FINAL DAC (FlexASIO)      │               │
-│                       │   Bus global_panic para silenciar   │               │
-│                       └─────────────────────────────────────┘               │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+![FIG 2.4 · Arquitectura del Motor de Morphing y Presets (Proyecto Integrador 02)](/assets/diagrams/diagrama_proyecto_02_arquitectura.svg)
 
 ---
 

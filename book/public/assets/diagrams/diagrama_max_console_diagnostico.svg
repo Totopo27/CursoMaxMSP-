@@ -1,0 +1,75 @@
+﻿<svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">DEPURACIÓN Y MONITOREO DEL MOTOR · MAX CONSOLE</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 0.9 · NIVELES DE DIAGNÓSTICO Y FILTRADO (CTRL+M)</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- CONTENEDOR DE LA CONSOLA -->
+  <g transform="translate(25, 45)">
+    <rect width="890" height="260" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="890" height="24" rx="6" fill="#27272a" />
+    <rect y="19" width="890" height="5" fill="#27272a" />
+    <text x="12" y="16" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">MAX CONSOLE · VENTANA DE DIAGNÓSTICO DEL KERNEL (CTRL + M)</text>
+
+    <!-- HEADER COLUMNAS DE LA TABLA DE EVENTOS -->
+    <g transform="translate(20, 36)">
+      <rect width="850" height="26" rx="3" fill="#141417" stroke="#27272a" stroke-width="1" />
+      <text x="15" y="17" fill="#71717a" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">SEVERIDAD</text>
+      <text x="120" y="17" fill="#71717a" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">OBJETO / EMISOR</text>
+      <text x="280" y="17" fill="#71717a" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">MENSAJE DE DIAGNÓSTICO EN TIEMPO REAL</text>
+      <text x="730" y="17" fill="#71717a" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">ORIGEN / HILO</text>
+    </g>
+
+    <!-- FILA 1: INFO -->
+    <g transform="translate(20, 68)">
+      <rect width="850" height="34" rx="3" fill="#18181b" stroke="#27272a" stroke-width="1" />
+      <rect x="8" y="7" width="55" height="20" rx="3" fill="#222226" />
+      <text x="35" y="21" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="8" font-weight="700" text-anchor="middle">INFO</text>
+      <text x="120" y="21" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9">[print freq]</text>
+      <text x="280" y="21" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="9">frecuencia fundamental: 440.000000 Hz</text>
+      <text x="730" y="21" fill="#71717a" font-family="ui-monospace, monospace" font-size="8">Scheduler Thread</text>
+    </g>
+
+    <!-- FILA 2: WARNING (FOCAL TINT) -->
+    <g transform="translate(20, 108)">
+      <rect width="850" height="34" rx="3" fill="#2a1f14" stroke="#f59e0b" stroke-width="1" />
+      <rect x="8" y="7" width="65" height="20" rx="3" fill="rgba(245, 158, 11, 0.2)" />
+      <text x="40" y="21" fill="#f59e0b" font-family="ui-monospace, monospace" font-size="8" font-weight="700" text-anchor="middle">WARNING</text>
+      <text x="120" y="21" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9">[live.dial]</text>
+      <text x="280" y="21" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="9">minimum value (20000.) must be less than maximum value (20.)</text>
+      <text x="730" y="21" fill="#f59e0b" font-family="ui-monospace, monospace" font-size="8">UI / Main Thread</text>
+    </g>
+
+    <!-- FILA 3: ERROR (CRÍTICO) -->
+    <g transform="translate(20, 148)">
+      <rect width="850" height="34" rx="3" fill="#2a1414" stroke="#ef4444" stroke-width="1" />
+      <rect x="8" y="7" width="55" height="20" rx="3" fill="rgba(239, 68, 68, 0.2)" />
+      <text x="35" y="21" fill="#ef4444" font-family="ui-monospace, monospace" font-size="8" font-weight="700" text-anchor="middle">ERROR</text>
+      <text x="120" y="21" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9">[tapin~]</text>
+      <text x="280" y="21" fill="#fca5a5" font-family="ui-monospace, monospace" font-size="9">dsp: unable to allocate memory for delay line buffer (exceeded RAM)</text>
+      <text x="730" y="21" fill="#ef4444" font-family="ui-monospace, monospace" font-size="8">Audio Thread</text>
+    </g>
+
+    <!-- FILA 4: C/SDK NATIVO (FOCAL ACCENT) -->
+    <g transform="translate(20, 188)">
+      <rect width="850" height="34" rx="3" fill="#1c1613" stroke="#eb6c36" stroke-width="1.2" />
+      <rect x="8" y="7" width="65" height="20" rx="3" fill="rgba(235, 108, 54, 0.2)" />
+      <text x="40" y="21" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700" text-anchor="middle">CLANG/C</text>
+      <text x="120" y="21" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9">[mi_external~]</text>
+      <text x="280" y="21" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="9">initialized perform64 routine with SIMD AVX2 vectorization</text>
+      <text x="730" y="21" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8">post() Native Kernel</text>
+    </g>
+
+    <!-- FOOTER RESUMEN -->
+    <text x="25" y="242" fill="#71717a" font-size="8.5">Herramientas: Filtrado selectivo por severidad · Buscador por nombre de objeto · Limpieza de consola (Clear) para pruebas en blanco.</text>
+  </g>
+</svg>

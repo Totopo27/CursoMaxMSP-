@@ -24,16 +24,7 @@ description: "Capítulo del curso universitario de Max/MSP"
 
 Dentro de un subparche `[gen~]`, podés crear el objeto `[codebox]`. Todo el texto dentro de `codebox` se escribe en **GenExpr** (un dialecto de sintaxis basada en C/JavaScript optimizado estrictamente para DSP de coma flotante).
 
-```
-[ Entradas in1, in2 ] ---> +-------------------------------+
-                           | codebox (GenExpr)             |
-                           | Param drive(1.0);             |
-                           | History y(0);                 |
-                           | x = in1 * drive;              |
-                           | y = tanh(x);                  |
-                           | out1 = y;                     |
-                           +-------------------------------+ ---> [ Salida out1 ]
-```
+![FIG 5.4 · Anatomía del Objeto [codebox] y Sintaxis GenExpr](/assets/diagrams/diagrama_genexpr_codebox_pipeline.svg)
 
 ### Reglas Sintácticas Fundamentales
 - Cada instrucción termina con punto y coma (`;`).

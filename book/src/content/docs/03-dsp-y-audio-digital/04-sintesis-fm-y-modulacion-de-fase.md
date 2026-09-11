@@ -63,23 +63,7 @@ La naturaleza tímbrica del sonido final (si suena a un instrumento musical trad
 
 $$\text{Harmonicity Ratio} = \frac{f_c}{f_m}$$
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                 GUÍA DE RELACIONES ARMÓNICAS EN SÍNTESIS FM                 │
-├─────────────────────────────────────────────────────────────────────────────┤
-│ • Relación 1 : 1 (Ej: Carrier 440 Hz, Mod 440 Hz)                           │
-│   Parciales: 440, 880, 1320, 1760 Hz (Serie Armónica Completa: Tipo Diente)│
-│                                                                             │
-│ • Relación 1 : 2 (Ej: Carrier 440 Hz, Mod 880 Hz)                           │
-│   Parciales: 440, 1320, 2200, 3080 Hz (Solo Armónicos Impares: Clarinete)  │
-│                                                                             │
-│ • Relaciones Fraccionarias / Racionales (Ej: 1 : 3.5, 2 : 3)                │
-│   Parciales armónicos con sub-armónicos o fondos formánticos cálidos.       │
-│                                                                             │
-│ • Relaciones Irracionales (Ej: 1 : 1.414, 1 : 2.718)                       │
-│   Parciales inarmónicos sin relación de múltiplos enteros: Campanas, gongs. │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+![FIG 3.4 · Relaciones Armónicas (Ratio C:M) y Estructura Tímbrica en Síntesis FM](/assets/diagrams/diagrama_relaciones_armonicas_fm.svg)
 
 ---
 

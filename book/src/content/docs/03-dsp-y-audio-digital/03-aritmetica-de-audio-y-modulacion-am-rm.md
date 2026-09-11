@@ -21,51 +21,8 @@ Cuando multiplicas dos ondas continuas con frecuencias $f_c$ (Portadora / Carrie
 
 $$\cos(2\pi f_c t) \cdot \cos(2\pi f_m t) = \frac{1}{2}\cos\big(2\pi (f_c + f_m) t\big) + \frac{1}{2}\cos\big(2\pi (f_c - f_m) t\big)$$
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                 ESPECTRO RESULTANTE: MODULACIÓN EN ANILLO                   │
-├─────────────────────────────────────────────────────────────────────────────┤
-│ Señal Portadora (Carrier):    f_c = 440 Hz                                  │
-│ Señal Moduladora (Modulator): f_m = 100 Hz                                  │
-│                                                                             │
-│ Espectro de Salida:                                                         │
-│   • Banda Lateral Inferior: f_c - f_m = 440 - 100 = 340 Hz                  │
-│   • Banda Lateral Superior: f_c + f_m = 440 + 100 = 540 Hz                  │
-│   • ¡LA FUNDAMENTAL ORIGINAL (440 Hz) DESAPARECE POR COMPLETO!              │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+![FIG 3.2 · Modulación en Anillo (Bipolar) vs. Modulación de Amplitud (Unipolar)](/assets/diagrams/diagrama_rm_vs_am.svg)
 
----
-
-## 2. Modulación en Anillo (RM) vs. Modulación de Amplitud (AM)
-
-La diferencia entre RM y AM radica en un único componente: **el Offset de Corriente Continua (DC Offset)** de la señal moduladora.
-
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                       RING MODULATION VS. AMPLITUDE MOD                     │
-├─────────────────────────────────────────────────────────────────────────────┤
-│ 1. RING MODULATION (RM / Bipolar):                                          │
-│    • Moduladora bipolar: oscila entre -1.0 y +1.0 (media = 0.0).            │
-│    • Salida: ÚNICAMENTE bandas laterales (f_c - f_m) y (f_c + f_m).         │
-│    • Sonido: Metálico, acampanado, robótico y radicalmente inarmónico.      │
-│                                                                             │
-│ 2. AMPLITUDE MODULATION (AM / Unipolar):                                    │
-│    • Moduladora unipolar: oscila entre 0.0 y 1.0 (con offset DC).           │
-│    • Fórmula: Carrier * (1.0 + Modulator)                                   │
-│    • Salida: La portadora f_c PERMANECE + las dos bandas laterales.         │
-│    • Sonido: Trémolo (en bajas frecuencias) o refuerzo armónico cálido.     │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
-
-```
-   Espectro Ring Mod (RM):           Espectro Amplitude Mod (AM):
-        │                                 │          f_c
-        │                                 │           │
-     f_c-f_m        f_c+f_m            f_c-f_m        │        f_c+f_m
-        │              │                  │           │           │
-    ────┴──────────────┴─────►        ────┴───────────┴───────────┴─────►
-```
 
 ---
 

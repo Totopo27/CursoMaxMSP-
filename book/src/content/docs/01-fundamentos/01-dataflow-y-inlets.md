@@ -17,11 +17,6 @@ La computación moderna convencional se rige por la **Arquitectura Von Neumann**
 * El contador avanza secuencialmente instrucción por instrucción (paso 1, paso 2, paso 3).
 * El programador controla activamente el flujo temporal mediante bucles (`for`, `while`) y sentencias condicionales (`if/else`).
 
-```
-[ Modelo Von Neumann (Python / C++ / Rust) ]
-   Instrucción 1 ──► Instrucción 2 ──► Instrucción 3 (Secuencia Forzada)
-```
-
 ### El Paradigma Dataflow (Dennis, MIT 1974)
 Max no es imperativo ni lineal; implementa el modelo de **Computación por Flujo de Datos (Dataflow)**:
 * **No existe un Contador de Programa que recorra el parche.**
@@ -29,15 +24,7 @@ Max no es imperativo ni lineal; implementa el modelo de **Computación por Flujo
 * Un nodo permanece en **estado de reposo absoluto** hasta que un mensaje llega físicamente a una de sus entradas.
 * El cómputo no se ejecuta porque "le toca el turno en el código", sino **únicamente cuando hay datos disponibles para ser transformados**.
 
-```
-[ Modelo Dataflow de Max ]
-       [ Entrada A ]       [ Entrada B ]
-             │                   │
-             └────────► ◯ ◄──────┘
-                    (Nodo)
-             Se activa SOLO cuando
-             llega energía de datos.
-```
+![FIG 1.1 · Von Neumann vs. Dataflow Reactivo](/assets/diagrams/diagrama_von_neumann_vs_dataflow.svg)
 
 > **Por qué esto importa:** En interacción musical en tiempo real, no puedes congelar la CPU en un bucle `while(true)` esperando a que el músico toque una nota. El sistema debe ser **completamente reactivo y asíncrono**.
 
@@ -67,18 +54,7 @@ Para que la cuerda suene, necesitas aplicar **energía cinética**: frotar el ar
 * En Max, el **Inlet Caliente** (generalmente el izquierdo) representa la **excitación del sistema**.
 * Al recibir un dato o un mensaje de disparo (`bang`), toma el estado interno actual guardado en los inlets fríos, ejecuta la operación matemática y **dispara inmediatamente el resultado hacia el exterior**.
 
-```
-    [ Parámetro de Estado ]          [ Señal de Excitación ]
-    (Longitud de la cuerda)          (Golpe del arco / Púa)
-               │                                │
-               ▼ (Inlet Frío)                   ▼ (Inlet Caliente)
-       ┌────────────────────────────────────────────────┐
-       │              OBJETO / INSTRUMENTO              │
-       └───────────────────────┬────────────────────────┘
-                               │
-                               ▼
-                       [ Salida / Sonido ]
-```
+![FIG 1.1B · Estado Pasivo (Cold) vs. Excitación Activa (Hot)](/assets/diagrams/diagrama_inlets_hot_cold.svg)
 
 ---
 
@@ -93,12 +69,7 @@ Un parche de Max es, formalmente, un **Grafo Acíclico Dirigido (Directed Acycli
 ### El Teorema del Bucle Infinito en Tiempo Lógico Cero ($t = 0$)
 ¿Qué sucede si conectas la salida de un objeto de vuelta a su propio inlet caliente en un ciclo cerrado?
 
-```
-          ┌─────────────┐
-          │     + 1     │◄──────┐  (Bucle Cerrado en t = 0)
-          └──────┬──────┘       │
-                 └──────────────┘
-```
+![FIG 1.1C · Grafo Dirigido Acíclico (DAG) vs. Bucle Infinito en t = 0](/assets/diagrams/diagrama_dag_feedback_delay.svg)
 
 En física, ningún efecto puede ser su propia causa en el mismo instante temporal. En computación:
 1. El objeto emite un valor por su salida.
@@ -156,15 +127,7 @@ Cuando un solo outlet se bifurca hacia múltiples inlets, el compilador dinámic
 
 > **Right-to-Left (Derecha a Izquierda), Bottom-to-Top (Abajo hacia Arriba)**
 
-```
-             ┌───────────┐
-             │   [bang]  │
-             └─────┬─────┘
-           ┌───────┴───────┐
-           ▼               ▼
-      [print Dos]     [print Uno]  <-- [print Uno] está más a la derecha,
-                                       por lo tanto se ejecuta PRIMERO.
-```
+![FIG 1.1D · Regla Espacial Right-to-Left vs. Determinismo Estructural con Trigger](/assets/diagrams/diagrama_right_to_left_trigger.svg)
 
 ### El Peligro de las Condiciones de Carrera Visuales (The "Fragile Patch" Problem)
 Uno de los problemas estructurales más frecuentes en la programación visual dentro de Max se conoce como el **"Fragile Patch Problem"**:

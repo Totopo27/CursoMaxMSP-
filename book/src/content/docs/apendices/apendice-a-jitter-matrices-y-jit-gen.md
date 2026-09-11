@@ -36,21 +36,7 @@ Un plano representa una capa paralela de datos para cada celda de la matriz:
 
 En las versiones modernas de Max, procesar matrices píxel por píxel en la CPU es una práctica obsoleta para gráficos complejos. El ecosistema **`jit.gl`** delega todo el cálculo gráfico a la GPU mediante texturas y buffers de vértices.
 
-```
-+-------------------------------------------------------------+
-|                     Pipeline de GPU Jitter                  |
-|                                                             |
-|  [jit.world] (Contexto Maestro, Render Loop a 60 fps)       |
-|       |                                                     |
-|       +---> [jit.gl.gridshape] (Geometría: Esfera / Toro)   |
-|       |          | (Vértices 3D)                            |
-|       |          v                                          |
-|       +---> [jit.gl.pix] / [jit.gen] (Fragment & Vertex DSP)|
-|       |          | (Transformación matricial JIT en GPU)    |
-|       |          v                                          |
-|       +---> [jit.gl.node] (Sub-escena con cámara / luces)   |
-+-------------------------------------------------------------+
-```
+![FIG A.2 · Pipeline Gráfico y Shaders Acelerados en GPU (jit.gl)](/assets/diagrams/diagrama_jitter_gpu_pipeline.svg)
 
 ### 2.1. El Rol Central de `jit.world`
 El objeto `[jit.world nombre_contexto]` unifica la ventana de visualización, el contexto de renderizado de hardware y el reloj maestro (*render loop*):

@@ -29,13 +29,7 @@ En Max existen dos formas de encapsular complejidad:
 | **Argumentos posicionales** | No soporta `#1`, `#2` (mismo espacio que el padre) | Soporta `#1`, `#2` y atributos `@param` |
 | **Aislamiento de namespace** | Comparte el namespace `#0` del padre | Genera un ID `#0` **único e irrepetible** por instancia |
 
-```
-                       [ Patch Principal ]
-                      /                   \
-        [p submodulo]                       [mi_abstraccion 440.]
-     (Embebido en el JSON)              (Lee archivo externo en disco)
-     (Comparte variables #0)             (Namespace propio #0 = 1042)
-```
+![FIG 4.0 · Subparche [p] vs. Abstracción Modular y Aislamiento de Namespace #0](/assets/diagrams/diagrama_abstraccion_namespace.svg)
 
 ---
 

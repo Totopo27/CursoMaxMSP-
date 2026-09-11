@@ -57,31 +57,7 @@ Un **Package** es el estándar canónico de distribución modular establecido po
 ### 3.1. Estructura Canónica de un Package
 En disco (ubicado en `Documentos/Max 8/Packages/nombre_paquete/`), un paquete debe respetar la siguiente topología de carpetas:
 
-```
-nombre_paquete/
-├── docs/           # Documentación indexable para el sistema de búsqueda
-├── externals/      # Binarios compilados (.mxe64 en Windows, .mxo en macOS)
-├── help/           # Archivos de ayuda interactivos (objeto.maxhelp)
-├── init/           # Scripts de inicialización y alias de objetos
-├── media/          # Archivos de audio, imágenes de interfaz y recursos
-└── patchers/       # Abstracciones y módulos principales del paquete
-```
-
-### 3.2. El Package Manager
-* **Acceso:** Menú **File**  **Show Package Manager**.
-* **Funcionalidad:**
-  * Navegación catalogada de librerías oficiales de Cycling '74 y repositorios de instituciones académicas internacionales (ej. IRCAM, CNMAT Berkeley, ZKM, FluCoMa de la Universidad de Huddersfield).
-  * Instalación con un solo clic: descarga, descompresión y registro automático en los *Search Paths* del sistema sin necesidad de reiniciar la aplicación.
-  * Detección y notificación automática de actualizaciones de versión.
-
-```
-LIBRERÍAS ACADÉMICAS Y HERRAMIENTAS DESTACADAS EN EL PACKAGE MANAGER:
-* BEAP: Módulos de síntesis emulando sintetizadores analógicos en formato Eurorack.
-* Vizzie: Módulos de procesamiento visual y síntesis de video en tiempo real.
-* CNMAT Externals: Herramientas avanzadas de síntesis aditiva y procesamiento espectral (UC Berkeley).
-* FluCoMa (Fluid Corpus Manipulation): Machine learning y descomposición de corpus sonoros.
-* Spat5: Biblioteca del IRCAM para espacialización sonora multicanal y acústica virtual.
-```
+![FIG 0.4 · Topología Canónica de un Package y Librerías Académicas Destacadas](/assets/diagrams/diagrama_package_manager_topologia.svg)
 
 ---
 

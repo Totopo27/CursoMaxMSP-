@@ -18,17 +18,7 @@ Max incorpora un motor de sincronización de tiempo musical denominado **Global 
 ### 1.1. El Objeto `[transport]`
 El objeto `[transport]` permite consultar y manipular programáticamente el estado del reloj maestro:
 
-```
-          [toggle]             [flonum: 120.]
-             │                       │
-         [metro 20]             [tempo $1]
-             │                       │
-             └────────► [transport] ◄┘
-                             │
-            ┌────────────────┼────────────────┐
-            ▼                ▼                ▼
-     (1: compás.negra.tick) (2: BPM)  (3: timesig num/den)
-```
+![FIG 0.7 · Interfaz de Control y Enrutamiento del Objeto transport](/assets/diagrams/diagrama_transport_arbol.svg)
 
 * **Mensaje `1` / `0`:** Arranca o detiene el reloj global.
 * **Mensaje `tempo <bpm>`:** Modifica la velocidad rítmica en pulsos por minuto (ej. `tempo 135.5`).
@@ -61,23 +51,7 @@ En lugar de fijar intervalos en milisegundos fijos (que se desfasan si el tempo 
 
 Para controlar instrumentos interactivos en vivo, Max provee dos mecanismos de enlace directo sin cables visuales: **MIDI Mapping** y **Key Mapping**.
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                        ARQUITECTURA DE MAPEOS                          │
-├──────────────────────────────────┬─────────────────────────────────────┤
-│          MIDI MAPPING            │             KEY MAPPING             │
-│   (Controlador físico externo)   │     (Teclado de la computadora)     │
-├──────────────────────────────────┼─────────────────────────────────────┤
-│   Fader / Potenciómetro Físico   │         Tecla 'Barra Espaciadora'   │
-│              │                   │                    │                │
-│              ▼                   │                    ▼                │
-│        [ MIDI LEARN ]            │             [ KEY LEARN ]           │
-│              │                   │                    │                │
-│              ▼                   │                    ▼                │
-│     Dial gráfico [live.dial]     │         Botón [button] / [toggle]   │
-│   (Escalado: Min: 20, Max: 20000)│         (Disparo instantáneo)       │
-└──────────────────────────────────┴─────────────────────────────────────┘
-```
+![FIG 0.8 · Arquitectura de Mapeos: MIDI Learn vs. Key Map Mode](/assets/diagrams/diagrama_mapeos_midi_key.svg)
 
 ### 2.1. Modo de Mapeo MIDI (*MIDI Map Mode*)
 * **Propósito:** Asignar mensajes de Control Change (CC), ruedas de modulación, faders motorizados o notas de sintetizadores externos a cualquier control del parche.

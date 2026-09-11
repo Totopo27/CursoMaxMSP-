@@ -16,20 +16,7 @@ En ingeniería de software y computación musical, los sistemas complejos requie
 1. **Acoplamiento Fuerte (Tight Coupling):** Objetos unidos físicamente por cables. El orden de ejecución es predecible, determinista y local. Sin embargo, al escalar a parches gigantes con cientos de submódulos, la interfaz se convierte en un nido ininteligible de cables ("spaghetti patch").
 2. **Desacoplamiento Débil (Loose Coupling / Publish-Subscribe):** Objetos que emiten datos a un canal nombrado sin saber quién los escucha. Elimina el desorden visual y permite comunicación inter-ventana, pero **introduce el riesgo de colisión de nombres y no-determinismo temporal**.
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                    MODELO PUNTO A PUNTO VS. MODELO PUB/SUB                  │
-├─────────────────────────────────────────────────────────────────────────────┤
-│ Cable Directo (Punto a Punto):                                              │
-│   [Origen] ───────────────────► [Destino]  (Orden Determinista R-to-L)      │
-│                                                                             │
-│ Difusión Remota (Publish / Subscribe):                                      │
-│                ┌──────────────► [receive canal_A] (Receptor 1)              │
-│   [send canal_A]                                                            │
-│                └──────────────► [receive canal_A] (Receptor 2)              │
-│   (¡Orden de recepción NO DETERMINISTA si hay múltiples receptores!)        │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+![FIG 2.3 · Modelo Punto a Punto vs. Modelo Publish / Subscribe](/assets/diagrams/diagrama_pubsub_vs_direct.svg)
 
 ### El Espacio de Nombres Global (Global Namespace)
 

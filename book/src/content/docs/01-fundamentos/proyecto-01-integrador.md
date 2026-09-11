@@ -21,39 +21,7 @@ Este proyecto integra **la totalidad de los conceptos teóricos y prácticos des
 
 ##  2. Diagrama de Arquitectura del Sistema
 
-```
-┌───────────────────────────────────────────────────────────────────────────┐
-│                      1. SUBSISTEMA TEMPORAL (LISTENER)                    │
-│   [toggle] ──► [metro 125ms] ──► [counter 0 11] (Master Clock 16th notes) │
-└─────────────────────────────────────┬─────────────────────────────────────┘
-                                      │
-              ┌───────────────────────┴───────────────────────┐
-              ▼                                               ▼
-┌──────────────────────────┐                     ┌──────────────────────────┐
-│  Polirritmo A: [% 4]     │                     │  Polirritmo B: [% 3]     │
-│  Base Cuaternaria (Kick) │                     │  Tresillo / Síncopa (Lead│
-└─────────────┬────────────┘                     └────────────┬─────────────┘
-              │                                               │
-              ▼                                               ▼
-┌──────────────────────────┐                     ┌──────────────────────────┐
-│ 2. MOTOR SINTESIS BASS   │                     │ 3. MOTOR COMPOSER MODAL  │
-│ Pitch Envelope ([line~]) │                     │ Random + Cuantizador     │
-│ Sinusoide Pura ([cycle~])│                     │ Rotación con [zl.rot]    │
-└─────────────┬────────────┘                     └────────────┬─────────────┘
-              │                                               │
-              │                                               ▼
-              │                                  ┌──────────────────────────┐
-              │                                  │ 4. MOTOR SINTESIS LEAD   │
-              │                                  │ Modulador FM + Envolvente│
-              └───────────────────────┬──────────┴──────────────────────────┘
-                                      │
-                                      ▼
-                      ┌───────────────────────────────┐
-                      │    5. STAGE FINAL DE SALIDA   │
-                      │     Fader de Ganancia [gain~] │
-                      │    Salida de Audio [ezdac~]   │
-                      └───────────────────────────────┘
-```
+![FIG 1.3 · Arquitectura del Sistema - Secuenciador Polirrítmico Diatónico](/assets/diagrams/diagrama_proyecto_01_arquitectura.svg)
 
 ---
 

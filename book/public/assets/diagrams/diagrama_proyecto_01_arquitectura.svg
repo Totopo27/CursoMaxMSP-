@@ -1,0 +1,88 @@
+﻿<svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">ARQUITECTURA DEL SISTEMA INTEGRADO (PROYECTO 01)</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 1.3 · SECUENCIADOR POLIRRÍTMICO DIATÓNICO</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- ETAPA 1: RELOJ MAESTRO (LISTENER) (ACCENT FOCAL) -->
+  <g transform="translate(250, 42)">
+    <rect width="440" height="54" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="440" height="18" rx="4" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="10" y="13" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700">1. SUBSISTEMA TEMPORAL (LISTENER) · SCHEDULER</text>
+    <text x="10" y="38" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="600">[toggle] ──► [metro 125ms] ──► [counter 0 11] (Master Clock 16th)</text>
+  </g>
+
+  <!-- LÍNEAS DE BIFURCACIÓN -->
+  <path d="M 360 96 L 360 115 L 180 115 L 180 125" fill="none" stroke="#eb6c36" stroke-width="1.2" marker-end="url(#arr-accent)" />
+  <path d="M 580 96 L 580 115 L 750 115 L 750 125" fill="none" stroke="#eb6c36" stroke-width="1.2" marker-end="url(#arr-accent)" />
+
+  <!-- ETAPA 2: POLIRRITMOS A Y B -->
+  <!-- Polirritmo A -->
+  <g transform="translate(60, 125)">
+    <rect width="240" height="42" rx="3" fill="#18181b" stroke="#3f3f46" stroke-width="1" />
+    <text x="10" y="18" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9" font-weight="600">Polirritmo A: [% 4] (Base Cuaternaria)</text>
+    <text x="10" y="32" fill="#a1a1aa" font-size="7.5">Patrón rítmico de Bombo / Kick</text>
+  </g>
+
+  <!-- Polirritmo B -->
+  <g transform="translate(630, 125)">
+    <rect width="240" height="42" rx="3" fill="#18181b" stroke="#3f3f46" stroke-width="1" />
+    <text x="10" y="18" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9" font-weight="600">Polirritmo B: [% 3] (Tresillo / Síncopa)</text>
+    <text x="10" y="32" fill="#a1a1aa" font-size="7.5">Acento melódico de Lead sincopado</text>
+  </g>
+
+  <!-- LÍNEAS HACIA MOTORES -->
+  <path d="M 180 167 L 180 185" fill="none" stroke="#71717a" stroke-width="1.2" marker-end="url(#arr-neutral)" />
+  <path d="M 750 167 L 750 185" fill="none" stroke="#71717a" stroke-width="1.2" marker-end="url(#arr-neutral)" />
+
+  <!-- ETAPA 3: MOTORES DE SÍNTESIS Y COMPOSICIÓN -->
+  <!-- Motor Bass -->
+  <g transform="translate(60, 185)">
+    <rect width="240" height="52" rx="3" fill="#18181b" stroke="#3f3f46" stroke-width="1" />
+    <text x="10" y="18" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">2. MOTOR SÍNTESIS BASS</text>
+    <text x="10" y="32" fill="#f4f4f5" font-size="8">Pitch Envelope con [line~]</text>
+    <text x="10" y="44" fill="#a1a1aa" font-size="7.5">Oscilador senoidal puro con [cycle~]</text>
+  </g>
+
+  <!-- Motor Composer Modal -->
+  <g transform="translate(630, 185)">
+    <rect width="240" height="52" rx="3" fill="#18181b" stroke="#3f3f46" stroke-width="1" />
+    <text x="10" y="18" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">3. MOTOR COMPOSER MODAL</text>
+    <text x="10" y="32" fill="#f4f4f5" font-size="8">Random + Cuantizador Diatónico</text>
+    <text x="10" y="44" fill="#fed7aa" font-size="7.5">Permutación circular con [zl.rot]</text>
+  </g>
+
+  <!-- Línea de Composer a Síntesis Lead -->
+  <path d="M 750 237 L 750 248" fill="none" stroke="#71717a" stroke-width="1.2" marker-end="url(#arr-neutral)" />
+
+  <!-- Motor Síntesis Lead -->
+  <g transform="translate(630, 248)">
+    <rect width="240" height="42" rx="3" fill="#18181b" stroke="#3f3f46" stroke-width="1" />
+    <text x="10" y="18" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">4. MOTOR SÍNTESIS LEAD</text>
+    <text x="10" y="32" fill="#f4f4f5" font-size="8">Modulador FM ([cycle~]) + Envolvente</text>
+  </g>
+
+  <!-- LÍNEAS DE CONVERGENCIA AL STAGE FINAL -->
+  <path d="M 180 237 L 180 270 L 380 270" fill="none" stroke="#22c55e" stroke-width="1.2" marker-end="url(#arr-neutral)" />
+  <path d="M 630 270 L 560 270" fill="none" stroke="#22c55e" stroke-width="1.2" marker-end="url(#arr-neutral)" />
+
+  <!-- ETAPA 4: STAGE FINAL DE SALIDA -->
+  <g transform="translate(380, 245)">
+    <rect width="180" height="52" rx="4" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <text x="10" y="18" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">5. STAGE FINAL DE SALIDA</text>
+    <text x="10" y="32" fill="#a1a1aa" font-size="8">Fader de Ganancia [gain~]</text>
+    <text x="10" y="44" fill="#22c55e" font-family="ui-monospace, monospace" font-size="7.5">Salida de Audio [ezdac~] L/R</text>
+  </g>
+
+  <!-- FOOTER TÉCNICO -->
+  <text x="25" y="318" fill="#71717a" font-family="ui-monospace, monospace" font-size="7.5">DISEÑO DE SISTEMAS INTERACTIVOS: Desacople estricto entre el motor de escucha/reloj (Listener) y el generador acústico (Composer).</text>
+</svg>

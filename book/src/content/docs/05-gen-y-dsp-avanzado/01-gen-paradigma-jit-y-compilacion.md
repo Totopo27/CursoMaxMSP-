@@ -21,18 +21,7 @@ description: "Capítulo del curso universitario de Max/MSP"
 
 En el motor tradicional de MSP (como vimos en las Lecciones 3.1 y 3.6), el procesamiento ocurre en bloques vectoriales de tamaño $V$ (típicamente $64$ muestras):
 
-```
-MSP Tradicional (Por Bloques):
-Entrada: [ x0, x1, x2, ... x63 ] ---> perform64() ---> Salida: [ y0, y1, y2, ... y63 ]
-¡Cualquier realimentación debe esperar al siguiente bloque de 64 muestras!
-
-Gen~ (Muestra a Muestra Nativo JIT):
-Bucle C++ compilado:
-for (int n = 0; n < vectorsize; n++) {
-    y[n] = x[n] + a * y_prev;  // y_prev es y[n-1] EXACTO
-    y_prev = y[n];             // Retroalimentación de 1 muestra (history)
-}
-```
+![FIG 5.0 · Procesamiento por Bloques Vectoriales en MSP vs. Cálculo Muestra a Muestra en gen~](/assets/diagrams/diagrama_bloque_vs_muestra_gen.svg)
 
 Si intentás construir un filtro IIR analógico de saturación no lineal con diodos o un oscilador caótico de Lorenz en MSP normal, el retardo de 64 muestras en el lazo de feedback destruye la estabilidad matemática de la ecuación diferencial. **En `gen~`, el retardo de feedback es de 1 sola muestra ($z^{-1}$), permitiendo modelado físico y DSP analógico virtual (VA) con precisión matemática absoluta.**
 
@@ -42,53 +31,7 @@ Si intentás construir un filtro IIR analógico de saturación no lineal con dio
 
 Cuando cerrás la ventana de un objeto `[gen~]`, no se interpreta nada:
 
-```
-[ Patcher gen~ / Código GenExpr ]
-               |
-               v
- [ Generador de AST (Abstract Syntax Tree) ]
-               |
-               v
- [ Emisión de Código Intermedio C++ ]
-               |
-               v
-   [ Compilador JIT / LLVM Engine ]
-               |
-               v
-[ Código de Máquina Binario x86-64 / ARM64 ]
-               |
-               v
-   [ Enlace Directo a RAM de Audio ]
-```
-
-- **Cero Overhead de Mensajería**: Dentro de `gen~` no existen los objetos Obex de Max ni el scheduler de eventos. Todas las operaciones matemáticas (`+`, `*`, `sin`, `tanh`) se compilan como instrucciones de ensamblador directas en la CPU (`fadd`, `fmul`, registros SSE/AVX o NEON).
-- **Parámetros Flotantes en el Hilo de Audio**: Los objetos `[param]` se actualizan en memoria atómica en cada muestra sin provocar *zipper noise*.
-
----
-
-## 3. El Operador Fundamental: `history` ($z^{-1}$)
-
-En `gen~`, el operador `[history]` define una celda de memoria que almacena el valor de la muestra anterior:
-
-$$y[n] = x[n] + g \cdot y[n-1]$$
-
-En el lienzo de `gen~`:
-- La salida de un operador se conecta a la entrada de `[history mi_memoria]`.
-- La salida de `[history]` se realimenta a la suma de entrada.
-- Al compilarse, `[history]` se convierte simplemente en una variable flotante local en C++: `double mi_memoria;`.
-
-```
-          in 1 (x[n])
-            |
-            v
-          [ + ] <-------------+
-            |                 |
-            +---> out 1       |
-            |                 |
-         [ * 0.95 ]           |
-            |                 |
-       [ history ] -----------+  (Retardo exacto z^-1)
-```
+![FIG 5.1 · Pipeline JIT / LLVM y Retardo de Historial (z^-1) en gen~](/assets/diagrams/diagrama_gen_jit_pipeline.svg)
 
 ---
 

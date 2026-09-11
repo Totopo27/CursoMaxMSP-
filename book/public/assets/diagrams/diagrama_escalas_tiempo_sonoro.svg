@@ -1,0 +1,95 @@
+﻿<svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">PSICOACÚSTICA DEL TIEMPO · DAVID CREASEY Y MILLER PUCKETTE</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 1.0 · LAS TRES ESCALAS DEL TIEMPO SONORO</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- CONTENEDOR DE 3 TARJETAS HORIZONTALES -->
+  <!-- 1. MICRO-TIEMPO (< 20 MS) - FOCAL ACCENT -->
+  <g transform="translate(25, 45)">
+    <rect width="280" height="260" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="280" height="22" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+    <rect y="17" width="280" height="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="10" y="15" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">1. MICRO-TIEMPO (&lt; 20 MS)</text>
+    <text x="10" y="42" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">Dominio del Timbre y la Fase</text>
+    <text x="10" y="58" fill="#fed7aa" font-size="9">El oído no distingue eventos aislados</text>
+
+    <!-- ILUSTRACIÓN MICRO-TIEMPO: ONDA CONTINUA -->
+    <g transform="translate(10, 75)">
+      <rect width="260" height="85" rx="3" fill="#2a1b14" stroke="#eb6c36" stroke-width="1" />
+      <path d="M 15 42 Q 35 15, 55 42 T 95 42 T 135 42 T 175 42 T 215 42 T 245 42" stroke="#eb6c36" stroke-width="2" fill="none" />
+      <text x="130" y="75" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="8" text-anchor="middle">Oscilación periódica continua (&gt; 50 Hz)</text>
+    </g>
+
+    <text x="10" y="180" fill="#f4f4f5" font-size="9" font-weight="600">Percepción Psicoacústica:</text>
+    <text x="10" y="196" fill="#fed7aa" font-size="8.5">• Se percibe como ALTURA (Pitch) o COLOR TIMBRAL.</text>
+    <text x="10" y="212" fill="#fed7aa" font-size="8.5">• Territorio exclusivo del AUDIO THREAD (MSP a 48 kHz).</text>
+    <text x="10" y="235" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8">Objetos: [cycle~], [gen~], [lores~]</text>
+  </g>
+
+  <!-- 2. MESO-TIEMPO (20 MS A 100 MS) -->
+  <g transform="translate(325, 45)">
+    <rect width="280" height="260" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="280" height="22" rx="5" fill="#27272a" />
+    <rect y="17" width="280" height="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">2. MESO-TIEMPO (20 MS A 100 MS)</text>
+    <text x="10" y="42" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">Retardos y Espacialidad</text>
+    <text x="10" y="58" fill="#a1a1aa" font-size="9">Efecto Haas y primeros ecos</text>
+
+    <!-- ILUSTRACIÓN MESO-TIEMPO: PULSOS DISPERSOS -->
+    <g transform="translate(10, 75)">
+      <rect width="260" height="85" rx="3" fill="#141417" stroke="#27272a" stroke-width="1" />
+      <line x1="30" y1="65" x2="30" y2="20" stroke="#38bdf8" stroke-width="2.5" />
+      <line x1="80" y1="65" x2="80" y2="30" stroke="#38bdf8" stroke-width="2" stroke-dasharray="2 2" />
+      <line x1="140" y1="65" x2="140" y2="40" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="2 2" />
+      <line x1="210" y1="65" x2="210" y2="50" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="2 2" />
+      <text x="130" y="75" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="8" text-anchor="middle">Reflexiones tempranas / Haas Effect</text>
+    </g>
+
+    <text x="10" y="180" fill="#e4e4e7" font-size="9" font-weight="600">Percepción Psicoacústica:</text>
+    <text x="10" y="196" fill="#a1a1aa" font-size="8.5">• Flanging, chorus, doblado estéreo y transitorios.</text>
+    <text x="10" y="212" fill="#a1a1aa" font-size="8.5">• Límite táctil del retardo perceptible en teclados MIDI.</text>
+    <text x="10" y="235" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="8">Objetos: [tapin~ / tapout~], [comb~]</text>
+  </g>
+
+  <!-- 3. MACRO-TIEMPO (> 100 MS) -->
+  <g transform="translate(625, 45)">
+    <rect width="290" height="260" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="290" height="22" rx="5" fill="#27272a" />
+    <rect y="17" width="290" height="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">3. MACRO-TIEMPO (&gt; 100 MS)</text>
+    <text x="10" y="42" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">Ritmo, Métrica y Forma</text>
+    <text x="10" y="58" fill="#a1a1aa" font-size="9">Sucesión de eventos discretos</text>
+
+    <!-- ILUSTRACIÓN MACRO-TIEMPO: PULSOS MÉTRICOS -->
+    <g transform="translate(10, 75)">
+      <rect width="270" height="85" rx="3" fill="#141417" stroke="#27272a" stroke-width="1" />
+      <circle cx="40" cy="42" r="14" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="40" y="46" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">1</text>
+      
+      <circle cx="105" cy="42" r="14" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="105" y="46" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">2</text>
+      
+      <circle cx="170" cy="42" r="14" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="170" y="46" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">3</text>
+      
+      <circle cx="235" cy="42" r="14" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="235" y="46" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">4</text>
+      <text x="135" y="75" fill="#71717a" font-family="ui-monospace, monospace" font-size="8" text-anchor="middle">Compás 4/4 a 120 BPM (500 ms/negra)</text>
+    </g>
+
+    <text x="10" y="180" fill="#e4e4e7" font-size="9" font-weight="600">Percepción Psicoacústica:</text>
+    <text x="10" y="196" fill="#a1a1aa" font-size="8.5">• Eventos musicales discretos, compases y melodía.</text>
+    <text x="10" y="212" fill="#a1a1aa" font-size="8.5">• Territorio del SCHEDULER THREAD con Overdrive.</text>
+    <text x="10" y="235" fill="#a78bfa" font-family="ui-monospace, monospace" font-size="8">Objetos: [metro], [delay], [transport]</text>
+  </g>
+</svg>

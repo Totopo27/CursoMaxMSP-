@@ -1,0 +1,77 @@
+﻿<svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">ALMACENAMIENTO EN RAM Y LECTURA CONTINUA · BUFFER~</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 3.9 · MEMORIA COMPARTIDA Y LOS TRES LECTORES CANÓNICOS</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- CONTENEDOR SUPERIOR: BUFFER~ EN RAM GLOBAL (FOCAL ACCENT) -->
+  <g transform="translate(25, 42)">
+    <rect width="890" height="95" rx="6" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="890" height="22" rx="6" fill="rgba(235, 108, 54, 0.18)" />
+    <rect y="17" width="890" height="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="12" y="15" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">MEMORIA GLOBAL COMPARTIDA DE AUDIO EN RAM (HEAP)</text>
+
+    <!-- INFO BUFFER -->
+    <g transform="translate(15, 30)">
+      <text x="0" y="18" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="12" font-weight="700">[buffer~ mi_sample 2000 2]</text>
+      <text x="0" y="38" fill="#fed7aa" font-size="9.5">Duración: 2000 ms · 2 Canales Estéreo · Frecuencia Nativa: 48000 Hz · 96.000 muestras por canal</text>
+      <text x="0" y="52" fill="#a1a1aa" font-size="8.5">Puntero bloqueable: t_buffer_ref en C SDK (buffer_ref_lock) · Acceso multicanal simultáneo</text>
+    </g>
+  </g>
+
+  <!-- TRES CABLES ORTOGONALES A LECTORES -->
+  <path d="M 170 137 L 170 170" stroke="#38bdf8" stroke-width="1.4" fill="none" marker-end="url(#arr-neutral)" />
+  <path d="M 470 137 L 470 170" stroke="#eb6c36" stroke-width="1.5" fill="none" marker-end="url(#arr-accent)" />
+  <path d="M 770 137 L 770 170" stroke="#a78bfa" stroke-width="1.4" fill="none" marker-end="url(#arr-neutral)" />
+
+  <!-- LECTOR 1: [PLAY~] (TEMPORAL LINEAL) -->
+  <g transform="translate(25, 172)">
+    <rect width="280" height="135" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="280" height="20" rx="5" fill="#27272a" />
+    <rect y="15" width="280" height="5" fill="#27272a" />
+    <text x="10" y="14" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="8" font-weight="700">1. LECTURA POR TIEMPO ABSOLUTO</text>
+
+    <text x="12" y="38" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">[play~ mi_sample]</text>
+    <text x="12" y="56" fill="#a1a1aa" font-size="9">• Entrada: Posición exacta en milisegundos.</text>
+    <text x="12" y="72" fill="#a1a1aa" font-size="9">• Controlado por rampas [line~].</text>
+    <text x="12" y="88" fill="#a1a1aa" font-size="9">• Ideal para síntesis granular por granos.</text>
+    <text x="12" y="112" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="8">Modo: Unidireccional o loops temporales</text>
+  </g>
+
+  <!-- LECTOR 2: [GROOVE~] (VARISPEED CON LOOP) - FOCAL ACCENT -->
+  <g transform="translate(325, 172)">
+    <rect width="290" height="135" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="290" height="20" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+    <rect y="15" width="290" height="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="10" y="14" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700">2. REPRODUCTOR VARISPEED CONTINUO</text>
+
+    <text x="12" y="38" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">[groove~ mi_sample]</text>
+    <text x="12" y="56" fill="#fed7aa" font-size="9">• Entrada: Señal continua de velocidad flotante.</text>
+    <text x="12" y="72" fill="#fed7aa" font-size="9">• 1.0 = normal, 2.0 = +1 octava, -1.0 = reversa.</text>
+    <text x="12" y="88" fill="#fed7aa" font-size="9">• Bucle automático con ventana de fundido (crossfade).</text>
+    <text x="12" y="112" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8">Modo: Reproducción elástica estilo cinta analógica</text>
+  </g>
+
+  <!-- LECTOR 3: [INDEX~] (ACCESO CRUDO MUESTRA A MUESTRA) -->
+  <g transform="translate(635, 172)">
+    <rect width="280" height="135" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="280" height="20" rx="5" fill="#27272a" />
+    <rect y="15" width="280" height="5" fill="#27272a" />
+    <text x="10" y="14" fill="#a78bfa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">3. ACCESO DIRECTO INDEXADO</text>
+
+    <text x="12" y="38" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">[index~ mi_sample]</text>
+    <text x="12" y="56" fill="#a1a1aa" font-size="9">• Entrada: Señal con índice exacto (0 ... N-1).</text>
+    <text x="12" y="72" fill="#a1a1aa" font-size="9">• Gobernado típicamente por [phasor~].</text>
+    <text x="12" y="88" fill="#a1a1aa" font-size="9">• Conversión a oscilador wavetable puro.</text>
+    <text x="12" y="112" fill="#a78bfa" font-family="ui-monospace, monospace" font-size="8">Modo: Lectura precisa sin interpolación adicional</text>
+  </g>
+</svg>

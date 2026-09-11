@@ -1,0 +1,63 @@
+﻿<svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">CONFIGURACIÓN DEL MOTOR DSP · AUDIO STATUS</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 0.10 · PARÁMETROS CRÍTICOS DEL DRIVER Y BUFFERS</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- CONTENEDOR AUDIO STATUS (MAX) -->
+  <g transform="translate(25, 45)">
+    <rect width="890" height="260" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="890" height="24" rx="6" fill="#27272a" />
+    <rect y="19" width="890" height="5" fill="#27272a" />
+    <text x="12" y="16" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">AUDIO STATUS PANEL · CONTROLADOR, FRECUENCIA Y VECTORES (CTRL + SHIFT + A)</text>
+
+    <!-- 4 GRUPOS DE CONFIGURACIÓN -->
+    <!-- GRUPO 1: DRIVER & DEVICE -->
+    <g transform="translate(20, 38)">
+      <rect width="415" height="95" rx="5" fill="#141417" stroke="#27272a" stroke-width="1" />
+      <text x="12" y="18" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">DRIVER Y ENRUTAMIENTO FÍSICO</text>
+      <text x="12" y="40" fill="#f4f4f5" font-size="9.5">Driver: <tspan fill="#38bdf8" font-family="ui-monospace, monospace" font-weight="700">[ ASIO ]</tspan></text>
+      <text x="12" y="58" fill="#f4f4f5" font-size="9.5">Device: <tspan fill="#a1a1aa">ASIO Dedicado / FL Studio ASIO / FlexASIO</tspan></text>
+      <text x="12" y="78" fill="#71717a" font-size="8">Acceso directo a hardware sin capas de mezcla de Windows</text>
+    </g>
+
+    <!-- GRUPO 2: SAMPLE RATE & VECTORES (FOCAL ACCENT) -->
+    <g transform="translate(455, 38)">
+      <rect width="415" height="95" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+      <rect width="45" height="18" rx="3" fill="rgba(235, 108, 54, 0.2)" x="358" y="8" />
+      <text x="380" y="21" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700" text-anchor="middle">DSP</text>
+
+      <text x="12" y="18" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">FRECUENCIA Y TAMAÑO DE VECTORES</text>
+      <text x="12" y="40" fill="#f4f4f5" font-size="9.5">Sampling Rate: <tspan fill="#fed7aa" font-family="ui-monospace, monospace" font-weight="700">48000 Hz</tspan> (o 44100 Hz)</text>
+      <text x="12" y="58" fill="#f4f4f5" font-size="9.5">I/O Vector Size: <tspan fill="#fed7aa" font-family="ui-monospace, monospace" font-weight="700">256 o 512</tspan> muestras (Latencia HW)</text>
+      <text x="12" y="76" fill="#f4f4f5" font-size="9.5">Signal Vector Size: <tspan fill="#eb6c36" font-family="ui-monospace, monospace" font-weight="700">64</tspan> muestras (Bucle perform64)</text>
+    </g>
+
+    <!-- GRUPO 3: HILOS Y PRIORIDADES (SCHEDULER & AUDIO INTERRUPT) -->
+    <g transform="translate(20, 145)">
+      <rect width="850" height="95" rx="5" fill="#141417" stroke="#3f3f46" stroke-width="1" />
+      <text x="15" y="20" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">MODOS DE OPERACIÓN DEL PLANIFICADOR TEMPORAL</text>
+
+      <g transform="translate(15, 32)">
+        <rect width="395" height="48" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.2" />
+        <text x="10" y="18" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="9" font-weight="700">[X] Scheduler in Overdrive: ACTIVADO</text>
+        <text x="10" y="34" fill="#fed7aa" font-size="8.5">Prioridad en tiempo real por encima del hilo gráfico (UI)</text>
+      </g>
+
+      <g transform="translate(435, 32)">
+        <rect width="400" height="48" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.2" />
+        <text x="10" y="18" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="9" font-weight="700">[X] Audio Interrupt: ACTIVADO</text>
+        <text x="10" y="34" fill="#fed7aa" font-size="8.5">Eventos de control y MIDI procesados dentro de la interrupción de audio</text>
+      </g>
+    </g>
+  </g>
+</svg>

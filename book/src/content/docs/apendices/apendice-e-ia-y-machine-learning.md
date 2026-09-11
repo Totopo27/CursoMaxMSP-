@@ -34,24 +34,7 @@ Desarrollado por la Universidad de Huddersfield, **FluCoMa** provee un conjunto 
 
 Mientras que FluCoMa opera con descriptores y redes densas, **`nn~`** (creado por Antoine Caillon y Philippe Esling en el IRCAM) resuelve el problema del **Deep Learning acústico con PyTorch**.
 
-```
-+-------------------------------------------------------------+
-|                      nn~ / RAVE Architecture                |
-|                                                             |
-|  [Audio Input (Mic/Guitarra)] (48 kHz)                      |
-|       |                                                     |
-|       v (Latencia < 5 ms, LibTorch C++)                     |
-|  [nn~ rave_model.ts]                                        |
-|       |                                                     |
-|       +---> Encoder: Mapeo a Espacio Latente (z-vector)     |
-|       |          |                                          |
-|       |          v (Manipulación algorítmica en Max)        |
-|       +---> Decoder: Resíntesis Neuronal Generativa         |
-|       |                                                     |
-|       v                                                     |
-|  [Audio Output (Timbre Híbrido Re-sintetizado)]             |
-+-------------------------------------------------------------+
-```
+![FIG E.2 · Arquitectura de Autoencoder Variacional en Tiempo Real (RAVE / nn~)](/assets/diagrams/diagrama_nn_rave_architecture.svg)
 
 ### 2.1. ¿Cómo funciona RAVE (*Realtime Audio Variational autoEncoder*)?
 - RAVE comprime una señal de audio compleja a un vector latente de baja dimensión (por ejemplo, 16 números continuos) y reconstruye la señal en tiempo real.

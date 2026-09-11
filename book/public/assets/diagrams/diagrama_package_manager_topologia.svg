@@ -1,0 +1,105 @@
+﻿<svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">ESTRUCTURACIÓN DE PROYECTOS Y PAQUETES · CYCLING '74</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 0.4 · TOPOLOGÍA CANÓNICA DE UN PACKAGE Y LIBRERÍAS ACADÉMICAS</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- PANEL IZQUIERDO: ÁRBOL DE DIRECTORIOS DEL PACKAGE -->
+  <g transform="translate(25, 45)">
+    <rect width="430" height="260" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="430" height="24" rx="6" fill="#27272a" />
+    <rect y="19" width="430" height="5" fill="#27272a" />
+    <text x="12" y="16" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">TOPOLOGÍA EN DISCO (DOCUMENTS/MAX 8/PACKAGES/MI_PAQUETE/)</text>
+
+    <!-- TREE LIST -->
+    <g transform="translate(16, 36)">
+      <rect width="398" height="28" rx="3" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="10" y="18" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="9" font-weight="700">├── docs/          <tspan fill="#a1a1aa" font-weight="400"># Documentación indexable para búsqueda</tspan></text>
+
+      <g transform="translate(0, 34)">
+        <rect width="398" height="28" rx="3" fill="#1c1613" stroke="#eb6c36" stroke-width="1.2" />
+        <text x="10" y="18" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="9" font-weight="700">├── externals/     <tspan fill="#fed7aa" font-weight="400"># Binarios compilados (.mxe64 / .mxo)</tspan></text>
+      </g>
+
+      <g transform="translate(0, 68)">
+        <rect width="398" height="28" rx="3" fill="#222226" stroke="#52525b" stroke-width="1" />
+        <text x="10" y="18" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9" font-weight="700">├── help/          <tspan fill="#a1a1aa" font-weight="400"># Archivos de ayuda interactivos (objeto.maxhelp)</tspan></text>
+      </g>
+
+      <g transform="translate(0, 102)">
+        <rect width="398" height="28" rx="3" fill="#222226" stroke="#52525b" stroke-width="1" />
+        <text x="10" y="18" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9" font-weight="700">├── init/          <tspan fill="#a1a1aa" font-weight="400"># Scripts de inicialización y alias de objetos</tspan></text>
+      </g>
+
+      <g transform="translate(0, 136)">
+        <rect width="398" height="28" rx="3" fill="#222226" stroke="#52525b" stroke-width="1" />
+        <text x="10" y="18" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9" font-weight="700">├── media/         <tspan fill="#a1a1aa" font-weight="400"># Muestras de audio, texturas y assets</tspan></text>
+      </g>
+
+      <g transform="translate(0, 170)">
+        <rect width="398" height="28" rx="3" fill="#222226" stroke="#52525b" stroke-width="1" />
+        <text x="10" y="18" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="9" font-weight="700">└── patchers/      <tspan fill="#a1a1aa" font-weight="400"># Abstracciones y módulos reusables (.maxpat)</tspan></text>
+      </g>
+    </g>
+  </g>
+
+  <!-- PANEL DERECHO: LIBRERÍAS DESTACADAS DEL PACKAGE MANAGER (FOCAL ACCENT) -->
+  <g transform="translate(485, 45)">
+    <rect width="430" height="260" rx="6" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="430" height="24" rx="6" fill="rgba(235, 108, 54, 0.18)" />
+    <rect y="19" width="430" height="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="12" y="16" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">FRAMEWORKS Y LIBRERÍAS ACADÉMICAS EN EL PACKAGE MANAGER</text>
+
+    <!-- 5 LIBRERIAS DESTACADAS -->
+    <g transform="translate(16, 36)">
+      <!-- 1. BEAP -->
+      <g transform="translate(0, 0)">
+        <rect width="398" height="34" rx="3" fill="#2a1b14" stroke="#eb6c36" stroke-width="1" />
+        <text x="10" y="16" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="9" font-weight="700">BEAP</text>
+        <text x="50" y="16" fill="#f4f4f5" font-size="8.5">Módulos de síntesis emulando hardware Eurorack clásico.</text>
+        <text x="10" y="27" fill="#fed7aa" font-size="8">Estándar 1V/Octava y voltajes virtuales normalizados en señal MSP.</text>
+      </g>
+
+      <!-- 2. VIZZIE -->
+      <g transform="translate(0, 40)">
+        <rect width="398" height="34" rx="3" fill="#222226" stroke="#3f3f46" stroke-width="1" />
+        <text x="10" y="16" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="9" font-weight="700">VIZZIE</text>
+        <text x="60" y="16" fill="#f4f4f5" font-size="8.5">Módulos de procesamiento visual y mezcla de video GPU.</text>
+        <text x="10" y="27" fill="#a1a1aa" font-size="8">Ecosistema modular accesible basado internamente en texturas OpenGL.</text>
+      </g>
+
+      <!-- 3. CNMAT -->
+      <g transform="translate(0, 80)">
+        <rect width="398" height="34" rx="3" fill="#222226" stroke="#3f3f46" stroke-width="1" />
+        <text x="10" y="16" fill="#a78bfa" font-family="ui-monospace, monospace" font-size="9" font-weight="700">CNMAT EXTERNALS</text>
+        <text x="130" y="16" fill="#f4f4f5" font-size="8.5">UC Berkeley Center for New Music & Audio.</text>
+        <text x="10" y="27" fill="#a1a1aa" font-size="8">Modelos de resonancia física, síntesis aditiva sinusoidal y enrutamiento OSC.</text>
+      </g>
+
+      <!-- 4. FLUCOMA -->
+      <g transform="translate(0, 120)">
+        <rect width="398" height="34" rx="3" fill="#2a1b14" stroke="#eb6c36" stroke-width="1" />
+        <text x="10" y="16" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="9" font-weight="700">FLUCOMA</text>
+        <text x="75" y="16" fill="#f4f4f5" font-size="8.5">Fluid Corpus Manipulation (Univ. of Huddersfield).</text>
+        <text x="10" y="27" fill="#fed7aa" font-size="8">Descomposición espectral, slicing de transitorios, MFCC y redes neuronales.</text>
+      </g>
+
+      <!-- 5. SPAT5 -->
+      <g transform="translate(0, 160)">
+        <rect width="398" height="34" rx="3" fill="#222226" stroke="#3f3f46" stroke-width="1" />
+        <text x="10" y="16" fill="#22c55e" font-family="ui-monospace, monospace" font-size="9" font-weight="700">IRCAM SPAT5</text>
+        <text x="95" y="16" fill="#f4f4f5" font-size="8.5">Spatialisateur de Audio 3D (IRCAM París).</text>
+        <text x="10" y="27" fill="#a1a1aa" font-size="8">Acústica virtual de salas, Ambisonics HOA, VBAP y síntesis binaural HRTF.</text>
+      </g>
+    </g>
+  </g>
+</svg>

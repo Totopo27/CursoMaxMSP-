@@ -19,38 +19,7 @@ description: "Capítulo del curso universitario de Max/MSP"
 
 ## 1. Diagrama de Arquitectura del Sistema
 
-```
-                         +-----------------------+
-                         |  MIDI / kslider Note  |
-                         +-----------------------+
-                                     |
-                                     | (note $1 $2)
-                                     v
-                 +---------------------------------------+
-                 | poly~ voz_sintetizador_completo 8     |
-                 |             @parallel 1               |
-                 +---------------------------------------+
-                 | [Voz 1 (Core 0)] ---> thispoly~ (mute)|
-                 | [Voz 2 (Core 1)] ---> thispoly~ (mute)|
-                 | [Voz 3 (Core 2)] ---> thispoly~ (mute)|
-                 | [Voz 4 (Core 3)] ---> thispoly~ (mute)|
-                 | [Voz 5 (Core 0)] ---> thispoly~ (mute)|
-                 | [Voz 6 (Core 1)] ---> thispoly~ (mute)|
-                 | [Voz 7 (Core 2)] ---> thispoly~ (mute)|
-                 | [Voz 8 (Core 3)] ---> thispoly~ (mute)|
-                 +---------------------------------------+
-                        | (Left Sum)       | (Right Sum)
-                        v                  v
-                 +---------------------------------------+
-                 |      Master Headroom Attenuator       |
-                 |               (*~ 0.25)               |
-                 +---------------------------------------+
-                        |                  |
-                        v                  v
-                 +---------------------------------------+
-                 |            ezdac~ Master              |
-                 +---------------------------------------+
-```
+![FIG 4.3 · Arquitectura del Sintetizador Polifónico Multi-Core (Proyecto Integrador 04)](/assets/diagrams/diagrama_proyecto_04_arquitectura.svg)
 
 ---
 

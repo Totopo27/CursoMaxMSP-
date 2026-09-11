@@ -28,26 +28,7 @@ El mayor error de diseño para conectar Max con TouchDesigner es intentar transm
 
 Mientras que Spout mueve la imagen, **OSC** sobre paquetes UDP transmite el control gestual, disparos rítmicos y parámetros musicales:
 
-```
-+-------------------------------------------------------------+
-|                Flujo de Control OSC (UDP)                   |
-|                                                             |
-|  [Max MSP: metro / envolventes]                             |
-|       |                                                     |
-|       v                                                     |
-|  [pak /sintetizador/filtro 440. 0.8]                        |
-|       |                                                     |
-|       v                                                     |
-|  [OpenSoundControl] / [udpsend 127.0.0.1 9000]              |
-|       |                                                     |
-|       +==================== (UDP Packet) ==================>|
-|                                                             |
-|  [TouchDesigner: OSC In CHOP (Port 9000)]                   |
-|       |                                                     |
-|       v                                                     |
-|  [Transformación Geométrica / Disparo de Luces DMX]         |
-+-------------------------------------------------------------+
-```
+![FIG B.2 · Flujo de Telemetría y Control OSC sobre UDP hacia TouchDesigner](/assets/diagrams/diagrama_osc_touchdesigner_pipeline.svg)
 
 ### 2.1. Prácticas Profesionales de Enrutamiento OSC
 - **Namespaces Jerárquicos**: Utilizá convenciones RESTful (`/audio/track1/volume`, `/audio/master/rms`, `/sensor/touch/state`).

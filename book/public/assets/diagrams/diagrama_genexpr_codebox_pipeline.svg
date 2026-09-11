@@ -1,0 +1,58 @@
+﻿<svg viewBox="0 0 940 320" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">SINTAXIS Y KERNEL TEXTUAL · DIALECTO GENEXPR</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 5.4 · ANATOMÍA DEL OBJETO [CODEBOX] EN GEN~</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- CONTENEDOR CENTRAL: ENTRADA, CODEBOX Y SALIDA -->
+  <!-- ENTRADAS IN1, IN2 -->
+  <g transform="translate(30, 110)">
+    <rect width="160" height="70" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <text x="10" y="20" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">INLETS DE AUDIO</text>
+    <text x="10" y="40" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10" font-weight="600">in1: Señal x[n]</text>
+    <text x="10" y="56" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="10">in2: Modulación</text>
+  </g>
+
+  <!-- CONECTOR DE ENTRADA -->
+  <path d="M 190 145 L 240 145" stroke="#38bdf8" stroke-width="1.5" fill="none" marker-end="url(#arr-neutral)" />
+
+  <!-- NODO CENTRAL CODEBOX (FOCAL ACCENT) -->
+  <g transform="translate(245, 45)">
+    <rect width="450" height="250" rx="6" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="450" height="24" rx="6" fill="rgba(235, 108, 54, 0.18)" />
+    <rect y="19" width="450" height="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="12" y="16" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">[CODEBOX] · CÓDIGO TEXTUAL GENEXPR JIT</text>
+
+    <!-- VENTANA DE CÓDIGO FUENTE TEXTUAL -->
+    <g transform="translate(15, 36)">
+      <rect width="420" height="190" rx="4" fill="#141417" stroke="#27272a" stroke-width="1" />
+      <text x="15" y="24" fill="#a78bfa" font-family="ui-monospace, monospace" font-size="9.5">Param drive(1.0, min=0.1, max=10.0);</text>
+      <text x="15" y="44" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="9.5">History y_prev(0.0); <tspan fill="#71717a">// Retardo z^-1 en RAM</tspan></text>
+      <text x="15" y="72" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5">// Saturación no lineal suave con diodo virtual:</text>
+      <text x="15" y="92" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="9.5">x = in1 * drive;</text>
+      <text x="15" y="112" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="10" font-weight="700">y = tanh(x) + 0.1 * y_prev;</text>
+      <text x="15" y="132" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="9.5">y_prev = y; <tspan fill="#71717a">// Actualización muestra a muestra</tspan></text>
+      <text x="15" y="160" fill="#22c55e" font-family="ui-monospace, monospace" font-size="10" font-weight="700">out1 = y;   <tspan fill="#71717a">// Emisión inmediata a outlet</tspan></text>
+    </g>
+  </g>
+
+  <!-- CONECTOR DE SALIDA -->
+  <path d="M 695 145 L 745 145" stroke="#eb6c36" stroke-width="1.5" fill="none" marker-end="url(#arr-accent)" />
+
+  <!-- SALIDA OUT1 -->
+  <g transform="translate(750, 110)">
+    <rect width="160" height="70" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <text x="10" y="20" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">OUTLET DE AUDIO</text>
+    <text x="10" y="40" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10" font-weight="600">out1: Señal y[n]</text>
+    <text x="10" y="56" fill="#71717a" font-family="ui-monospace, monospace" font-size="8.5">Directo a perform()</text>
+  </g>
+</svg>

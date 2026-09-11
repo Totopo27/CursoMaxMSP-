@@ -1,0 +1,92 @@
+﻿<svg viewBox="0 0 940 320" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+    <marker id="arr-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#38bdf8"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">INTERACCIÓN EN VIVO · SISTEMA DE ASIGNACIONES</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 0.8 · MIDI LEARN VS. KEY MAP MODE</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- PANEL IZQUIERDO: MIDI MAPPING (AZUL / HARDWARE EXTERNO) -->
+  <g transform="translate(25, 45)">
+    <rect width="430" height="250" rx="6" fill="#141824" stroke="#38bdf8" stroke-width="1.2" />
+    <rect width="430" height="24" rx="6" fill="rgba(56, 189, 248, 0.15)" />
+    <rect y="19" width="430" height="5" fill="rgba(56, 189, 248, 0.15)" />
+    <text x="12" y="16" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">MODO MIDI MAP (TOOLS -> MIDI MAP MODE)</text>
+
+    <!-- HARDWARE SOURCE -->
+    <g transform="translate(20, 36)">
+      <rect width="390" height="42" rx="4" fill="#1e293b" stroke="#475569" stroke-width="1" />
+      <text x="12" y="16" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="8" font-weight="700">DISPOSITIVO FÍSICO EXTERNO</text>
+      <text x="12" y="32" fill="#f4f4f5" font-size="10" font-weight="600">Fader Motorizado / Potenciómetro / Teclado MIDI (CC / Pitchbend)</text>
+    </g>
+
+    <!-- ARROW 1 -->
+    <path d="M 215 78 L 215 95" stroke="#38bdf8" stroke-width="1.3" fill="none" marker-end="url(#arr-blue)" />
+
+    <!-- INTERMEDIATE PROTOCOL: MIDI LEARN -->
+    <g transform="translate(20, 97)">
+      <rect width="390" height="52" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2" />
+      <text x="12" y="18" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="9" font-weight="700">CAPTURA AUTOMÁTICA (MIDI LEARN)</text>
+      <text x="12" y="34" fill="#94a3b8" font-size="9">Detección de Canal (1-16), Número de CC (0-127) y rango de resolución</text>
+      <text x="12" y="46" fill="#64748b" font-family="ui-monospace, monospace" font-size="8">Interfaz teñida de resaltado azul en el lienzo</text>
+    </g>
+
+    <!-- ARROW 2 -->
+    <path d="M 215 149 L 215 166" stroke="#38bdf8" stroke-width="1.3" fill="none" marker-end="url(#arr-blue)" />
+
+    <!-- TARGET GUI OBJECT -->
+    <g transform="translate(20, 168)">
+      <rect width="390" height="65" rx="4" fill="#1e293b" stroke="#475569" stroke-width="1" />
+      <text x="12" y="18" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="600">Dial Gráfico [live.dial] / Control de Patcher</text>
+      <text x="12" y="36" fill="#94a3b8" font-size="9">Escalamiento paramétrico continuo sin cables</text>
+      <text x="12" y="52" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="8.5">Rango escalado: Min 20.0 Hz  Max 20000.0 Hz</text>
+    </g>
+  </g>
+
+  <!-- PANEL DERECHO: KEY MAPPING (NARANJA / FOCAL) -->
+  <g transform="translate(485, 45)">
+    <rect width="430" height="250" rx="6" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="430" height="24" rx="6" fill="rgba(235, 108, 54, 0.18)" />
+    <rect y="19" width="430" height="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="12" y="16" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">MODO KEY MAP (TOOLS -> KEY MAP MODE)</text>
+
+    <!-- HARDWARE SOURCE -->
+    <g transform="translate(20, 36)">
+      <rect width="390" height="42" rx="4" fill="#27272a" stroke="#52525b" stroke-width="1" />
+      <text x="12" y="16" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">TECLADO DE COMPUTADORA (QWERTY)</text>
+      <text x="12" y="32" fill="#f4f4f5" font-size="10" font-weight="600">Tecla de Acción (Espacio, Teclas 1-9, Letras, Flechas)</text>
+    </g>
+
+    <!-- ARROW 1 -->
+    <path d="M 215 78 L 215 95" stroke="#eb6c36" stroke-width="1.4" fill="none" marker-end="url(#arr-accent)" />
+
+    <!-- INTERMEDIATE PROTOCOL: KEY LEARN -->
+    <g transform="translate(20, 97)">
+      <rect width="390" height="52" rx="4" fill="#2a1b14" stroke="#eb6c36" stroke-width="1.2" />
+      <text x="12" y="18" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="9" font-weight="700">VINCULACIÓN INMEDIATA (KEY LEARN)</text>
+      <text x="12" y="34" fill="#fed7aa" font-size="9">Captura de Keycode ASCII y modificación de estado binario</text>
+      <text x="12" y="46" fill="#ea580c" font-family="ui-monospace, monospace" font-size="8">Interfaz teñida de resaltado naranja en el lienzo</text>
+    </g>
+
+    <!-- ARROW 2 -->
+    <path d="M 215 149 L 215 166" stroke="#eb6c36" stroke-width="1.4" fill="none" marker-end="url(#arr-accent)" />
+
+    <!-- TARGET GUI OBJECT -->
+    <g transform="translate(20, 168)">
+      <rect width="390" height="65" rx="4" fill="#27272a" stroke="#52525b" stroke-width="1" />
+      <text x="12" y="18" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="600">Botón de Disparo [button] / Conmutador [toggle]</text>
+      <text x="12" y="36" fill="#a1a1aa" font-size="9">Accionamiento bi-estable o pulso momentáneo</text>
+      <text x="12" y="52" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="8.5">Disparo inmediato: Play/Stop, Panic, Reset de Presets</text>
+    </g>
+  </g>
+</svg>

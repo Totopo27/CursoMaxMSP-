@@ -1,0 +1,83 @@
+﻿<svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">DSP Y PREVENCIÓN DE TRANSITORIOS ESPURIOS · ENVOLVENTES</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 3.6 · DISCONTINUIDAD ESCALÓN (GIBBS) VS. TRANSICIÓN CONTINUA C^1</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- PANEL IZQUIERDO: DISCONTINUIDAD ESCALÓN (CLIC / ALIASING) -->
+  <g transform="translate(25, 45)">
+    <rect width="430" height="260" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="430" height="24" rx="6" fill="#27272a" />
+    <rect y="19" width="430" height="5" fill="#27272a" />
+    <text x="12" y="16" fill="#ef4444" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">1. PASO ESCALÓN DE HEAVISIDE u(t) · DISCONTINUIDAD BRUTA</text>
+
+    <!-- GRÁFICA ESCALÓN -->
+    <g transform="translate(20, 36)">
+      <rect width="390" height="110" rx="4" fill="#141417" stroke="#ef4444" stroke-width="1" />
+      <!-- Ejes -->
+      <line x1="30" y1="90" x2="360" y2="90" stroke="#52525b" stroke-width="1" marker-end="url(#arr-neutral)" />
+      <line x1="30" y1="90" x2="30" y2="15" stroke="#52525b" stroke-width="1" marker-end="url(#arr-neutral)" />
+      <text x="365" y="93" fill="#71717a" font-family="ui-monospace, monospace" font-size="8">t</text>
+      <text x="25" y="12" fill="#71717a" font-family="ui-monospace, monospace" font-size="8">Amp</text>
+
+      <!-- Señal escalón brusca -->
+      <path d="M 30 90 L 100 90 L 100 30 L 260 30 L 260 90 L 340 90" stroke="#ef4444" stroke-width="2.5" fill="none" />
+      
+      <!-- Clic markers -->
+      <circle cx="100" cy="30" r="4" fill="#ef4444" />
+      <text x="100" y="20" fill="#ef4444" font-family="ui-monospace, monospace" font-size="8" text-anchor="middle">¡CLIC! (t=0)</text>
+
+      <circle cx="260" cy="90" r="4" fill="#ef4444" />
+      <text x="260" y="105" fill="#ef4444" font-family="ui-monospace, monospace" font-size="8" text-anchor="middle">¡CLIC!</text>
+    </g>
+
+    <!-- NOTA FENÓMENO DE GIBBS -->
+    <g transform="translate(20, 160)">
+      <text x="0" y="16" fill="#fca5a5" font-size="10.5" font-weight="600">Convolución Espectral con Función Sinc</text>
+      <text x="0" y="32" fill="#a1a1aa" font-size="9">• Convoluciona la senoide con el espectro del escalón u(t).</text>
+      <text x="0" y="48" fill="#a1a1aa" font-size="9">• Energía desparramada hacia todo el espectro audible hasta Nyquist (fs/2).</text>
+      <text x="0" y="68" fill="#ef4444" font-family="ui-monospace, monospace" font-size="8.5">Resultado: Golpes espurios de alta frecuencia no musicales</text>
+    </g>
+  </g>
+
+  <!-- PANEL DERECHO: RAMPA SUAVIZADA (LINE~ / CURVE~) - FOCAL ACCENT -->
+  <g transform="translate(485, 45)">
+    <rect width="430" height="260" rx="6" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="430" height="24" rx="6" fill="rgba(235, 108, 54, 0.18)" />
+    <rect y="19" width="430" height="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="12" y="16" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">2. RAMPA SUAVIZADA CONTINUA C^1 · INTERPOLACIÓN ANTI-CLICK</text>
+
+    <!-- GRÁFICA CURVA SUAVIZADA -->
+    <g transform="translate(20, 36)">
+      <rect width="390" height="110" rx="4" fill="#2a1b14" stroke="#eb6c36" stroke-width="1" />
+      <!-- Ejes -->
+      <line x1="30" y1="90" x2="360" y2="90" stroke="#71717a" stroke-width="1" marker-end="url(#arr-neutral)" />
+      <line x1="30" y1="90" x2="30" y2="15" stroke="#71717a" stroke-width="1" marker-end="url(#arr-neutral)" />
+      <text x="365" y="93" fill="#71717a" font-family="ui-monospace, monospace" font-size="8">t</text>
+      <text x="25" y="12" fill="#71717a" font-family="ui-monospace, monospace" font-size="8">Amp</text>
+
+      <!-- Curva suave con ataque y decaimiento -->
+      <path d="M 30 90 L 80 90 Q 110 90, 130 30 L 220 30 Q 245 30, 275 90 L 340 90" stroke="#eb6c36" stroke-width="2.5" fill="none" />
+      
+      <text x="105" y="45" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="8">Attack (5-20 ms)</text>
+      <text x="260" y="45" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="8">Release (curve~)</text>
+    </g>
+
+    <!-- NOTA PREVENCIÓN DE CLICKS -->
+    <g transform="translate(20, 160)">
+      <text x="0" y="16" fill="#f4f4f5" font-size="10.5" font-weight="600">Interpolación Vectorial Muestra a Muestra (perform64)</text>
+      <text x="0" y="32" fill="#fed7aa" font-size="9">• [line~] y [curve~] garantizan tiempos de subida y bajada finitos.</text>
+      <text x="0" y="48" fill="#fed7aa" font-size="9">• Respuesta logarítmica / exponencial emulando circuitos RC reales.</text>
+      <text x="0" y="68" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5">Resultado: Cero artefactos de click · Amplitud musical transparente</text>
+    </g>
+  </g>
+</svg>

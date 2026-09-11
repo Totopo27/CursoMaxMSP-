@@ -1,0 +1,112 @@
+﻿<svg viewBox="0 0 940 320" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">PARADIGMAS DE EJECUCIÓN · COMPUTACIÓN MUSICAL</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 1.1 · VON NEUMANN VS. DATAFLOW REACTIVO</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- PANEL IZQUIERDA: MODELO IMPERATIVO VON NEUMANN (1945) -->
+  <g transform="translate(25, 45)">
+    <rect width="430" height="250" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="430" height="24" rx="6" fill="#27272a" />
+    <rect y="19" width="430" height="5" fill="#27272a" />
+    <text x="12" y="16" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">ARQUITECTURA IMPERATIVA CLÁSICA (C++ / PYTHON / RUST)</text>
+
+    <text x="16" y="44" fill="#f4f4f5" font-size="12" font-weight="600">Modelo Von Neumann (Program Counter)</text>
+    <text x="16" y="60" fill="#a1a1aa" font-size="9.5">Ejecución secuencial determinista controlada por puntero de instrucción</text>
+
+    <!-- INSTRUCTION 1 -->
+    <g transform="translate(16, 75)">
+      <rect width="105" height="50" rx="4" fill="#27272a" stroke="#52525b" stroke-width="1" />
+      <text x="10" y="20" fill="#e4e4e7" font-family="ui-monospace, monospace" font-size="9" font-weight="700">Paso 01</text>
+      <text x="10" y="36" fill="#a1a1aa" font-size="8.5">Instrucción 1</text>
+    </g>
+
+    <!-- ARROW 1 -->
+    <path d="M 121 100 L 149 100" stroke="#71717a" stroke-width="1.2" fill="none" marker-end="url(#arr-neutral)" />
+
+    <!-- INSTRUCTION 2 -->
+    <g transform="translate(155, 75)">
+      <rect width="105" height="50" rx="4" fill="#27272a" stroke="#52525b" stroke-width="1" />
+      <text x="10" y="20" fill="#e4e4e7" font-family="ui-monospace, monospace" font-size="9" font-weight="700">Paso 02</text>
+      <text x="10" y="36" fill="#a1a1aa" font-size="8.5">Instrucción 2</text>
+    </g>
+
+    <!-- ARROW 2 -->
+    <path d="M 260 100 L 288 100" stroke="#71717a" stroke-width="1.2" fill="none" marker-end="url(#arr-neutral)" />
+
+    <!-- INSTRUCTION 3 -->
+    <g transform="translate(294, 75)">
+      <rect width="105" height="50" rx="4" fill="#27272a" stroke="#52525b" stroke-width="1" />
+      <text x="10" y="20" fill="#e4e4e7" font-family="ui-monospace, monospace" font-size="9" font-weight="700">Paso 03</text>
+      <text x="10" y="36" fill="#a1a1aa" font-size="8.5">Instrucción 3</text>
+    </g>
+
+    <!-- PROGRAM COUNTER BAR -->
+    <g transform="translate(16, 145)">
+      <rect width="398" height="42" rx="4" fill="#222226" stroke="#3f3f46" stroke-width="1" stroke-dasharray="3 3" />
+      <text x="12" y="18" fill="#e4e4e7" font-family="ui-monospace, monospace" font-size="9" font-weight="600">CPU Program Counter (PC): 0x00401A2F</text>
+      <text x="12" y="32" fill="#71717a" font-size="8.5">Bloqueo síncrono: la CPU evalúa bucles activos for / while</text>
+    </g>
+
+    <!-- WARNING NOTE -->
+    <g transform="translate(16, 200)">
+      <rect width="398" height="36" rx="4" fill="#18181b" stroke="#71717a" stroke-width="1" />
+      <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="600">LIMITACIÓN EN TIEMPO REAL</text>
+      <text x="10" y="28" fill="#71717a" font-size="8.5">Un bucle bloqueante congela la CPU esperando eventos asíncronos externos</text>
+    </g>
+  </g>
+
+  <!-- PANEL DERECHA: MODELO DATAFLOW DE MAX (DENNIS 1974) - FOCAL -->
+  <g transform="translate(485, 45)">
+    <rect width="430" height="250" rx="6" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="430" height="24" rx="6" fill="rgba(235, 108, 54, 0.18)" />
+    <rect y="19" width="430" height="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="12" y="16" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">COMPUTACIÓN POR FLUJO DE DATOS · MAX/MSP</text>
+
+    <text x="16" y="44" fill="#f4f4f5" font-size="12" font-weight="600">Modelo Dataflow Reactivo (Dennis, MIT)</text>
+    <text x="16" y="60" fill="#fed7aa" font-size="9.5">Sin contador de programa: nodos en reposo activados por energía de datos</text>
+
+    <!-- INPUT A (HOT) -->
+    <g transform="translate(45, 75)">
+      <rect width="130" height="42" rx="4" fill="#2a1b14" stroke="#eb6c36" stroke-width="1.2" />
+      <text x="10" y="17" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">ENTRADA A (HOT)</text>
+      <text x="10" y="32" fill="#f4f4f5" font-size="8.5">Evento / Bang de excitación</text>
+    </g>
+
+    <!-- INPUT B (COLD) -->
+    <g transform="translate(255, 75)">
+      <rect width="130" height="42" rx="4" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="10" y="17" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">ENTRADA B (COLD)</text>
+      <text x="10" y="32" fill="#a1a1aa" font-size="8.5">Parámetro pasivo / Estado</text>
+    </g>
+
+    <!-- PATHS FROM INPUTS TO CENTRAL NODE -->
+    <path d="M 110 117 L 110 148 L 195 148" stroke="#eb6c36" stroke-width="1.5" fill="none" marker-end="url(#arr-accent)" />
+    <path d="M 320 117 L 320 148 L 235 148" stroke="#71717a" stroke-width="1.2" fill="none" marker-end="url(#arr-neutral)" />
+
+    <!-- CENTRAL NODE CIRCLE -->
+    <g transform="translate(195, 134)">
+      <rect width="40" height="28" rx="4" fill="#eb6c36" stroke="#fed7aa" stroke-width="1" />
+      <text x="20" y="18" fill="#18181b" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" text-anchor="middle">f(x)</text>
+    </g>
+
+    <!-- PATH TO OUTPUT -->
+    <path d="M 215 162 L 215 186" stroke="#eb6c36" stroke-width="1.5" fill="none" marker-end="url(#arr-accent)" />
+
+    <!-- OUTPUT NODE -->
+    <g transform="translate(125, 188)">
+      <rect width="180" height="44" rx="4" fill="#2a1b14" stroke="#eb6c36" stroke-width="1.2" />
+      <text x="10" y="17" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">SALIDA / EMISIÓN AL GRAFO</text>
+      <text x="10" y="33" fill="#f4f4f5" font-size="8.5">Cómputo instantáneo: CPU 0% en reposo</text>
+    </g>
+  </g>
+</svg>

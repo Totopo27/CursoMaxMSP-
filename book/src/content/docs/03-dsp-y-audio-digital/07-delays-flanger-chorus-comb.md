@@ -30,16 +30,7 @@ donde $N$ es la capacidad máxima del buffer en muestras y $D$ es el retardo des
 
 $$D = \frac{\tau_{\text{ms}}}{1000} \cdot f_s$$
 
-```
-               [ Buffer Circular en RAM (N muestras) ]
-                        .--- [0] ---.
-                       /             \
-                   [N-1]             [1]  <-- Write Pointer (Avanza a fs)
-                     |                 |
-                   [N-2]             [2]
-                       \             /    <-- Read Pointer (D muestras detrás)
-                        '--- [...] -'
-```
+![FIG 3.8 · Arquitectura de Memoria Temporal: Buffer Circular (Ring Buffer)](/assets/diagrams/diagrama_buffer_circular_delays.svg)
 
 ---
 

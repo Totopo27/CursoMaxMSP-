@@ -1,0 +1,83 @@
+﻿<svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">DSP Y RECURSIÓN MATEMÁTICA · MSP VS. GEN~</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 5.0 · BLOQUE VECTORIAL (64 SMP) VS. CÁLCULO MUESTRA A MUESTRA (Z^-1)</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- PANEL IZQUIERDO: MSP TRADICIONAL (BLOQUES DE 64 MUESTRAS) -->
+  <g transform="translate(25, 45)">
+    <rect width="430" height="260" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="430" height="24" rx="6" fill="#27272a" />
+    <rect y="19" width="430" height="5" fill="#27272a" />
+    <text x="12" y="16" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">1. MSP TRADICIONAL (PROCESAMIENTO POR BLOQUES VECTORIALES)</text>
+
+    <!-- VECTOR BOX -->
+    <g transform="translate(20, 36)">
+      <rect width="390" height="42" rx="4" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="10" y="16" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">BUFFER DE ENTRADA (VECTOR SIZE = 64)</text>
+      <text x="10" y="32" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5">[ x0, x1, x2, x3, ... , x63 ]</text>
+    </g>
+
+    <!-- CONNECTOR TO PERFORM64 -->
+    <path d="M 215 78 L 215 95" stroke="#71717a" stroke-width="1.3" fill="none" marker-end="url(#arr-neutral)" />
+
+    <!-- PERFORM64 ROUTINE -->
+    <g transform="translate(20, 97)">
+      <rect width="390" height="42" rx="4" fill="#141417" stroke="#3f3f46" stroke-width="1" />
+      <text x="10" y="16" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="8" font-weight="700">RUTINA C DSP</text>
+      <text x="10" y="32" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5">perform64(t_object *x, t_object *dsp64, ...)</text>
+    </g>
+
+    <!-- CONNECTOR TO OUTPUT -->
+    <path d="M 215 139 L 215 156" stroke="#71717a" stroke-width="1.3" fill="none" marker-end="url(#arr-neutral)" />
+
+    <!-- OUTPUT VECTOR -->
+    <g transform="translate(20, 158)">
+      <rect width="390" height="42" rx="4" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="10" y="16" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">BUFFER DE SALIDA CALCULADO</text>
+      <text x="10" y="32" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5">[ y0, y1, y2, y3, ... , y63 ]</text>
+    </g>
+
+    <!-- LIMITACIÓN DE FEEDBACK -->
+    <text x="20" y="222" fill="#ef4444" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">¡LATENCIA DE FEEDBACK DE 64 MUESTRAS!</text>
+    <text x="20" y="238" fill="#71717a" font-size="8">Cualquier lazo cerrado en MSP requiere esperar el siguiente bloque (1.33 ms a 48k).</text>
+    <text x="20" y="250" fill="#71717a" font-size="8">Imposibilita filtros IIR no lineales y modelado físico analógico.</text>
+  </g>
+
+  <!-- PANEL DERECHO: GEN~ JIT MUESTRA A MUESTRA - FOCAL ACCENT -->
+  <g transform="translate(485, 45)">
+    <rect width="430" height="260" rx="6" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="430" height="24" rx="6" fill="rgba(235, 108, 54, 0.18)" />
+    <rect y="19" width="430" height="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="12" y="16" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">2. GEN~ (CÁLCULO MUESTRA A MUESTRA NATIVO JIT COMPILADO)</text>
+
+    <!-- C++ LOOP CODE BLOCK -->
+    <g transform="translate(20, 36)">
+      <rect width="390" height="120" rx="4" fill="#2a1b14" stroke="#eb6c36" stroke-width="1.2" />
+      <text x="12" y="18" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">BUCLE C++ COMPILADO EN TIEMPO DE EJECUCIÓN (LLVM)</text>
+      
+      <text x="12" y="38" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="9">for (int n = 0; n &lt; vectorsize; n++) {</text>
+      <text x="32" y="56" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9">double x_n = in1[n];</text>
+      <text x="32" y="74" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700">double y_n = x_n + a * y_prev; // Retardo z^-1</text>
+      <text x="32" y="92" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="9">y_prev = y_n; // history incondicional</text>
+      <text x="12" y="110" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="9">}</text>
+    </g>
+
+    <!-- PROPIEDADES CLAVE -->
+    <g transform="translate(20, 168)">
+      <text x="0" y="16" fill="#f4f4f5" font-size="10.5" font-weight="600">Retroalimentación de Muestra Única: dt = 20.83 us</text>
+      <text x="0" y="32" fill="#fed7aa" font-size="9">• Retardo exacto de 1 muestra (z^-1) gracias al operador [history].</text>
+      <text x="0" y="48" fill="#fed7aa" font-size="9">• Permite diodos no lineales, osciladores caóticos y filtros Chamberlin.</text>
+      <text x="0" y="66" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5">Precisión matemática absoluta sin retrasos de bloque.</text>
+    </g>
+  </g>
+</svg>

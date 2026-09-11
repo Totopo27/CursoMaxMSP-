@@ -76,22 +76,7 @@ Cada `Param` declarado en `gen~` genera automáticamente métodos de acceso dire
 
 Uno de los usos más potentes de `gen~ exportcode` es el firmware embebido para instrumentos de hardware autónomos, pedales de efectos de guitarra y módulos Eurorack. La plataforma por excelencia es la **Electro-Smith Daisy Seed** (procesador ARM Cortex-M7 a 480 MHz, con códec estéreo de 24-bit / 96 kHz).
 
-```
-+-------------------------------------------------------------+
-|                     Daisy Seed (ARM M7)                     |
-|                                                             |
-|  [ADC / Potenciómetros] ---> [libDaisy Hardware Abstraction]|
-|                                             |               |
-|                                             v (t_sample)    |
-|  [Audio IN L/R] ---------> [Audio Callback]                 |
-|                                  |                          |
-|                                  v                          |
-|                       [gen_exported perform()]              |
-|                                  |                          |
-|                                  v                          |
-|  [Audio OUT L/R] <--------- [DMA Buffers]                   |
-+-------------------------------------------------------------+
-```
+![FIG 5.3 · Despliegue de Código DSP en Daisy Seed (ARM Cortex-M7)](/assets/diagrams/diagrama_daisy_seed_pipeline.svg)
 
 ### 3.1. Integración en el Callback de `libDaisy`
 

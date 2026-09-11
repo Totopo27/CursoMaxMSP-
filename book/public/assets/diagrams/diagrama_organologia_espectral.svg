@@ -1,0 +1,128 @@
+﻿<svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">SÍNTESIS PERIÓDICA · ANÁLISIS DE FOURIER</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 3.1 · ORGANOLOGÍA ESPECTRAL DE FORMAS DE ONDA CLÁSICAS</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- CONTENEDOR 4 TARJETAS -->
+  <!-- TARJETA 1: SINUSOIDE PURA ([CYCLE~]) -->
+  <g transform="translate(25, 45)">
+    <rect width="210" height="260" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="210" height="22" rx="5" fill="#27272a" />
+    <rect y="17" width="210" height="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">1. SINUSOIDE PURA</text>
+    <text x="10" y="42" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">[cycle~]</text>
+    <text x="10" y="58" fill="#a1a1aa" font-size="9">Cero distorsión armónica</text>
+
+    <!-- ESPECTRO GRÁFICO (1 LINEA) -->
+    <g transform="translate(10, 75)">
+      <rect width="190" height="95" rx="3" fill="#141417" stroke="#27272a" stroke-width="1" />
+      <line x1="15" y1="80" x2="175" y2="80" stroke="#3f3f46" stroke-width="1" />
+      <!-- Linea f0 -->
+      <line x1="40" y1="80" x2="40" y2="20" stroke="#38bdf8" stroke-width="2.5" />
+      <circle cx="40" cy="20" r="3" fill="#38bdf8" />
+      <text x="40" y="92" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="7.5" text-anchor="middle">f0</text>
+      <text x="105" y="50" fill="#52525b" font-family="ui-monospace, monospace" font-size="8">Solo fundamental</text>
+    </g>
+
+    <text x="10" y="190" fill="#e4e4e7" font-size="9" font-weight="600">Espectro Elemental:</text>
+    <text x="10" y="206" fill="#a1a1aa" font-size="8.5">• Contiene ÚNICAMENTE el primer armónico (f0).</text>
+    <text x="10" y="222" fill="#a1a1aa" font-size="8.5">• Bloque constructor del teorema de Fourier.</text>
+    <text x="10" y="242" fill="#71717a" font-family="ui-monospace, monospace" font-size="7.5">Uso: Sub-graves, modulación FM</text>
+  </g>
+
+  <!-- TARJETA 2: DIENTE DE SIERRA / SAWTOOTH ([SAW~]) - FOCAL ACCENT -->
+  <g transform="translate(250, 45)">
+    <rect width="210" height="260" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="210" height="22" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+    <rect y="17" width="210" height="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="10" y="15" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700">2. DIENTE DE SIERRA</text>
+    <text x="10" y="42" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">[saw~] / [phasor~]</text>
+    <text x="10" y="58" fill="#fed7aa" font-size="9">Todos los armónicos (1/k)</text>
+
+    <!-- ESPECTRO GRÁFICO (TODOS LOS ARMONICOS) -->
+    <g transform="translate(10, 75)">
+      <rect width="190" height="95" rx="3" fill="#2a1b14" stroke="#eb6c36" stroke-width="1" />
+      <line x1="15" y1="80" x2="175" y2="80" stroke="#71717a" stroke-width="1" />
+      <!-- Lineas 1/k -->
+      <line x1="30" y1="80" x2="30" y2="20" stroke="#eb6c36" stroke-width="2" />
+      <line x1="55" y1="80" x2="55" y2="40" stroke="#eb6c36" stroke-width="2" />
+      <line x1="80" y1="80" x2="80" y2="53" stroke="#eb6c36" stroke-width="2" />
+      <line x1="105" y1="80" x2="105" y2="60" stroke="#eb6c36" stroke-width="2" />
+      <line x1="130" y1="80" x2="130" y2="65" stroke="#eb6c36" stroke-width="2" />
+      <line x1="155" y1="80" x2="155" y2="68" stroke="#eb6c36" stroke-width="2" />
+      <text x="30" y="92" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="7.5" text-anchor="middle">1</text>
+      <text x="55" y="92" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="7.5" text-anchor="middle">2</text>
+      <text x="80" y="92" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="7.5" text-anchor="middle">3</text>
+      <text x="105" y="92" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="7.5" text-anchor="middle">4</text>
+    </g>
+
+    <text x="10" y="190" fill="#f4f4f5" font-size="9" font-weight="600">Espectro Completo:</text>
+    <text x="10" y="206" fill="#fed7aa" font-size="8.5">• Contiene pares e impares (1, 2, 3, 4, 5...).</text>
+    <text x="10" y="222" fill="#fed7aa" font-size="8.5">• Amplitud decae a razón Ak = 1 / k.</text>
+    <text x="10" y="242" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="7.5">Uso: Cuerdas, metales, bajos agresivos</text>
+  </g>
+
+  <!-- TARJETA 3: ONDA CUADRADA / RECTANGULAR ([RECT~]) -->
+  <g transform="translate(475, 45)">
+    <rect width="210" height="260" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="210" height="22" rx="5" fill="#27272a" />
+    <rect y="17" width="210" height="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">3. ONDA CUADRADA</text>
+    <text x="10" y="42" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">[rect~]</text>
+    <text x="10" y="58" fill="#a1a1aa" font-size="9">Solo armónicos impares</text>
+
+    <!-- ESPECTRO GRÁFICO (SOLO IMPARES) -->
+    <g transform="translate(10, 75)">
+      <rect width="190" height="95" rx="3" fill="#141417" stroke="#27272a" stroke-width="1" />
+      <line x1="15" y1="80" x2="175" y2="80" stroke="#3f3f46" stroke-width="1" />
+      <!-- Lineas 1, 3, 5, 7 -->
+      <line x1="30" y1="80" x2="30" y2="20" stroke="#a78bfa" stroke-width="2" />
+      <line x1="75" y1="80" x2="75" y2="53" stroke="#a78bfa" stroke-width="2" />
+      <line x1="120" y1="80" x2="120" y2="65" stroke="#a78bfa" stroke-width="2" />
+      <line x1="165" y1="80" x2="165" y2="71" stroke="#a78bfa" stroke-width="2" />
+      <text x="30" y="92" fill="#a78bfa" font-family="ui-monospace, monospace" font-size="7.5" text-anchor="middle">1</text>
+      <text x="75" y="92" fill="#a78bfa" font-family="ui-monospace, monospace" font-size="7.5" text-anchor="middle">3</text>
+      <text x="120" y="92" fill="#a78bfa" font-family="ui-monospace, monospace" font-size="7.5" text-anchor="middle">5</text>
+      <text x="165" y="92" fill="#a78bfa" font-family="ui-monospace, monospace" font-size="7.5" text-anchor="middle">7</text>
+    </g>
+
+    <text x="10" y="190" fill="#e4e4e7" font-size="9" font-weight="600">Espectro Hueco:</text>
+    <text x="10" y="206" fill="#a1a1aa" font-size="8.5">• Contiene ÚNICAMENTE impares (1, 3, 5, 7...).</text>
+    <text x="10" y="222" fill="#a1a1aa" font-size="8.5">• Timbre nasal y hueco tipo clarinete.</text>
+    <text x="10" y="242" fill="#71717a" font-family="ui-monospace, monospace" font-size="7.5">Uso: Cañas de viento, leads chiptune</text>
+  </g>
+
+  <!-- TARJETA 4: RUIDO BLANCO ([NOISE~]) -->
+  <g transform="translate(700, 45)">
+    <rect width="215" height="260" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="215" height="22" rx="5" fill="#27272a" />
+    <rect y="17" width="215" height="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">4. RUIDO BLANCO</text>
+    <text x="10" y="42" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">[noise~] / [pink~]</text>
+    <text x="10" y="58" fill="#a1a1aa" font-size="9">Densidad espectral estocástica</text>
+
+    <!-- ESPECTRO GRÁFICO (CONTINUO PLANO) -->
+    <g transform="translate(10, 75)">
+      <rect width="195" height="95" rx="3" fill="#141417" stroke="#27272a" stroke-width="1" />
+      <line x1="15" y1="80" x2="180" y2="80" stroke="#3f3f46" stroke-width="1" />
+      <!-- Franja continua -->
+      <rect x="20" y="42" width="155" height="38" fill="rgba(161, 161, 170, 0.25)" stroke="#71717a" stroke-width="1" stroke-dasharray="2 2" />
+      <text x="97" y="62" fill="#e4e4e7" font-family="ui-monospace, monospace" font-size="7.5" text-anchor="middle">Energía constante en todas las freq</text>
+    </g>
+
+    <text x="10" y="190" fill="#e4e4e7" font-size="9" font-weight="600">Espectro Continuo:</text>
+    <text x="10" y="206" fill="#a1a1aa" font-size="8.5">• Distribución plana de energía estocástica.</text>
+    <text x="10" y="222" fill="#a1a1aa" font-size="8.5">• Sin tono fundamental distinguible.</text>
+    <text x="10" y="242" fill="#71717a" font-family="ui-monospace, monospace" font-size="7.5">Uso: Percusión, vientos, síntesis sustractiva</text>
+  </g>
+</svg>

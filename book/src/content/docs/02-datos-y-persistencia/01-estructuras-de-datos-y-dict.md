@@ -14,23 +14,7 @@ description: "Capítulo del curso universitario de Max/MSP"
 
 En la interacción en tiempo real, un sistema musical no puede depender únicamente de los datos que viajan volátiles por los cables. Necesitamos almacenar **tres categorías de información**:
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                   JERARQUÍA DE MEMORIA EN MAX                          │
-├────────────────────────────────────────────────────────────────────────┤
-│ 1. MEMORIA DE ÍNDICES DIRECTOS (Numérica / Arrays)  [table]           │
-│    • Mapeo estricto Entero  Entero. Complejidad O(1).                 │
-│    • Tablas de ondas (Wavetables), curvas de velocidad, escalas.       │
-│                                                                        │
-│ 2. MEMORIA ASOCIATIVA Y TABLAS DE SÍMBOLOS  [coll]                    │
-│    • Mapeo Clave (Int o Símbolo)  Lista heterogénea de átomos.        │
-│    • Secuencias polifónicas, eventos con timestamp, bases de datos CSV.│
-│                                                                        │
-│ 3. MEMORIA JERÁRQUICA Y ÁRBOLES JSON  [dict]                          │
-│    • Árboles anidados (Key-Value Trees), arrays heterogéneos y objetos.│
-│    • Estado global de sintetizadores, configuraciones de sesión, REST. │
-└────────────────────────────────────────────────────────────────────────┘
-```
+![FIG 2.0 · Jerarquía de Memoria y Persistencia en Max](/assets/diagrams/diagrama_jerarquia_memoria_persistencia.svg)
 
 ---
 

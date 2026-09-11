@@ -24,16 +24,7 @@ description: "Capítulo del curso universitario de Max/MSP"
 
 Un objeto `[buffer~]` no procesa audio por sí mismo: es un contenedor de datos de memoria compartida identificado por un **nombre simbólico global** dentro del entorno de Max (por ejemplo `buffer~ mi_sample 2000 2`).
 
-```
-[ RAM Global de Max ]
-+----------------------------------------------------------------+
-| buffer~ mi_sample (2 canales, 44100 Hz, 88200 muestras)        |
-+----------------------------------------------------------------+
-       ^                          ^                       ^
-       |                          |                       |
-   [play~]                   [groove~]                 [index~]
- (Rampa ms)            (Señal Varispeed 1.0)        (Índice sample)
-```
+![FIG 3.9 · Arquitectura de Memoria RAM de buffer~ y los Tres Lectores Canónicos](/assets/diagrams/diagrama_buffer_lectores_ram.svg)
 
 ### El Cálculo del Consumo de RAM
 Para calcular la memoria requerida por un buffer de audio sin comprimir a 32 bits en coma flotante:

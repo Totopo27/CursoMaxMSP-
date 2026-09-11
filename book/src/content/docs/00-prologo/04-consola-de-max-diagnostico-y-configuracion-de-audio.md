@@ -16,18 +16,7 @@ La **Max Console** es la ventana maestra de registro de eventos (*logging*) y de
 * **Atajo de apertura:** `Ctrl + M` (Windows) / `Cmd + M` (macOS).
 * **Acceso alternativo:** Menú **Window**  **Max Console**, o haciendo clic en el icono de ventana de terminal en la barra lateral derecha.
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                              MAX CONSOLE                               │
-├─────────┬──────────────────────────────────────────────────────────────┤
-│ TIPO    │ MENSAJE REGISTRADO                                           │
-├─────────┼──────────────────────────────────────────────────────────────┤
-│ Info    │ print frecuencia: 440.000000                                 │
-│ Warning │ live.dial: minimum value must be less than maximum value     │
-│ Error   │ dsp: unable to allocate memory for delay line buffer         │
-│ Clang/C │ my_external: initialized perform64 routine with SIMD AVX2    │
-└─────────┴──────────────────────────────────────────────────────────────┘
-```
+![FIG 0.9 · Niveles de Notificación y Diagnóstico en Max Console](/assets/diagrams/diagrama_max_console_diagnostico.svg)
 
 ### 1.1. Niveles de Notificación
 1. **Mensajes Informativos (*Info*):** Salidas voluntarias despachadas mediante el objeto `[print]` o funciones de diagnóstico.
@@ -76,21 +65,7 @@ Para configurar el motor de audio en Max:
 1. Ir al menú **Options**  **Audio Status...** (atajo `Ctrl + Shift + A` en Windows).
 2. Verificar los siguientes parámetros de ingeniería:
 
-```
-┌────────────────────────────────────────────────────────┐
-│                   AUDIO STATUS (MAX)                   │
-├────────────────────────────────────────────────────────┤
-│  Driver:               [ ASIO ]                        │
-│  Device:               [ Tu Driver ASIO / FL ASIO ]    │
-│  Input Device:         [ Canal de Entrada ]            │
-│  Output Device:        [ Canales de Salida Físicos ]   │
-│  Sampling Rate:        48000 Hz (o 44100 Hz)           │
-│  I/O Vector Size:      256 o 512                       │
-│  Signal Vector Size:   64                              │
-│  Scheduler in Overdrive:  [X] Activado                 │
-│  Audio Interrupt:         [X] Activado                 │
-└────────────────────────────────────────────────────────┘
-```
+![FIG 0.10 · Parámetros Críticos en la Ventana Audio Status](/assets/diagrams/diagrama_audio_status_parametros.svg)
 
 ### Explicación de los Parámetros:
 * **Sampling Rate (Frecuencia de Muestreo):** Fijar en $48.000\text{ Hz}$ (estándar profesional de la industria audiovisual) o $44.100\text{ Hz}$ (estándar CD).

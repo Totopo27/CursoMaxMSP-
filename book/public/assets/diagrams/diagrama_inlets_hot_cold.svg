@@ -1,0 +1,64 @@
+﻿<svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">MECÁNICA DE PUERTOS · CIPRIANI & GIRI</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 1.1B · ESTADO PASIVO (COLD) VS. EXCITACIÓN ACTIVA (HOT)</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <g transform="translate(25, 45)">
+    <rect width="890" height="260" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="890" height="24" rx="6" fill="#27272a" />
+    <rect y="19" width="890" height="5" fill="#27272a" />
+    <text x="12" y="16" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">ARQUITECTURA DE ENTRADAS EN EL OBJETO DE MAX (SDK C STRUCT)</text>
+
+    <!-- ENTRADA 1: INLET CALIENTE (IZQ) - FOCAL ACCENT -->
+    <g transform="translate(40, 36)">
+      <rect width="360" height="70" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+      <rect width="360" height="18" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+      <rect y="13" width="360" height="5" fill="rgba(235, 108, 54, 0.18)" />
+      <text x="10" y="13" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700">INLET CALIENTE (IZQUIERDO) · EXCITACIÓN ACTIVA</text>
+      <text x="10" y="38" fill="#f4f4f5" font-size="10.5" font-weight="600">Señal de Disparo (Golpe de Púa / Arco / Bang)</text>
+      <text x="10" y="54" fill="#fed7aa" font-size="8.5">Escribe x-&gt;p_value0 y LLAMA INMEDIATAMENTE a outlet_int()</text>
+    </g>
+
+    <!-- ENTRADA 2: INLET FRÍO (DER) - PASIVO -->
+    <g transform="translate(490, 36)">
+      <rect width="360" height="70" rx="5" fill="#141417" stroke="#52525b" stroke-width="1.2" />
+      <rect width="360" height="18" rx="5" fill="#27272a" />
+      <rect y="13" width="360" height="5" fill="#27272a" />
+      <text x="10" y="13" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">INLET FRÍO (DERECHO) · PARÁMETRO DE ESTADO</text>
+      <text x="10" y="38" fill="#f4f4f5" font-size="10.5" font-weight="600">Modificación de Estado (Longitud de Cuerda / Frecuencia)</text>
+      <text x="10" y="54" fill="#a1a1aa" font-size="8.5">Asignación pasiva: Escribe x-&gt;p_value1 en RAM y RETORNA (Cero cómputo)</text>
+    </g>
+
+    <!-- CONECTORES HACIA EL OBJETO CENTRAL -->
+    <path d="M 220 106 L 220 135 L 380 135 L 380 150" stroke="#eb6c36" stroke-width="1.5" fill="none" marker-end="url(#arr-accent)" />
+    <path d="M 670 106 L 670 135 L 510 135 L 510 150" stroke="#71717a" stroke-width="1.3" fill="none" marker-end="url(#arr-neutral)" />
+    <text x="235" y="128" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8">Trigger &amp; Compute</text>
+    <text x="655" y="128" fill="#71717a" font-family="ui-monospace, monospace" font-size="8" text-anchor="end">Passive RAM Store</text>
+
+    <!-- NODO CENTRAL: OBJETO MATEMÁTICO [+ 10] -->
+    <g transform="translate(340, 150)">
+      <rect width="210" height="42" rx="4" fill="#2a1b14" stroke="#eb6c36" stroke-width="1.2" />
+      <text x="105" y="26" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="12" font-weight="700" text-anchor="middle">[ + 10 ]</text>
+    </g>
+
+    <!-- CONECTOR A SALIDA -->
+    <path d="M 445 192 L 445 214" stroke="#eb6c36" stroke-width="1.5" fill="none" marker-end="url(#arr-accent)" />
+
+    <!-- NODO SALIDA -->
+    <g transform="translate(320, 215)">
+      <rect width="250" height="32" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.2" />
+      <text x="125" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" text-anchor="middle">SALIDA AL GRAFO / AUDIO OUT</text>
+    </g>
+  </g>
+</svg>
