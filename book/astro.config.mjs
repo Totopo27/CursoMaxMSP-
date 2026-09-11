@@ -2,8 +2,6 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
-import mermaid from 'astro-mermaid';
-
 export default defineConfig({
   site: 'https://curso-max.pajarobobo.xyz',
   markdown: {
@@ -11,9 +9,6 @@ export default defineConfig({
     rehypePlugins: [rehypeKatex],
   },
   integrations: [
-    mermaid({
-      autoTheme: true,
-    }),
     starlight({
       title: 'Max/MSP: Del Concepto al Motor Nativo',
       description: 'Curso universitario integral de Max/MSP, MSP Audio, Gen~, C SDK y Sistemas Multimedia.',
