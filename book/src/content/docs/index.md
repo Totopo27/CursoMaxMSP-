@@ -6,7 +6,7 @@ hero:
   tagline: De los fundamentos del paradigma Dataflow y el Scheduler temporal al desarrollo de DSP en C++ y modelos neuronales en tiempo real.
   actions:
     - text: Comenzar con el Módulo 0
-      link: /00-prologo/03-audio-driver-windows/
+      link: /00-prologo/01-anatomia-de-la-interfaz-y-modos-de-operacion/
       icon: right-arrow
       variant: primary
     - text: Repositorio en GitHub
