@@ -26,19 +26,7 @@ El ecosistema profesional de Max/MSP se estructura en torno a cuatro pilares com
 
 En el ámbito de la composición asistida por computadora en el ámbito hispanohablante, la investigación doctoral de **Francisco Colasanto** (*Universidad Nacional Autónoma de México / Centro Mexicano para la Música y las Artes Sonoras - CMMAS*) cristaliza en **AMI** (*Herramienta para la composición algorítmica y clasificación de datos simbólicos*).
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                        ARQUITECTURA DEL MOTOR AMI                      │
-│                                                                        │
-│   [Datos Simbólicos] ───> [Matrices de Transición] ───> [Generación]   │
-│   (Alturas, Duraciones,    (Cadenas de Markov          (Motor Estocás- │
-│    Dinámicas, Densidad)     de Orden 1 y Superior)      tico Ponderado)│
-│                                      │                                 │
-│                                      v                                 │
-│                           [Persistencia Jerárquica]                    │
-│                            (dict / coll / JSON API)                    │
-└────────────────────────────────────────────────────────────────────────┘
-```
+![FIG G.2 · Arquitectura del Motor AMI (Francisco Colasanto)](/assets/diagrams/diagrama_ami_arquitectura_colasanto.svg)
 
 ### 2.1. Problema de Ingeniería Resuelto
 Los sistemas algorítmicos convencionales suelen adolecer de rigidez: o bien son puramente deterministas (secuencias estáticas repetitivas) o son puramente aleatorios (ruido blanco de alturas sin cohesión armónica). Colasanto resuelve esta dicotomía diseñando un entorno modular en Max que permite:
@@ -76,20 +64,7 @@ Diseñado por el artista sonoro y especialista de Cycling '74 **Tom Hall**, *TMH
 
 El baterista, luthier digital e investigador **Rodrigo Constanzo** (en conjunto con el proyecto de investigación europeo **FluCoMa** - *Fluid Corpus Manipulation*) desarrolló **Data-Knot**, una suite que redefine cómo la inteligencia artificial se implementa en Max para performance en vivo.
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                        PIPELINE DATA-KNOT / FLUCOMA                    │
-│                                                                        │
-│   Señal Acústica      Buffer de       Descriptores Tímbricos           │
-│   en Tiempo Real ───> Análisis  ───>  (MFCC, Pitch, Loudness,          │
-│   (Batería/Voz)       (10-25 ms)       Spectral Centroid / Spread)     │
-│                                                    │                   │
-│                                                    v                   │
-│   Espacio Latente     Algoritmo KD-Tree     Reducción Dimensional      │
-│   Sintetizado    <─── (Búsqueda Vecino <─── (PCA, UMAP en Tiempo       │
-│   (Granulación)        Más Próximo)          Real < 5ms)               │
-└────────────────────────────────────────────────────────────────────────┘
-```
+![FIG G.3 · Pipeline Data-Knot / FluCoMa (Rodrigo Constanzo)](/assets/diagrams/diagrama_dataknot_ml_flucoma.svg)
 
 ### 4.1. El Reto de la Latencia Ultra-Baja en IA
 La mayoría de las herramientas de Machine Learning (como las redes neuronales densas o modelos difusores) introducen latencias inaceptables para un percusionista o instrumentista en vivo (frecuentemente superiores a 50–100 ms). **Data-Knot** sortea este problema aplicando técnicas de análisis tímbrico y geometría espacial en lugar de redes neuronales masivas:

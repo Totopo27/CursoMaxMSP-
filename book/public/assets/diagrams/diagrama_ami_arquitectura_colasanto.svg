@@ -1,0 +1,110 @@
+<svg viewBox="0 0 940 320" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+    <marker id="arr-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#22c55e"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">ARQUITECTURA DEL MOTOR AMI (FRANCISCO COLASANTO · CMMAS / UNAM)</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG G.2 · COMPOSICIÓN ALGORTÍMICA Y CADENAS DE MARKOV</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- ETAPA 1: INGESTA Y CLASIFICACIÓN DE DATOS SIMBÓLICOS -->
+  <g transform="translate(25, 45)">
+    <rect width="265" height="185" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="265" height="22" rx="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">1. CLASIFICACIÓN SIMBÓLICA</text>
+    
+    <text x="10" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="600">Entrada de Parámetros</text>
+    <text x="10" y="58" fill="#a1a1aa" font-size="8">Datos musicales discretizados</text>
+
+    <g transform="translate(10, 68)">
+      <rect width="245" height="24" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+      <text x="8" y="16" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="8">Alturas (Pitch-Class / MIDI)</text>
+    </g>
+    <g transform="translate(10, 98)">
+      <rect width="245" height="24" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+      <text x="8" y="16" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="8">Duraciones (Ratios rítmicos)</text>
+    </g>
+    <g transform="translate(10, 128)">
+      <rect width="245" height="24" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+      <text x="8" y="16" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="8">Dinámicas y Densidad temporal</text>
+    </g>
+
+    <text x="10" y="172" fill="#71717a" font-family="ui-monospace, monospace" font-size="7.5">Normalización vía [zl.slice] y [dict]</text>
+  </g>
+
+  <!-- FLECHA ETAPA 1 -> ETAPA 2 -->
+  <path d="M 290 137 L 330 137" fill="none" stroke="#eb6c36" stroke-width="1.4" marker-end="url(#arr-accent)" />
+
+  <!-- ETAPA 2: MATRICES DE TRANSICIÓN Y MARKOV (FOCAL) -->
+  <g transform="translate(335, 45)">
+    <rect width="280" height="185" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="280" height="22" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="10" y="15" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700">2. NÚCLEO ESTOCÁSTICO (MARKOV)</text>
+    
+    <text x="10" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="700">Matrices de Transición</text>
+    <text x="10" y="58" fill="#fed7aa" font-size="8">Probabilidades condicionales P(St | St-1, ...)</text>
+
+    <g transform="translate(10, 68)">
+      <rect width="260" height="38" rx="3" fill="#121318" stroke="#eb6c36" stroke-width="0.8" />
+      <text x="8" y="16" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8">Cadenas de 1° y 2° Orden</text>
+      <text x="8" y="30" fill="#a1a1aa" font-size="7.5">Preserva cohesión estilística y sintáctica</text>
+    </g>
+
+    <g transform="translate(10, 114)">
+      <rect width="260" height="48" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+      <text x="8" y="16" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8">Ponderación Adaptativa</text>
+      <text x="8" y="30" fill="#d4d4d8" font-size="7.5">Modificación de pesos en tiempo real</text>
+      <text x="8" y="42" fill="#71717a" font-size="7">Evita bucles infinitos y estancamiento</text>
+    </g>
+
+    <text x="10" y="176" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="7.5">Cálculo de estados: JavaScript / [coll]</text>
+  </g>
+
+  <!-- FLECHA ETAPA 2 -> ETAPA 3 -->
+  <path d="M 615 137 L 655 137" fill="none" stroke="#eb6c36" stroke-width="1.4" marker-end="url(#arr-accent)" />
+
+  <!-- ETAPA 3: GENERACIÓN Y EJECUCIÓN MUSICAL -->
+  <g transform="translate(660, 45)">
+    <rect width="255" height="185" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="255" height="22" rx="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">3. GENERACIÓN &amp; EJECUCIÓN</text>
+    
+    <text x="10" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="600">Disparo y Síntesis</text>
+    <text x="10" y="58" fill="#a1a1aa" font-size="8">Traducción a eventos de audio/MIDI</text>
+
+    <g transform="translate(10, 68)">
+      <rect width="235" height="42" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+      <text x="8" y="16" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8">Motor Polifónico [poly~]</text>
+      <text x="8" y="32" fill="#a1a1aa" font-size="7.5">Asignación dinámica de voces</text>
+    </g>
+
+    <g transform="translate(10, 118)">
+      <rect width="235" height="42" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+      <text x="8" y="16" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8">Salida MIDI / OSC / M4L</text>
+      <text x="8" y="32" fill="#71717a" font-size="7.5">Conducción hacia sintetizadores externos</text>
+    </g>
+
+    <text x="10" y="176" fill="#71717a" font-family="ui-monospace, monospace" font-size="7.5">Reloj Maestro: [transport] / [tempo]</text>
+  </g>
+
+  <!-- LÍNEA INFERIOR DE RETROALIMENTACIÓN / PERSISTENCIA -->
+  <path d="M 475 230 L 475 248" fill="none" stroke="#22c55e" stroke-width="1.2" marker-end="url(#arr-green)" />
+
+  <!-- PANEL DE PERSISTENCIA JERÁRQUICA -->
+  <g transform="translate(25, 248)">
+    <rect width="890" height="58" rx="4" fill="#151518" stroke="#27272a" stroke-width="1" />
+    <text x="20" y="20" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">PERSISTENCIA Y SERIALIZACIÓN JERÁRQUICA (DICT / COLL / JSON API):</text>
+    <text x="395" y="20" fill="#d4d4d8" font-size="8.5">AMI almacena árboles completos de estados estocásticos.</text>
+    <text x="20" y="36" fill="#71717a" font-family="ui-monospace, monospace" font-size="8">Permite congelar la semilla estocástica, guardar presets compositivos en formato JSON interoperable y recuperarlos sin pérdida entre sesiones de concierto.</text>
+    <text x="20" y="49" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="7.5">Garantía arquitectónica: Reproducibilidad determinista de procesos aleatorios controlados en obras electroacústicas mixtas.</text>
+  </g>
+</svg>

@@ -1,0 +1,132 @@
+<svg viewBox="0 0 940 320" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+    <marker id="arr-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#22c55e"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">PIPELINE DATA-KNOT / FLUCOMA: MACHINE LEARNING DE LATENCIA ULTRA-BAJA</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG G.3 · DESCRIPTORES TÍMBRICOS Y KD-TREE EN DIRECTO</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- FASE 1: ENTRADA ACÚSTICA Y EXTRACCIÓN DE DESCRIPTORES -->
+  <g transform="translate(25, 45)">
+    <rect width="215" height="185" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="215" height="22" rx="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">1. SEÑAL ACÚSTICA VIVA</text>
+    
+    <text x="10" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="600">Entrada de Audio</text>
+    <text x="10" y="58" fill="#a1a1aa" font-size="8">Batería, percusión o voz en vivo</text>
+
+    <g transform="translate(10, 68)">
+      <rect width="195" height="42" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+      <text x="8" y="16" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="8">Buffer de Análisis Rápido</text>
+      <text x="8" y="32" fill="#22c55e" font-family="ui-monospace, monospace" font-size="7.5">Ventana: 10 a 25 ms</text>
+    </g>
+
+    <g transform="translate(10, 118)">
+      <rect width="195" height="42" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+      <text x="8" y="16" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8">Detección de Onsets</text>
+      <text x="8" y="32" fill="#a1a1aa" font-size="7.5">[fluid.onsetslice~]</text>
+    </g>
+
+    <text x="10" y="176" fill="#71717a" font-family="ui-monospace, monospace" font-size="7.5">Disparo transitorio instantáneo</text>
+  </g>
+
+  <!-- FLECHA FASE 1 -> FASE 2 -->
+  <path d="M 240 137 L 260 137" fill="none" stroke="#71717a" stroke-width="1.3" marker-end="url(#arr-neutral)" />
+
+  <!-- FASE 2: EXTRACCIÓN DE DESCRIPTORES TÍMBRICOS -->
+  <g transform="translate(265, 45)">
+    <rect width="215" height="185" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="215" height="22" rx="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">2. DESCRIPTORES TÍMBRICOS</text>
+    
+    <text x="10" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="600">Espacio Espectral</text>
+    <text x="10" y="58" fill="#a1a1aa" font-size="8">Firma morfológica del sonido</text>
+
+    <g transform="translate(10, 68)">
+      <rect width="195" height="42" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+      <text x="8" y="16" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="8">[fluid.bufmfcc~]</text>
+      <text x="8" y="32" fill="#a1a1aa" font-size="7.5">13 Coeficientes MFCC (Timbre)</text>
+    </g>
+
+    <g transform="translate(10, 118)">
+      <rect width="195" height="42" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+      <text x="8" y="16" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="8">Pitch &amp; Spectral Stats</text>
+      <text x="8" y="32" fill="#71717a" font-size="7.5">Centroid, Flatness, Loudness</text>
+    </g>
+
+    <text x="10" y="176" fill="#71717a" font-family="ui-monospace, monospace" font-size="7.5">Vector n-dimensional continuo</text>
+  </g>
+
+  <!-- FLECHA FASE 2 -> FASE 3 -->
+  <path d="M 480 137 L 500 137" fill="none" stroke="#eb6c36" stroke-width="1.4" marker-end="url(#arr-accent)" />
+
+  <!-- FASE 3: REDUCCIÓN DIMENSIONAL Y KD-TREE (FOCAL) -->
+  <g transform="translate(505, 45)">
+    <rect width="215" height="185" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="215" height="22" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="10" y="15" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700">3. KD-TREE &amp; BÚSQUEDA VECINA</text>
+    
+    <text x="10" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="700">Geometría Espacial</text>
+    <text x="10" y="58" fill="#fed7aa" font-size="8">Búsqueda del vecino más próximo</text>
+
+    <g transform="translate(10, 68)">
+      <rect width="195" height="42" rx="3" fill="#121318" stroke="#eb6c36" stroke-width="0.8" />
+      <text x="8" y="16" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8">Reducción PCA / UMAP</text>
+      <text x="8" y="32" fill="#a1a1aa" font-size="7.5">Proyección a plano 2D / 3D</text>
+    </g>
+
+    <g transform="translate(10, 118)">
+      <rect width="195" height="42" rx="3" fill="#121318" stroke="#22c55e" stroke-width="0.8" />
+      <text x="8" y="16" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8">[fluid.kdtree~]</text>
+      <text x="8" y="32" fill="#d4d4d8" font-size="7.5">Indexación en microsegundos</text>
+    </g>
+
+    <text x="10" y="176" fill="#22c55e" font-family="ui-monospace, monospace" font-size="7.5">Latencia total de inferencia: &lt; 5 ms</text>
+  </g>
+
+  <!-- FLECHA FASE 3 -> FASE 4 -->
+  <path d="M 720 137 L 740 137" fill="none" stroke="#22c55e" stroke-width="1.3" marker-end="url(#arr-green)" />
+
+  <!-- FASE 4: SÍNTESIS CONCATENATIVA Y RESPUESTA AUDIBLE -->
+  <g transform="translate(745, 45)">
+    <rect width="170" height="185" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="170" height="22" rx="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">4. SÍNTESIS EN VIVO</text>
+    
+    <text x="10" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="600">Reconstrucción</text>
+    <text x="10" y="58" fill="#a1a1aa" font-size="8">Corpus de audio</text>
+
+    <g transform="translate(10, 68)">
+      <rect width="150" height="42" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+      <text x="8" y="16" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8">Granulación</text>
+      <text x="8" y="32" fill="#a1a1aa" font-size="7.5">Corpus 10k+ muestras</text>
+    </g>
+
+    <g transform="translate(10, 118)">
+      <rect width="150" height="42" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+      <text x="8" y="16" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8">Salida de Audio</text>
+      <text x="8" y="32" fill="#71717a" font-size="7.5">Respuesta táctil y háptica</text>
+    </g>
+
+    <text x="10" y="176" fill="#71717a" font-family="ui-monospace, monospace" font-size="7.5">Cero dropouts en directo</text>
+  </g>
+
+  <!-- PANEL INFERIOR DE CONCLUSIÓN INGENIERIL -->
+  <g transform="translate(25, 248)">
+    <rect width="890" height="58" rx="4" fill="#151518" stroke="#27272a" stroke-width="1" />
+    <text x="20" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">LA INNOVACIÓN DE DATA-KNOT EN MAX/MSP (RODRIGO CONSTANZO / FLUCOMA):</text>
+    <text x="440" y="20" fill="#d4d4d8" font-size="8.5">Sustituye redes neuronales pesadas por árboles espaciales KD-Tree.</text>
+    <text x="20" y="36" fill="#71717a" font-family="ui-monospace, monospace" font-size="8">Al consultar estructuras de datos indexadas en memoria estática en lugar de computar matrices tensoriales masivas, la latencia desciende por debajo de 5 milisegundos.</text>
+    <text x="20" y="49" fill="#22c55e" font-family="ui-monospace, monospace" font-size="7.5">Beneficio acústico: Permite a músicos acústicos tocar con dinámicas orgánicas e interactuar con síntesis inteligente sin desincronización de tempo.</text>
+  </g>
+</svg>
