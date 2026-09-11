@@ -1,0 +1,69 @@
+﻿---
+// DiagramTopology.astro - Componente de diagrama editorial para la topología perimetral
+---
+<div class="editorial-diagram-container not-content">
+  <div class="diagram-header">
+    <span class="diagram-title">TOPOLOGÍA PERIMETRAL DEL PATCHER</span>
+    <span class="diagram-tag">FIG 0.2 · DISTRIBUCIÓN DE HERRAMIENTAS</span>
+  </div>
+  <svg viewBox="0 0 860 380" xmlns="http://www.w3.org/2000/svg" style="font-family: var(--sl-font-system, -apple-system, sans-serif);">
+    <rect x="15" y="15" width="830" height="350" rx="8" fill="#18181b" stroke="#3f3f46" stroke-width="1.5" />
+    <rect x="15" y="15" width="830" height="50" rx="8" fill="#27272a" />
+    <rect x="15" y="55" width="830" height="10" fill="#27272a" />
+    <line x1="15" y1="65" x2="845" y2="65" stroke="#3f3f46" stroke-width="1" />
+    <text x="35" y="44" fill="#f4f4f5" font-family="var(--sl-font-mono, monospace)" font-size="12" font-weight="700">TOP TOOLBAR</text>
+    <text x="160" y="44" fill="#a1a1aa" font-size="12">Paleta de Creación Rápida: [ N ] Objeto · [ M ] Mensaje · [ C ] Comentario · [ B ] Bang · [ T ] Toggle</text>
+
+    <rect x="15" y="65" width="160" height="250" fill="#202024" />
+    <line x1="175" y1="65" x2="175" y2="315" stroke="#3f3f46" stroke-width="1" />
+    <text x="30" y="95" fill="#a1a1aa" font-family="var(--sl-font-mono, monospace)" font-size="11" font-weight="700">LEFT TOOLBAR</text>
+    <g transform="translate(30, 115)">
+      <circle cx="6" cy="6" r="3" fill="#71717a" />
+      <text x="18" y="10" fill="#d4d4d8" font-size="12">Explorador de Archivos</text>
+    </g>
+    <g transform="translate(30, 145)">
+      <circle cx="6" cy="6" r="3" fill="#71717a" />
+      <text x="18" y="10" fill="#d4d4d8" font-size="12">Package Manager</text>
+    </g>
+    <g transform="translate(30, 175)">
+      <circle cx="6" cy="6" r="3" fill="#71717a" />
+      <text x="18" y="10" fill="#d4d4d8" font-size="12">Snippets de Código</text>
+    </g>
+    <g transform="translate(30, 205)">
+      <circle cx="6" cy="6" r="3" fill="#71717a" />
+      <text x="18" y="10" fill="#d4d4d8" font-size="12">Plugins de Audio VST</text>
+    </g>
+
+    <rect x="195" y="80" width="460" height="220" rx="6" fill="#121316" stroke="#27272a" stroke-width="1.5" />
+    <text x="425" y="150" fill="#27272a" font-family="var(--sl-font-mono, monospace)" font-size="18" font-weight="700" text-anchor="middle" letter-spacing="0.1em">PATCHER CANVAS</text>
+    <text x="425" y="175" fill="#52525b" font-size="12" text-anchor="middle">Área interactiva de programación visual</text>
+    <rect x="365" y="205" width="120" height="32" rx="4" fill="#18181b" stroke="#eb6c36" stroke-width="1.5" />
+    <circle cx="377" cy="221" r="3" fill="#eb6c36" />
+    <text x="425" y="226" fill="#ffedd5" font-family="var(--sl-font-mono, monospace)" font-size="11" font-weight="700" text-anchor="middle">cycle~ 440</text>
+
+    <rect x="675" y="65" width="170" height="250" fill="#202024" />
+    <line x1="675" y1="65" x2="675" y2="315" stroke="#3f3f46" stroke-width="1" />
+    <text x="695" y="95" fill="#eb6c36" font-family="var(--sl-font-mono, monospace)" font-size="11" font-weight="700">RIGHT TOOLBAR</text>
+    <g transform="translate(695, 115)">
+      <rect x="0" y="0" width="135" height="28" rx="4" fill="#27272a" stroke="#eb6c36" stroke-width="1" />
+      <text x="12" y="18" fill="#f4f4f5" font-size="11" font-weight="600">Inspector (Ctrl+I)</text>
+    </g>
+    <g transform="translate(695, 155)">
+      <text x="6" y="12" fill="#d4d4d8" font-size="12">Referencia de Objeto</text>
+      <text x="6" y="28" fill="#71717a" font-family="var(--sl-font-mono, monospace)" font-size="10">Atributos y mensajes</text>
+    </g>
+    <g transform="translate(695, 195)">
+      <text x="6" y="12" fill="#d4d4d8" font-size="12">Ayuda Integrada</text>
+      <text x="6" y="28" fill="#71717a" font-family="var(--sl-font-mono, monospace)" font-size="10">Manuales oficiales</text>
+    </g>
+
+    <rect x="15" y="315" width="830" height="50" rx="8" fill="#27272a" />
+    <rect x="15" y="315" width="830" height="10" fill="#27272a" />
+    <line x1="15" y1="315" x2="845" y2="315" stroke="#3f3f46" stroke-width="1" />
+    <text x="35" y="344" fill="#f4f4f5" font-family="var(--sl-font-mono, monospace)" font-size="12" font-weight="700">BOTTOM TOOLBAR</text>
+    <text x="180" y="344" fill="#a1a1aa" font-size="12">Candado (Lock) · Modo Presentación · Zoom · Audio DSP On/Off · Indicador CPU</text>
+    <rect x="740" y="328" width="85" height="24" rx="4" fill="#18181b" stroke="#52525b" stroke-width="1" />
+    <circle cx="754" cy="340" r="4" fill="#10b981" />
+    <text x="765" y="344" fill="#e4e4e7" font-family="var(--sl-font-mono, monospace)" font-size="10" font-weight="700">DSP ON</text>
+  </svg>
+</div>
