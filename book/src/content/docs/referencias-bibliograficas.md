@@ -154,3 +154,32 @@ A continuación se presenta el corpus bibliográfico completo (20 obras fundamen
 - **Año:** 2007 | **Páginas:** 92 | **ISBN:** 978-3-8364-1298-8
 - **Aporte al Curso:** Arquitectura de software para instalaciones interactivas de gran escala, procesamiento de sensores físicos, visión artificial por cámara y robustez en entornos de galería y museo.
 - **Módulos Vinculados:** Apéndice C (Instalaciones y Arduino) y Apéndice A (Jitter).
+---
+
+## 5. Documentación Oficial, Repositorios del Núcleo y SDKs de Cycling '74
+
+### Cycling '74 — *Max Documentation & Reference Manual (Versiones 8 y 9)*
+- **Entidad:** Cycling '74 / Ableton (San Francisco, CA & Berlin, Alemania)
+- **Recurso:** Documentación Oficial en línea y sistema de ayuda integrado (.maxhelp).
+- **Enlace Oficial:** [docs.cycling74.com](https://docs.cycling74.com)
+- **Aporte al Curso:** Especificación formal del comportamiento de los objetos nativos, semántica de mensajes, orden de inlets y outlets, atributos de inicialización, gestión del motor de gráficos Jitter y ciclo de vida del Patcher.
+- **Módulos Vinculados:** Transversal a todos los módulos y lecciones del curso.
+
+### Cycling '74 — *Max SDK (C API & Headers Reference)*
+- **Entidad:** Cycling '74 (San Francisco, California)
+- **Repositorio Oficial en GitHub:** [github.com/Cycling74/max-sdk](https://github.com/Cycling74/max-sdk)
+- **Aporte al Curso:** El repositorio y juego de cabeceras canónico (ext.h, ext_obex.h, z_dsp.h, jpatcher_api.h). Fundamenta la arquitectura binaria interna: estructuras de memoria (	_object, 	_pxobject, 	_atom, 	_symbol), gestión del Scheduler de alta prioridad, el Audio Thread (perform64) y la creación de objetos externos compilados (.mxe64 / .mxo).
+- **Módulos Vinculados:** Módulo 1 (Semántica Dataflow), Módulo 3 (DSP perform64) y Módulo 6 (Lección 03: Anatomía de un External en C).
+
+### Cycling '74 — *Min-DevKit (C++17 Modern SDK Framework)*
+- **Entidad:** Cycling '74 / Timothy Place
+- **Repositorio Oficial en GitHub:** [github.com/Cycling74/min-devkit](https://github.com/Cycling74/min-devkit)
+- **Aporte al Curso:** Framework moderno de desarrollo en C++17 para Max. Introduce metaprogramación con templates, envoltorios de memoria RAII seguros para señales MSP (sample y sample_vector), declaración declarativa de inlets/outlets y compilación multiplataforma automatizada mediante CMake.
+- **Módulos Vinculados:** Apéndice D (Min-DevKit C++ Moderno) y Módulo 6.
+
+### Cycling '74 — *Gen Architecture and GenExpr Specification*
+- **Entidad:** Cycling '74
+- **Recurso:** Especificación técnica del entorno [gen~] y compilador JIT GenExpr.
+- **Enlace Oficial:** [docs.cycling74.com](https://docs.cycling74.com)
+- **Aporte al Curso:** Especificación de los operadores muestra a muestra, funciones intrínsecas de DSP, resolución de retardos de una sola muestra (history) y exportación automática a código nativo C++ (gen~.translate).
+- **Módulos Vinculados:** Módulo 5 (Lecciones 01 a 04).
