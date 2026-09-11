@@ -37,9 +37,35 @@ graph TD
 - Divide el espacio tridimensional de parlantes en triángulos (o pares en 2D).
 - Calcula la ganancia de cada altavoz como una combinación lineal de vectores de base en coordenadas cartesianas. Si la fuente virtual coincide con un parlante, solo ese parlante suena; si se mueve entre ellos, la energía se reparte preservando la potencia acústica total.
 
-### 1.2. Ambisonics de Orden Superior (HOA - Gerzon / Daniel)
-- **Desacoplamiento Total**: En lugar de mezclar para un número fijo de parlantes, se codifica la direccionalidad de la onda en una serie de **armónicos esféricos** (Orden 1 = 4 canales $B\text{-Format}$: $W, X, Y, Z$; Orden 3 = 16 canales; Orden 5 = 36 canales).
-- Una vez codificado el master en Ambisonics, podés reproducirlo en auriculares con decodificación binaural, en un cine 7.1.4 o en un auditorio con 64 parlantes simplemente cambiando la matriz de decodificación (`ambidecode~` o `spat5.hoa.decoder~`).
+### 1.2. Ambisonics de Orden Superior (HOA - Gerzon / Daniel / Di Liscia)
+- **Desacoplamiento Total**: En lugar de mezclar para un número fijo de parlantes, se codifica la direccionalidad de la onda en una serie de **armónicos esféricos** independientes de la disposición física de los altavoces.
+
+#### Ecuaciones Canónicas de Codificación FuMa (Oscar Pablo Di Liscia / Mariano Cura)
+En el tratado *Síntesis Espacial de Sonido (UNQ / CMMAS)*, Oscar Pablo Di Liscia y Mariano Martín Cura detallan la síntesis de señales formato B a partir de coordenadas espaciales normalizadas en una esfera unitaria: azimut $\theta$ (plano horizontal), elevación $\phi$ (plano vertical) y distancia $r$:
+
+1. **Primer Orden (4 Canales: $W, X, Y, Z$):**
+   $$\begin{aligned}
+   W &= \frac{1}{\sqrt{2}} \cdot S \\
+   X &= \cos(\theta) \cos(\phi) \cdot S \\
+   Y &= \sin(\theta) \cos(\phi) \cdot S \\
+   Z &= \sin(\phi) \cdot S
+   \end{aligned}$$
+   donde $W$ es el componente omnidireccional de presión de referencia y $X, Y, Z$ son los componentes dipolares ortogonales correspondientes a los ejes adelante/atrás, izquierda/derecha y arriba/abajo.
+
+2. **Segundo Orden (9 Canales: suma de $R, S, T, U, V$):**
+   Añade armónicos esféricos cuadrupolares para mayor selectividad direccional y resolución angular en recintos amplios:
+   $$\begin{aligned}
+   R &= \sin(2\phi) \cdot S \\
+   S &= \cos(\theta) \sin(2\phi) \cdot S \\
+   T &= \sin(\theta) \sin(2\phi) \cdot S \\
+   U &= \cos(2\theta) \cos^2(\phi) \cdot S \\
+   V &= \sin(2\theta) \cos^2(\phi) \cdot S
+   \end{aligned}$$
+
+#### Decodificación de Fase Corregida / Control de Opuestos (Gordon Monro / Malham)
+La decodificación directa general recrea un frente de onda ideal en un punto central infinitesimal (*sweet spot*), pero genera altavoces que emiten señales en contrafase respecto a los opuestos. Como documenta Di Liscia, en una sala de conciertos esto degrada severamente la localización para los oyentes periféricos. 
+Para resolverlo, se aplican **ponderaciones en fase (*in-phase decoding*)** donde la ganancia de cada altavoz $k$ ubicado en $(\theta_k, \phi_k)$ garantiza que todos los parlantes colaboren constructivamente sin cancelaciones destructivas:
+$$P_k = \frac{1}{N} \left( W \sqrt{2} + \frac{2}{3}(X \cos \theta_k + Y \sin \theta_k) \right)$$
 
 ---
 

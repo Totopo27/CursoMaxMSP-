@@ -70,6 +70,18 @@ $$H(z) = \frac{b_0 + b_1 z^{-1} + b_2 z^{-2}}{1 + a_1 z^{-1} + a_2 z^{-2}}$$
 - **Outlet 4**: Notch (rechazo de banda)
 - **Propiedad única**: Permite barrer el espectro de un sintetizador mientras se conserva la energía simultánea en múltiples bandas sin recalcular matrices de coeficientes completas.
 
+### Topologías de Conexión: Serie vs. Paralelo (Cipriani & Giri / Réveillac)
+En *Musical Sound Effects*, Jean-Michel Réveillac analiza en detalle las implicancias de fase y ganancia según cómo conectemos múltiples etapas de filtrado:
+
+1. **Conexión en Cascada (Serie):**
+   $$H_{total}(z) = H_1(z) \cdot H_2(z) \cdot \dots \cdot H_k(z)$$
+   - Las pendientes de atenuación se suman: dos filtros Butterworth de 2 polos (12 dB/oct) en serie producen un filtro Linkwitz-Riley de 4 polos (24 dB/oct).
+   - Es la arquitectura obligatoria para ecualizadores paramétricos de bandas múltiples y filtros crossover estables.
+2. **Conexión en Paralelo:**
+   $$H_{total}(z) = H_1(z) + H_2(z) + \dots + H_k(z)$$
+   - Las salidas se suman algebraicamente en el dominio del tiempo.
+   - **Peligro acústico:** Si las bandas adyacentes tienen desfases relativos cercanos a $180^\circ$, la suma producirá cancelaciones destructivas profundas (*comb filtering* accidental) en las frecuencias de cruce. Como advierten Cipriani y Giri en *Música Electrónica y Diseño Sonoro*, el filtrado paralelo solo debe emplearse para síntesis de formantes vocales o bancos de resonadores desacoplados.
+
 ---
 
 ## 3. Bajo el Capó: Análisis en C del Bucle de Filtrado (`biquad~`)

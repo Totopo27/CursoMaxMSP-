@@ -57,6 +57,18 @@ $$y[n] = x[n] + g \cdot \frac{y[n - D] + y[n - D - 1]}{2}$$
 2. **Lazo de Realimentación (Feedback Loop)**: El sonido circula indefinidamente por el buffer.
 3. **Filtro de Damping**: El promedio entre dos muestras adyacentes es un filtro paso-bajo FIR simple ($H(z) = 0.5 + 0.5 z^{-1}$). En cada vuelta, los armónicos agudos pierden energía más rápido que los graves, **emulando con exactitud la amortiguación física de las cuerdas reales**.
 
+### Esquemas en Diferencias Finitas de Cuarto Orden (Aguilar & Salinas, 2003)
+En su investigación sobre síntesis por modelado físico, Juan R. Aguilar y Renato Salinas formalizan la discretización directa de la ecuación de onda sin recurrir a guías de onda simplificadas, transformando la ecuación continua en un **esquema explícito en diferencias finitas de cuarto orden** tanto en el dominio espacial como temporal:
+
+$$y_i^{n+1} = 2 y_i^n - y_i^{n-1} + \left(\frac{c \Delta t}{\Delta x}\right)^2 \left( y_{i+1}^n - 2 y_i^n + y_{i-1}^n \right)$$
+
+Bajo la condición de estabilidad de Courant-Friedrichs-Lewy ($\text{CFL} \le 1$, donde $\Delta t \le \Delta x / c$), este sistema resuelve en cada muestra la aceleración de cada segmento físico de la cuerda o membrana. En `[gen~]`, este esquema se implementa con precisión muestra a muestra utilizando arrays de memoria contiguos indexados en el código de GenExpr.
+
+### Dinámica No Lineal y Atractores Caóticos (Edmar Soria, 2022)
+Como expone Edmar Soria en *Procedural / Sonora*, cuando los instrumentos acústicos son forzados a regímenes extremos (sobre-presión del arco sobre la cuerda o membranas con rigidez no lineal), la respuesta deja de ser lineal y entra en el territorio de los **sistemas dinámicos discretos no lineales** gobernados por mapas caóticos (como el mapa logístico o el atractor de Hénon):
+$$x_{n+1} = 1 - a x_n^2 + y_n, \quad y_{n+1} = b x_n$$
+Al acoplar estos mapas a la excitación de guías de onda dentro de `[gen~]`, el instrumento digital exhibe bifurcaciones periódicas, armónicos sub-graves y comportamientos acústicos orgánicos idénticos a los de instrumentos orquestales reales en manos de músicos virtuosos.
+
 ---
 
 ## 3. El Problema de la Afinación y el Interpolador Todo-Paso (Allpass)

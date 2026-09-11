@@ -43,6 +43,11 @@ $$f_s \ge 44.100\text{ Hz} \quad \text{o} \quad 48.000\text{ Hz}$$
 
 Si intentamos representar una señal por encima de la frecuencia de Nyquist ($f_N = f_s / 2 = 24.000\text{ Hz}$ a 48 kHz), ocurre el fenómeno de **Aliasing (Plegamiento Espectral)**: las frecuencias inaudibles se reflejan matemáticamente hacia abajo en el espectro audible como tonos espurios y disonantes.
 
+> **Fundamento Físico Histórico (Sir George Biddell Airy, 1871):**
+> Mucho antes de la discretización digital, Sir George Biddell Airy demostró en su célebre tratado *On Sound and Atmospheric Vibrations with the Mathematical Elements of Music (Cambridge)* que el sonido en el aire no es un transporte de materia, sino una **propagación de estados de presión y deformación elástica infinitesimal** en un medio continuo gobernada por la ecuación diferencial de onda unidimensional:
+> $$\frac{\partial^2 y}{\partial t^2} = c^2 \frac{\partial^2 y}{\partial x^2}$$
+> En el procesamiento digital contemporáneo con MSP, sustituimos la elasticidad continua del aire por arreglos numéricos contiguos de punto flotante (`t_double*`) muestreados a intervalos regulares $T = 1/f_s$. La fidelidad con la que el motor en C reproduce las ondas mecánicas deducidas por Airy depende de respetar la tasa de Nyquist y evitar discontinuidades en el Audio Thread.
+
 ---
 
 ##  2. Anatomía del Audio Thread: Vector Sizes y Latencia

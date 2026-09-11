@@ -72,6 +72,10 @@ Este proyecto integra **la totalidad de los conceptos teóricos y prácticos des
 * El pulso polirrítmico selecciona una nota de la escala usando `[zl.lookup]`.
 * Cada 12 compases, un pulso ejecuta un `[zl.rot 1]`, haciendo que la escala rote circularmente. Las mismas notas se ejecutan con una sensación armónica renovada e hipnótica.
 
+> **Fundamentación Teórica (Edmar Soria / Francisco Colasanto):**
+> En *Procedural / Sonora*, Edmar Soria formaliza la **transducción rítmica y modal** a través de la teoría de conjuntos y grupos de permutaciones: las rotaciones circulares mediante `[zl.rot]` representan acciones de un grupo cíclico $C_n$ sobre el conjunto discreto de alturas, preservando la consonancia interválica mientras generan variación temporal continua sin recurrir al azar destructivo.
+> Asimismo, como demuestra Francisco Colasanto en su investigación doctoral sobre la herramienta *AMI (UNAM / CMMAS)*, la estructuración de colecciones simbólicas en memoria mediante tablas indexadas (`coll` y matrices probabilísticas) permite desacoplar el motor generativo de la síntesis final, garantizando reproducibilidad y calificación analítica de los parámetros generados en tiempo real.
+
 ### Componente C: La Voz de Sintetizador Percusivo (MSP)
 * **Bombo / Sub-Bass:** Un oscilador `[cycle~]` modulado con una caída rápida de frecuencia (de 150 Hz a 40 Hz en 80 ms con `[line~]`) y una envolvente de amplitud exponencial para dar pegada contundente.
 * **Lead / Pluck FM:** Un oscilador sinusoidal portador modulado en frecuencia con una envolvente percusiva metálica y brillante.

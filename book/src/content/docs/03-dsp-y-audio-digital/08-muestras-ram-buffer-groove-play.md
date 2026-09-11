@@ -109,12 +109,22 @@ void my_sampler_perform64(t_my_sampler *x, t_object *dsp64, double **ins, long n
 
 ---
 
-## 4. Escenarios Reales de Producción
+## 4. Escenarios Reales de Producción y Teoría Micro-Temporal
 
 1. **Scratches Estilo Vinilo**: Conectar un `[flonum]` suavizado con `[line~]` o la salida de una tableta gráfica/mouse hacia el inlet de velocidad de `groove~` para emular el frenado y empuje físico de una bandeja giradiscos.
 2. **Repulidor de Bucles con Crossfade**: Eliminar clics en los puntos de unión de un bucle percusivo aplicando una pequeña rampa de ganancia senoidal (`cos~`) en los extremos con ayuda del outlet de sincronía de `groove~`.
-3. **Reproductor Polifónico One-Shot (Drum Machine)**: Subpatchers polifónicos con `[play~]` disparados por mensajes de nota MIDI, leyendo de un buffer común cargado con bombos, tambores y platillos.
-4. **Sintetizador Granular de Micro-Lazos**: Disparar cientos de lecturas cortas (10 a 50 ms) en posiciones aleatorias de un `buffer~` largo de voz humana para generar un manto ambiental o textura densa (*drone*).
+3. **Morfología de Envolventes Granulares (Curtis Roads, *Microsound*)**:
+   Al segmentar un buffer en granos microscópicos (10 a 50 ms), aplicar una ventana rectangular causa discontinuidades que introducen armónicos de alta frecuencia (clics). Como demuestra Roads en *Microsound*, la elección de la función de enventanado gobierna la pureza espectral del flujo granular (*grain stream*):
+   - **Ventana de Von Hann (Hanning):**
+     $$w[n] = 0.5 \left( 1 - \cos\left(\frac{2\pi n}{N-1}\right) \right)$$
+     Garantiza reconstrucción perfecta a ganancia unitaria con solapamiento (*overlap*) al 50%. Se genera típicamente leyendo medio ciclo de `[cycle~]` o mediante tablas en `[buffer~]`.
+   - **Ventana Gaussiana (Quanta de Gabor):**
+     $$w[n] = \exp\left( -0.5 \left( \frac{n - (N-1)/2}{\sigma (N-1)/2} \right)^2 \right)$$
+     Minimiza el producto de la incertidumbre temporal y frecuencial ($\Delta t \cdot \Delta f = 1/2$), siendo el estándar para estiramiento temporal (*time-stretching*) sin artefactos metálicos.
+4. **Scrubbing Sincrónico Multicanal con `[2d.wave~]`**: Recorrer una matriz de dos dimensiones en memoria RAM utilizando un `[phasor~]` en el eje temporal y un controlador MIDI en el eje de posición espacial.
+
+5. **Reproductor Polifónico One-Shot (Drum Machine)**: Subpatchers polifónicos con `[play~]` disparados por mensajes de nota MIDI, leyendo de un buffer común cargado con bombos, tambores y platillos.
+6. **Sintetizador Granular de Micro-Lazos**: Disparar cientos de lecturas cortas (10 a 50 ms) en posiciones aleatorias de un `buffer~` largo de voz humana para generar un manto ambiental o textura densa (*drone*).
 
 ---
 

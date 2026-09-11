@@ -41,6 +41,14 @@ Max no es imperativo ni lineal; implementa el modelo de **Computación por Flujo
 
 > **Por qué esto importa:** En interacción musical en tiempo real, no puedes congelar la CPU en un bucle `while(true)` esperando a que el músico toque una nota. El sistema debe ser **completamente reactivo y asíncrono**.
 
+### Comparativa Arquitectónica: Max Dataflow vs. Servidor UGen de SuperCollider
+Tal como documentan Scott Wilson, David Cottle y Nick Collins en *The SuperCollider Book (The MIT Press)*, existen dos grandes filosofías para abordar la computación musical en tiempo real:
+
+1. **El Modelo Reactivo Guiado por Eventos (Max/MSP):** El lenguaje de control y el entorno visual constituyen un grafo directo acoplado. Los mensajes viajan físicamente a través de cables en memoria compartida mediante punteros a estructuras `t_object`. La latencia de control responde a la prioridad del Scheduler.
+2. **El Modelo Cliente-Servidor Desacoplado (SuperCollider):** La generación de audio reside en un proceso servidor dedicado (`scsynth` / `supernova`) que evalúa un grafo estático de unidades generadoras (UGens) ordenado topológicamente en bloques vectoriales. El lenguaje de control (`sclang`) se comunica con el motor de audio exclusivamente mediante mensajes asíncronos bajo el protocolo **Open Sound Control (OSC)** sobre sockets UDP/TCP.
+
+Comprender esta distinción es vital: mientras que en SuperCollider la síntesis se define como una función matemática pura compilada en el servidor, en Max el conexionado de inlets calientes y fríos define tanto la topología acústica como la pila de llamadas del procesador en tiempo real.
+
 ---
 
 ##  2. Organología de Sistemas: Estado (State) vs. Excitación (Trigger)

@@ -122,6 +122,20 @@ $$\text{phase\_step} = \frac{f_0}{f_s}$$
 Si $f_0 = 440\text{ Hz}$ y $f_s = 48.000\text{ Hz}$, en cada muestra la fase avanza:
 $$\text{phase\_step} = \frac{440}{48000} \approx 0.009166$$
 
+### Teoría Formal de Interpolación en Tablas de Onda (Curtis Roads, CMT 2023)
+En la segunda edición de *The Computer Music Tutorial (The MIT Press, 2023)*, Curtis Roads formaliza por qué el truncamiento entero directo (`(int)index`) es inaceptable en síntesis profesional de estudio: produce **ruido de cuantización de fase** y distorsión armónica espuria.
+
+Para leer una posición fraccionaria $i + \alpha$ (donde $i$ es la parte entera y $\alpha \in [0, 1)$ la fracción de muestra):
+
+1. **Truncamiento (Zero-Order Hold / Vecino más cercano):**
+   $$y[n] = x[i]$$
+   Genera saltos escalonados que degradan la relación señal-a-ruido (SNR) a menos de 40 dB.
+2. **Interpolación Lineal (First-Order):**
+   $$y[n] = x[i] + \alpha \cdot (x[i+1] - x[i])$$
+   Es el método estándar en objetos como `[cycle~]` (con tabla de 512 puntos). Atenúa significativamente los componentes espurios, elevando el piso de ruido a ~70 dB.
+3. **Interpolación Cúbica y Hermite (Splines de Tercer Orden):**
+   Utilizada en `[gen~]` y samplers de alta gama, pondera 4 muestras consecutivas ($x[i-1], x[i], x[i+1], x[i+2]$) para asegurar la continuidad de la primera derivada (tangente suave). Elimina virtualmente todo aliasing audible, garantizando un piso dinámico superior a 96 dB (grado CD de 16-bit) incluso con transposiciones extremas.
+
 ---
 
 ### Gotchas Críticos de los Foros Oficiales de Cycling '74

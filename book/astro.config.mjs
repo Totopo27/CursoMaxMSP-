@@ -60,6 +60,10 @@ export default defineConfig({
           label: 'Apéndices Especializados',
           autogenerate: { directory: 'apendices' },
         },
+        {
+          label: 'Referencias Bibliográficas',
+          slug: 'referencias-bibliograficas',
+        },
       ],
       customCss: ['./src/styles/custom.css'],
     }),
