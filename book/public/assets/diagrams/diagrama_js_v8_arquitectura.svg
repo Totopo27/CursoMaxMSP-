@@ -47,7 +47,7 @@
       <text x="10" y="50" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8">list(), anything()</text>
     </g>
 
-    <!-- SUB-PANEL DERECHO: SCRIPTING & API -->
+    <!-- SUB-PANEL DERECHO: SCRIPTING &amp; API -->
     <g transform="translate(200, 35)">
       <rect x="0" y="0" width="178" height="68" rx="3" fill="#121318" stroke="#eb6c36" stroke-width="0.8" />
       <text x="10" y="18" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8.5" font-weight="600">API Max &amp; Scripting</text>

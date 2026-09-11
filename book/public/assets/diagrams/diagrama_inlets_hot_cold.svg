@@ -9,7 +9,7 @@
   </defs>
 
   <!-- HEADER EDITORIAL -->
-  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">MECÁNICA DE PUERTOS · CIPRIANI & GIRI</text>
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">MECÁNICA DE PUERTOS · CIPRIANI &amp; GIRI</text>
   <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 1.1B · ESTADO PASIVO (COLD) VS. EXCITACIÓN ACTIVA (HOT)</text>
   <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
 

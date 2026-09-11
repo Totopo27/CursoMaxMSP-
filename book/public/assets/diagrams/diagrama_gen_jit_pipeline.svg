@@ -35,7 +35,7 @@
       <!-- Step 3 -->
       <g transform="translate(0, 88)">
         <rect width="390" height="34" rx="3" fill="#222226" stroke="#52525b" stroke-width="1" />
-        <text x="12" y="21" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="600">3. Emisión de C++ Intermedio & Compilador LLVM</text>
+        <text x="12" y="21" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="600">3. Emisión de C++ Intermedio &amp; Compilador LLVM</text>
       </g>
 
       <!-- Step 4 (Focal) -->

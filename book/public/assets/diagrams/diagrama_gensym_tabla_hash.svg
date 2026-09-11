@@ -27,7 +27,7 @@
     <rect width="210" height="90" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.4"/>
     <text x="15" y="24" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">MOTOR DE HASHING (C SDK)</text>
     <rect x="15" y="38" width="180" height="34" rx="3" fill="#2a1b14" stroke="#eb6c36" stroke-width="1"/>
-    <text x="105" y="59" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" text-anchor="middle">Hash Function & Lookup</text>
+    <text x="105" y="59" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" text-anchor="middle">Hash Function &amp; Lookup</text>
     <text x="105" y="110" fill="#fed7aa" font-size="8" text-anchor="middle">Interning inmutable en RAM</text>
   </g>
 

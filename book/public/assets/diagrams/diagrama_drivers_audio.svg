@@ -10,7 +10,7 @@
 
   <!-- HEADER EDITORIAL -->
   <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">SUBSISTEMA DE AUDIO EN WINDOWS · SELECCIÓN Y LATENCIA</text>
-  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 0.7 · DRIVER TOPOLOGY & LATENCY</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 0.7 · DRIVER TOPOLOGY &amp; LATENCY</text>
   <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
 
   <!-- NODO SUPERIOR: MOTOR DE AUDIO MSP -->

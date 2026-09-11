@@ -25,7 +25,7 @@
   <text x="320" y="90" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8">Freq fc (mtof)</text>
   <text x="640" y="90" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8">Gate / Velocity</text>
 
-  <!-- FILA 1: C:M RATIO MATH (IZQ) & ADSR PRINCIPAL (DER) -->
+  <!-- FILA 1: C:M RATIO MATH (IZQ) &amp; ADSR PRINCIPAL (DER) -->
   <g transform="translate(150, 107)">
     <rect width="200" height="42" rx="4" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
     <text x="10" y="16" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">CÁLCULO DE FRECUENCIAS</text>
@@ -69,10 +69,10 @@
     <text x="10" y="52" fill="#71717a" font-size="8.5">Corte modulado por LFO de control</text>
   </g>
 
-  <!-- VCA & HEADROOM -->
+  <!-- VCA &amp; HEADROOM -->
   <g transform="translate(325, 250)">
     <rect width="250" height="65" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
-    <text x="10" y="16" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">VCA & HEADROOM PROTEGIDO</text>
+    <text x="10" y="16" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">VCA &amp; HEADROOM PROTEGIDO</text>
     <text x="10" y="36" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="600">[*~] VCA x [*~ 0.35]</text>
     <text x="10" y="52" fill="#71717a" font-size="8.5">Atenuación nominal a -9 dB (Anti-clipping)</text>
   </g>

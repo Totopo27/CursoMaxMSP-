@@ -37,7 +37,7 @@
       </g>
     </g>
 
-    <!-- COLUMNA 2: HAL LIBDAISY & CALLBACK -->
+    <!-- COLUMNA 2: HAL LIBDAISY &amp; CALLBACK -->
     <g transform="translate(250, 45)">
       <rect width="220" height="135" rx="5" fill="#141417" stroke="#27272a" stroke-width="1" />
       <text x="12" y="20" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">CAPA DE ABSTRACCIÓN (LIBDAISY)</text>

@@ -81,7 +81,7 @@
       <g transform="translate(0, 80)">
         <rect width="398" height="34" rx="3" fill="#222226" stroke="#3f3f46" stroke-width="1" />
         <text x="10" y="16" fill="#a78bfa" font-family="ui-monospace, monospace" font-size="9" font-weight="700">CNMAT EXTERNALS</text>
-        <text x="130" y="16" fill="#f4f4f5" font-size="8.5">UC Berkeley Center for New Music & Audio.</text>
+        <text x="130" y="16" fill="#f4f4f5" font-size="8.5">UC Berkeley Center for New Music &amp; Audio.</text>
         <text x="10" y="27" fill="#a1a1aa" font-size="8">Modelos de resonancia física, síntesis aditiva sinusoidal y enrutamiento OSC.</text>
       </g>
 
