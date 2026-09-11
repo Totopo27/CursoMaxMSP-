@@ -49,9 +49,7 @@ En Max, un `symbol` **NO es un string convencional en el heap**:
 2. Max consulta una **Tabla Hash Global única**.
 3. Si el texto ya existe en la tabla, devuelve el puntero exacto a esa entrada. Si no existe, lo crea una sola vez de forma inmutable.
 
-```
-"mi_variable" ──► [ Función Hash ] ──► Puntero 0x7FFF12A0 (Único e Inmutable)
-```
+![FIG 1.2B · Teoría de Símbolos en C: Interning y Tabla Hash Global con gensym()](/assets/diagrams/diagrama_gensym_tabla_hash.svg)
 
 ### La Consecuencia Arquitectónica:
 * **Comparaciones en Tiempo Constante $O(1)$:** Para saber si dos símbolos en Max son idénticos, la CPU **solo compara las direcciones de sus dos punteros** (`ptrA == ptrB`), en un solo ciclo de reloj.
@@ -73,10 +71,7 @@ void mi_objeto_list(t_mi_objeto *x, t_symbol *s, long argc, t_atom *argv);
 * `argv`: Puntero al primer átomo del vector (*argument vector*).
 
 ### Antipatrón de Diseño: Desempaquetado Gráfico Ineficiente
-Un error recurrente al manipular listas complejas es el uso de cadenas masivas de objetos gráficos individuales:
-```
-[ lista ] ──► [ unpack 0 0 0 0 ] ──► [ cable1 ] [ cable2 ] ... ──► [ pack 0 0 0 0 ]
-```
+![FIG 1.2C · Manipulación de Listas: Antipatrón Gráfico vs. Operaciones Vectoriales [zl]](/assets/diagrams/diagrama_antipatron_unpack_vs_zl.svg)
 **Inconvenientes de esta aproximación:**
 1. Cada conexión gráfica individual (`patchcord`) involucra una llamada a función en C con resolución de inlets y comprobación de tipos.
 2. Desempaquetar una lista de 16 elementos por cables visuales genera 16 saltos de pila innecesarios.

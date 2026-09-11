@@ -25,13 +25,7 @@ La **Max Console** es la ventana maestra de registro de eventos (*logging*) y de
 
 ### 1.2. Impresión de Datos en Tiempo Real: El Objeto `[print]`
 Para inspeccionar el contenido de cualquier cable de control:
-* Instanciar un objeto `[print identificador]`:
-  ```
-  [ + 15 ]
-     │
-  [print resultado_suma]
-  ```
-* En la consola se registrará la etiqueta `resultado_suma:` acompañada del valor exacto recibido.
+![FIG 0.9B · Inspección de Cables de Control con [print] y Max Console](/assets/diagrams/diagrama_print_consola_diagnostico.svg)
 * **En desarrollo bajo nivel (C SDK):** La función equivalente es `post("Valor: %f\n", x->mi_variable);`.
 
 ### 1.3. Herramientas de Filtrado y Depuración
@@ -82,12 +76,5 @@ Para configurar el motor de audio en Max:
 
 Para comprobar la operatividad del sistema de audio:
 1. En la ventana **Audio Status**, activar el interruptor **Audio: On** (o pulsar el altavoz en la barra inferior del parche).
-2. Crear un parche con los siguientes objetos elementales:
-   ```
-   [cycle~ 440]
-      │
-   [*~ 0.2]  <-- Factor de atenuación para evitar saturación
-      │   └──┐
-   [ezdac~]  <-- Convertidor Digital a Analógico estéreo
-   ```
+![FIG 0.11 · Cadena de Verificación del Motor de Audio](/assets/diagrams/diagrama_verificacion_audio_dsp.svg)
 3. Al encender el objeto `[ezdac~]`, el sistema debe emitir un tono sinusoidal puro a $440\text{ Hz}$ sin chasquidos, interrupciones ni retrasos perceptibles.

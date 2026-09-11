@@ -42,16 +42,7 @@ Un error recurrente en el diseño de sintetizadores es permitir que la totalidad
 
 Para mitigar este costo computacional, cada instancia de voz incorpora un objeto `[thispoly~]`:
 
-```
-          [adsr~ 10. 150. 0.5 300.]
-             |                 | (3er Outlet: Estado de Actividad 1/0)
-             v                 v
-          [*~ audio]        [!= 0.]  (1 cuando suena, 0 cuando calla)
-                               |
-                        [message: mute $1, $1]
-                               |
-                         [thispoly~]
-```
+![FIG 4.2B · Ciclo de Vida Polifónico: El Protocolo mute y el Objeto [thispoly~]](/assets/diagrams/diagrama_thispoly_mute_ciclo_vida.svg)
 
 ### Sintaxis del Mensaje `mute [estado_mute] [estado_busy]`
 - `mute 1 0`: **Mute ON, Busy OFF**. La voz se apaga en el motor DSP (consume **0% de CPU**) y se marca como **libre** para que `poly~` pueda asignarle una nueva nota.

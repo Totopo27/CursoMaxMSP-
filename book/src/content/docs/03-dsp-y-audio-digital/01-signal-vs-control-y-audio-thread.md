@@ -114,9 +114,9 @@ Un cable de audio (`~`) no es necesariamente sonido que deba salir a los altavoc
 
 2. **Modulación de Moduladores (*Modulating the Modulators*)**:
    - En *Algorithmic Composition*, Dobrian plantea que las curvas musicales orgánicas surgen cuando la frecuencia, amplitud o fase de un oscilador de control es modulada a su vez por un segundo oscilador de frecuencia aún menor:
-   ```text
-   [cycle~ 0.05] (Modulador Lento: 20s) ──► [*~ 2.0] ──► [+~ 0.5] ──► [cycle~] (Modulador Principal)
-   ```
+
+![FIG 3.1B · Composición Algorítmica: Modulación de Moduladores en Audio Thread](/assets/diagrams/diagrama_modulacion_moduladores_dobrian.svg)
+
    - Esta técnica rompe la predictibilidad mecánica de los LFOs cíclicos simples, produciendo evoluciones tímbricas continuas cuasi-periódicas que emulan el comportamiento dinámico de los instrumentos acústicos.
 
 3. **Mapeo No Lineal e Interpolación en Audio**:

@@ -25,23 +25,15 @@ En la música electroacústica, los conciertos multicanal, el diseño sonoro de 
 En el tratado *Síntesis Espacial de Sonido (UNQ / CMMAS)*, Oscar Pablo Di Liscia y Mariano Martín Cura detallan la síntesis de señales formato B a partir de coordenadas espaciales normalizadas en una esfera unitaria: azimut $\theta$ (plano horizontal), elevación $\phi$ (plano vertical) y distancia $r$:
 
 1. **Primer Orden (4 Canales: $W, X, Y, Z$):**
-   $$\begin{aligned}
-   W &= \frac{1}{\sqrt{2}} \cdot S \\
-   X &= \cos(\theta) \cos(\phi) \cdot S \\
-   Y &= \sin(\theta) \cos(\phi) \cdot S \\
-   Z &= \sin(\phi) \cdot S
-   \end{aligned}$$
+   $$W = \frac{1}{\sqrt{2}} \cdot S, \quad X = \cos(\theta) \cos(\phi) \cdot S$$
+   $$Y = \sin(\theta) \cos(\phi) \cdot S, \quad Z = \sin(\phi) \cdot S$$
+
    donde $W$ es el componente omnidireccional de presión de referencia y $X, Y, Z$ son los componentes dipolares ortogonales correspondientes a los ejes adelante/atrás, izquierda/derecha y arriba/abajo.
 
 2. **Segundo Orden (9 Canales: suma de $R, S, T, U, V$):**
    Añade armónicos esféricos cuadrupolares para mayor selectividad direccional y resolución angular en recintos amplios:
-   $$\begin{aligned}
-   R &= \sin(2\phi) \cdot S \\
-   S &= \cos(\theta) \sin(2\phi) \cdot S \\
-   T &= \sin(\theta) \sin(2\phi) \cdot S \\
-   U &= \cos(2\theta) \cos^2(\phi) \cdot S \\
-   V &= \sin(2\theta) \cos^2(\phi) \cdot S
-   \end{aligned}$$
+   $$R = \sin(2\phi) \cdot S, \quad S = \cos(\theta) \sin(2\phi) \cdot S, \quad T = \sin(\theta) \sin(2\phi) \cdot S$$
+   $$U = \cos(2\theta) \cos^2(\phi) \cdot S, \quad V = \sin(2\theta) \cos^2(\phi) \cdot S$$
 
 #### Decodificación de Fase Corregida / Control de Opuestos (Gordon Monro / Malham)
 La decodificación directa general recrea un frente de onda ideal en un punto central infinitesimal (*sweet spot*), pero genera altavoces que emiten señales en contrafase respecto a los opuestos. Como documenta Di Liscia, en una sala de conciertos esto degrada severamente la localización para los oyentes periféricos. 

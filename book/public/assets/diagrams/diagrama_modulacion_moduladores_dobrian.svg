@@ -1,0 +1,65 @@
+<svg viewBox="0 0 940 240" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-m" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">COMPOSICIÓN ALGORÍTMICA · MODULACIÓN DE MODULADORES (ENFOQUE DOBRIAN)</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 3.1B · CONTROL DINÁMICO CUASI-PERIÓDICO EN AUDIO THREAD</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- CADENA DE AUDIO DSP -->
+  <g transform="translate(30, 50)">
+    <!-- ETAPA 1: LFO ULTRA LENTO -->
+    <g transform="translate(0, 30)">
+      <rect width="180" height="46" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.4"/>
+      <circle cx="15" cy="46" r="3" fill="#f59e0b"/>
+      <text x="90" y="24" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">cycle~ 0.05</text>
+      <text x="90" y="38" fill="#fed7aa" font-size="7.5" text-anchor="middle">Modulador Lento (Periodo = 20s)</text>
+    </g>
+
+    <!-- CABLE 1 -->
+    <line x1="180" y1="53" x2="230" y2="53" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arr-m)"/>
+
+    <!-- ETAPA 2: ESCALAMIENTO *~ 2.0 -->
+    <g transform="translate(240, 30)">
+      <rect width="120" height="46" rx="4" fill="#222226" stroke="#52525b" stroke-width="1.2"/>
+      <circle cx="15" cy="0" r="3" fill="#f59e0b"/>
+      <circle cx="15" cy="46" r="3" fill="#f59e0b"/>
+      <text x="60" y="28" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">*~ 2.0</text>
+    </g>
+
+    <!-- CABLE 2 -->
+    <line x1="360" y1="53" x2="410" y2="53" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arr-m)"/>
+
+    <!-- ETAPA 3: OFFSET +~ 0.5 -->
+    <g transform="translate(420, 30)">
+      <rect width="120" height="46" rx="4" fill="#222226" stroke="#52525b" stroke-width="1.2"/>
+      <circle cx="15" cy="0" r="3" fill="#f59e0b"/>
+      <circle cx="15" cy="46" r="3" fill="#f59e0b"/>
+      <text x="60" y="28" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">+~ 0.5</text>
+    </g>
+
+    <!-- CABLE 3 -->
+    <line x1="540" y1="53" x2="600" y2="53" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arr-m)"/>
+    <text x="570" y="44" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700" text-anchor="middle">Frecuencia</text>
+
+    <!-- ETAPA 4: LFO PRINCIPAL (FRECUENCIA MODULADA DINÁMICAMENTE) -->
+    <g transform="translate(610, 30)">
+      <rect width="250" height="46" rx="4" fill="#18181b" stroke="#38bdf8" stroke-width="1.4"/>
+      <circle cx="15" cy="0" r="3" fill="#f59e0b"/>
+      <circle cx="15" cy="46" r="3" fill="#f59e0b"/>
+      <text x="125" y="24" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">cycle~ (Modulador Principal)</text>
+      <text x="125" y="38" fill="#a1a1aa" font-size="7.5" text-anchor="middle">Rango de velocidad: 0.1 Hz a 2.5 Hz</text>
+    </g>
+  </g>
+
+  <!-- PANEL INFERIOR EXPLICATIVO -->
+  <g transform="translate(30, 155)">
+    <rect width="880" height="65" rx="4" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+    <text x="15" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">RUPTURA DE LA PREDICTIBILIDAD MECÁNICA:</text>
+    <text x="15" y="36" fill="#a1a1aa" font-size="8.5">Al modular continuamente la tasa del oscilador maestro con una curva senoidal de 20 segundos, la onda resultante nunca se repite de forma monótona.</text>
+    <text x="15" y="52" fill="#22c55e" font-size="8.5">✓ Genera respiración tímbrica orgánica, emulando las micro-variaciones físicas de los instrumentos acústicos tradicionales.</text>
+  </g>
+</svg>

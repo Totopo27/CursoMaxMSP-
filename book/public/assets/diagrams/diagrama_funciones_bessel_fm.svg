@@ -1,0 +1,73 @@
+<svg viewBox="0 0 940 310" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">TEORÍA DE SÍNTESIS FM · FUNCIONES DE BESSEL DE PRIMERA ESPECIE Jk(I)</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 3.5B · DISTRIBUCIÓN DE ENERGÍA ESPECTRAL Y BANDAS LATERALES</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- GRAFICO CARTESIANO DE BESSEL -->
+  <g transform="translate(60, 50)">
+    <!-- EJES -->
+    <!-- Eje Y -->
+    <line x1="0" y1="10" x2="0" y2="210" stroke="#3f3f46" stroke-width="1.2"/>
+    <!-- Eje X (Y = 0.0) -->
+    <line x1="0" y1="130" x2="580" y2="130" stroke="#52525b" stroke-width="1.2"/>
+
+    <!-- MARCAS EJE Y -->
+    <!-- +1.0 -->
+    <line x1="-5" y1="30" x2="580" y2="30" stroke="#27272a" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="-12" y="34" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" text-anchor="end">+1.0</text>
+    <!-- +0.5 -->
+    <line x1="-5" y1="80" x2="580" y2="80" stroke="#27272a" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="-12" y="84" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" text-anchor="end">+0.5</text>
+    <!-- 0.0 -->
+    <text x="-12" y="134" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" text-anchor="end">0.0</text>
+    <!-- -0.4 -->
+    <line x1="-5" y1="170" x2="580" y2="170" stroke="#27272a" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="-12" y="174" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" text-anchor="end">-0.4</text>
+
+    <!-- MARCAS EJE X (INDICE I) -->
+    <text x="0" y="145" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" text-anchor="middle">0</text>
+    <text x="100" y="145" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" text-anchor="middle">1</text>
+    <text x="200" y="145" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" text-anchor="middle">2</text>
+    <text x="240" y="145" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700" text-anchor="middle">2.405</text>
+    <circle cx="240" cy="130" r="3.5" fill="#eb6c36"/>
+    <text x="300" y="145" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" text-anchor="middle">3</text>
+    <text x="400" y="145" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" text-anchor="middle">4</text>
+    <text x="500" y="145" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" text-anchor="middle">5</text>
+    <text x="575" y="145" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">Índice (I)</text>
+
+    <!-- CURVAS BESSEL APROXIMADAS -->
+    <!-- J0(I): Portadora (Comienza en 1.0, cruce por cero en I=2.405, mínimo en I=3.83 (-0.4), cruce en I=5.5) -->
+    <path d="M 0 30 Q 120 40 240 130 T 383 170 T 550 130" fill="none" stroke="#eb6c36" stroke-width="2.5"/>
+    <text x="45" y="24" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="9" font-weight="700">J0(I) [Portadora fc]</text>
+
+    <!-- J1(I): 1er Parcial (Comienza en 0.0, sube a 0.58 en I=1.84, cruza en I=3.83, minimo en 5.3) -->
+    <path d="M 0 130 Q 90 70 184 72 T 383 130 T 530 160" fill="none" stroke="#38bdf8" stroke-width="2"/>
+    <text x="184" y="60" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="9" font-weight="700">J1(I) [fc ± fm]</text>
+
+    <!-- J2(I): 2do Parcial (Comienza en 0.0, sube a 0.35 en I=3.05, cruza en 5.13) -->
+    <path d="M 0 130 Q 150 130 305 95 T 513 130" fill="none" stroke="#22c55e" stroke-width="2"/>
+    <text x="315" y="85" fill="#22c55e" font-family="ui-monospace, monospace" font-size="9" font-weight="700">J2(I) [fc ± 2fm]</text>
+  </g>
+
+  <!-- PANEL DERECHO DE INTERPRETACIÓN ESPECTRAL -->
+  <g transform="translate(680, 50)">
+    <rect width="235" height="230" rx="5" fill="#18181b" stroke="#27272a" stroke-width="1.2"/>
+    <rect width="235" height="22" rx="5" fill="#27272a"/>
+    <rect y="17" width="235" height="5" fill="#27272a"/>
+    <text x="12" y="15" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">REGLAS DE CHOWNING</text>
+
+    <g transform="translate(12, 34)">
+      <text x="0" y="15" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">1. I = 0 (Sin Modulación)</text>
+      <text x="0" y="28" fill="#a1a1aa" font-size="8">J0 = 1.0; parciales en 0. Sinusoide pura.</text>
+
+      <text x="0" y="52" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">2. I = 2.405 (Portadora Nula)</text>
+      <text x="0" y="65" fill="#fed7aa" font-size="8">J0 cruza por cero: la frecuencia fundamental desaparece por completo del espectro.</text>
+
+      <text x="0" y="95" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">3. Incremento de I</text>
+      <text x="0" y="108" fill="#a1a1aa" font-size="8">La energía se transfiere a parciales superiores. El timbre pasa de cálido a metálico brillante.</text>
+
+      <text x="0" y="140" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">4. Valores Negativos</text>
+      <text x="0" y="153" fill="#a1a1aa" font-size="8">Indican inversión de fase de 180° en las bandas laterales correspondientes.</text>
+    </g>
+  </g>
+</svg>

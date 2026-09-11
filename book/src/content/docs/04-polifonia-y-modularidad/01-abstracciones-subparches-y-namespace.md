@@ -50,10 +50,7 @@ Si dos abstracciones contienen un objeto `[send volumen]`, ambas modularán la m
   `[send #0_volumen]` y `[receive #0_volumen]`.
 - Al instanciar, Max sustituye `#0` por un entero único incremental (por ejemplo `1084_volumen`). De este modo, la instancia A jamás interferirá con la instancia B.
 
-```
-Instancia 1 (ID 1024):  [send 1024_volumen] ---> [receive 1024_volumen]  (Aislado)
-Instancia 2 (ID 1025):  [send 1025_volumen] ---> [receive 1025_volumen]  (Aislado)
-```
+![FIG 4.0B · Modularidad y Namespace: Aislamiento de Instancias con el Prefijo #0](/assets/diagrams/diagrama_namespace_aislamiento_instancias.svg)
 
 > [!WARNING]
 > **Gotcha Crítico de los Mensajes de Control**: Si escribís `#0` dentro de una caja de mensaje (`[message]`), Max **NO** sustituye `#0` en tiempo de carga. `#0` solo se sustituye automáticamente en **cajas de objetos** (`[newobj]`). Para pasar `#0` a un mensaje, debés inyectarlo desde un objeto con el argumento `#0` o conectarlo mediante `[$1]`.

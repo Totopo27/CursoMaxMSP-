@@ -38,17 +38,7 @@ $$f_{\text{parciales}} = f_c \pm k \cdot f_m \quad (k = 1, 2, 3, 4, \dots)$$
 ### ¿Qué determina la energía de cada parcial? Las Funciones de Bessel de Primera Especie $J_k(I)$
 La amplitud de cada armónico $k$ está gobernada estrictamente por la función matemática $J_k(I)$:
 
-```
-Amplitud
-  ▲
-1.0│  J0(I) [Portadora]
-   │  \          J1(I) [1er Parcial]
-0.5│   \        /\          J2(I) [2do Parcial]
-   │    \      /  \        /\
-0.0┼─────\────/────\──────/──\────────► Índice de Modulación (I)
-   │      \  /      \    /    \
--0.4│       \/        \  /      \
-```
+![FIG 3.5B · Teoría de Síntesis FM: Funciones de Bessel de Primera Especie Jk(I)](/assets/diagrams/diagrama_funciones_bessel_fm.svg)
 
 ### Principios Espectrales de Bessel:
 1. **Con $I = 0$:** $J_0(0) = 1.0$ y todos los demás $J_k(0) = 0$. La señal es una sinusoide pura idéntica a la portadora.

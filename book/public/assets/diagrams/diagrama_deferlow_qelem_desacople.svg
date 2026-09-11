@@ -1,0 +1,61 @@
+<svg viewBox="0 0 940 260" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-q" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">DESACOPLE TEMPORAL Y PRIORIDAD DE HILOS · EL PATRÓN [DEFERLOW]</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 1.1F · SCHEDULER DE ALTA PRIORIDAD VS. MAIN THREAD</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- HILO SUPERIOR: SCHEDULER THREAD (ALTA PRIORIDAD) -->
+  <g transform="translate(25, 45)">
+    <rect width="890" height="85" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.2"/>
+    <rect width="890" height="20" rx="5" fill="rgba(235, 108, 54, 0.18)"/>
+    <rect y="16" width="890" height="4" fill="rgba(235, 108, 54, 0.18)"/>
+    <text x="12" y="14" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">HILO DE ALTA PRIORIDAD: SCHEDULER THREAD (OVERDRIVE ACTIVADO)</text>
+
+    <!-- Disparo -->
+    <g transform="translate(30, 32)">
+      <rect width="210" height="36" rx="3" fill="#2a1b14" stroke="#eb6c36" stroke-width="1"/>
+      <text x="105" y="22" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="9" font-weight="700" text-anchor="middle">Disparo de Preset / Evento UI</text>
+    </g>
+
+    <!-- Cable Scheduler -->
+    <line x1="240" y1="50" x2="330" y2="50" stroke="#eb6c36" stroke-width="1.8"/>
+
+    <!-- Objeto deferlow -->
+    <g transform="translate(330, 32)">
+      <rect width="180" height="36" rx="3" fill="#222226" stroke="#f4f4f5" stroke-width="1.4"/>
+      <text x="90" y="22" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">deferlow</text>
+    </g>
+
+    <!-- Explicación hilo alta prioridad -->
+    <text x="530" y="46" fill="#a1a1aa" font-size="8.5">Eventos musicales, MIDI y clock con precisión de microsegundos.</text>
+    <text x="530" y="60" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8">¡Prohibido ejecutar aquí funciones bloqueantes o renderizado!</text>
+  </g>
+
+  <!-- TRANSICIÓN: TRASLADO A COLA QELEM -->
+  <path d="M 445 130 L 445 155" fill="none" stroke="#eb6c36" stroke-width="2" marker-end="url(#arr-q)"/>
+  <rect x="470" y="132" width="220" height="20" rx="3" fill="#27272a"/>
+  <text x="580" y="145" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8" font-weight="700" text-anchor="middle">qelem_set() · Despacho asíncrono</text>
+
+  <!-- HILO INFERIOR: MAIN / UI THREAD (BAJA PRIORIDAD) -->
+  <g transform="translate(25, 160)">
+    <rect width="890" height="85" rx="5" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+    <rect width="890" height="20" rx="5" fill="#27272a"/>
+    <rect y="16" width="890" height="4" fill="#27272a"/>
+    <text x="12" y="14" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">HILO DE BAJA PRIORIDAD: MAIN / UI THREAD (COLA QELEM DEL SISTEMA OPERATIVO)</text>
+
+    <!-- Destino Carga Pesada -->
+    <g transform="translate(330, 32)">
+      <rect width="250" height="36" rx="3" fill="#222226" stroke="#38bdf8" stroke-width="1.2"/>
+      <text x="125" y="22" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="9" font-weight="700" text-anchor="middle">Carga Pesada / Dibujo de GUI</text>
+    </g>
+
+    <!-- Explicación -->
+    <text x="600" y="46" fill="#a1a1aa" font-size="8.5">Redibujado de paneles, carga de archivos JSON y pintado gráfico.</text>
+    <text x="600" y="60" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8">✓ Cero dropouts / Cero clicks audibles en el hilo MSP.</text>
+  </g>
+</svg>

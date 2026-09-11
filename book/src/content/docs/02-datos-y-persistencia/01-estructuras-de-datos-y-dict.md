@@ -31,12 +31,10 @@ En la interacción en tiempo real, un sistema musical no puede depender únicame
 
 ### C. La Base de Datos Clásica: `[coll]` (Collection)
 * Es la navaja suiza histórica de Max para composiciones complejas.
-* Cada fila tiene una **clave única** (número o símbolo) y un **vector de datos**:
-  ```text
-  1, 60 100 250;     // Clave 1: Nota 60, Vel 100, Dur 250ms
-  2, 64 90 500;      // Clave 2: Nota 64, Vel 90, Dur 500ms
-  intro, 120 4 4;    // Clave simbólica "intro": 120 BPM, 4/4
-  ```
+* Cada fila tiene una **clave única** (número o símbolo) y un **vector de datos**.
+
+![FIG 2.0B · Estructuras de Persistencia: Registros Planos [coll] vs. Jerarquía [dict] (JSON)](/assets/diagrams/diagrama_coll_vs_dict_arbol.svg)
+
 * Admite modos de búsqueda directa, lectura secuencial automática (`next`, `prev`), ordenamiento por clave o por valores, y persistencia directa en archivos de texto legibles.
 
 ---
@@ -60,12 +58,12 @@ El ecosistema **`[dict]`** de Cycling '74 introduce **estructuras de datos basad
       "depth": 0.6
     }
   }
-```
+  ```
 
-### La Sintaxis de Rutas (Dot-Notation y Slash-Notation):
+### La Sintaxis de Rutas (*Dot-Notation* y *Slash-Notation*):
 Para consultar o modificar datos dentro de `[dict]`, no necesitas recorrer el árbol manualmente. Usas rutas:
-* `get filter::cutoff`  Devuelve `1850.5`.
-* `set filter::resonance 0.85`  Modifica el valor sin tocar el resto del árbol.
+* `get filter::cutoff` ──► Devuelve `1850.5`.
+* `set filter::resonance 0.85` ──► Modifica el valor sin tocar el resto del árbol.
 
 ---
 

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "01. Anatomía de la Interfaz y Modos de Operación"
 description: "Fundamentos del entorno de desarrollo visual en Max/MSP: modos de ejecución, presentación, inspector y atajos esenciales."
 ---
@@ -113,13 +113,4 @@ En el menú **Options**  **Preferences**  **Patcher Windows**, es posible selecc
 
 ## 6. Resumen de Operaciones Esenciales
 
-```
-ACCIONES CLAVE EN EL LIENZO:
-1. Alternar Edición / Bloqueado   -> Ctrl + E
-2. Bloqueo temporal interactivo   -> Mantener Ctrl + Clic en objeto
-3. Abrir Inspector de Propiedades -> Ctrl + I
-4. Modo Presentación              -> Ctrl + Alt + E
-5. Añadir a Presentación          -> Ctrl + Alt + P
-6. Segmentar cables enredados     -> Ctrl + Y
-7. Crear Objeto / Mensaje         -> N / M
-```
+![FIG 0.2B · Atajos de Teclado y Control de Lienzo](/assets/diagrams/diagrama_resumen_operaciones_atajos.svg)

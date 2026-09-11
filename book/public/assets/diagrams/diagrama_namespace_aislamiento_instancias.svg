@@ -1,0 +1,49 @@
+<svg viewBox="0 0 940 240" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">MODULARIDAD Y NAMESPACE · AISLAMIENTO DE INSTANCIAS CON EL PREFIJO #0</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 4.0B · SUSTITUCIÓN DINÁMICA DE ENTEROS EN TIEMPO DE CARGA</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- INSTANCIA 1 -->
+  <g transform="translate(25, 45)">
+    <rect width="430" height="175" rx="5" fill="#18181b" stroke="#38bdf8" stroke-width="1.2"/>
+    <rect width="430" height="22" rx="5" fill="#222226"/>
+    <rect y="17" width="430" height="5" fill="#222226"/>
+    <text x="12" y="15" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">ABSTRACCIÓN INSTANCIA 1 · ASIGNACIÓN DINÁMICA ID = 1024</text>
+
+    <!-- Patcher content -->
+    <g transform="translate(20, 35)">
+      <!-- send -->
+      <rect width="180" height="34" rx="3" fill="#142433" stroke="#38bdf8" stroke-width="1.2"/>
+      <text x="90" y="21" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="9" font-weight="700" text-anchor="middle">send 1024_volumen</text>
+      <!-- Cable inalambrico -->
+      <line x1="180" y1="17" x2="210" y2="17" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <!-- receive -->
+      <rect x="210" y="0" width="180" height="34" rx="3" fill="#142433" stroke="#38bdf8" stroke-width="1.2"/>
+      <text x="300" y="21" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="9" font-weight="700" text-anchor="middle">receive 1024_volumen</text>
+    </g>
+    <text x="20" y="105" fill="#a1a1aa" font-size="8.5">En el código fuente de la abstracción se escribió: [send #0_volumen]</text>
+    <text x="20" y="125" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8">✓ Bus aislado: solo esta instancia escucha y transmite en 1024_volumen.</text>
+  </g>
+
+  <!-- INSTANCIA 2 -->
+  <g transform="translate(485, 45)">
+    <rect width="430" height="175" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3"/>
+    <rect width="430" height="22" rx="5" fill="rgba(235, 108, 54, 0.18)"/>
+    <rect y="17" width="430" height="5" fill="rgba(235, 108, 54, 0.18)"/>
+    <text x="12" y="15" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">ABSTRACCIÓN INSTANCIA 2 · ASIGNACIÓN DINÁMICA ID = 1025</text>
+
+    <!-- Patcher content -->
+    <g transform="translate(20, 35)">
+      <!-- send -->
+      <rect width="180" height="34" rx="3" fill="#2a1b14" stroke="#eb6c36" stroke-width="1.2"/>
+      <text x="90" y="21" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="9" font-weight="700" text-anchor="middle">send 1025_volumen</text>
+      <!-- Cable inalambrico -->
+      <line x1="180" y1="17" x2="210" y2="17" stroke="#eb6c36" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <!-- receive -->
+      <rect x="210" y="0" width="180" height="34" rx="3" fill="#2a1b14" stroke="#eb6c36" stroke-width="1.2"/>
+      <text x="300" y="21" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="9" font-weight="700" text-anchor="middle">receive 1025_volumen</text>
+    </g>
+    <text x="20" y="105" fill="#a1a1aa" font-size="8.5">En el código fuente de la abstracción se escribió: [send #0_volumen]</text>
+    <text x="20" y="125" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8">✓ Bus aislado: ID incremental único que previene colisiones con Instancia 1.</text>
+  </g>
+</svg>

@@ -105,13 +105,8 @@ Abre el parche interactivo:
 ### Escenario 3: Desacople de UI Pesada con `[deferlow]` para Prevenir Clicks de Audio
 * **El Problema:** Cada vez que cargas un preset de 500 parámetros desde un `[dict]` o redibujas una matriz visual de gran tamaño, el Scheduler se detiene a pintar la pantalla. Si estás reproduciendo audio con MSP, escucharás un chasquido (*dropout* o click).
 * **La Solución Arquitectónica:**
-  ```
-       [ Disparo de Preset / UI ]
-                   │
-              [ deferlow ]  <-- Traslada la ejecución a la cola baja (qelem)
-                   │
-         [ Carga Pesada / Dibujo ]
-  ```
+
+![FIG 1.1F · Desacople de Hilos entre Scheduler y Main Thread con [deferlow]](/assets/diagrams/diagrama_deferlow_qelem_desacople.svg)
 
 ### Escenario 4: Reloj Polirrítmico Puro por Subdivisión de Módulo
 * **El Problema:** Si usamos dos objetos `[metro]` independientes para ritmos compuestos (ej. `metro 333.33` para tresillos y `metro 250` para semicorcheas), los errores de redondeo de coma flotante en milisegundos hacen que ambos ritmos se desfasen con el paso de los compases (*drift* temporal).
