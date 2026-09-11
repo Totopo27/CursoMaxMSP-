@@ -1,4 +1,4 @@
-﻿---
+---
 title: "04. Consola de Max, Diagnóstico y Configuración de Audio"
 description: "Diagnóstico en tiempo real mediante la Max Console [print], niveles de logging y configuración técnica de controladores de audio ASIO en Windows."
 ---
@@ -56,18 +56,7 @@ Para inspeccionar el contenido de cualquier cable de control:
 
 A diferencia de macOS (donde la API unificada CoreAudio gestiona el enrutamiento con latencias bajas predeterminadas), en el entorno Windows la arquitectura de controladores requiere una selección cuidadosa:
 
-```mermaid
-graph TD
-    A[Max/MSP Audio Engine] --> B{Selección de Driver en Audio Status}
-    B -->|Recomendado para Estudio| C[ASIO Nativo de Interfaz Externa]
-    B -->|Recomendado para Laptop sin Tarjeta| D[FL Studio ASIO / FlexASIO]
-    B -->|Herencia / Monopolio Exclusivo| E[ASIO4ALL]
-    B -->|Desaconsejado: Inutilizable| F[MME / DirectSound]
-    C --> G[Latencia Ultra-Baja: 3 a 8 ms]
-    D --> H[Latencia Media Compartida: 10 a 20 ms]
-    E --> I[Latencia Baja con Bloqueo de Tarjeta]
-    F --> J[Latencia Extrema: 50 a 150 ms con Clicks]
-```
+![Subsistema de Audio en Windows: Selección y Latencia](/assets/diagrams/diagrama_drivers_audio.svg)
 
 ### 2.1. Comparativa de Controladores en Windows
 

@@ -1,0 +1,80 @@
+﻿<svg viewBox="0 0 940 300" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">ARQUITECTURA DEL GLOBAL TRANSPORT</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 0.6 · SINCRONIZACIÓN MÉTRICA MAESTRA</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- NODO MAESTRO CENTRAL: GLOBAL TRANSPORT (FOCAL) -->
+  <g transform="translate(320, 45)">
+    <rect width="300" height="90" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="300" height="22" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+    <rect y="17" width="300" height="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="14" y="15" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700">RELOJ MÉTRICO MAESTRO · 480 PPQ</text>
+    <text x="14" y="44" fill="#f4f4f5" font-size="13" font-weight="600">Global Transport [transport]</text>
+    <text x="14" y="62" fill="#fed7aa" font-size="10">Estado: Play / Stop · Tempo (BPM) · Compás (Time Signature)</text>
+    <text x="14" y="78" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5">Resolución inmutable a nivel de ticks sin jitter temporal</text>
+  </g>
+
+  <!-- 4 CLIENTES CONSUMIDORES (NIVEL INFERIOR) -->
+  <!-- Cliente 1: metro 4n -->
+  <g transform="translate(25, 185)">
+    <rect width="205" height="95" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="205" height="20" rx="5" fill="#27272a" />
+    <rect y="15" width="205" height="5" fill="#27272a" />
+    <text x="10" y="14" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">PULSOS DE CONTROL</text>
+    <text x="10" y="40" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="600">[metro 4n]</text>
+    <text x="10" y="58" fill="#a1a1aa" font-size="9.5">Disparos cuantizados</text>
+    <text x="10" y="74" fill="#71717a" font-size="8.5">Eventos rítmicos a negras</text>
+  </g>
+
+  <!-- Cliente 2: phasor~ 1n -->
+  <g transform="translate(255, 185)">
+    <rect width="205" height="95" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="205" height="20" rx="5" fill="#27272a" />
+    <rect y="15" width="205" height="5" fill="#27272a" />
+    <text x="10" y="14" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">MODULACIÓN DE SEÑAL</text>
+    <text x="10" y="40" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="600">[phasor~ 1n]</text>
+    <text x="10" y="58" fill="#a1a1aa" font-size="9.5">Rampa de audio continua</text>
+    <text x="10" y="74" fill="#71717a" font-size="8.5">LFO sincronizado al compás</text>
+  </g>
+
+  <!-- Cliente 3: translate -->
+  <g transform="translate(485, 185)">
+    <rect width="205" height="95" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="205" height="20" rx="5" fill="#27272a" />
+    <rect y="15" width="205" height="5" fill="#27272a" />
+    <text x="10" y="14" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">CONVERSIÓN TEMPORAL</text>
+    <text x="10" y="40" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="600">[translate notevalues]</text>
+    <text x="10" y="58" fill="#a1a1aa" font-size="9.5">Traducción métrica</text>
+    <text x="10" y="74" fill="#71717a" font-size="8.5">4n -> ms / ticks / Hz</text>
+  </g>
+
+  <!-- Cliente 4: live.step / Secuenciador -->
+  <g transform="translate(715, 185)">
+    <rect width="200" height="95" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="200" height="20" rx="5" fill="#27272a" />
+    <rect y="15" width="200" height="5" fill="#27272a" />
+    <text x="10" y="14" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">SECUENCIADORES GUI</text>
+    <text x="10" y="40" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="600">[live.step]</text>
+    <text x="10" y="58" fill="#a1a1aa" font-size="9.5">Grid polirrítmico</text>
+    <text x="10" y="74" fill="#71717a" font-size="8.5">Avanza en base al pulso maestro</text>
+  </g>
+
+  <!-- LÍNEAS DE DISTRIBUCIÓN DE SINCRONÍA -->
+  <path d="M 470 135 L 470 160 L 127 160 L 127 185" fill="none" stroke="#71717a" stroke-width="1.2" marker-end="url(#arr-neutral)" />
+  <path d="M 470 135 L 470 160 L 357 160 L 357 185" fill="none" stroke="#eb6c36" stroke-width="1.2" marker-end="url(#arr-accent)" />
+  <path d="M 470 135 L 470 185" fill="none" stroke="#71717a" stroke-width="1.2" marker-end="url(#arr-neutral)" />
+  <path d="M 470 135 L 470 160 L 815 160 L 815 185" fill="none" stroke="#71717a" stroke-width="1.2" marker-end="url(#arr-neutral)" />
+
+  <rect x="420" y="152" width="100" height="16" rx="2" fill="#121318" />
+  <text x="470" y="163" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700" text-anchor="middle">SYNC BUS</text>
+</svg>

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "03. Transporte Global, Mapeos y Asignaciones"
 description: "Sincronización métrica maestro con el Global Transport [transport], unidades de tiempo musical y mapeo físico directo con MIDI Mapping y Key Mapping."
 ---
@@ -13,15 +13,7 @@ En la creación de sistemas musicales, generativos o performáticos interactivos
 
 Max incorpora un motor de sincronización de tiempo musical denominado **Global Transport**. Este reloj centraliza el estado de reproducción (`play`/`stop`), el tempo métrico en BPM, la signatura de compás (*time signature*) y la resolución temporal en ticks (480 PPQ: *Pulses Per Quarter Note*).
 
-```mermaid
-graph TD
-    A[Global Transport maestro: tempo, play, timesig] --> B[metro 4n]
-    A --> C[phasor~ 1n]
-    A --> D[translate ms notevalues]
-    A --> E[live.step / secuenciadores rítmicos]
-    B --> F[Disparo de eventos cuantizados a negras]
-    C --> G[LFO de audio sincronizado al compás]
-```
+![Arquitectura del Global Transport](/assets/diagrams/diagrama_global_transport.svg)
 
 ### 1.1. El Objeto `[transport]`
 El objeto `[transport]` permite consultar y manipular programáticamente el estado del reloj maestro:

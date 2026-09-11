@@ -1,4 +1,4 @@
-﻿---
+---
 title: "02. Taxonomía de Archivos, Proyectos y Packages"
 description: "Estructura de documentos en Max/MSP: patchers (.maxpat), subpatchers [p], abstracciones, proyectos (.maxproj), Packages y Package Manager."
 ---
@@ -9,17 +9,7 @@ En el ecosistema de Max/MSP, un sistema rara vez consiste en un único archivo l
 
 ## 1. Jerarquía de Documentos y Encapsulación
 
-```mermaid
-graph TD
-    A[Sistema Complejo en Max] --> B[Patcher Raíz .maxpat]
-    B --> C[Subpatcher interno: object 'p']
-    B --> D[Abstracción modular: archivo .maxpat externo]
-    A --> E[Proyecto: archivo .maxproj]
-    E --> B
-    E --> F[Assets: Audio, JSON, JS, V8, Texturas]
-    A --> G[Package: Directorio canónico en /Packages]
-    G --> H[docs / help / patchers / externals / init]
-```
+![Taxonomía de Documentos y Encapsulación](/assets/diagrams/diagrama_taxonomia_archivos.svg)
 
 ### 1.1. El Patcher Raíz (`.maxpat`)
 * **Formato físico:** Archivo de texto plano serializado bajo el estándar **JSON** (JavaScript Object Notation).
@@ -99,20 +89,7 @@ LIBRERÍAS ACADÉMICAS Y HERRAMIENTAS DESTACADAS EN EL PACKAGE MANAGER:
 
 Cuando se escribe el nombre de un objeto o se carga un archivo de audio mediante su nombre relativo (`[buffer~ muestra drumloop.wav]`), Max busca el archivo respetando un orden de precedencia estricto:
 
-```mermaid
-flowchart TD
-    A[Búsqueda de Archivo o Abstracción] --> B{¿Está en el directorio local del Patcher activo?}
-    B -- Sí --> C[Carga Inmediata]
-    B -- No --> D{¿Está en las subcarpetas del Proyecto .maxproj activo?}
-    D -- Sí --> C
-    D -- No --> E{¿Está en Documents/Max/Library?}
-    E -- Sí --> C
-    E -- No --> F{¿Está en Documents/Max/Packages?}
-    F -- Sí --> C
-    F -- No --> G{¿Está registrado en Options > File Preferences?}
-    G -- Sí --> C
-    G -- No --> H[Error: 'no such object' / 'can't find file']
-```
+![Árbol de Resolución de Rutas de Búsqueda](/assets/diagrams/diagrama_search_paths.svg)
 
 ### Configuración Manual en *File Preferences*:
 Para incorporar directorios personalizados (por ejemplo, una unidad de red o una carpeta compartida de proyectos en Git):
