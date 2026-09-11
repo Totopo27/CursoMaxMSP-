@@ -198,3 +198,63 @@ h1#_top {
   margin: 0 !important;
 }
 
+/* ==========================================================================
+   Editorial Diagram Design System (Inspirado en cathrynlavery/diagram-design)
+   ========================================================================== */
+
+.editorial-diagram-container {
+  margin: 2rem 0;
+  border-radius: 6px;
+  border: 1px solid var(--sl-color-hairline, rgba(255, 255, 255, 0.1));
+  background-color: var(--sl-color-bg-sidebar, #121318);
+  padding: 1.5rem 1.25rem 1.25rem 1.25rem;
+  overflow-x: auto;
+}
+
+:root[data-theme='light'] .editorial-diagram-container {
+  background-color: #f8f9fa;
+  border-color: #e5e7eb;
+}
+
+.editorial-diagram-container .diagram-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--sl-color-hairline, rgba(255, 255, 255, 0.08));
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+:root[data-theme='light'] .editorial-diagram-container .diagram-header {
+  border-bottom-color: #e5e7eb;
+}
+
+.editorial-diagram-container .diagram-title {
+  font-family: var(--sl-font-mono, monospace);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--sl-color-white, #f4f4f5);
+}
+
+:root[data-theme='light'] .editorial-diagram-container .diagram-title {
+  color: #18181b;
+}
+
+.editorial-diagram-container .diagram-tag {
+  font-family: var(--sl-font-mono, monospace);
+  font-size: 0.75rem;
+  color: #eb6c36; /* Color de acento editorial: atomic tangerine */
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.editorial-diagram-container svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+}
+
+
