@@ -1,0 +1,64 @@
+﻿<svg viewBox="0 0 860 260" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="30" y="24" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="700" letter-spacing="0.08em">MÁQUINA DE ESTADOS DEL LIENZO</text>
+  <text x="830" y="24" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="end">FIG 0.1 · CONTROL DE FLUJO Y VISTAS</text>
+  <line x1="30" y1="32" x2="830" y2="32" stroke="#27272a" stroke-width="1"/>
+
+  <!-- NODO 1: MODO EDICIÓN -->
+  <g transform="translate(30, 48)">
+    <rect width="230" height="120" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1.5" />
+    <rect width="230" height="28" rx="6" fill="#27272a" />
+    <rect y="22" width="230" height="6" fill="#27272a" />
+    <text x="14" y="19" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="10" font-weight="700" letter-spacing="0.06em">ESTADO 01 · UNLOCKED</text>
+    <text x="14" y="58" fill="#f4f4f5" font-size="16" font-weight="700">Modo Edición</text>
+    <text x="14" y="80" fill="#a1a1aa" font-size="12">Construcción y cableado</text>
+    <text x="14" y="100" fill="#71717a" font-family="ui-monospace, monospace" font-size="11">Candado abierto · Puntero libre</text>
+    <rect x="145" y="44" width="72" height="20" rx="4" fill="#27272a" stroke="#52525b" stroke-width="1" />
+    <text x="181" y="58" fill="#e4e4e7" font-family="ui-monospace, monospace" font-size="10" font-weight="600" text-anchor="middle">Ctrl + E</text>
+  </g>
+
+  <!-- NODO 2: MODO BLOQUEADO / EJECUCIÓN -->
+  <g transform="translate(315, 48)">
+    <rect width="230" height="120" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1.5" />
+    <rect width="230" height="28" rx="6" fill="#27272a" />
+    <rect y="22" width="230" height="6" fill="#27272a" />
+    <text x="14" y="19" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="10" font-weight="700" letter-spacing="0.06em">ESTADO 02 · LOCKED</text>
+    <text x="14" y="58" fill="#f4f4f5" font-size="16" font-weight="700">Modo Ejecución</text>
+    <text x="14" y="80" fill="#a1a1aa" font-size="12">Interacción en tiempo real</text>
+    <text x="14" y="100" fill="#71717a" font-family="ui-monospace, monospace" font-size="11">Topología fija · Controles activos</text>
+    <rect x="145" y="44" width="72" height="20" rx="4" fill="#27272a" stroke="#52525b" stroke-width="1" />
+    <text x="181" y="58" fill="#e4e4e7" font-family="ui-monospace, monospace" font-size="10" font-weight="600" text-anchor="middle">Ctrl + E</text>
+  </g>
+
+  <!-- NODO 3: MODO PRESENTACIÓN -->
+  <g transform="translate(600, 48)">
+    <rect width="230" height="120" rx="6" fill="#1c1613" stroke="#eb6c36" stroke-width="1.5" />
+    <rect width="230" height="28" rx="6" fill="rgba(235, 108, 54, 0.18)" />
+    <rect y="22" width="230" height="6" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="14" y="19" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="10" font-weight="700" letter-spacing="0.06em">ESTADO 03 · GUI FINAL</text>
+    <text x="14" y="58" fill="#f4f4f5" font-size="16" font-weight="700">Presentación</text>
+    <text x="14" y="80" fill="#d4d4d8" font-size="12">Panel limpio desacoplado</text>
+    <text x="14" y="100" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="11">Cables y cómputo ocultos</text>
+    <rect x="135" y="44" width="82" height="20" rx="4" fill="rgba(235, 108, 54, 0.25)" stroke="#eb6c36" stroke-width="1" />
+    <text x="176" y="58" fill="#ffedd5" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">Ctrl+Alt+E</text>
+  </g>
+
+  <!-- CONEXIONES -->
+  <path d="M 260 88 L 315 88" fill="none" stroke="#71717a" stroke-width="1.5" marker-end="url(#arr-neutral)" />
+  <path d="M 315 128 L 260 128" fill="none" stroke="#71717a" stroke-width="1.5" marker-end="url(#arr-neutral)" />
+  <path d="M 545 108 L 600 108" fill="none" stroke="#eb6c36" stroke-width="1.5" marker-end="url(#arr-accent)" />
+  <path d="M 715 168 L 715 220 L 145 220 L 145 168" fill="none" stroke="#eb6c36" stroke-dasharray="4,4" stroke-width="1.2" marker-end="url(#arr-accent)" />
+  <rect x="360" y="210" width="160" height="20" rx="3" fill="#121318" stroke="#3f3f46" stroke-width="1" />
+  <text x="440" y="224" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="10" font-weight="600" text-anchor="middle">Reanudar edición: Ctrl+Alt+E</text>
+  <rect x="270" y="99" width="36" height="18" rx="2" fill="#121318" />
+  <text x="288" y="112" fill="#71717a" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">toggle</text>
+</svg>

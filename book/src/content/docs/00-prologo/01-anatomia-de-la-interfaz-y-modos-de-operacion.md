@@ -3,10 +3,6 @@ title: "01. Anatomía de la Interfaz y Modos de Operación"
 description: "Fundamentos del entorno de desarrollo visual en Max/MSP: modos de ejecución, presentación, inspector y atajos esenciales."
 ---
 
-import DiagramStates from '../../../components/DiagramStates.astro';
-import DiagramTopology from '../../../components/DiagramTopology.astro';
-import DiagramViews from '../../../components/DiagramViews.astro';
-
 El entorno de desarrollo interactivo de Max/MSP está fundamentado en un lienzo gráfico (*patcher canvas*) diseñado para prototipar, programar y ejecutar algoritmos en tiempo real. Antes de estudiar el flujo de datos o la matemática de señales, es indispensable dominar las dinámicas operativas de su interfaz de usuario.
 
 ---
@@ -15,7 +11,7 @@ El entorno de desarrollo interactivo de Max/MSP está fundamentado en un lienzo 
 
 La interacción con cualquier documento en Max oscila entre tres estados fundamentales:
 
-<DiagramStates />
+![Máquina de Estados del Lienzo](/assets/diagrams/diagrama_estados.svg)
 
 ### 1.1. Modo Edición (*Unlocked Mode*)
 * **Atajo de conmutación:** `Ctrl + E` (Windows) / `Cmd + E` (macOS).
@@ -38,7 +34,7 @@ La interacción con cualquier documento en Max oscila entre tres estados fundame
 * **Inclusión de objetos:** `Ctrl + Alt + P` (*Add to Presentation* / *Remove from Presentation*).
 * **Propósito:** Separar la lógica computacional del diseño de usuario. Permite construir una interfaz gráfica limpia (GUI) exhibiendo únicamente faders, medidores y perillas, mientras que la compleja red de cables, operaciones lógicas y objetos auxiliares permanece oculta en el fondo.
 
-<DiagramViews />
+![Arquitectura de Vistas: Patching vs. Presentación](/assets/diagrams/diagrama_vistas.svg)
 
 ---
 
@@ -46,7 +42,7 @@ La interacción con cualquier documento en Max oscila entre tres estados fundame
 
 El marco de trabajo de Max organiza sus herramientas en cuatro barras perimetrales que rodean el lienzo central:
 
-<DiagramTopology />
+![Topología Perimetral del Patcher](/assets/diagrams/diagrama_topologia.svg)
 
 1. **Barra Superior (*Top Toolbar*):** Acceso rápido para la inserción de objetos canónicos, alineación geométrica, segmentación y opciones de formateo de texto.
 2. **Barra Inferior (*Bottom Toolbar*):**
