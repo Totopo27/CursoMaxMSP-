@@ -118,7 +118,29 @@ void simplemsp_perform64(t_simplemsp *x, t_object *dsp64,
 
 ---
 
-##  4. 4 Escenarios del Mundo Real
+## 4. La Señal de Audio como Función de Control Continuo (El Enfoque Dobrian & AlgoComp)
+
+Como documenta Christopher Dobrian en su tratado *Computer Music Programming (CMP)* y en los ensayos de *Algorithmic Composition*, uno de los saltos epistemológicos más potentes en la programación musical con Max consiste en **desmitificar la señal de audio como mero material audible**.
+
+Un cable de audio (`~`) no es necesariamente sonido que deba salir a los altavoces; es un **flujo de control continuo a resolución de microsegundos**:
+
+1. **Osciladores de Baja Frecuencia (LFO) como Formas de Onda de Control**:
+   - Una onda senoidal generada con `[cycle~ 0.2]` (un ciclo cada 5 segundos) no produce un tono perceptible por el oído humano, pero provee una trayectoria continua perfecta e inmune al jitter del sistema operativo.
+   - Mientras que un temporizador de control (`[metro]`) está sujeto a las interrupciones del hilo de la interfaz gráfica, un LFO generado en el Audio Thread evalúa 48.000 puntos de modulación por segundo con precisión matemática absoluta.
+
+2. **Modulación de Moduladores (*Modulating the Modulators*)**:
+   - En *Algorithmic Composition*, Dobrian plantea que las curvas musicales orgánicas surgen cuando la frecuencia, amplitud o fase de un oscilador de control es modulada a su vez por un segundo oscilador de frecuencia aún menor:
+   ```text
+   [cycle~ 0.05] (Modulador Lento: 20s) ──► [*~ 2.0] ──► [+~ 0.5] ──► [cycle~] (Modulador Principal)
+   ```
+   - Esta técnica rompe la predictibilidad mecánica de los LFOs cíclicos simples, produciendo evoluciones tímbricas continuas cuasi-periódicas que emulan el comportamiento dinámico de los instrumentos acústicos.
+
+3. **Mapeo No Lineal e Interpolación en Audio**:
+   - El objeto `[scale~]` permite trasladar el rango bipolar natural de los osciladores de MSP ($-1.0$ a $+1.0$) a cualquier dominio físico continuo (por ejemplo, frecuencias de corte de filtros entre $80\text{ Hz}$ y $12.000\text{ Hz}$ o posiciones espaciales), aplicando curvaturas exponenciales y logarítmicas en tiempo real muestra a muestra.
+
+---
+
+##  5. 4 Escenarios del Mundo Real
 
 Abre el parche interactivo complementario:
 [`book/patches/modulo-03/laboratorio_07_audio_basics.maxpat`](/patches/modulo-03/laboratorio_07_audio_basics.maxpat)

@@ -141,7 +141,39 @@ Para leer una posición fraccionaria $i + \alpha$ (donde $i$ es la parte entera 
 
 ---
 
-##  4. 4 Escenarios del Mundo Real
+## 4. Leyes de Paneo de Potencia Constante: La Solución Coseno/Seno (Christopher Dobrian)
+
+En la distribución estéreo y multicanal de señales digitales, uno de los errores más extendidos consiste en aplicar un paneo puramente lineal (amplitud constante):
+$$A_L = 1.0 - p, \quad A_R = p \quad (p \in [0.0, 1.0])$$
+
+Como formaliza **Christopher Dobrian** en *Techniques and Software for Octophonic Composition* y en *Computer Music Programming (CMP)*:
+
+### El Problema de la Caída de 3 dB en el Centro Estéreo
+Cuando una fuente se posiciona en el centro del panorama ($p = 0.5$):
+- Cada altavoz recibe una amplitud de $0.5$ (atenuación de $-6\text{ dB}$).
+- El oído humano percibe la sonoridad de fuentes acústicas en un recinto según la **suma cuadrática de potencias acústicas** (energía acústica total), no la suma directa de amplitudes:
+  $$P_{\text{total}} = A_L^2 + A_R^2 = (0.5)^2 + (0.5)^2 = 0.25 + 0.25 = 0.5$$
+- Una potencia acústica de $0.5$ representa una pérdida neta de **$-3\text{ dB}$**. El resultado psicoacústico es que cualquier sonido que viaje de un extremo al otro parece "hundirse" o alejarse en el centro.
+
+### La Ley de Potencia Constante (Constant-Power Law)
+Para que la potencia total percibida permanezca matemáticamente inmutable en cualquier posición del panorama ($P_{\text{total}} = 1.0$), Dobrian implementa la relación trigonométrica de cuarto de ciclo:
+$$A_L = \cos\left(p \cdot \frac{\pi}{2}\right), \quad A_R = \sin\left(p \cdot \frac{\pi}{2}\right)$$
+
+En el centro exacto ($p = 0.5$, ángulo $\pi/4 = 45^\circ$):
+$$A_L = \cos(45^\circ) = \frac{\sqrt{2}}{2} \approx 0.7071 \quad (-3\text{ dB})$$
+$$A_R = \sin(45^\circ) = \frac{\sqrt{2}}{2} \approx 0.7071 \quad (-3\text{ dB})$$
+$$P_{\text{total}} = (0.7071)^2 + (0.7071)^2 = 0.5 + 0.5 = 1.0 \quad (0\text{ dB})$$
+
+![FIG 3.3 · Constant-Power Law & Compensación de -3 dB](/assets/diagrams/diagrama_panning_constant_power.svg)
+
+### Implementación Óptima en Max (Zero-CPU Overhead)
+Calcular funciones trigonométricas trascendentes muestra a muestra consumiría ciclos de CPU innecesarios. Dobrian propone dos arquitecturas canónicas en Max:
+1. **Un solo `[cycle~]` en fase fija**: Usar un oscilador `[cycle~]` con frecuencia $0\text{ Hz}$, desplazando su fase de entrada en el rango $[0.75, 1.0]$ para el canal izquierdo y $[0.0, 0.25]$ para el canal derecho.
+2. **Tabla de Transferencia Precalculada**: Cargar 512 puntos de un cuarto de onda senoidal en una `[table]` o `[buffer~]`, logrando lecturas instantáneas $O(1)$ en memoria.
+
+---
+
+##  5. 4 Escenarios del Mundo Real
 
 Abre el parche interactivo complementario:
 [`book/patches/modulo-03/laboratorio_08_osciladores.maxpat`](/patches/modulo-03/laboratorio_08_osciladores.maxpat)

@@ -1,0 +1,99 @@
+﻿<svg viewBox="0 0 940 310" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">LEYES DE PANEO ESTÉREO: LINEAL VS. POTENCIA CONSTANTE (DOBRIAN)</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 3.3 · CONSTANT-POWER LAW &amp; COMPENSACIÓN DE -3 DB</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- PANEL IZQUIERDO: EL PROBLEMA DEL PANEO LINEAL -->
+  <g transform="translate(25, 45)">
+    <rect width="425" height="185" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="425" height="22" rx="5" fill="#27272a" />
+    <text x="10" y="15" fill="#ef4444" font-family="ui-monospace, monospace" font-size="8" font-weight="700">PANEO LINEAL (AMPLITUD CONSTANTE) · DEFECTUOSO</text>
+
+    <!-- Gráfica lineal -->
+    <rect x="12" y="32" width="230" height="100" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+    <!-- Ejes -->
+    <line x1="25" y1="120" x2="230" y2="120" stroke="#3f3f46" stroke-width="1" />
+    <line x1="25" y1="42" x2="25" y2="120" stroke="#3f3f46" stroke-width="1" />
+    <!-- Línea Left: 1.0 a 0.0 -->
+    <line x1="25" y1="45" x2="225" y2="120" stroke="#3b82f6" stroke-width="1.5" />
+    <!-- Línea Right: 0.0 a 1.0 -->
+    <line x1="25" y1="120" x2="225" y2="45" stroke="#ef4444" stroke-width="1.5" />
+    <!-- Punto central: 0.5 -->
+    <circle cx="125" cy="82" r="3" fill="#ffffff" />
+    <text x="125" y="75" fill="#ef4444" font-family="ui-monospace, monospace" font-size="7.5" text-anchor="middle">A = 0.5 (-6 dB)</text>
+    
+    <text x="25" y="128" fill="#71717a" font-family="ui-monospace, monospace" font-size="7">L (0.0)</text>
+    <text x="125" y="128" fill="#71717a" font-family="ui-monospace, monospace" font-size="7" text-anchor="middle">C (0.5)</text>
+    <text x="225" y="128" fill="#71717a" font-family="ui-monospace, monospace" font-size="7" text-anchor="end">R (1.0)</text>
+
+    <!-- Fórmulas y Explicación -->
+    <g transform="translate(250, 32)">
+      <text x="0" y="14" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8.5" font-weight="600">A_L = 1 - p</text>
+      <text x="0" y="28" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8.5" font-weight="600">A_R = p</text>
+      <line x1="0" y1="36" x2="160" y2="36" stroke="#27272a" stroke-width="0.8" />
+      <text x="0" y="52" fill="#ef4444" font-size="8" font-weight="600">Potencia Acústica en el Centro:</text>
+      <text x="0" y="66" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8">P = 0.5² + 0.5² = 0.5</text>
+      <text x="0" y="82" fill="#ef4444" font-size="8">¡Caída audible de 3 dB!</text>
+      <text x="0" y="96" fill="#71717a" font-size="7.5">El sonido parece alejarse al cruzar el centro.</text>
+    </g>
+
+    <text x="12" y="152" fill="#d4d4d8" font-size="8">Apropiado únicamente si las señales L y R están 100% correlacionadas en fase acústica pura.</text>
+    <text x="12" y="166" fill="#71717a" font-size="7.5">En la práctica musical real, produce un molesto "hueco" en la imagen estéreo.</text>
+  </g>
+
+  <!-- PANEL DERECHO: POTENCIA CONSTANTE (DOBRIAN COS/SIN) (ACCENT FOCAL) -->
+  <g transform="translate(485, 45)">
+    <rect width="430" height="185" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="430" height="22" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="10" y="15" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700">POTENCIA CONSTANTE (COSENO / SENO) · ESTÁNDAR DOBRIAN</text>
+
+    <!-- Gráfica trigonométrica -->
+    <rect x="12" y="32" width="230" height="100" rx="3" fill="#121318" stroke="#eb6c36" stroke-width="0.8" />
+    <!-- Ejes -->
+    <line x1="25" y1="120" x2="230" y2="120" stroke="#3f3f46" stroke-width="1" />
+    <line x1="25" y1="42" x2="25" y2="120" stroke="#3f3f46" stroke-width="1" />
+    <!-- Curva Coseno Left: 1.0 a 0.0 -->
+    <path d="M 25 45 Q 110 50 125 67 T 225 120" fill="none" stroke="#3b82f6" stroke-width="1.8" />
+    <!-- Curva Seno Right: 0.0 a 1.0 -->
+    <path d="M 25 120 Q 110 115 125 67 T 225 45" fill="none" stroke="#eb6c36" stroke-width="1.8" />
+    <!-- Punto central: 0.707 -->
+    <circle cx="125" cy="67" r="3.5" fill="#22c55e" />
+    <text x="125" y="58" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8" font-weight="700" text-anchor="middle">A = 0.707 (-3 dB)</text>
+    
+    <text x="25" y="128" fill="#71717a" font-family="ui-monospace, monospace" font-size="7">L (0.0)</text>
+    <text x="125" y="128" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="7" font-weight="700" text-anchor="middle">C (0.5)</text>
+    <text x="225" y="128" fill="#71717a" font-family="ui-monospace, monospace" font-size="7" text-anchor="end">R (1.0)</text>
+
+    <!-- Fórmulas y Explicación -->
+    <g transform="translate(250, 32)">
+      <text x="0" y="14" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8.5" font-weight="600">A_L = cos(p · π/2)</text>
+      <text x="0" y="28" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8.5" font-weight="600">A_R = sin(p · π/2)</text>
+      <line x1="0" y1="36" x2="165" y2="36" stroke="#eb6c36" stroke-width="0.8" />
+      <text x="0" y="52" fill="#22c55e" font-size="8" font-weight="600">Potencia Acústica en el Centro:</text>
+      <text x="0" y="66" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="7.5">cos²(45°) + sin²(45°) = 1.0</text>
+      <text x="0" y="82" fill="#22c55e" font-size="8" font-weight="600">¡Potencia 100% Inmutable!</text>
+      <text x="0" y="96" fill="#fed7aa" font-size="7.5">A = √0.5 ≈ 0.7071 por canal.</text>
+    </g>
+
+    <text x="12" y="152" fill="#f4f4f5" font-size="8">Implementación ultra eficiente en Max: 1/4 de ciclo con [cycle~] o [table].</text>
+    <text x="12" y="166" fill="#22c55e" font-family="ui-monospace, monospace" font-size="7.5">Cero dropouts de volumen al mover fuentes de izquierda a derecha.</text>
+  </g>
+
+  <!-- PANEL INFERIOR -->
+  <g transform="translate(25, 240)">
+    <rect width="890" height="54" rx="4" fill="#151518" stroke="#27272a" stroke-width="1" />
+    <text x="20" y="22" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">PRINCIPIO ACÚSTICO UNIVERSITARIO (CHRISTOPHER DOBRIAN):</text>
+    <text x="350" y="22" fill="#d4d4d8" font-size="8.5">El oído humano percibe la sonoridad general en una sala según la suma de potencias acústicas (energía cuadrática).</text>
+    <text x="20" y="40" fill="#71717a" font-family="ui-monospace, monospace" font-size="8">Multiplicar cada canal por una función seno/coseno asegura que la energía total (cos² + sin² = 1) permanezca invariable a lo largo de todo el barrido estéreo.</text>
+  </g>
+</svg>

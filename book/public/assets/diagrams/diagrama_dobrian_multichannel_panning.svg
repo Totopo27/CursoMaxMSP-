@@ -1,0 +1,111 @@
+﻿<svg viewBox="0 0 940 310" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">SISTEMAS DE ESPACIALIZACIÓN MULTICANAL NATIVA (PANNING TOOLS - DOBRIAN)</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG F.2 · RADIAL AZIMUTH, CUBIC 3D &amp; AIR ABSORPTION</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- 1. PANEO CUADRAFÓNICO / RADIAL (ACCENT FOCAL) -->
+  <g transform="translate(25, 45)">
+    <rect width="280" height="185" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="280" height="22" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="10" y="15" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700">1. PANEO RADIAL (AZIMUT θ ∈ [0, 1])</text>
+    
+    <!-- Círculo de 4/8 altavoces -->
+    <g transform="translate(15, 35)">
+      <circle cx="50" cy="50" r="42" fill="#121318" stroke="#3f3f46" stroke-width="1" />
+      <!-- Altavoces Cuadrafónicos -->
+      <circle cx="50" cy="10" r="5" fill="#eb6c36" />
+      <text x="50" y="7" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="6.5" text-anchor="middle">Ch1 (FL)</text>
+      
+      <circle cx="90" cy="50" r="5" fill="#71717a" />
+      <text x="105" y="52" fill="#71717a" font-family="ui-monospace, monospace" font-size="6.5">Ch2 (FR)</text>
+      
+      <circle cx="50" cy="90" r="5" fill="#71717a" />
+      <text x="50" y="103" fill="#71717a" font-family="ui-monospace, monospace" font-size="6.5" text-anchor="middle">Ch4 (RR)</text>
+      
+      <circle cx="10" cy="50" r="5" fill="#71717a" />
+      <text x="-4" y="52" fill="#71717a" font-family="ui-monospace, monospace" font-size="6.5">Ch3 (RL)</text>
+
+      <!-- Fuente sonora rotatoria -->
+      <line x1="50" y1="50" x2="68" y2="22" stroke="#eb6c36" stroke-width="1.2" stroke-dasharray="2,2" />
+      <circle cx="68" cy="22" r="3.5" fill="#22c55e" />
+      <text x="75" y="24" fill="#22c55e" font-family="ui-monospace, monospace" font-size="6.5">θ = 0.125</text>
+    </g>
+
+    <g transform="translate(120, 35)">
+      <text x="0" y="14" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8.5" font-weight="600">[panradial4~] / [pan8~]</text>
+      <text x="0" y="30" fill="#fed7aa" font-size="7.5">Ángulo 0.0 a 1.0 = 360°</text>
+      <text x="0" y="44" fill="#a1a1aa" font-size="7.5">Ajuste de dispersión (spread)</text>
+      <text x="0" y="58" fill="#22c55e" font-size="7.5">Potencia constante por pares</text>
+      <rect x="0" y="68" width="145" height="36" rx="2" fill="#121318" stroke="#eb6c36" stroke-width="0.8" />
+      <text x="6" y="82" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="7.5">100% nativo MSP</text>
+      <text x="6" y="96" fill="#a1a1aa" font-size="7">0 dependencias externas</text>
+    </g>
+
+    <text x="10" y="156" fill="#a1a1aa" font-size="8">Soporta configuraciones estándar:</text>
+    <text x="10" y="170" fill="#d4d4d8" font-size="7.5">Estéreo (2ch), Cuadrafonía (4ch), Hexafonía (6ch) y Octofonía (8ch).</text>
+  </g>
+
+  <!-- 2. PANEO CÚBICO TRIDIMENSIONAL 3D -->
+  <g transform="translate(320, 45)">
+    <rect width="295" height="185" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="295" height="22" rx="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">2. PANEO CÚBICO TRIDIMENSIONAL (8CH 3D)</text>
+    
+    <g transform="translate(10, 32)">
+      <rect width="275" height="55" rx="3" fill="#121318" stroke="#3f3f46" stroke-width="0.8" />
+      <text x="10" y="18" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8.5" font-weight="600">Coordenadas Cartesianas (X, Y, Z)</text>
+      <text x="10" y="32" fill="#fed7aa" font-size="7.5">Cubo de 8 altavoces (4 piso + 4 techo)</text>
+      <text x="10" y="46" fill="#a1a1aa" font-size="7.5">Ponderación triple: cos(X) · cos(Y) · cos(Z)</text>
+    </g>
+
+    <g transform="translate(10, 95)">
+      <rect width="275" height="74" rx="3" fill="#151518" stroke="#27272a" stroke-width="0.8" />
+      <text x="10" y="16" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8" font-weight="700">Abstracción Dobrian: [pan3D8~]</text>
+      <text x="10" y="32" fill="#d4d4d8" font-size="7.5">• Ch 1-4: Anillo inferior (Front-L, Front-R, Rear-L, Rear-R)</text>
+      <text x="10" y="46" fill="#d4d4d8" font-size="7.5">• Ch 5-8: Anillo superior (Top-FL, Top-FR, Top-RL, Top-RR)</text>
+      <text x="10" y="62" fill="#eb6c36" font-size="7.5">Transición suave continua sin artefactos de fase.</text>
+    </g>
+  </g>
+
+  <!-- 3. PSICOACÚSTICA DE DISTANCIA (CMP) -->
+  <g transform="translate(630, 45)">
+    <rect width="285" height="185" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="285" height="22" rx="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">3. FÍSICA Y PSICOACÚSTICA DE DISTANCIA</text>
+
+    <g transform="translate(10, 32)">
+      <!-- 1. Ley de inversa -->
+      <rect width="265" height="42" rx="3" fill="#121318" stroke="#3f3f46" stroke-width="0.8" />
+      <text x="8" y="16" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8" font-weight="600">Atenuación: A = 1 / d</text>
+      <text x="8" y="30" fill="#a1a1aa" font-size="7.5">Derivado de I ∝ 1/d² (Ley del cuadrado inverso)</text>
+
+      <!-- 2. Absorción del aire -->
+      <rect y="48" width="265" height="42" rx="3" fill="#121318" stroke="#eb6c36" stroke-width="0.8" />
+      <text x="8" y="64" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="8" font-weight="600">Air Absorption: [onepole~]</text>
+      <text x="8" y="78" fill="#a1a1aa" font-size="7.5">Frecuencia de corte baja al aumentar distancia</text>
+
+      <!-- 3. Direct/Reverb ratio -->
+      <rect y="96" width="265" height="42" rx="3" fill="#121318" stroke="#22c55e" stroke-width="0.8" />
+      <text x="8" y="112" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8" font-weight="600">Direct / Reverb Ratio (Dry / Wet)</text>
+      <text x="8" y="126" fill="#a1a1aa" font-size="7.5">Mayor distancia = menor señal directa, mayor campo difuso</text>
+    </g>
+  </g>
+
+  <!-- PANEL INFERIOR -->
+  <g transform="translate(25, 240)">
+    <rect width="890" height="54" rx="4" fill="#151518" stroke="#27272a" stroke-width="1" />
+    <text x="20" y="22" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">FILOSOFÍA DE DISEÑO DE CHRISTOPHER DOBRIAN:</text>
+    <text x="310" y="22" fill="#d4d4d8" font-size="8.5">"La espacialización de audio de clase mundial no requiere motores propietarios masivos;"</text>
+    <text x="20" y="40" fill="#71717a" font-family="ui-monospace, monospace" font-size="8">se fundamenta en la aplicación rigurosa de funciones de transferencia trigonométricas, cálculo de retardos sub-milisegundo (ITD/IID) y modelado físico del aire con primitivas nativas de Max.</text>
+  </g>
+</svg>
