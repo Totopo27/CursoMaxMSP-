@@ -51,7 +51,7 @@ hero:
 
 ## Contenido del Programa
 
-- [**Módulo 0: Prólogo e Instalación**](/00-prologo/03-audio-driver-windows/) — Arquitectura del Sistema y Configuración del Driver de Audio.
+- [**Módulo 0: Entorno, Interfaz y Flujo de Trabajo**](/00-prologo/01-anatomia-de-la-interfaz-y-modos-de-operacion/) — Anatomía del Patcher, Inspector, Packages, Global Transport y Audio ASIO.
 - [**Módulo 1: Fundamentos y Paradigma Dataflow**](/01-fundamentos/01-dataflow-y-inlets/) — Orden de Ejecución, Semántica de Inlets y el Scheduler Temporal.
 - [**Módulo 2: Datos, Persistencia y Comunicación**](/02-datos-y-persistencia/01-estructuras-de-datos-y-dict/) — Estructuras en RAM, Presets y Morphing (`dict` y `pattr`).
 - [**Módulo 3: El Universo DSP y Audio Digital**](/03-dsp-y-audio-digital/01-signal-vs-control-y-audio-thread/) — Señal vs. Control, Wavetables, Filtros, Delays y Buffers (MSP).

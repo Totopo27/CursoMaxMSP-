@@ -29,7 +29,7 @@ export default defineConfig({
       },
       sidebar: [
         {
-          label: 'Módulo 0: Prólogo e Instalación',
+          label: 'Módulo 0: Entorno, Interfaz y Flujo de Trabajo',
           autogenerate: { directory: '00-prologo' },
         },
         {
