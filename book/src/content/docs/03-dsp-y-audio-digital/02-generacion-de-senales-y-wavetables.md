@@ -60,15 +60,7 @@ $$f_{\text{aliased}} = |48.000 - 25.000| = 23.000\text{ Hz}$$
 Y el 6º armónico ($30.000\text{ Hz}$) rebotará en $18.000\text{ Hz}$. 
 El resultado son decenas de frecuencias espurias **inarmónicas** que suenan como chirridos metálicos sucios y desagradables.
 
-```
-                  Límite de Nyquist (24 kHz)
-                              │
-     f0    2f0   3f0   4f0    │   5f0 (25 kHz)
-     │      │     │     │     │    │
-    ─┴──────┴─────┴─────┴─────┼────┴────────► Frecuencia
-                              │   /
-                  ◄───────────┼──┘  (Rebota a 23 kHz como Aliasing)
-```
+![FIG 3.2 · Acumulador de Fase & Plegamiento de Nyquist](/assets/diagrams/diagrama_wavetable_aliasing.svg)
 
 ### La Diferencia Crucial entre `[phasor~]` y `[saw~]`:
 - **`[phasor~]` NO TIENE BANDA LIMITADA (Naive Sawtooth):** Es una rampa matemática lineal de $0.0$ a $1.0$ que se reinicia abruptamente a $0.0$. Es el mejor reloj de fase del mundo para modular buffers o síntesis granular, pero **si lo escuchas directamente como oscilador sonoro en notas medias/altas, destruirá tus agudos con aliasing masivo**.

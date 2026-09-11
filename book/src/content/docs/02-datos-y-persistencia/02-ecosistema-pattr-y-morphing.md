@@ -55,24 +55,7 @@ El ecosistema **`[pattr]`** de Max/MSP fue creado precisamente para resolver est
 
 El sistema `pattr` no es un único objeto; es un protocolo distribuido compuesto por cuatro pilares fundamentales:
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                           ARQUITECTURA PATTR                                │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│   [pattrstorage mi_banco] ◄──── Memoria Central, Morphing, Guardado en JSON │
-│              ▲                                                              │
-│              │ (Protocolo de Binding Interno - Sin cables)                  │
-│              ▼                                                              │
-│      [autopattr] ─────────► Escanea automáticamente el patcher              │
-│         │     │             y expone sliders, dials y números con script-name│
-│         ▼     ▼                                                             │
-│      [pattr cutoff] ──────► Enlace bidireccional explícito a UI             │
-│         │                                                                   │
-│         ▼                                                                   │
-│      [live.dial] o [flonum]                                                 │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+![FIG 2.2 · Protocolo pattrstorage & Binding Bidireccional](/assets/diagrams/diagrama_pattr_jerarquia.svg)
 
 ### A. `[pattr]`: El Agente de Enlace Bidireccional
 * **Propósito:** Asocia un valor o interfaz a un nombre identificable único (ej: `[pattr cutoff @bindto dial_filtro]`).

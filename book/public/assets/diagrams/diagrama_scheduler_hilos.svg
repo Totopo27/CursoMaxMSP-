@@ -1,0 +1,87 @@
+﻿<svg viewBox="0 0 940 310" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+    <marker id="arr-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#3b82f6"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">ARQUITECTURA TRIPARTITA DE HILOS Y PRIORIDADES</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 1.2 · SCHEDULER, OVERDRIVE &amp; T_QELEM BRIDGE</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- HILO 1: AUDIO THREAD (MSP / HARD REAL-TIME) -->
+  <g transform="translate(25, 42)">
+    <rect width="280" height="195" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="280" height="24" rx="5" fill="#27272a" />
+    <rect y="19" width="280" height="5" fill="#27272a" />
+    <text x="12" y="16" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" letter-spacing="0.06em">PRIORIDAD 01 · TIEMPO REAL DURO</text>
+    
+    <text x="12" y="48" fill="#f4f4f5" font-size="13" font-weight="600">Audio Thread (MSP)</text>
+    <text x="12" y="66" fill="#a1a1aa" font-size="10">Vectores de 64 muestras (SIMD AVX)</text>
+    
+    <rect x="12" y="80" width="256" height="52" rx="3" fill="#121318" stroke="#27272a" stroke-width="1" />
+    <text x="20" y="98" fill="#71717a" font-family="ui-monospace, monospace" font-size="8.5">Tasa: 48.000 Hz · Latencia ~1.3 ms</text>
+    <text x="20" y="118" fill="#e4e4e7" font-family="ui-monospace, monospace" font-size="9">[cycle~] [+~] perform64() DAC</text>
+
+    <rect x="12" y="144" width="256" height="38" rx="3" fill="#201515" stroke="#7f1d1d" stroke-width="0.8" />
+    <text x="20" y="159" fill="#fca5a5" font-size="8.5" font-weight="600">Cero Tolerancia a Bloqueos:</text>
+    <text x="20" y="172" fill="#d4d4d8" font-size="8">Cualquier delay produce dropouts / clicks.</text>
+  </g>
+
+  <!-- HILO 2: SCHEDULER / OVERDRIVE THREAD (ACCENT FOCAL) -->
+  <g transform="translate(330, 42)">
+    <rect width="280" height="195" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.4" />
+    <rect width="280" height="24" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+    <rect y="19" width="280" height="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="12" y="16" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" letter-spacing="0.06em">PRIORIDAD 02 · TEMPORIZADOR ALTO</text>
+    
+    <text x="12" y="48" fill="#f4f4f5" font-size="13" font-weight="600">Scheduler Thread</text>
+    <text x="12" y="66" fill="#fed7aa" font-size="10">Overdrive [X] · Precisión sub-milisegundo</text>
+    
+    <rect x="12" y="80" width="256" height="52" rx="3" fill="#121318" stroke="#eb6c36" stroke-width="0.8" />
+    <text x="20" y="98" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5">Eventos: MIDI, Clock, [metro], [delay]</text>
+    <text x="20" y="118" fill="#e4e4e7" font-family="ui-monospace, monospace" font-size="9">Estructuras en C: t_clock, SIAI interrupt</text>
+
+    <rect x="12" y="144" width="256" height="38" rx="3" fill="#18181b" stroke="#3f3f46" stroke-width="0.8" />
+    <text x="20" y="159" fill="#fed7aa" font-size="8.5" font-weight="600">Interrupción Forzosa:</text>
+    <text x="20" y="172" fill="#a1a1aa" font-size="8">Suspende el dibujo de la UI para tocar notas.</text>
+  </g>
+
+  <!-- HILO 3: MAIN GUI THREAD -->
+  <g transform="translate(635, 42)">
+    <rect width="280" height="195" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="280" height="24" rx="5" fill="#27272a" />
+    <rect y="19" width="280" height="5" fill="#27272a" />
+    <text x="12" y="16" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" letter-spacing="0.06em">PRIORIDAD 03 · COLA DE BAJA PRIORIDAD</text>
+    
+    <text x="12" y="48" fill="#f4f4f5" font-size="13" font-weight="600">Main GUI Thread</text>
+    <text x="12" y="66" fill="#a1a1aa" font-size="10">Event Loop del S.O. (~30-60 FPS)</text>
+    
+    <rect x="12" y="80" width="256" height="52" rx="3" fill="#121318" stroke="#27272a" stroke-width="1" />
+    <text x="20" y="98" fill="#71717a" font-family="ui-monospace, monospace" font-size="8.5">Renderizado Gráfico: Sliders, Dials, [jweb]</text>
+    <text x="20" y="118" fill="#e4e4e7" font-family="ui-monospace, monospace" font-size="9">JavaScript [js], I/O disco: [coll], [dict]</text>
+
+    <rect x="12" y="144" width="256" height="38" rx="3" fill="#151518" stroke="#3b82f6" stroke-width="0.8" />
+    <text x="20" y="159" fill="#93c5fd" font-size="8.5" font-weight="600">Receptáculo Asíncrono:</text>
+    <text x="20" y="172" fill="#a1a1aa" font-size="8">Atiende tareas cuando el CPU tiene tiempo libre.</text>
+  </g>
+
+  <!-- PUENTE ENTRE SCHEDULER Y MAIN THREAD: t_qelem / [defer] -->
+  <path d="M 610 110 L 635 110" fill="none" stroke="#eb6c36" stroke-width="1.4" marker-end="url(#arr-accent)" />
+  <rect x="585" y="101" width="52" height="18" rx="3" fill="#121318" stroke="#eb6c36" stroke-width="1" />
+  <text x="611" y="113" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700" text-anchor="middle">[defer]</text>
+
+  <!-- PUENTE INFERIOR: t_qelem (QUEUE ELEMENT) -->
+  <g transform="translate(25, 252)">
+    <rect width="890" height="42" rx="4" fill="#151518" stroke="#27272a" stroke-width="1" />
+    <text x="20" y="24" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="9" font-weight="700">MECANISMO SALVADOR t_qelem:</text>
+    <text x="225" y="24" fill="#a1a1aa" font-size="9">qelem_set(x->qelem) traslada el procesamiento de tareas pesadas desde el Scheduler de alta prioridad hacia la cola de la UI sin generar Jitter.</text>
+  </g>
+</svg>

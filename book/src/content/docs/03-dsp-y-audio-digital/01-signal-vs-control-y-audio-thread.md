@@ -56,22 +56,7 @@ El procesador de tu computadora no puede interrumpir sus registros 48.000 veces 
 
 Por ello, MSP procesa el audio en **bloques o vectores de muestras** (*Sample Frames*):
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                    I/O VECTOR SIZE VS. SIGNAL VECTOR SIZE                   │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│  Tarjeta de Sonido (Hardware Driver ASIO / CoreAudio):                      │
-│  [ I/O Vector Size = 256 muestras ] ──► Latencia = 256 / 48000 = 5.33 ms    │
-│  │                                                                          │
-│  │ (Subdividido internamente en MSP)                                        │
-│  ▼                                                                          │
-│  [ Signal Vector Size = 64 muestras ] ◄── Bloque de cómputo en C (perform64)│
-│  [ 64 muestras ] [ 64 muestras ] [ 64 muestras ] [ 64 muestras ]            │
-│                                                                             │
-│  Regla: Signal Vector Size <= I/O Vector Size (Siempre en potencias de 2)   │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+![FIG 3.1 · I/O Vector, Signal Vector & perform64](/assets/diagrams/diagrama_perform64_vectores.svg)
 
 ### La Física de la Latencia Hardware vs. Latencia de Cómputo:
 

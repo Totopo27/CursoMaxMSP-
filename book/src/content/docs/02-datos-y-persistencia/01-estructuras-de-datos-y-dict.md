@@ -105,6 +105,8 @@ void dict_route_dictionary(t_dict_route* x, t_symbol* s) {
 }
 ```
 
+![FIG 2.1 · Gestión de Pointers en RAM y Sintaxis JSON](/assets/diagrams/diagrama_dict_memoria.svg)
+
 ---
 
 ### Comportamientos Clave en la Gestión de Instancias: Nombres Efímeros y Diccionarios Anónimos

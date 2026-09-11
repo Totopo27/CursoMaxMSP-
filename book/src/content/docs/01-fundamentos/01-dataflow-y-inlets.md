@@ -187,15 +187,7 @@ Para diseñar sistemas estables, deterministas y mantenibles a largo plazo, **la
 * Despacha sus salidas **estrictamente de derecha a izquierda** en una secuencia determinista inmutable y tipada (`b` = bang, `i` = int, `f` = float, `l` = list, `s` = symbol).
 * Garantiza la integridad del flujo lógico independientemente de cualquier cambio en la disposición gráfica del lienzo.
 
-```
-               [ 25 ]
-                 │
-            ┌────┴────┐
-            │ t i i   │   <-- trigger int int
-            └─┬─────┬─┘
-              │     └────────► [Inlet Frío (+)] (1°: Actualiza Estado en RAM)
-              └──────────────► [Inlet Caliente (+)] (2°: Dispara la Excitación)
-```
+![FIG 1.1 · Depth-First Traversal & Trigger Determinism](/assets/diagrams/diagrama_dataflow_callstack.svg)
 
 > **Técnica de Depuración Recomendada:** Para inspeccionar el orden exacto en que circulan los mensajes a través de un parche complejo, se recomienda utilizar la ventana **Max Debugger Window** e incorporar **Watchpoints** en los cables de conexión. Max detendrá la ejecución de forma interactiva y exhibirá el recorrido detallado de la pila de llamadas a lo largo del grafo.
 

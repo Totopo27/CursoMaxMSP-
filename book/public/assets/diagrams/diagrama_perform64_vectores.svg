@@ -1,0 +1,70 @@
+﻿<svg viewBox="0 0 940 310" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">COMPUTACIÓN VECTORIAL SIMD Y ANATOMÍA DEL AUDIO THREAD</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 3.1 · I/O VECTOR, SIGNAL VECTOR &amp; PERFORM64</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- NIVEL 1: HARDWARE DAC / DRIVER ASIO (I/O VECTOR) -->
+  <g transform="translate(25, 42)">
+    <rect width="890" height="70" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="890" height="22" rx="5" fill="#27272a" />
+    <rect y="17" width="890" height="5" fill="#27272a" />
+    <text x="12" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">DRIVER DE AUDIO / HARDWARE DAC INTERRUPT · BUFFER I/O</text>
+    <text x="12" y="44" fill="#f4f4f5" font-size="11.5" font-weight="600">I/O Vector Size: 256 Muestras @ 48.000 Hz</text>
+    <text x="12" y="58" fill="#71717a" font-family="ui-monospace, monospace" font-size="8.5">Latencia Física de E/S = 256 / 48000 = 5.33 ms · Transferencia DMA a la placa de sonido</text>
+    <rect x="740" y="32" width="135" height="26" rx="3" fill="#121318" stroke="#3f3f46" stroke-width="0.8" />
+    <text x="807" y="48" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8.5" font-weight="600" text-anchor="middle">ASIO / CoreAudio</text>
+  </g>
+
+  <!-- SUBDIVISIÓN EN SIGNAL VECTORS -->
+  <path d="M 470 112 L 470 135" fill="none" stroke="#eb6c36" stroke-width="1.4" marker-end="url(#arr-accent)" />
+  <text x="480" y="126" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700">Subdivisión en 4 Bloques MSP</text>
+
+  <!-- NIVEL 2: CUATRO VECTORES DE SEÑAL MSP (ACCENT EN VECTOR 1) -->
+  <g transform="translate(25, 142)">
+    <!-- Bloque 1: Activo en perform64 (FOCAL) -->
+    <rect x="0" y="0" width="210" height="74" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.4" />
+    <rect x="0" y="0" width="210" height="20" rx="4" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="8" y="14" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700">VECTOR 01 · 64 MUESTRAS (ACTIVO)</text>
+    <text x="8" y="38" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10" font-weight="600">perform64(double **ins...)</text>
+    <text x="8" y="54" fill="#fed7aa" font-size="8">Calculado en bucle SIMD AVX</text>
+    <text x="8" y="66" fill="#71717a" font-family="ui-monospace, monospace" font-size="7.5">t = 0.00 ms a 1.33 ms</text>
+
+    <!-- Bloques 2, 3, 4 -->
+    <rect x="226" y="0" width="210" height="74" rx="4" fill="#18181b" stroke="#3f3f46" stroke-width="1" />
+    <rect x="226" y="0" width="210" height="20" rx="4" fill="#27272a" />
+    <text x="234" y="14" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700">VECTOR 02 · 64 MUESTRAS</text>
+    <text x="234" y="44" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="9">En cola de procesamiento</text>
+    <text x="234" y="62" fill="#71717a" font-family="ui-monospace, monospace" font-size="7.5">t = 1.33 ms a 2.66 ms</text>
+
+    <rect x="453" y="0" width="210" height="74" rx="4" fill="#18181b" stroke="#3f3f46" stroke-width="1" />
+    <rect x="453" y="0" width="210" height="20" rx="4" fill="#27272a" />
+    <text x="461" y="14" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700">VECTOR 03 · 64 MUESTRAS</text>
+    <text x="461" y="44" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="9">En cola de procesamiento</text>
+    <text x="461" y="62" fill="#71717a" font-family="ui-monospace, monospace" font-size="7.5">t = 2.66 ms a 4.00 ms</text>
+
+    <rect x="680" y="0" width="210" height="74" rx="4" fill="#18181b" stroke="#3f3f46" stroke-width="1" />
+    <rect x="680" y="0" width="210" height="20" rx="4" fill="#27272a" />
+    <text x="688" y="14" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700">VECTOR 04 · 64 MUESTRAS</text>
+    <text x="688" y="44" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="9">En cola de procesamiento</text>
+    <text x="688" y="62" fill="#71717a" font-family="ui-monospace, monospace" font-size="7.5">t = 4.00 ms a 5.33 ms</text>
+  </g>
+
+  <!-- PANEL INFERIOR: BUCLE DE CÓDIGO C EN TIEMPO REAL -->
+  <g transform="translate(25, 230)">
+    <rect width="890" height="66" rx="4" fill="#151518" stroke="#27272a" stroke-width="1" />
+    <text x="20" y="22" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">ANATOMÍA C SDK (perform64):</text>
+    <text x="210" y="22" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8.5">while (n--) { *outL++ = *inL++ + offset; }</text>
+    <text x="20" y="44" fill="#a1a1aa" font-size="8.5">Los cables amarillos/negros no transfieren datos muestra a muestra: pasan únicamente el puntero de memoria de 64 bits al inicio del bloque.</text>
+    <text x="20" y="56" fill="#71717a" font-size="8">Signal Vector Size determina la resolución de modulación y la latencia mínima de bucles de realimentación (tapin~ / tapout~).</text>
+  </g>
+</svg>

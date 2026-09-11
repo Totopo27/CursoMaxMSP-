@@ -26,19 +26,7 @@ En una configuración estándar de Max:
 
 Si creás un sintetizador de 16 voces con filtros de modelado físico pesados que consume el $110\%$ de un núcleo, **el audio crujirá y caerá en dropouts inmediatos**, incluso si tenés un procesador moderno con 12 núcleos completamente ociosos al $0\%$.
 
-```
-[ Sin @parallel: Cuello de Botella Monohilo ]
-Core 0: [ Voz 1 ][ Voz 2 ][ Voz 3 ][ Voz 4 ] ... [ Voz 16 ] ---> ¡100% SATURADO!
-Core 1: [ OCIOSO 0% ]
-Core 2: [ OCIOSO 0% ]
-Core 3: [ OCIOSO 0% ]
-
-[ Con @parallel 1: Distribución Simétrica ]
-Core 0: [ Voz 1 ][ Voz 2 ][ Voz 3 ][ Voz 4 ] ---> 25%
-Core 1: [ Voz 5 ][ Voz 6 ][ Voz 7 ][ Voz 8 ] ---> 25%
-Core 2: [ Voz 9 ][ Voz 10][ Voz 11][ Voz 12] ---> 25%
-Core 3: [ Voz 13][ Voz 14][ Voz 15][ Voz 16] ---> 25%
-```
+![FIG 4.1 · poly~ @parallel 1 & Thread Pool Hardware](/assets/diagrams/diagrama_multicore_poly.svg)
 
 ---
 

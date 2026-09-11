@@ -1,0 +1,89 @@
+﻿<svg viewBox="0 0 940 310" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+    <marker id="arr-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#22c55e"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">MOTOR DE EVALUACIÓN DATAFLOW Y PILA DE LLAMADAS</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 1.1 · DEPTH-FIRST TRAVERSAL &amp; TRIGGER DETERMINISM</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- PANEL IZQUIERDO: EL PROBLEMA (AMBIGÜEDAD VISUAL / RACE CONDITION) -->
+  <rect x="25" y="42" width="425" height="248" rx="5" fill="#151518" stroke="#3f3f46" stroke-width="1" />
+  <rect x="25" y="42" width="425" height="24" rx="5" fill="#27272a" />
+  <rect x="25" y="61" width="425" height="5" fill="#27272a" />
+  <text x="37" y="58" fill="#ef4444" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" letter-spacing="0.06em">PATRÓN FRÁGIL · RESOLUCIÓN GEOMÉTRICA (RIGHT-TO-LEFT)</text>
+
+  <!-- Caja emisora bang -->
+  <rect x="187" y="80" width="100" height="30" rx="3" fill="#18181b" stroke="#52525b" stroke-width="1" />
+  <text x="237" y="99" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="600" text-anchor="middle">[ bang ]</text>
+
+  <!-- Cajas receptoras print -->
+  <rect x="65" y="170" width="130" height="42" rx="3" fill="#18181b" stroke="#71717a" stroke-width="1" />
+  <text x="130" y="190" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="600" text-anchor="middle">[ print Rama_A ]</text>
+  <text x="130" y="204" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" text-anchor="middle">pos_x = 65 (Izquierda)</text>
+
+  <rect x="280" y="170" width="130" height="42" rx="3" fill="#18181b" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="3,3" />
+  <text x="345" y="190" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="600" text-anchor="middle">[ print Rama_B ]</text>
+  <text x="345" y="204" fill="#ef4444" font-family="ui-monospace, monospace" font-size="8" text-anchor="middle">pos_x = 280 (Derecha) ◄ 1º</text>
+
+  <!-- Conexiones frágiles -->
+  <path d="M 237 110 L 237 135 L 345 135 L 345 170" fill="none" stroke="#ef4444" stroke-width="1.2" marker-end="url(#arr-neutral)" />
+  <path d="M 237 110 L 237 135 L 130 135 L 130 170" fill="none" stroke="#71717a" stroke-width="1.2" stroke-dasharray="3,3" marker-end="url(#arr-neutral)" />
+
+  <!-- Nota de peligro -->
+  <rect x="45" y="235" width="385" height="42" rx="3" fill="#201515" stroke="#7f1d1d" stroke-width="0.8" />
+  <text x="55" y="251" fill="#fca5a5" font-size="9" font-weight="600">Alerta de Arquitectura (Fragile Patch):</text>
+  <text x="55" y="267" fill="#d4d4d8" font-size="8.5">Si movés Rama_A 1 píxel a la derecha, el orden del Call Stack se invierte.</text>
+
+  <!-- PANEL DERECHO: LA SOLUCIÓN DETERMINISTA [trigger] -->
+  <rect x="490" y="42" width="425" height="248" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.2" />
+  <rect x="490" y="42" width="425" height="24" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+  <rect x="490" y="61" width="425" height="5" fill="rgba(235, 108, 54, 0.18)" />
+  <text x="502" y="58" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" letter-spacing="0.06em">PATRÓN ROBUSTO · DETERMINISMO EXPLÍCITO CON [TRIGGER]</text>
+
+  <!-- Objeto [t b i] -->
+  <rect x="632" y="80" width="140" height="34" rx="3" fill="#18181b" stroke="#eb6c36" stroke-width="1.2" />
+  <text x="702" y="102" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="12" font-weight="700" text-anchor="middle">[ trigger b i ]</text>
+
+  <!-- Salidas de trigger -->
+  <circle cx="667" cy="114" r="3" fill="#71717a" />
+  <text x="667" y="127" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" text-anchor="middle">Out 1 (bang)</text>
+  <circle cx="737" cy="114" r="3" fill="#eb6c36" />
+  <text x="737" y="127" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700" text-anchor="middle">Out 2 (int) ◄ 1º</text>
+
+  <!-- Destino C: Objeto [+] con Inlets Frío y Caliente -->
+  <g transform="translate(567, 160)">
+    <rect width="270" height="60" rx="4" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <text x="135" y="32" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="13" font-weight="700" text-anchor="middle">[ +  0 ]</text>
+    
+    <!-- Inlet Caliente Izquierdo -->
+    <rect x="25" y="0" width="14" height="6" fill="#ef4444" rx="1" />
+    <text x="32" y="17" fill="#fca5a5" font-family="ui-monospace, monospace" font-size="7.5" text-anchor="middle">Hot (Inlet 0)</text>
+    <text x="32" y="50" fill="#a1a1aa" font-size="8" text-anchor="middle">2º Disparo Cómputo</text>
+
+    <!-- Inlet Frío Derecho -->
+    <rect x="231" y="0" width="14" height="6" fill="#3b82f6" rx="1" />
+    <text x="238" y="17" fill="#93c5fd" font-family="ui-monospace, monospace" font-size="7.5" text-anchor="middle">Cold (Inlet 1)</text>
+    <text x="238" y="50" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700" text-anchor="middle">1º Asigna Estado RAM</text>
+  </g>
+
+  <!-- Cables deterministas -->
+  <!-- De Out 2 (derecha) hacia Cold Inlet (derecha): Paso 1 -->
+  <path d="M 737 114 L 737 140 L 805 140 L 805 160" fill="none" stroke="#eb6c36" stroke-width="1.4" marker-end="url(#arr-accent)" />
+  <!-- De Out 1 (izquierda) hacia Hot Inlet (izquierda): Paso 2 -->
+  <path d="M 667 114 L 667 148 L 599 148 L 599 160" fill="none" stroke="#22c55e" stroke-width="1.2" stroke-dasharray="3,3" marker-end="url(#arr-green)" />
+
+  <!-- Nota de garantía técnica -->
+  <rect x="510" y="235" width="385" height="42" rx="3" fill="#18181b" stroke="#eb6c36" stroke-width="0.8" />
+  <text x="520" y="251" fill="#fed7aa" font-size="9" font-weight="600">Garantía Inmutable del Call Stack:</text>
+  <text x="520" y="267" fill="#d4d4d8" font-size="8.5">La memoria en C (`x->p_value1`) se escribe ANTES de que `outlet_bang()` evalúe.</text>
+</svg>

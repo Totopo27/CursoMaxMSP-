@@ -54,26 +54,7 @@ En un sistema operativo de propósito general como Windows o macOS, la CPU está
 
 Para garantizar determinismo rítmico inmutable frente a la carga del sistema operativo, Cycling '74 diseñó una arquitectura estricta de **tres hilos concurrentes**:
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                        ARQUITECTURA DE HILOS                           │
-├────────────────────────────────────────────────────────────────────────┤
-│ 1. MAIN THREAD (Baja Prioridad / Cola de Eventos de la UI)             │
-│    • Tareas lentas y no deterministas: dibujo de ventanas, inspectores,│
-│      sliders, botones, renderizado web ([jweb]).                       │
-│    • Operaciones con disco duro: carga de archivos ([coll], [dict]).   │
-│                                                                        │
-│ 2. SCHEDULER THREAD (Alta Prioridad / Temporizador del Sistema)        │
-│    • Manejo de eventos en tiempo real: [metro], [delay], [pipe].       │
-│    • Mensajes de control MIDI y protocolos de red rápida (OSC).        │
-│    • Con Overdrive [X], este hilo interrumpe forzosamente al Main Thread│
-│                                                                        │
-│ 3. AUDIO THREAD (MSP / DSP en Bloques de Muestras a 64-bit)            │
-│    • Procesa vectores fijos de audio (ej. 64 muestras) a 48.000 Hz.   │
-│    • Es el hilo más crítico del sistema; si se demora, ocurre un click │
-│      o 'dropout' audible de audio.                                     │
-└────────────────────────────────────────────────────────────────────────┘
-```
+![FIG 1.2 · Scheduler, Overdrive & t_qelem Bridge](/assets/diagrams/diagrama_scheduler_hilos.svg)
 
 ---
 
