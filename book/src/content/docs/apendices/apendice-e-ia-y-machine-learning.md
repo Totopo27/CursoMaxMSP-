@@ -14,15 +14,7 @@ En este apéndice analizamos los dos frameworks más revolucionarios del campo: 
 
 Desarrollado por la Universidad de Huddersfield, **FluCoMa** provee un conjunto masivo de objetos en C++ para análisis de señal, descomposición espectral y algoritmos de Machine Learning estadístico y neuronal:
 
-```mermaid
-graph TD
-    AudioCorpus["Corpus de Audio / Muestras"] --> FeatureExtract["Extracción de Descriptores (Loudness, Pitch, MFCC, SpectralShape)"]
-    FeatureExtract --> DataScaling["Normalización de Datos: fluid.robustscale~"]
-    DataScaling --> DimReduction["Reducción Dimensional: PCA / UMAP / t-SNE"]
-    DimReduction --> Clustering["Clustering (K-Means / KD-Tree)"]
-    Clustering --> RealTimeQuery["Búsqueda por K-Nearest Neighbors (KNN)"]
-    RealTimeQuery --> GranularSynth["Síntesis Concatenativa / Resíntesis en Tiempo Real"]
-```
+![FIG E.1 · Descriptores Tímbricos & Búsqueda KNN](/assets/diagrams/diagrama_flucoma_machine_learning.svg)
 
 ### 1.1. Los Tres Pilares de FluCoMa
 1. **Descomposición Espectral**:

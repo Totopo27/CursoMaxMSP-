@@ -14,21 +14,7 @@ Para modernizar radicalmente el desarrollo de objetos externos, Cycling '74 cre�
 
 Min-DevKit reemplaza la herencia de structs de C y las llamadas imperativas a `class_addmethod()` por una **declaración estática y declarativa de la interfaz del objeto**.
 
-```mermaid
-graph TD
-    subgraph MinDevKitArch["Arquitectura Min-DevKit (C++17)"]
-        BaseClass["c74::min::object<MiClase>"]
-        Inlets["inlet<> in1, in2 (Fuertemente Tipados)"]
-        Outlets["outlet<> out1, out2"]
-        Attributes["attribute<tipo> mi_parametro"]
-        Messages["message<> mi_mensaje"]
-    end
-    BaseClass --> Inlets
-    BaseClass --> Outlets
-    BaseClass --> Attributes
-    BaseClass --> Messages
-    Messages --> Lambdas["Lógica encapsulada en Expresiones Lambda [&]"]
-```
+![FIG D.1 · C++17 Templates, RAII & Type Safety](/assets/diagrams/diagrama_mindevkit_arquitectura.svg)
 
 ### 1.1. Comparativa: C SDK vs. Min-DevKit
 

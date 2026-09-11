@@ -1,0 +1,75 @@
+﻿<svg viewBox="0 0 940 310" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">INTERCAMBIO DE TEXTURAS EN GPU: SPOUT / SYPHON ZERO-COPY</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">APÉNDICE B · MAX/MSP + TOUCHDESIGNER VRAM BRIDGE</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- NODO 1: MAX/MSP JITTER CONTEXT -->
+  <g transform="translate(25, 45)">
+    <rect width="260" height="185" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="260" height="22" rx="5" fill="#27272a" />
+    <rect y="17" width="260" height="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">MAX / MSP (JITTER GPU CONTEXT)</text>
+    <text x="10" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="600">[jit.gl.spoutsender mi_stream]</text>
+    <text x="10" y="60" fill="#a1a1aa" font-size="8.5">Generador gráfico o patcher visual</text>
+    
+    <rect x="10" y="74" width="240" height="90" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+    <text x="16" y="92" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5">[jit.gl.texture]</text>
+    <text x="16" y="110" fill="#a1a1aa" font-size="8">• Resolución: 3840 x 2160 (4K)</text>
+    <text x="16" y="126" fill="#a1a1aa" font-size="8">• Framerate: 60 FPS inamovibles</text>
+    <text x="16" y="146" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8">Reside 100% en memoria de GPU</text>
+  </g>
+
+  <!-- NODO 2: MEMORIA COMPARTIDA VRAM (ACCENT FOCAL) -->
+  <g transform="translate(315, 60)">
+    <rect width="310" height="155" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="310" height="22" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+    <rect y="17" width="310" height="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="10" y="15" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700">VRAM COMPARTIDA (DIRECTX 11 / METAL)</text>
+
+    <text x="14" y="46" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="600">DirectX Shared Texture Handle</text>
+    <text x="14" y="64" fill="#fed7aa" font-size="8.5">Puntero de memoria compartido en hardware</text>
+
+    <rect x="14" y="76" width="282" height="60" rx="3" fill="#121318" stroke="#eb6c36" stroke-width="0.8" />
+    <text x="20" y="94" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8.5">Cero Copia a CPU (Zero-Copy):</text>
+    <text x="20" y="110" fill="#d4d4d8" font-size="8">Los píxeles jamás atraviesan el bus PCIe ni la RAM del sistema operativo.</text>
+    <text x="20" y="124" fill="#71717a" font-size="7.5">Latencia de transporte: menor a 1 ms (&lt; 1 frame).</text>
+  </g>
+
+  <!-- CONEXIONES A VRAM -->
+  <path d="M 285 137 L 315 137" fill="none" stroke="#eb6c36" stroke-width="1.4" marker-end="url(#arr-accent)" />
+  <path d="M 625 137 L 655 137" fill="none" stroke="#eb6c36" stroke-width="1.4" marker-end="url(#arr-accent)" />
+
+  <!-- NODO 3: TOUCHDESIGNER -->
+  <g transform="translate(655, 45)">
+    <rect width="260" height="185" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="260" height="22" rx="5" fill="#27272a" />
+    <rect y="17" width="260" height="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">TOUCHDESIGNER (DERIVATIVE)</text>
+    <text x="10" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="600">Spout In TOP ('mi_stream')</text>
+    <text x="10" y="60" fill="#a1a1aa" font-size="8.5">Receptor de textura instantáneo</text>
+
+    <rect x="10" y="74" width="240" height="90" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+    <text x="16" y="92" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8.5">Render Pipeline TouchDesigner:</text>
+    <text x="16" y="110" fill="#a1a1aa" font-size="8">• PBR Shading y materiales</text>
+    <text x="16" y="126" fill="#a1a1aa" font-size="8">• Video Mapping / Cúpula / LED Wall</text>
+    <text x="16" y="146" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8">Sincronización OSC de control</text>
+  </g>
+
+  <!-- PANEL INFERIOR -->
+  <g transform="translate(25, 240)">
+    <rect width="890" height="54" rx="4" fill="#151518" stroke="#27272a" stroke-width="1" />
+    <text x="20" y="22" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">REGLA DE ORO DE INTEGRACIÓN AUDIOVISUAL:</text>
+    <text x="285" y="22" fill="#d4d4d8" font-size="8.5">Usa Spout (Windows) o Syphon (macOS) para texturas de video, y Open Sound Control (OSC) por UDP local para parámetros de control.</text>
+    <text x="20" y="40" fill="#71717a" font-family="ui-monospace, monospace" font-size="8">Jamás transmitas matrices de video por sockets de red ni trates de descomprimir JPEG cuadro a cuadro.</text>
+  </g>
+</svg>

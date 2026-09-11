@@ -16,16 +16,7 @@ Toda información en Jitter se representa mediante una matriz definida estrictam
 
 $$\text{Matriz Jitter} = \langle \text{Planos}, \text{Tipo}, \text{Dimensiones} \rangle$$
 
-```mermaid
-graph TD
-    subgraph MemoriaMatricial["Estructura en Memoria (Contiguous Buffer)"]
-        Planes["Planos (Planes): Canales intercalados [ARGB] o Coordenadas [XYZ]"]
-        DataType["Tipo de Dato (Type): char (uint8), long (int32), float32, float64"]
-        Dims["Dimensiones (Dim): Ancho (X), Alto (Y), Profundidad (Z), Tiempo (W)..."]
-    end
-    JitObject["Objeto Jitter (ej. [jit.matrix])"] --> MemoriaMatricial
-    MemoriaMatricial --> Rendering["Destino: Textura GPU [jit.gl.texture] o Análisis Numérico"]
-```
+![FIG A.1 · Planes, Types & Texturas GPU GLSL](/assets/diagrams/diagrama_jitter_matrices.svg)
 
 ### 1.1. Planos (*Planes*)
 Un plano representa una capa paralela de datos para cada celda de la matriz:

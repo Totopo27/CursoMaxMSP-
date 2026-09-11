@@ -16,27 +16,7 @@ La comunicación entre ambos entornos debe ser robusta, determinista y de **late
 
 El mayor error de diseño para conectar Max con TouchDesigner es intentar transmitir frames de video por la red o por el bus PCIe entre CPU y GPU. La solución profesional es el **intercambio directo de texturas en VRAM (Zero-Copy GPU Sharing)**:
 
-```mermaid
-graph LR
-    subgraph MaxMSP["Max/MSP (Jitter GPU Context)"]
-        JitTex["[jit.gl.texture] (Textura en VRAM)"]
-        JitSpout["[jit.gl.spoutsender mi_streaming]"]
-        JitTex --> JitSpout
-    end
-
-    subgraph GPU_VRAM["Memoria Compartida DirectX 11 / OpenGL"]
-        SharedHandle["DirectX Shared Texture Handle (Cero Copia CPU)"]
-    end
-
-    subgraph TouchDesigner["TouchDesigner (Derivative)"]
-        TDSpoutIn["Spout In TOP ('mi_streaming')"]
-        TDRender["Render Pipeline / PBR Shading / Video Mapping"]
-        TDSpoutIn --> TDRender
-    end
-
-    JitSpout -->|Puntero en VRAM| SharedHandle
-    SharedHandle -->|Puntero en VRAM| TDSpoutIn
-```
+![FIG B.1 · Max/MSP + TouchDesigner VRAM Bridge](/assets/diagrams/diagrama_spout_touchdesigner.svg)
 
 ### 1.1. Ventajas de Spout / Syphon
 1. **Zero-Copy Overhead**: Los píxeles jamás bajan a la memoria RAM del sistema operativo. Un frame 4K (3840x2160 a 60 fps) se comparte instantáneamente mediante un puntero compartido de DirectX/Metal sin consumir ancho de banda de la CPU.

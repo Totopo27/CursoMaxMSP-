@@ -1,0 +1,87 @@
+﻿<svg viewBox="0 0 940 310" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">PIPELINE DE TELEMETRÍA SERIE: ARDUINO / ESP32 A MAX/MSP</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">APÉNDICE C · PROTOCOLO ROBUSTO &amp; FRAMING DELIMITER</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- NODO 1: MICROCONTROLADOR ARDUINO -->
+  <g transform="translate(25, 45)">
+    <rect width="210" height="185" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="210" height="22" rx="5" fill="#27272a" />
+    <rect y="17" width="210" height="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">HARDWARE MICROCONTROLADOR</text>
+    <text x="10" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="600">Arduino / ESP32</text>
+    <text x="10" y="60" fill="#a1a1aa" font-size="8.5">Loop de sensores a 100 Hz</text>
+    
+    <rect x="10" y="74" width="190" height="90" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+    <text x="14" y="92" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8">Serial.print(val1);</text>
+    <text x="14" y="108" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8">Serial.print(" ");</text>
+    <text x="14" y="124" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8">Serial.println(val2);</text>
+    <text x="14" y="146" fill="#fed7aa" font-size="7.5">Delimitador de fin de trama: \r\n</text>
+  </g>
+
+  <path d="M 235 137 L 270 137" fill="none" stroke="#eb6c36" stroke-width="1.4" marker-end="url(#arr-accent)" />
+
+  <!-- NODO 2: BUS USB UART (ACCENT FOCAL) -->
+  <g transform="translate(270, 65)">
+    <rect width="215" height="145" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="215" height="22" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+    <rect y="17" width="215" height="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="10" y="15" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700">TUBERÍA USB SERIAL (UART)</text>
+    
+    <text x="12" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="600">115200 Baudios</text>
+    <text x="12" y="60" fill="#fed7aa" font-size="8.5">Flujo continuo de bytes ASCII</text>
+
+    <rect x="12" y="72" width="191" height="56" rx="3" fill="#121318" stroke="#eb6c36" stroke-width="0.8" />
+    <text x="18" y="90" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8">Latencia: &lt; 0.8 ms</text>
+    <text x="18" y="106" fill="#a1a1aa" font-size="8">Bytes en buffer de hardware del S.O. (FTDI / CH340)</text>
+  </g>
+
+  <path d="M 485 137 L 520 137" fill="none" stroke="#eb6c36" stroke-width="1.4" marker-end="url(#arr-accent)" />
+
+  <!-- NODO 3: PIPELINE DE RECONSTRUCCIÓN EN MAX -->
+  <g transform="translate(520, 45)">
+    <rect width="395" height="185" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="395" height="22" rx="5" fill="#27272a" />
+    <rect y="17" width="395" height="5" fill="#27272a" />
+    <text x="10" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">DESPACHO Y DESEMPAQUETADO DETERMINISTA EN MAX</text>
+
+    <!-- Sub-bloques en cascada -->
+    <g transform="translate(10, 32)">
+      <rect x="0" y="0" width="180" height="42" rx="3" fill="#121318" stroke="#3f3f46" stroke-width="0.8" />
+      <text x="8" y="18" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8.5" font-weight="600">[serial c 115200]</text>
+      <text x="8" y="32" fill="#a1a1aa" font-size="7.5">Lectura por [metro 5]</text>
+
+      <rect x="195" y="0" width="180" height="42" rx="3" fill="#121318" stroke="#eb6c36" stroke-width="0.8" />
+      <text x="8" y="18" transform="translate(195,0)" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8.5" font-weight="600">[select 13 10]</text>
+      <text x="8" y="32" transform="translate(195,0)" fill="#fed7aa" font-size="7.5">Filtra CR y LF (\r\n)</text>
+
+      <rect x="0" y="52" width="180" height="42" rx="3" fill="#121318" stroke="#3f3f46" stroke-width="0.8" />
+      <text x="8" y="70" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8.5" font-weight="600">[zl.group 128]</text>
+      <text x="8" y="84" fill="#a1a1aa" font-size="7.5">Reensambla paquete de bytes</text>
+
+      <rect x="195" y="52" width="180" height="42" rx="3" fill="#121318" stroke="#22c55e" stroke-width="0.8" />
+      <text x="8" y="70" transform="translate(195,0)" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8.5" font-weight="600">[itoa] -> [fromsymbol]</text>
+      <text x="8" y="84" transform="translate(195,0)" fill="#22c55e" font-size="7.5">Salida limpia: [unpack 0 0 0]</text>
+    </g>
+
+    <text x="14" y="152" fill="#71717a" font-size="8">Cero error de desfasaje (framing error) aunque haya caída temporal de tensión.</text>
+  </g>
+
+  <!-- PANEL INFERIOR -->
+  <g transform="translate(25, 240)">
+    <rect width="890" height="54" rx="4" fill="#151518" stroke="#27272a" stroke-width="1" />
+    <text x="20" y="22" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">POR QUÉ ESTO ES CRÍTICO EN INSTALACIONES INTERACTIVAS:</text>
+    <text x="330" y="22" fill="#d4d4d8" font-size="8.5">Sin detección explícita de fin de línea (\r\n), un solo byte perdido intercambia permanentemente el sensor 1 con el 2.</text>
+    <text x="20" y="40" fill="#71717a" font-family="ui-monospace, monospace" font-size="8">El patrón [serial] -> [select 13 10] -> [zl.group] garantiza auto-sincronización instantánea ante desconexiones físicas de cable.</text>
+  </g>
+</svg>

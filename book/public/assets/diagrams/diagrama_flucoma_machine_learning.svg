@@ -1,0 +1,110 @@
+﻿<svg viewBox="0 0 940 310" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">PIPELINE DE MACHINE LEARNING Y CORPUS AUDIO CON FLUCOMA</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">APÉNDICE E · DESCRIPTORES TÍMBRICOS &amp; BÚSQUEDA KNN</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- SECUENCIA DE 5 ETAPAS DEL PIPELINE ML -->
+  <!-- 1. Corpus Audio -->
+  <g transform="translate(25, 45)">
+    <rect width="165" height="185" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="165" height="22" rx="5" fill="#27272a" />
+    <text x="8" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700">1. CORPUS AUDIO</text>
+    <text x="8" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="600">[buffer~ samples]</text>
+    <text x="8" y="60" fill="#a1a1aa" font-size="8">Colección de grabaciones</text>
+    
+    <rect x="8" y="74" width="149" height="90" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+    <text x="12" y="92" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="8">Segmentación:</text>
+    <text x="12" y="108" fill="#a1a1aa" font-size="7.5">• fluid.bufnoveltyslice~</text>
+    <text x="12" y="122" fill="#a1a1aa" font-size="7.5">• fluid.transientslice~</text>
+    <text x="12" y="142" fill="#71717a" font-size="7.5">Detección de onsets</text>
+  </g>
+
+  <path d="M 190 137 L 210 137" fill="none" stroke="#71717a" stroke-width="1.2" marker-end="url(#arr-neutral)" />
+
+  <!-- 2. Extracción Descriptores -->
+  <g transform="translate(210, 45)">
+    <rect width="165" height="185" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="165" height="22" rx="5" fill="#27272a" />
+    <text x="8" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700">2. DESCRIPTORES</text>
+    <text x="8" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="600">Extracción Tímbrica</text>
+    <text x="8" y="60" fill="#a1a1aa" font-size="8">Huella espectral en RAM</text>
+    
+    <rect x="8" y="74" width="149" height="90" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+    <text x="12" y="92" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8">fluid.bufmfcc~</text>
+    <text x="12" y="108" fill="#a1a1aa" font-size="7.5">• Coeficientes MFCC (13)</text>
+    <text x="12" y="122" fill="#a1a1aa" font-size="7.5">• Spectral Centroid / Pitch</text>
+    <text x="12" y="136" fill="#a1a1aa" font-size="7.5">• Loudness y envolvente</text>
+    <text x="12" y="152" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="7.5">Dataset multidimensional</text>
+  </g>
+
+  <path d="M 375 137 L 395 137" fill="none" stroke="#eb6c36" stroke-width="1.4" marker-end="url(#arr-accent)" />
+
+  <!-- 3. Reducción y Escalamiento (ACCENT FOCAL) -->
+  <g transform="translate(395, 45)">
+    <rect width="170" height="185" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="170" height="22" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="8" y="15" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700">3. NORMALIZACIÓN</text>
+    <text x="8" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">fluid.robustscale~</text>
+    <text x="8" y="60" fill="#fed7aa" font-size="8">Escalamiento estadístico</text>
+    
+    <rect x="8" y="74" width="154" height="90" rx="3" fill="#121318" stroke="#eb6c36" stroke-width="0.8" />
+    <text x="12" y="92" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="8">Reducción Dim:</text>
+    <text x="12" y="108" fill="#fed7aa" font-size="7.5">• PCA (Varianza máxima)</text>
+    <text x="12" y="122" fill="#fed7aa" font-size="7.5">• UMAP / t-SNE</text>
+    <text x="12" y="138" fill="#a1a1aa" font-size="7.5">Proyección 13D a 2D/3D</text>
+    <text x="12" y="154" fill="#22c55e" font-family="ui-monospace, monospace" font-size="7.5">Mapa tímbrico navegable</text>
+  </g>
+
+  <path d="M 565 137 L 585 137" fill="none" stroke="#eb6c36" stroke-width="1.4" marker-end="url(#arr-accent)" />
+
+  <!-- 4. Indexación Espacial KD-Tree -->
+  <g transform="translate(585, 45)">
+    <rect width="160" height="185" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="160" height="22" rx="5" fill="#27272a" />
+    <text x="8" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700">4. INDEXACIÓN</text>
+    <text x="8" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="600">fluid.kdtree~</text>
+    <text x="8" y="60" fill="#a1a1aa" font-size="8">Árbol de partición espacial</text>
+    
+    <rect x="8" y="74" width="144" height="90" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+    <text x="12" y="92" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8">KNN Query:</text>
+    <text x="12" y="108" fill="#a1a1aa" font-size="7.5">Búsqueda de vecinos</text>
+    <text x="12" y="122" fill="#a1a1aa" font-size="7.5">más cercanos en</text>
+    <text x="12" y="136" fill="#a1a1aa" font-size="7.5">tiempo sub-milisegundo</text>
+    <text x="12" y="152" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="7.5">Complejidad O(log N)</text>
+  </g>
+
+  <path d="M 745 137 L 765 137" fill="none" stroke="#71717a" stroke-width="1.2" marker-end="url(#arr-neutral)" />
+
+  <!-- 5. Resíntesis Granular -->
+  <g transform="translate(765, 45)">
+    <rect width="150" height="185" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="150" height="22" rx="5" fill="#27272a" />
+    <text x="8" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700">5. RESÍNTESIS</text>
+    <text x="8" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="600">Audio Thread</text>
+    <text x="8" y="60" fill="#a1a1aa" font-size="8">Disparo de granos</text>
+    
+    <rect x="8" y="74" width="134" height="90" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+    <text x="10" y="92" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8">[play~] / [2d.waveform]</text>
+    <text x="10" y="110" fill="#a1a1aa" font-size="7.5">Síntesis concatenativa</text>
+    <text x="10" y="126" fill="#a1a1aa" font-size="7.5">por descriptor en vivo</text>
+    <text x="10" y="148" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="7.5">Salida Audio L/R</text>
+  </g>
+
+  <!-- PANEL INFERIOR -->
+  <g transform="translate(25, 240)">
+    <rect width="890" height="54" rx="4" fill="#151518" stroke="#27272a" stroke-width="1" />
+    <text x="20" y="22" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">PARADIGMA FLUCOMA EN LA MÚSICA POR COMPUTADORA:</text>
+    <text x="315" y="22" fill="#d4d4d8" font-size="8.5">Reemplaza el mapeo arbitrario de controles por relaciones perceptivas fundamentadas en el análisis espectral de la señal.</text>
+    <text x="20" y="40" fill="#71717a" font-family="ui-monospace, monospace" font-size="8">Tanto el análisis como el modelado estadístico y neuronal ocurren en memoria RAM compartida dentro de Max, sin recurrir a puentes externos en Python.</text>
+  </g>
+</svg>

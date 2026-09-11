@@ -14,30 +14,7 @@ En una instalación interactiva, el sistema sonoro no reacciona a un teclado o m
 
 Muchos programadores cometen el error de enviar números simples separados por comas y leerlos a ciegas. En un entorno de instalación real, si se pierde un solo byte en el puerto USB por interferencia electromagnética, todos los valores subsiguientes quedan desplazados indefinidamente (*framing error*).
 
-```mermaid
-graph LR
-    subgraph Microcontrolador["Arduino / ESP32 (Loop a 100 Hz)"]
-        ADC["Lectura Sensores: A0, A1, D2"]
-        SerialPrint["Trama Serial: S1,S2,S3\\r\\n"]
-        ADC --> SerialPrint
-    end
-
-    subgraph USB_UART["Tubería USB Serial (115200 Baudios)"]
-        Stream["Flujo Continuo de Bytes ASCII (0-255)"]
-    end
-
-    subgraph MaxMSP["Max/MSP (Scheduler Thread)"]
-        SerialObj["[serial c 115200] (Polling por metro)"]
-        SelectCR["[sel 13 10] (Detección de \\r y \\n)"]
-        ZlGroup["[zl.group 100] (Reconstrucción de trama)"]
-        Itoa["[itoa] (Conversión ASCII a Texto)"]
-        FromSymbol["[fromsymbol] -> [unpack 0 0 0]"]
-    end
-
-    SerialPrint --> Stream
-    Stream --> SerialObj
-    SerialObj --> SelectCR --> ZlGroup --> Itoa --> FromSymbol
-```
+![FIG C.1 · Protocolo Robusto & Framing Delimiter](/assets/diagrams/diagrama_arduino_serial_pipeline.svg)
 
 ### 1.1. Las Cuatro Reglas de Oro de una Trama Serial
 1. **Delimitador de Fin de Línea (*Line Delimiter*)**: Cada paquete de sensores debe terminar obligatoriamente con `\r\n` (ASCII 13 y 10).

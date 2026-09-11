@@ -12,26 +12,7 @@ En la música electroacústica, los conciertos multicanal, el diseño sonoro de 
 
 ## 1. Los Paradigmas de Espacialización 3D
 
-```mermaid
-graph TD
-    Source["Fuente Monofónica / Multicanal"] --> ParadigmChoice{"Paradigma de Espacialización"}
-    
-    subgraph PanningFisico["1. Panning Geométrico Discreto"]
-        ParadigmChoice -->|Geometría de Parlantes| VBAP["VBAP (Vector Base Amplitude Panning)"]
-        VBAP --> SpeakerArray["Arreglo Físico de N Altavoces (5.1, 7.1.4, Domo 32ch)"]
-    end
-
-    subgraph AmbisonicsField["2. Codificación de Campo Continuo"]
-        ParadigmChoice -->|Independiente de Parlantes| HOA["Ambisonics HOA (B-Format)"]
-        HOA --> SphericalHarmonics["Armónicos Esféricos (W, X, Y, Z, R, S, T...)"]
-        SphericalHarmonics --> Ambidecode["Decodificador Adaptativo a Cualquier Recinto"]
-    end
-
-    subgraph PercepcionBinaural["3. Psicoacústica Auricular"]
-        ParadigmChoice -->|Para Auriculares| HRTF["Filtros HRTF (Binaural 3D Virtual)"]
-        HRTF --> HeadphoneOut["Salida Estéreo Binaural Inmersiva"]
-    end
-```
+![FIG F.1 · VBAP, HOA Ambisonics & Binaural HRTF (Spat5)](/assets/diagrams/diagrama_spat_audio_espacial.svg)
 
 ### 1.1. VBAP (Vector Base Amplitude Panning - Ville Pulkki)
 - Divide el espacio tridimensional de parlantes en triángulos (o pares en 2D).
