@@ -16,7 +16,7 @@ hero:
 
 ## Pilares de la Arquitectura
 
-<div class="landing-cards-grid">
+<div class="landing-cards-grid not-content">
   <div class="landing-card">
     <div class="card-header">
       <span class="card-badge">01</span>

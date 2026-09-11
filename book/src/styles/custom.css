@@ -156,6 +156,7 @@ h1#_top {
   gap: 0.75rem;
   transition: border-color 0.2s ease, transform 0.2s ease;
   height: 100%;
+  margin: 0 !important;
   box-sizing: border-box;
 }
 
