@@ -79,7 +79,7 @@
 
   function updateHeaderSummary() {
     const progress = getStoredProgress();
-    const totalLessons = 44;
+    const totalLessons = 45;
     const completedCount = progress.completed.length;
     const percent = Math.min(100, Math.round((completedCount / totalLessons) * 100));
 

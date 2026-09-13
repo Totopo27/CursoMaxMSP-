@@ -62,7 +62,7 @@ hero:
 - [**Módulo 4: Abstracciones y Polifonía Avanzada**](/04-polifonia-y-modularidad/01-abstracciones-subparches-y-namespace/) — Modularidad, Subparches y Computación Paralela Multicore (`poly~`).
 - [**Módulo 5: Gen~ y DSP de Bajo Nivel**](/05-gen-y-dsp-avanzado/01-gen-paradigma-jit-y-compilacion/) — Procesamiento Muestra a Muestra, GenExpr y Modelado Físico JIT.
 - [**Módulo 6: Extensiones, Node for Max y C SDK**](/06-extensiones-sdk-y-sistemas/01-javascript-en-max-js-v8/) — Del Patch al Código Nativo (JavaScript V8, Node for Max y C SDK).
-- [**Apéndices Especializados**](/apendices/apendice-a-jitter-matrices-y-jit-gen/) — Computación Visual (Jitter), TouchDesigner, Arduino, Min-DevKit C++, IA y Audio Espacial 3D.
+- [**Apéndices Especializados**](/apendices/apendice-a-jitter-matrices-y-jit-gen/) — Computación Visual (Jitter), TouchDesigner, Arduino, Min-DevKit C++, IA, Audio Espacial 3D y Ableton Live / Max for Live (M4L).
 - [**Glosario Técnico Especializado**](/glosario/) — Léxico canónico de ciencias de la computación, física acústica, arquitecturas de bajo nivel y DSP.
 - [**Referencias Bibliográficas y Tratados Académicos**](/referencias-bibliograficas/) — Fuentes primarias, investigación latinoamericana (CMMAS/UNAM/UNQ) y tratados de conservatorio.
 
