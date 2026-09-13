@@ -59,6 +59,6 @@ hero:
 - [**Módulo 5: Gen~ y DSP de Bajo Nivel**](/05-gen-y-dsp-avanzado/01-gen-paradigma-jit-y-compilacion/) — Procesamiento Muestra a Muestra, GenExpr y Modelado Físico JIT.
 - [**Módulo 6: Extensiones, Node for Max y C SDK**](/06-extensiones-sdk-y-sistemas/01-javascript-en-max-js-v8/) — Del Patch al Código Nativo (JavaScript V8, Node for Max y C SDK).
 - [**Apéndices Especializados**](/apendices/apendice-a-jitter-matrices-y-jit-gen/) — Computación Visual (Jitter), TouchDesigner, Arduino, Min-DevKit C++, IA y Audio Espacial 3D.
-- [**Referencias Bibliográficas y Tratados Académicos**](/referencias-bibliograficas/) — Fuentes primarias, investigación latinoamericana (CMMAS/UNAM/UNQ) y tratados de conservatorio.
+- [**Glosario Técnico Especializado**](/glosario/) — Léxico canónico de ciencias de la computación, física acústica, arquitecturas de bajo nivel y DSP.\n- [**Referencias Bibliográficas y Tratados Académicos**](/referencias-bibliograficas/) — Fuentes primarias, investigación latinoamericana (CMMAS/UNAM/UNQ) y tratados de conservatorio.
 
 

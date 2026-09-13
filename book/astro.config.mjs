@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+
 export default defineConfig({
   site: 'https://curso-max.pajarobobo.xyz',
   markdown: {
@@ -55,6 +56,10 @@ export default defineConfig({
         {
           label: 'Apéndices Especializados',
           autogenerate: { directory: 'apendices' },
+        },
+        {
+          label: 'Glosario Técnico Especializado',
+          slug: 'glosario',
         },
         {
           label: 'Referencias Bibliográficas',
