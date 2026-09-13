@@ -12,6 +12,7 @@ export default defineConfig({
     starlight({
       title: 'Max/MSP: Del Concepto al Motor Nativo',
       description: 'Curso integral de Max/MSP, MSP Audio, Gen~, C SDK y Sistemas Multimedia.',
+      favicon: '/favicon.svg',
       defaultLocale: 'root',
       locales: {
         root: {
