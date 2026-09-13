@@ -402,3 +402,124 @@ h1#_top {
   margin: 0 !important;
   color: var(--sl-color-gray-2, #a1a1aa);
 }
+
+/* ==========================================================================
+   Progress Tracker UI (Client-side localStorage)
+   ========================================================================== */
+
+#global-progress-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--sl-color-gray-6, #181920);
+  border: 1px solid var(--sl-color-hairline, rgba(255, 255, 255, 0.1));
+  border-radius: 9999px;
+  padding: 0.3rem 0.8rem;
+  font-family: var(--sl-font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--sl-color-white, #f4f4f5);
+  margin-right: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+:root[data-theme='light'] #global-progress-pill {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+#global-progress-pill .progress-bar-track {
+  width: 50px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  overflow: hidden;
+  display: inline-block;
+}
+
+:root[data-theme='light'] #global-progress-pill .progress-bar-track {
+  background: #cbd5e1;
+}
+
+#global-progress-pill .progress-bar-fill {
+  height: 100%;
+  background: #22c55e;
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+
+.lesson-completion-card {
+  margin: 3rem 0 1.5rem 0;
+  padding: 1.25rem 1.5rem;
+  border-radius: 8px;
+  background: var(--sl-color-bg-sidebar, #121318);
+  border: 1px solid var(--sl-color-hairline, rgba(255, 255, 255, 0.1));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+:root[data-theme='light'] .lesson-completion-card {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.completion-info h4 {
+  font-family: var(--sl-font-mono, monospace);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0 !important;
+  color: var(--sl-color-white, #f4f4f5);
+}
+
+.completion-info p {
+  font-size: 0.85rem !important;
+  margin: 0 !important;
+  color: var(--sl-color-gray-2, #a1a1aa);
+}
+
+.btn-completion {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: 6px;
+  font-family: var(--sl-font-mono, monospace);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  border: 1px solid #eb6c36;
+  background: rgba(235, 108, 54, 0.1);
+  color: #eb6c36;
+}
+
+.btn-completion:hover {
+  background: #eb6c36;
+  color: #fff;
+}
+
+.btn-completion.is-completed {
+  border-color: #22c55e;
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+}
+
+.btn-completion.is-completed:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.progress-badge-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+  transition: opacity 0.2s ease;
+}

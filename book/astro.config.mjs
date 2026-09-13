@@ -14,6 +14,9 @@ export default defineConfig({
       title: 'Max/MSP: Del Concepto al Motor Nativo',
       description: 'Curso integral de Max/MSP, MSP Audio, Gen~, C SDK y Sistemas Multimedia.',
       favicon: '/favicon.svg',
+      head: [
+        { tag: 'script', attrs: { src: '/progress-tracker.js', defer: true } },
+      ],
       defaultLocale: 'root',
       locales: {
         root: {
