@@ -1,20 +1,6 @@
 <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
   <rect width="64" height="64" rx="14" fill="#121318"/>
   <rect x="2" y="2" width="60" height="60" rx="12" fill="none" stroke="#27272a" stroke-width="2"/>
-  <!-- Matriz de los 4 motores de Max (U3) -->
-  <!-- 1. MAX: Eventos y Control (Naranja Atómico) -->
-  <rect x="9" y="9" width="21" height="21" rx="4" fill="#eb6c36"/>
-  <text x="19.5" y="23" fill="#ffffff" font-family="ui-monospace, monospace" font-size="8.5" font-weight="900" text-anchor="middle" letter-spacing="0.02em">MAX</text>
-
-  <!-- 2. MSP: Audio Signal (Verde DSP) -->
-  <rect x="34" y="9" width="21" height="21" rx="4" fill="#22c55e"/>
-  <text x="44.5" y="25" fill="#ffffff" font-family="ui-monospace, monospace" font-size="13" font-weight="900" text-anchor="middle">~</text>
-
-  <!-- 3. JITTER: Matrices y Video (Celeste Gl) -->
-  <rect x="9" y="34" width="21" height="21" rx="4" fill="#38bdf8"/>
-  <text x="19.5" y="48" fill="#ffffff" font-family="ui-monospace, monospace" font-size="8.5" font-weight="900" text-anchor="middle" letter-spacing="0.02em">JIT</text>
-
-  <!-- 4. GEN~: DSP Nativo y C++ (Dorado JIT) -->
-  <rect x="34" y="34" width="21" height="21" rx="4" fill="#eab308"/>
-  <text x="44.5" y="48" fill="#ffffff" font-family="ui-monospace, monospace" font-size="8.5" font-weight="900" text-anchor="middle" letter-spacing="0.02em">GEN</text>
+  <text x="32" y="38" fill="#f4f4f5" font-family="ui-monospace, monospace, -apple-system, sans-serif" font-size="19" font-weight="900" text-anchor="middle" letter-spacing="0.06em">MAX</text>
+  <line x1="12" y1="46" x2="52" y2="46" stroke="#eb6c36" stroke-width="4.5" stroke-linecap="round"/>
 </svg>
