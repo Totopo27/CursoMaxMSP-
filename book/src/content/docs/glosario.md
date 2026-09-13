@@ -11,6 +11,31 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
 
 <div class="glossary-term-card not-content">
   <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Bang</h3>
+    <span class="glossary-badge badge-control">Ontología de Ejecución</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">📌 Definición Operativa</div>
+      <p>El mensaje atómico más fundamental de Max. Representa un impulso de ejecución desprovisto de valor numérico intrínseco; su único significado computacional es la orden inmediata: <em>"calcula ahora y emite tu estado actual"</em>.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">⚡ En Vivo y Concierto</div>
+      <p>Cualquier disparo rítmico o cambio de compás depende de la propagación limpia de un <code>bang</code>. Generar ráfagas descontroladas de bangs satura la cola de eventos y degrada la precisión del tempo.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">⚠️ Confusión Típica</div>
+      <p>No equivale al número <code>1</code> ni a un estado booleano <code>true</code>. Un número <code>1</code> transporta un dato; un <code>bang</code> es un suceso temporal puro.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
+      <p><code>button</code>, <code>bang</code>, <code>metro</code>, <code>trigger</code>. Ver <a href="/01-fundamentos/01-dataflow-y-inlets/">Módulo 1.1</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
     <h3 class="glossary-term-title">Scheduler Thread (Hilo del Planificador)</h3>
     <span class="glossary-badge badge-control">Control / Timing</span>
   </div>
@@ -30,6 +55,31 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
     <div class="glossary-block">
       <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
       <p><code>metro</code>, <code>pipe</code>, <code>delay</code>, <code>clocker</code>. Ver <a href="/01-fundamentos/01-dataflow-y-inlets/">Módulo 1.1</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Priority Inversion & Low-Priority Queue</h3>
+    <span class="glossary-badge badge-control">Concurrencia / Hilos</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">📌 Definición Operativa</div>
+      <p>Mecanismo de protección arquitectónica que desvía operaciones pesadas (dibujado en pantalla, guardado en disco, peticiones HTTP) del hilo de alta prioridad a la cola de baja prioridad (Main GUI Thread), evitando que bloqueen el reloj rítmico.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">⚡ En Vivo y Concierto</div>
+      <p>Esencial cuando se capturan datos de sensores o video: si se envían miles de mensajes de control sin regular, la interfaz gráfica colapsa el Scheduler a menos que se use <code>qmetro</code> o <code>deferlow</code>.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">⚠️ Confusión Típica</div>
+      <p><code>defer</code> retrasa el mensaje al hilo principal solo si estamos en el Scheduler; <code>deferlow</code> siempre encola el mensaje al final absoluto de la cola de eventos sin importar el origen.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
+      <p><code>qmetro</code>, <code>defer</code>, <code>deferlow</code>, <code>speedlim</code>. Ver <a href="/01-fundamentos/01-dataflow-y-inlets/">Módulo 1.1</a> y <a href="/01-fundamentos/02-scheduler-y-timing/">1.2</a>.</p>
     </div>
   </div>
 </div>
@@ -150,7 +200,7 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
     </div>
     <div class="glossary-block">
       <div class="glossary-block-label label-live">⚡ En Vivo y Concierto</div>
-      <p>Reducir el iovs (ej. de 512 a 64 muestras) disminuye la latencia de latencia de monitoreo a menos de 3 ms, pero eleva la carga de interrupciones de la CPU de forma exponencial.</p>
+      <p>Reducir el iovs (ej. de 512 a 64 muestras) disminuye la latencia de monitoreo a menos de 3 ms, pero eleva la carga de interrupciones de la CPU de forma exponencial.</p>
     </div>
     <div class="glossary-block">
       <div class="glossary-block-label label-confusion">⚠️ Confusión Típica</div>
@@ -159,6 +209,56 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
     <div class="glossary-block">
       <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
       <p>Ventana <em>Audio Status</em>, <code>adstatus</code>, <code>dspstate~</code>. Ver <a href="/03-dsp-y-audio-digital/01-signal-vs-control-y-audio-thread/">Módulo 3.1</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Detección de Cruce por Cero (Zero-Crossing)</h3>
+    <span class="glossary-badge badge-dsp">Edición de Audio / Granulación</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">📌 Definición Operativa</div>
+      <p>Punto en una forma de onda donde la amplitud de la señal pasa exactamente por el valor cero ($y[t] = 0$) al transitar de signo positivo a negativo o viceversa.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">⚡ En Vivo y Concierto</div>
+      <p>Cortar, loopear o reiniciar la lectura de un buffer fuera de un cruce por cero genera una discontinuidad escalonada instantánea, produciendo un "clic" o chasquido de alta frecuencia en los altavoces.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">⚠️ Confusión Típica</div>
+      <p>No sustituye a las curvas de fundido cruzado (*crossfades*). En audio polifónico o señales estéreo, el cruce por cero de un canal rara vez coincide con el del otro canal.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
+      <p><code>groove~</code>, <code>play~</code>, <code>wave~</code>, <code>zerox~</code>. Ver <a href="/03-dsp-y-audio-digital/08-muestras-ram-buffers-y-grabacion/">Módulo 3.8</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Interpolación Band-Limited</h3>
+    <span class="glossary-badge badge-dsp">Muestreo & Wavetables</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">📌 Definición Operativa</div>
+      <p>Método de reconstrucción de muestras fraccionarias basado en la función Sinc o polinomios de Hermite/Spline cúbico que garantiza que no se inyecte energía por encima del límite de Nyquist al alterar la velocidad de reproducción.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">⚡ En Vivo y Concierto</div>
+      <p>Al hacer transposición hacia arriba (*pitch shifting*) de muestras o wavetables, la interpolación lineal barata genera aliasing abrasivo; la interpolación cúbica preserva la pureza tímbrica del oscilador.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">⚠️ Confusión Típica</div>
+      <p>No incrementa la frecuencia de muestreo física, sino la precisión inter-muestra calculada en el acumulador de fase.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
+      <p><code>2d.wave~</code>, <code>lookup~</code>, <code>cycle~</code>, <code>polyblep</code>. Ver <a href="/03-dsp-y-audio-digital/02-sintesis-aditiva-y-tabla-de-ondas/">Módulo 3.2</a>.</p>
     </div>
   </div>
 </div>
@@ -244,6 +344,31 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
 
 <div class="glossary-term-card not-content">
   <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Wavefolding (Plegamiento de Onda: Wrap & Fold)</h3>
+    <span class="glossary-badge badge-gen">Gen~ / No Linealidad</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">📌 Definición Operativa</div>
+      <p>Transformación no lineal de modelado acústico (típica de la síntesis West Coast de Buchla) donde la señal, al superar un umbral de saturación, en lugar de recortarse bruscamente (clipping), invierte su dirección reflejándose hacia el centro.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">⚡ En Vivo y Concierto</div>
+      <p>Genera armónicos ricos y orgánicos a partir de ondas simples (senoides o triángulos) sin la crudeza estática de un clipper digital.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">⚠️ Confusión Típica</div>
+      <p><code>clip</code> trunca tajantemente los picos produciendo ondas cuadradas; <code>fold</code> refleja la señal de ida y vuelta; <code>wrap</code> restablece el valor al inicio de la fase (aserrín).</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
+      <p><code>fold</code>, <code>wrap</code>, <code>clip</code> en Gen~. Ver <a href="/05-gen-y-dsp-avanzado/03-dsp-no-lineal-saturacion-y-modelado-fisico/">Módulo 5.3</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
     <h3 class="glossary-term-title">GenExpr</h3>
     <span class="glossary-badge badge-gen">Sintaxis / Compilador</span>
   </div>
@@ -263,6 +388,31 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
     <div class="glossary-block">
       <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
       <p><code>codebox</code> (dentro de <code>gen~</code>). Ver <a href="/05-gen-y-dsp-avanzado/02-genexpr-codigo-textual-dentro-de-gen/">Módulo 5.2</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Aritmética de Punto Fijo (Fixpoint Phasor)</h3>
+    <span class="glossary-badge badge-gen">Gen~ / Optimización Numérica</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">📌 Definición Operativa</div>
+      <p>Representación numérica que utiliza enteros binarios de 32 o 64 bits para simular fracciones decimales mediante un factor de escala fijo, aprovechando el desbordamiento natural (*integer overflow*) para crear acumuladores de fase circulares sin condicionales.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">⚡ En Vivo y Concierto</div>
+      <p>Elimina las ramas de condición <code>if (phase >= 1.0) phase -= 1.0;</code> en el procesador, permitiendo que osciladores y LFOs en <code>gen~</code> alcancen una velocidad de cálculo inigualable con jitter de fase nulo.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">⚠️ Confusión Típica</div>
+      <p>No sacrifica la afinación: un acumulador entero de 32 bits a 48 kHz ofrece una resolución de frecuencia de $48000 / 2^{32} \approx 0.000011\,\text{Hz}$.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
+      <p><code>phasor</code>, <code>accum</code>, <code>rate</code> en Gen~. Ver <a href="/05-gen-y-dsp-avanzado/01-gen-paradigma-jit-y-compilacion/">Módulo 5.1</a>.</p>
     </div>
   </div>
 </div>
@@ -298,6 +448,31 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
 
 <div class="glossary-term-card not-content">
   <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Estructura <code>t_pxobject</code></h3>
+    <span class="glossary-badge badge-sdk">C API / MSP Engine</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">📌 Definición Operativa</div>
+      <p>Estructura base de C que debe incluirse como primer miembro en cualquier objeto externo que procese señales de audio MSP (<em>Pox Object</em>). Extiende a <code>t_object</code> agregando descriptores para el Audio Thread y registro de métodos DSP.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">⚡ En Vivo y Concierto</div>
+      <p>Permite que Max gestione automáticamente la desconexión segura del objeto de la cadena de procesamiento de audio cuando el motor DSP se apaga o reinicia.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">⚠️ Confusión Típica</div>
+      <p>Si un objeto solo maneja mensajes de control y números, basta con usar <code>t_object</code>; si procesa señales de audio (<code>~</code>), <strong>es obligatorio</strong> heredar de <code>t_pxobject</code>.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
+      <p><code>z_dsp.h</code>, <code>dsp_setup()</code>, <code>dsp_free()</code>. Ver <a href="/06-extensiones-sdk-y-sistemas/03-anatomia-de-un-external-en-c-max-sdk/">Módulo 6.3</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
     <h3 class="glossary-term-title">Estructura <code>t_atom</code></h3>
     <span class="glossary-badge badge-sdk">Memoria / C API</span>
   </div>
@@ -317,6 +492,31 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
     <div class="glossary-block">
       <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
       <p><code>atom_getfloat()</code>, <code>atom_getlong()</code>, <code>ext_obex.h</code>. Ver <a href="/06-extensiones-sdk-y-sistemas/03-anatomia-de-un-external-en-c-max-sdk/">Módulo 6.3</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Vectorización SIMD (Single Instruction, Multiple Data)</h3>
+    <span class="glossary-badge badge-sdk">Hardware / Optimización</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">📌 Definición Operativa</div>
+      <p>Capacidad de los procesadores modernos (instrucciones AVX2, AVX-512, ARM Neon) para ejecutar una misma operación matemática sobre 4 u 8 muestras de audio en punto flotante simultáneamente en un único ciclo de reloj.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">⚡ En Vivo y Concierto</div>
+      <p>La vectorización permite que un parche procese 64 canales de audio con filtros y reverberación convolutiva consumiendo una fracción mínima de CPU.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">⚠️ Confusión Típica</div>
+      <p>El compilador solo puede auto-vectorizar bucles de audio si los punteros no tienen solapamiento de memoria (*aliasing de punteros*) y se declaran con el modificador <code>restrict</code>.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
+      <p>Min-DevKit, <code>perform64</code>, CMake flags. Ver <a href="/06-extensiones-sdk-y-sistemas/03-anatomia-de-un-external-en-c-max-sdk/">Módulo 6.3</a> y <a href="/apendices/apendice-d-min-devkit-c-plus-plus-moderno/">Apéndice D</a>.</p>
     </div>
   </div>
 </div>
@@ -350,6 +550,56 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
   </div>
 </div>
 
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Disposición Planar vs. Interleaved</h3>
+    <span class="glossary-badge badge-jitter">Memoria de Video</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">📌 Definición Operativa</div>
+      <p>Forma en que se ordenan los canales cromáticos en memoria: <em>Interleaved</em> almacena cada píxel completo en secuencia contigua ($R_0, G_0, B_0, R_1, G_1, B_1$); <em>Planar</em> almacena toda la capa roja completa, seguida por toda la verde y luego la azul ($R_0...R_N, G_0...G_N, B_0...B_N$).</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">⚡ En Vivo y Concierto</div>
+      <p>Jitter utiliza arquitectura planar por planos indexados (Plano 0: Alfa, Plano 1: Rojo, Plano 2: Verde, Plano 3: Azul). Esto permite aislar y procesar un canal cromático sin tocar los demás.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">⚠️ Confusión Típica</div>
+      <p>El plano 0 en Jitter suele ser el canal Alfa o de transparencia, no el Rojo. Olvidar esto descoloca las operaciones cromáticas.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
+      <p><code>jit.pack</code>, <code>jit.unpack</code>, <code>jit.matrix</code>. Ver <a href="/apendices/apendice-a-jitter-matrices-y-jit-gen/">Apéndice A</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Texture Sharing GPU (Spout / Syphon)</h3>
+    <span class="glossary-badge badge-jitter">Interoperabilidad / Video</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">📌 Definición Operativa</div>
+      <p>Protocolo de memoria de video compartida a nivel de hardware (Spout en Windows / Syphon en macOS) que permite intercambiar texturas de alta resolución (4K/60fps) entre diferentes aplicaciones en tiempo real con latencia cero.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">⚡ En Vivo y Concierto</div>
+      <p>Permite delegar la síntesis y reactividad sonora a Max/MSP mientras TouchDesigner, Resolume o Notch renderizan la escenografía visual masiva sin penalizar la CPU.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">⚠️ Confusión Típica</div>
+      <p>No viaja por red local ni utiliza ancho de banda Ethernet (como NDI); requiere que ambos programas corran en la misma máquina física con la misma GPU.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
+      <p><code>jit.gl.spoutsender</code>, <code>jit.gl.spoutreceiver</code>, <code>jit.gl.syphonserver</code>. Ver <a href="/apendices/apendice-b-integracion-con-touchdesigner-osc-y-spout/">Apéndice B</a>.</p>
+    </div>
+  </div>
+</div>
+
 ---
 
 ## 6. Audio Espacial e Inteligencia Artificial
@@ -375,6 +625,56 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
     <div class="glossary-block">
       <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
       <p><code>spat5.pan~</code>, <code>spat5.hoa.*</code>, <code>mc.*</code>. Ver <a href="/apendices/apendice-f-audio-espacial-ambisonics-y-spat/">Apéndice F</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Decodificación en Fase (In-Phase vs. Max-rE)</h3>
+    <span class="glossary-badge badge-spatial">Acústica / Ambisonics</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">📌 Definición Operativa</div>
+      <p>Criterios psicoacústicos de decodificación de armónicos esféricos. <em>Max-rE</em> maximiza el vector de energía para la zona central (*sweet spot*); <em>In-Phase</em> anula completamente la emisión en contrafase de altavoces opuestos, eliminando el filtrado en peine en salas grandes.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">⚡ En Vivo y Concierto</div>
+      <p>En auditorios y conciertos masivos, la decodificación estándar genera interferencias destructivas si la audiencia está dispersa; conmutar a <em>In-Phase</em> asegura una imagen espacial homogénea en toda la platea.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">⚠️ Confusión Típica</div>
+      <p><em>In-Phase</em> ensancha ligeramente la fuente percibida respecto a <em>Max-rE</em>, pero evita que los oyentes alejados del centro escuchen cancelaciones de fase molestas.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
+      <p><code>spat5.hoa.decoder~</code>, <code>spat5.virtualspeakers~</code>. Ver <a href="/apendices/apendice-f-audio-espacial-ambisonics-y-spat/">Apéndice F</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Latencia Causal vs. Lookahead Buffer</h3>
+    <span class="glossary-badge badge-spatial">Machine Learning / Streaming</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">📌 Definición Operativa</div>
+      <p>Un sistema de audio causal solo depende de muestras pasadas y presentes ($y[t] = f(x[t], x[t-1], ...)$) permitiendo latencia cero de predicción. Un modelo no causal requiere un buffer de *lookahead* acumulando audio futuro ($t+N$), introduciendo retraso inevitable.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">⚡ En Vivo y Concierto</div>
+      <p>Para interacción instrumental reactiva en Max, solo son viables arquitecturas convolucionales causales o modelos recurrentes (RAVE, Silero VAD) donde la latencia sea estrictamente menor a 5-10 ms.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">⚠️ Confusión Típica</div>
+      <p>Un modelo con un RTFx excelente (ej. 50×) puede ser completamente inútil en un concierto si su arquitectura fue entrenada con convoluciones bidireccionales que exigen chunks fijos de 1 segundo.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
+      <p><code>nn~</code>, <code>fluid.bufcompose~</code>. Ver <a href="/apendices/apendice-e-ia-y-machine-learning/">Apéndice E</a>.</p>
     </div>
   </div>
 </div>
