@@ -1,6 +1,6 @@
 ---
 title: "Apéndice B: Interoperabilidad Multimedia: Max/MSP y TouchDesigner"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

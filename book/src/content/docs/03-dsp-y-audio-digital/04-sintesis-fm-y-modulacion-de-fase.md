@@ -1,6 +1,6 @@
 ---
 title: "Módulo 3.4: Modulación de Frecuencia (FM), Modulación de Fase (PM) y la Matemática de John Chowning"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

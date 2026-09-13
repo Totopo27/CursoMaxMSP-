@@ -1,6 +1,6 @@
 // algoritmo_euclidiano.js
 // Implementación del Algoritmo de Bjorklund para Ritmos Euclidianos en Max/MSP [js]
-// Autor: Curso Universitario Max/MSP - Módulo 6
+// Autor: Curso Max/MSP - Módulo 6
 
 inlets = 2;
 outlets = 2;

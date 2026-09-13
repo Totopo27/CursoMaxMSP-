@@ -1,6 +1,6 @@
 ---
 title: "Proyecto Integrador 03: Sintetizador Híbrido FM-Sustractivo con Procesador de Retardo Analógico"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

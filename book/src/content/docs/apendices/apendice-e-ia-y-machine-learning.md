@@ -1,6 +1,6 @@
 ---
 title: "Apéndice E: Inteligencia Artificial y Machine Learning en Max (`FluCoMa` y `nn~`)"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

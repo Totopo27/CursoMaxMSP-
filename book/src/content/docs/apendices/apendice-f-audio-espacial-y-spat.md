@@ -1,6 +1,6 @@
 ---
 title: "Apéndice F: Espacialización Sonora y Audio Inmersivo 3D (`IRCAM Spat5` y `Ambisonics`)"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

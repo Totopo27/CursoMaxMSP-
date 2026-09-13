@@ -1,6 +1,6 @@
 ---
 title: "Proyecto Integrador 2: Motor de Presets Jerárquico con Morphing por Interpolación Multidimensional"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

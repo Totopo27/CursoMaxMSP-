@@ -1,6 +1,6 @@
 ---
 title: "Lección 4.1: Arquitectura Modular: Subparches [p], Abstracciones, Argumentos (#1..#9) y Aislamiento de Namespaces (#0)"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

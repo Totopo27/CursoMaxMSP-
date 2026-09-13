@@ -1,6 +1,6 @@
 ---
 title: "Lección 5.2: Programación Textual en GenExpr: Funciones, Bucles For/While, Condicionales y Kernels DSP"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

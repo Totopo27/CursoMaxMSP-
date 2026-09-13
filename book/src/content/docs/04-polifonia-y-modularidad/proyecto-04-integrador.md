@@ -1,6 +1,6 @@
 ---
 title: "Proyecto Integrador 04: Sintetizador Polifónico Multicore de 8 Voces con Asignación Dinámica y Mute Automático"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

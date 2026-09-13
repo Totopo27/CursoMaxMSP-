@@ -1,6 +1,6 @@
 ---
 title: "Lección 3.6: Filtrado Digital: Polos, Ceros, biquad~, lores~ y State Variable Filters (svf~)"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

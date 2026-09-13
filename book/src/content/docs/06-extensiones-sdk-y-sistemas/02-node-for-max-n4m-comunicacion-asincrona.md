@@ -1,6 +1,6 @@
 ---
 title: "Módulo 6.2: Node for Max (N4M): Procesamiento Asíncrono e IPC"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

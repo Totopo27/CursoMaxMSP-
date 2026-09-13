@@ -166,7 +166,7 @@
 
   <!-- Bottom Metadata Footer -->
   <g transform="translate(60, 580)">
-    <text x="0" y="0" fill="#6b7280" font-family="'JetBrains Mono', monospace" font-size="10">CURSO UNIVERSITARIO DE MAX/MSP · APÉNDICE G: ECOSISTEMA CREATIVO Y CASOS DE ESTUDIO</text>
+    <text x="0" y="0" fill="#6b7280" font-family="'JetBrains Mono', monospace" font-size="10">CURSO DE MAX/MSP · APÉNDICE G: ECOSISTEMA CREATIVO Y CASOS DE ESTUDIO</text>
     <text x="980" y="0" fill="#4b5563" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="end">FIG G.1</text>
   </g>
 </svg>

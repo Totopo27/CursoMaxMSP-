@@ -11,7 +11,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Max/MSP: Del Concepto al Motor Nativo',
-      description: 'Curso universitario integral de Max/MSP, MSP Audio, Gen~, C SDK y Sistemas Multimedia.',
+      description: 'Curso integral de Max/MSP, MSP Audio, Gen~, C SDK y Sistemas Multimedia.',
       defaultLocale: 'root',
       locales: {
         root: {

@@ -1,6 +1,6 @@
 ---
 title: "Módulo 5.4: Exportación de Código C++ y Despliegue Embebido"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

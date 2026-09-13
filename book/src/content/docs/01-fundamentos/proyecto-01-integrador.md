@@ -1,6 +1,6 @@
 ---
 title: "Proyecto Integrador 1: Secuenciador Polirrítmico Diatónico Autónomo"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

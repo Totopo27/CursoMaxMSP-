@@ -1,6 +1,6 @@
 ---
 title: "Módulo 1.3: Tipos de Datos (Los Átomos de Max), Estructuras de Memoria y Manipulación con `[zl]`"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

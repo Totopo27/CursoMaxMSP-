@@ -1,6 +1,6 @@
 ---
 title: "Apéndice A: Computación Visual y Espacial: Jitter, Matrices y `jit.gen`"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

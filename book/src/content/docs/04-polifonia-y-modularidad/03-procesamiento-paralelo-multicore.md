@@ -1,6 +1,6 @@
 ---
 title: "Lección 4.3: Paralelismo y Concurrencia Real: El Atributo @parallel 1, Hilos del Sistema Operativo y Afinidad de CPU"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

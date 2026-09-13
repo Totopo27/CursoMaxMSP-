@@ -1,6 +1,6 @@
 ---
 title: "Módulo 2.3: Comunicación Inter-Patch sin Cables, Enrutamiento Dinámico y Espacios de Nombres (`[send]`, `[receive]`, `[forward]`, `[pattrforward]`)"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

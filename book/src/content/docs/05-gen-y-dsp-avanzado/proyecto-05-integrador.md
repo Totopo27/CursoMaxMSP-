@@ -1,6 +1,6 @@
 ---
 title: "Proyecto Integrador 05: Sintetizador de Modelado Físico Digital en Gen~ (Guía de Onda / Waveguide Mesh)"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

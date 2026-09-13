@@ -1,7 +1,7 @@
 /**
  * @file mi_objeto_min.cpp
  * @brief Objeto externo en C++17 declarativo utilizando Cycling '74 Min-DevKit.
- * Autor: Curso Universitario Max/MSP - Apéndice D
+ * Autor: Curso Max/MSP - Apéndice D
  */
 
 #include "c74_min.h"

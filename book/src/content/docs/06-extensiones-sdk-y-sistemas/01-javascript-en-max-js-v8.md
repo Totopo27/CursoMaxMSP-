@@ -1,6 +1,6 @@
 ---
 title: "Módulo 6.1: JavaScript en Max: Arquitectura de los Motores `[js]` y `[v8]`"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

@@ -1,6 +1,6 @@
 ---
 title: "Proyecto Integrador 06: Sistema Híbrido Multicapa (JS + N4M + DSP de Alto Rendimiento)"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

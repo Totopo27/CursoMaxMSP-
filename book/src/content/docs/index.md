@@ -1,6 +1,6 @@
 ---
 title: Max/MSP — Del Concepto al Motor Nativo
-description: Curso universitario integral de Max/MSP, MSP Audio, Gen~, C SDK y Sistemas Multimedia.
+description: Curso integral de Max/MSP, MSP Audio, Gen~, C SDK y Sistemas Multimedia.
 template: splash
 hero:
   tagline: De los fundamentos del paradigma Dataflow y el Scheduler temporal al desarrollo de DSP en C++ y modelos neuronales en tiempo real.

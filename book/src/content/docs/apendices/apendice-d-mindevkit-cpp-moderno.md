@@ -1,6 +1,6 @@
 ---
 title: "Apéndice D: Desarrollo en C++ Moderno con Min-DevKit (C++17)"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

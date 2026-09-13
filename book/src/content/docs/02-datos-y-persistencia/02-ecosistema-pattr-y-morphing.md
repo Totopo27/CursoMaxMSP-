@@ -1,6 +1,6 @@
 ---
 title: "Módulo 2.2: Gestión de Presets Globales, Morphing de Parámetros e Interpolación con el Ecosistema `[pattr]`"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

@@ -1,6 +1,6 @@
 ---
 title: "Módulo 6.3: El SDK de C de Max: Anatomía de un Objeto Externo Nativo"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

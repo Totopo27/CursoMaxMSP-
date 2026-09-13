@@ -1,6 +1,6 @@
 ---
 title: "Módulo 1.1: El Paradigma Dataflow, Semántica de Estado vs. Disparo y Orden de Ejecución"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

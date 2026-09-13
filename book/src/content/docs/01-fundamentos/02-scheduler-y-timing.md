@@ -1,6 +1,6 @@
 ---
 title: "Módulo 1.2: El Scheduler de Max, Jerarquía Temporal y Psicoacústica del Ritmo"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

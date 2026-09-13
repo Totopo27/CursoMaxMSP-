@@ -1,6 +1,6 @@
 // firmware_sensores.ino
 // Firmware de lectura y transmisión serial determinista para Max/MSP
-// Autor: Curso Universitario Max/MSP - Apéndice C
+// Autor: Curso Max/MSP - Apéndice C
 
 const int PIN_SENSOR_A = A0;
 const int PIN_SENSOR_B = A1;

@@ -18,7 +18,7 @@ function processDirectory(dir) {
             break;
           }
         }
-        const frontmatter = `---\ntitle: "${title}"\ndescription: "Capítulo del curso universitario de Max/MSP"\n---\n\n`;
+        const frontmatter = `---\ntitle: "${title}"\ndescription: "Capítulo del curso de Max/MSP"\n---\n\n`;
         fs.writeFileSync(fullPath, frontmatter + raw, 'utf8');
         console.log(`Frontmatter agregado a: ${entry.name}`);
       }

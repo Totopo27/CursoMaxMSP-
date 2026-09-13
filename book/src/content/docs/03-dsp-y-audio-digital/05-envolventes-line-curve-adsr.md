@@ -1,6 +1,6 @@
 ---
 title: "Lección 3.5: Envolventes Temporales: line~, curve~, adsr~ y Control de Amplitud Antialias"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 

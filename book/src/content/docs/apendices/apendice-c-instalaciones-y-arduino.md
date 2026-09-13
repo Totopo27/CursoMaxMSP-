@@ -1,6 +1,6 @@
 ---
 title: "Apéndice C: Computación Física: Arduino, Sensores e Instalaciones Interactivas 24/7"
-description: "Capítulo del curso universitario de Max/MSP"
+description: "Capítulo del curso de Max/MSP"
 ---
 
 
