@@ -129,6 +129,42 @@ Permite alterar el estado o disparar acciones mecánicas en el DAW:
 
 ---
 
+
+### 5.1. Programación Avanzada del LOM mediante JavaScript (`LiveAPI`)
+
+*(Fundamentado en Julien Bayle, *Le Guide Ultime et Zen de Max for Live*)*
+
+Cuando un dispositivo debe gestionar árboles masivos de pistas, clips y escenas simultáneas, encadenar docenas de objetos gráficos `[live.path]` y `[live.object]` genera parches visualmente saturados y difíciles de depurar. Para estos escenarios, Cycling '74 implementó el objeto nativo de JavaScript **`LiveAPI`**:
+
+```javascript
+// Script en [js] para recorrer clips de la pista activa
+var api = new LiveAPI(callback, "live_set this_device canonical_parent");
+
+function callback(args) {
+    var property = args[0];
+    var value = args[1];
+    if (property === "playing_slot_index") {
+        post("Clip activo en slot: " + value + "\n");
+    }
+}
+
+function disparar_clip(slot_index) {
+    api.path = "live_set this_device canonical_parent clip_slots " + slot_index + " clip";
+    if (api.id != 0) {
+        api.call("fire");
+    }
+}
+
+function notifyDeleted() {
+    // Manejo de desconexión segura si el usuario elimina la pista en Live
+    api.id = 0;
+}
+```
+
+**Regla de Oro de Julien Bayle:** Siempre que uses `LiveAPI` dentro de `[js]`, asegurate de llamar a métodos de destrucción de listeners cuando el dispositivo se descarga o se reorganizan las pistas; de lo contrario, se generan referencias huérfanas en la memoria de Python/C++ de Ableton Live.
+
+---
+
 ## 6. Modulación en el Audio Thread: `[live.remote~]`
 
 Uno de los cuellos de botella clásicos en sistemas interactivos ocurre cuando se intenta modular un parámetro de Live (como la frecuencia de corte de un sintetizador) utilizando un oscilador de baja frecuencia (LFO) generado a nivel de mensajes de control (`[metro]` + `[line]`).
@@ -149,6 +185,20 @@ Para resolver este desafío, la arquitectura de M4L provee **`[live.remote~]`**:
    Si tu dispositivo realiza parsing de archivos pesados, peticiones de red (Node for Max) o cálculos matriciales densos, mantenelos alejados del hilo de audio principal para evitar *dropouts* en la salida estéreo del DAW.
 3. **Gestión de Carga de Parches (`live.thisdevice`)**:
    El objeto `[loadbang]` tradicional de Max se ejecuta apenas se lee el JSON del parche, muchas veces **antes** de que Ableton Live haya terminado de enlazar la pista y el motor de audio. En M4L es mandatorio utilizar **`[live.thisdevice]`**: su outlet derecho emite un pulso exclusivamente cuando el dispositivo ha sido completamente reconocido y registrado por el host.
+
+4. **Congelamiento y Distribución de Dispositivos (*Device Freezing*)**:
+   *(Detallado por Julien Bayle y Jon Margulies en *Ableton Live 10 Power!*)*
+   Un error clásico al compartir un archivo `.amxd` con otros productores es asumir que tendrán las mismas abstracciones, archivos de audio o librerías de JavaScript en sus computadoras.
+   - En el menú de Max for Live se debe utilizar la función **Freeze Device** (icono de copo de nieve).
+   - El congelador de Max empaqueta de forma atómica todas las dependencias (`.maxpat`, `.js`, `.json`, muestras de audio en `buffer~`) dentro del archivo binario `.amxd`.
+   - Al abrirse en otra máquina, Ableton extrae transparentemente esos recursos en memoria temporal sin romper enlaces.
+
+5. **Interacción con Superficies de Control y *MIDI Remote Scripts***:
+   Como documenta Jon Margulies, los controladores de hardware avanzados (Ableton Push, Novation Launchpad, teclados Komplete) dialogan con Live a través de scripts en Python (*MIDI Remote Scripts*).
+   Desde el LOM podemos acceder al nodo `live_set control_surfaces`:
+   `path live_set control_surfaces 0`
+   Esto permite que un dispositivo de Max for Live intercepte o remapee dinámicamente los botones, pantallas LCD y matrices de pads de controladores físicos como Push sin instalar drivers externos ni puentes virtuales MIDI.
+
 
 ---
 

@@ -97,6 +97,19 @@ A continuación se presenta el corpus bibliográfico completo (20 obras fundamen
 - **Aporte al Curso:** Guía práctica orientada al desarrollo de herramientas pedagógicas, cuantizadores diatónicos, interfaces modulares de control MIDI y diseño de aplicaciones autónomas interactivas en Max.
 - **Módulos Vinculados:** Módulo 1 (Proyecto Integrador) y Módulo 2 (Persistencia con pattr y dict).
 
+
+### Julien Bayle — *Le Guide Ultime et Zen de Max for Live*
+- **Editorial:** Leanpub (Marsella, Francia)
+- **Año:** 2013 | **Páginas:** 240+ | **Formato:** Tratado de referencia para M4L
+- **Aporte al Curso:** El compendio técnico más profundo sobre la arquitectura interna de Max for Live. Detalla la interacción entre el runtime de Max y el proceso host de Ableton, la navegación del Live Object Model (LOM), la programación de la API mediante JavaScript (`LiveAPI`), la gestión estricta de presets con `pattr`, el congelamiento de dependencias (*device freezing*) y las diferencias críticas entre los entornos de ejecución en vivo y de diseño.
+- **Módulos Vinculados:** Apéndice H (Ableton Live, Max for Live y LOM) y Módulo 6 (JavaScript en Max).
+
+### Jon Margulies — *Ableton Live 10 Power!: The Comprehensive Guide*
+- **Editorial:** Hobo Technologies / Hal Leonard (United States)
+- **Año:** 2018 | **Páginas:** 480+ | **ISBN:** 978-0-692-06135-0
+- **Aporte al Curso:** Manual de referencia sobre el motor de audio y control de Ableton Live. Fundamenta el enrutamiento de señales en tiempo real, el motor de compensación de retardo (PDC), la interacción entre Max for Live y los *MIDI Remote Scripts* de Python en superficies de control (Ableton Push), y el diseño de racks modulares de efectos.
+- **Módulos Vinculados:** Apéndice H (Ableton Live, Max for Live y LOM) y Módulo 0 (Transporte y Audio ASIO).
+
 ### V.J. Manzo & Will Kuhn — *Interactive Composition: Strategies Using Ableton Live and Max for Live*
 - **Editorial:** Oxford University Press (New York)
 - **Año:** 2015 | **Páginas:** 281 | **ISBN:** 978-0-19-997381-1
