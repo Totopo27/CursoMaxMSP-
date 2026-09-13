@@ -171,4 +171,14 @@
 
   document.addEventListener('astro:page-load', init);
   document.addEventListener('astro:after-swap', init);
+
+  // Register Service Worker for offline PWA support
+  if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/sw.js').catch(function (err) {
+        console.debug('SW registration note:', err);
+      });
+    });
+  }
+
 })();

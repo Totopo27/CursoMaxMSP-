@@ -1,0 +1,17 @@
+{
+  "name": "Max/MSP: Del Concepto al Motor Nativo",
+  "short_name": "Curso Max/MSP",
+  "description": "Curso integral de Max/MSP, MSP Audio, Gen~, C SDK y Sistemas Multimedia.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121318",
+  "theme_color": "#eb6c36",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
