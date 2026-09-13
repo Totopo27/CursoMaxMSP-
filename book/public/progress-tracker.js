@@ -11,7 +11,15 @@
   function getStoredProgress() {
     try {
       const data = localStorage.getItem(STORAGE_KEY);
-      return data ? JSON.parse(data) : { completed: [], lastVisited: '' };
+      if (!data) return { completed: [], lastVisited: '' };
+      const parsed = JSON.parse(data);
+      // Filtrar páginas de consulta que no forman parte del plan curricular
+      if (Array.isArray(parsed.completed)) {
+        parsed.completed = parsed.completed.filter(
+          p => !p.includes('/glosario/') && !p.includes('/referencias-bibliograficas/')
+        );
+      }
+      return parsed;
     } catch (e) {
       return { completed: [], lastVisited: '' };
     }
@@ -32,6 +40,10 @@
   function isLessonPage() {
     const path = getCurrentPath();
     if (path === '/' || path === '') return false;
+    // Glosario y Referencias son material de consulta, no lecciones curriculares evaluables
+    if (path.includes('/glosario/') || path.includes('/referencias-bibliograficas/')) {
+      return false;
+    }
     return (
       path.includes('/00-prologo/') ||
       path.includes('/01-fundamentos/') ||
@@ -40,9 +52,7 @@
       path.includes('/04-polifonia-y-modularidad/') ||
       path.includes('/05-gen-y-dsp-avanzado/') ||
       path.includes('/06-extensiones-sdk-y-sistemas/') ||
-      path.includes('/apendices/') ||
-      path.includes('/glosario/') ||
-      path.includes('/referencias-bibliograficas/')
+      path.includes('/apendices/')
     );
   }
 
@@ -79,7 +89,7 @@
 
   function updateHeaderSummary() {
     const progress = getStoredProgress();
-    const totalLessons = 45;
+    const totalLessons = 42;
     const completedCount = progress.completed.length;
     const percent = Math.min(100, Math.round((completedCount / totalLessons) * 100));
 
