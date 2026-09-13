@@ -122,7 +122,7 @@ A continuación se presenta el corpus bibliográfico completo (20 obras fundamen
 ### Oscar Pablo Di Liscia (Compilador) — *Síntesis Espacial de Sonido (Segunda Edición)*
 - **Institución:** Universidad Nacional de Quilmes (UNQ) / CMMAS (Morelia, México)
 - **Año:** 2018 | **Páginas:** 182 | **ISBN:** 978-607-99502-1-7
-- **Aporte al Curso:** El tratado canónico en lengua española sobre espacialización electroacústica. Fundamenta las ecuaciones de codificación Furse/Malham (FuMa) para formato B en primer orden (, X, Y, Z$) y segundo orden (, X, Y, Z, R, S, T, U, V$), y formaliza los algoritmos de decodificación en fase con control de altavoces opuestos (Gordon Monro / Malham) para sistemas pantofónicos (2D) y perifónicos (3D).
+- **Aporte al Curso:** El tratado canónico en lengua española sobre espacialización electroacústica. Fundamenta las ecuaciones de codificación Furse/Malham (FuMa) para formato B en primer orden ($W, X, Y, Z$) y segundo orden ($W, X, Y, Z, R, S, T, U, V$), y formaliza los algoritmos de decodificación en fase con control de altavoces opuestos (Gordon Monro / Malham) para sistemas pantofónicos (2D) y perifónicos (3D).
 - **Módulos Vinculados:** Apéndice F (Audio Espacial y SPAT) y Módulo 3 (Audio Multicanal mc.*).
 
 ### Edmar Soria — *Procedural / Sonora: Lo algorítmico y lo procedural en el arte*

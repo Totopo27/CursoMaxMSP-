@@ -109,6 +109,9 @@ Mecanismos subyacentes y pautas de diseño:
 
 > **Principio Arquitectónico:** *Cuando conectas un cable entre objetos `dict`, viaja un puntero de 8 bytes, no megabytes de datos. La manipulación de árboles gigantes en Max es instantánea y de costo cero.*
 
+> **Fundamentación Teórica (Federico Schumacher — Tesis Doctoral *AMI*, UNAM/CMMAS):**
+> En su investigación sobre la calificación de datos simbólicos, Schumacher formaliza cómo la representación jerárquica en diccionarios y matrices (`dict` y `coll`) resulta indispensable para almacenar no solo los eventos de control brutos (alturas, velocidades y duraciones), sino los **descriptores de Music Information Retrieval (MIR)** asociados: entropía melódica, perfiles de contorno y coeficientes de similitud cronotónica. Esta arquitectura de memoria desacoplada permite calificar y re-ordenar clips generativos en tiempo real sin interferir con el Scheduler de reproducción.
+
 ---
 
 ##  4 Escenarios de la Vida Real (Casos de Estudio)

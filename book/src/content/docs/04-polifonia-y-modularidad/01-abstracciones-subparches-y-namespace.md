@@ -92,6 +92,9 @@ Cuando el símbolo `1042_volumen` se registra en la tabla de símbolos del siste
 3. **Macro GUI Reutilizable**: Un panel con potenciómetro rotativo, etiqueta de texto y display numérico empaquetado en una abstracción que se adapta al nombre de parámetro especificado en `#1`.
 4. **Enrutador de Efectos Dinámico**: Utilizar abstracciones con nombres variables mediante `[bpatcher]` para cargar módulos de efectos en caliente (reverb, chorus, distorsión) dentro del mismo espacio de interfaz gráfica.
 
+> **Fundamentación de Robustez en Concierto (Daniel Quaranta / Daniel Luís Barreiro):**
+> En *Creación musical, investigación y producción académica*, Daniel Luís Barreiro analiza los criterios de ingeniería para obras mixtas y conciertos con sistemas multicanales e interfaces gestuales: la separación en **abstracciones atómicas cerradas con namespace `#0`** no es solo una buena práctica estética, sino el único mecanismo que previene colisiones en vivo ante la duplicación o re-enrutamiento dinámico de señales de control de sensores y partituras interactivas sobre el escenario.
+
 ---
 
 ## 5. Desafíos de Ingeniería
