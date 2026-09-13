@@ -138,3 +138,11 @@ Con esta lección dominamos todo el ciclo de vida de `gen~`:
 - Desacoplamiento y exportación a C++ nativo para microcontroladores y arquitecturas embebidas.
 
 Ahora estamos preparados para consolidar estos conceptos en el proyecto cumbre del módulo: el diseño de un **Sintetizador Resonador Modal / Guía de Onda Completa en Gen~**.
+
+---
+
+## 6. Laboratorio Práctico: `laboratorio_21_export_cpp.maxpat`
+
+Para explorar el flujo de traducción y exportación automática a C++ nativo:
+- Abrir el parche de prueba: [`book/patches/modulo-05/laboratorio_21_export_cpp.maxpat`](/patches/modulo-05/laboratorio_21_export_cpp.maxpat)
+- Permite enviar el mensaje `exportcode` al núcleo de `gen~`, inspeccionar los archivos fuente generados (`gen_exported.cpp` y `gen_exported.h`) y verificar su estructura libre de asignación dinámica.

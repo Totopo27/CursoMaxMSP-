@@ -71,3 +71,11 @@ Una instalación en un museo o espacio público no puede colgarse al tercer día
 1. **Watchdog de Reconexión Serial**: Si alguien desconecta el cable USB del sensor, el objeto `[serial]` de Max se cerrará. Usá un mecanismo con `[serial]` enviando el mensaje `print` periódicamente y verificando el estado del puerto; si falla, enviá `open` para reintentar la conexión automáticamente.
 2. **Prevención de Acumulación de Memoria**: Evitá almacenar listas infinitas en memoria (`coll`, `dict`). Cualquier búfer temporal debe tener un tamaño fijo o circular.
 3. **Standby y Modos de Energía**: Si los sensores no detectan público durante 5 minutos, programá a Max para apagar los motores DSP (`[poly~]` a 0 o `dsp state 0`) para reducir la carga de CPU y enfriar el hardware.
+
+---
+
+## 4. Laboratorio Práctico: `lab_apendice_c_arduino.maxpat`
+
+Para probar la comunicación física y la resiliencia en instalaciones:
+- Parche interactivo de Max: [`book/patches/apendices/lab_apendice_c_arduino.maxpat`](/patches/apendices/lab_apendice_c_arduino.maxpat)
+- Firmware Arduino listo para flashear: [`book/patches/apendices/firmware_sensores.ino`](/patches/apendices/firmware_sensores.ino)

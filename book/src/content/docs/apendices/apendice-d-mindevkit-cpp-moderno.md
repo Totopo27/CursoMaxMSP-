@@ -96,3 +96,11 @@ public:
 ```
 
 El compilador de C++ inlinea automáticamente el método `operator()`, generando código máquina idéntico o superior al bucle manual de audio en C, pero con toda la seguridad de tipos moderna.
+
+---
+
+## 4. Laboratorio Práctico: `lab_apendice_d_mindevkit.maxpat`
+
+Para experimentar con objetos Min-DevKit en tiempo real:
+- Parche interactivo: [`book/patches/apendices/lab_apendice_d_mindevkit.maxpat`](/patches/apendices/lab_apendice_d_mindevkit.maxpat)
+- Código fuente C++17 de referencia: [`book/patches/apendices/mi_objeto_min.cpp`](/patches/apendices/mi_objeto_min.cpp)

@@ -22,3 +22,12 @@ Bienvenidos al proyecto cumbre del **Módulo 6**. En este proyecto integramos to
 - **Zero Audio Drops**: La recepción de paquetes de red se aísla en el proceso de Node.js, garantizando que variaciones en la latencia de red no produzcan interrupciones en el Audio Thread de Max.
 - **Rampas de Control**: Los cambios de tono generados por el motor JS pasan a través de generadores de línea (`line~`) para asegurar transiciones suaves de al menos 10 ms, impidiendo clicks digitales.
 - **Limitación de Amplitud**: Toda la mezcla pasa por un escalador de ganancia nominal antes del conversor estéreo digital (`ezdac~`).
+
+---
+
+## Laboratorio Práctico del Proyecto: `proyecto_06_sistema_hibrido.maxpat`
+
+Abrir el proyecto maestro integrado:
+- Parche ejecutable: [`book/patches/modulo-06/proyecto_06_sistema_hibrido.maxpat`](/patches/modulo-06/proyecto_06_sistema_hibrido.maxpat)
+- Servidor de Node.js: [`book/patches/modulo-06/servidor_analisis.js`](/patches/modulo-06/servidor_analisis.js)
+- Módulo algorítmico JavaScript: [`book/patches/modulo-06/algoritmo_euclidiano.js`](/patches/modulo-06/algoritmo_euclidiano.js)

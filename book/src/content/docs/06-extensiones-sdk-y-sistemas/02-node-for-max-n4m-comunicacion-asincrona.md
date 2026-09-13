@@ -48,7 +48,10 @@ maxAPI.addHandler(maxAPI.MESSAGE_TYPES.BANG, () => {
 
 ---
 
-## 3. Laboratorio Práctico: Servidor WebSocket Bi-direccional
+## 3. Laboratorio Práctico: `laboratorio_23_node_for_max.maxpat`
+
+Abrir el parche interactivo: [`book/patches/modulo-06/laboratorio_23_node_for_max.maxpat`](/patches/modulo-06/laboratorio_23_node_for_max.maxpat)
+
 
 En el laboratorio de esta lección creamos un servidor WebSocket local con `ws` en Node.js que:
 - Escucha conexiones de navegadores web o dispositivos móviles.

@@ -78,3 +78,11 @@ Para comprobar la operatividad del sistema de audio:
 1. En la ventana **Audio Status**, activar el interruptor **Audio: On** (o pulsar el altavoz en la barra inferior del parche).
 ![FIG 0.11 · Cadena de Verificación del Motor de Audio](/assets/diagrams/diagrama_verificacion_audio_dsp.svg)
 3. Al encender el objeto `[ezdac~]`, el sistema debe emitir un tono sinusoidal puro a $440\text{ Hz}$ sin chasquidos, interrupciones ni retrasos perceptibles.
+
+---
+
+## 5. Laboratorio Práctico: `test_audio.maxpat`
+
+Para comprobar experimentalmente la calibración de buffers y el comportamiento del Audio Thread sin riesgos acústicos:
+- Descargar y abrir el parche de diagnóstico: [`book/patches/modulo-00/test_audio.maxpat`](/patches/modulo-00/test_audio.maxpat)
+- Incluye generador senoidal de prueba, medidor de picos (`meter~`), conmutador de ráfagas con envelope antialias y diagnóstico en vivo de la Max Console.

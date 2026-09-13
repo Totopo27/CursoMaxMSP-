@@ -70,3 +70,11 @@ En esta lección proveemos el archivo de referencia completo `mi_objeto_externo.
 - Manejo correcto de `A_GIMME` y átomos.
 - Comprobación de tipos en runtime con `atom_gettype()`.
 - Thread-safety elemental: evitar llamar funciones de interfaz gráfica desde el Scheduler thread.
+
+---
+
+## 4. Laboratorio Práctico: `laboratorio_24_c_sdk_concept.maxpat`
+
+Para inspeccionar la interacción entre el patcher y los objetos externos en C:
+- Abrir el parche conceptual: [`book/patches/modulo-06/laboratorio_24_c_sdk_concept.maxpat`](/patches/modulo-06/laboratorio_24_c_sdk_concept.maxpat)
+- Código fuente C descargable: [`book/patches/modulo-06/mi_objeto_externo.c`](/patches/modulo-06/mi_objeto_externo.c)
