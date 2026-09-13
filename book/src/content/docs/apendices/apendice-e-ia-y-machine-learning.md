@@ -76,19 +76,7 @@ Uno de los errores conceptuales más frecuentes en el diseño de sistemas de aud
 
 En los cursos teóricos de Deep Learning es habitual entrenar modelos en modo *offline* o por lotes (*batch processing*), donde la red tiene acceso a la totalidad del archivo de audio hacia el pasado y hacia el futuro. **En un concierto en vivo con Max/MSP, el futuro no existe**.
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│             PIPELINE CAUSAL VS. NO CAUSAL EN TIEMPO REAL               │
-│                                                                        │
-│  [No Causal - Inviable en Vivo]:                                       │
-│   Audio Pasado <─── [Muestra Actual] ───> Audio Futuro (Lookahead)     │
-│                     (Requiere buffers gigantes de 500ms - 2s)          │
-│                                                                        │
-│  [Causal / Streaming - Estándar de Concierto en Max]:                  │
-│   Audio Histórico (t-N) ───> [Buffer Causal t_0] ───> Inferencia Immed.│
-│   (Historial acotado)        (20-50 ms máximo)        (Latencia < 5ms) │
-└────────────────────────────────────────────────────────────────────────┘
-```
+![FIG E.4 · Pipeline Causal vs. No Causal en Vivo](/assets/diagrams/diagrama_causal_vs_nocausal_audio.svg)
 
 ### 4.1. El Compromiso de la Convolución Causal
 Para que un modelo de Deep Learning (`nn~`, redes convolucionales 1D o WaveNet) opere en tiempo real dentro del ciclo de procesamiento `perform64` de Max:
