@@ -1,0 +1,112 @@
+<svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+    <marker id="arr-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#22c55e"/>
+    </marker>
+    <marker id="arr-cyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#38bdf8"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">TAXONOMÍA DE REPRESENTACIONES DE AUDIO PARA MACHINE LEARNING</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG E.3 · PCM, ESPECTROGRAMAS, AUTOENCODERS &amp; TOKENS NEURONALES</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- 4 COLUMNAS DE REPRESENTACIÓN -->
+  <!-- COLUMNA 1: PCM CRUDA -->
+  <g transform="translate(25, 45)">
+    <rect width="210" height="195" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="210" height="22" rx="5" fill="#27272a" />
+    <text x="8" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700">1. SEÑAL CRUDA (PCM)</text>
+    
+    <text x="8" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="600">Dominio Temporal</text>
+    <text x="8" y="58" fill="#a1a1aa" font-size="7.5">Amplitud vs. Tiempo continuo</text>
+
+    <rect x="8" y="68" width="194" height="42" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+    <text x="12" y="84" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="7.5">Tasa: 44.1k / 48k muestras/s</text>
+    <text x="12" y="98" fill="#71717a" font-family="ui-monospace, monospace" font-size="7.5">Resolución: Float32 / Int16</text>
+
+    <rect x="8" y="116" width="194" height="66" rx="3" fill="#151518" stroke="#27272a" stroke-width="0.8" />
+    <text x="12" y="132" fill="#ef4444" font-family="ui-monospace, monospace" font-size="7.5">Desafío ML en Tiempo Real:</text>
+    <text x="12" y="146" fill="#a1a1aa" font-size="7.5">Dimensionalidad masiva. Redes</text>
+    <text x="12" y="158" fill="#a1a1aa" font-size="7.5">pesadas sufren para inferir</text>
+    <text x="12" y="170" fill="#a1a1aa" font-size="7.5">48,000 números por segundo.</text>
+  </g>
+
+  <!-- COLUMNA 2: ESPECTROGRAMAS / MFCC -->
+  <g transform="translate(245, 45)">
+    <rect width="215" height="195" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="215" height="22" rx="5" fill="#27272a" />
+    <text x="8" y="15" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700">2. ESPECTROGRAMAS &amp; MEL</text>
+    
+    <text x="8" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="600">Dominio Frecuencial</text>
+    <text x="8" y="58" fill="#a1a1aa" font-size="7.5">STFT, Escala Mel &amp; MFCC</text>
+
+    <rect x="8" y="68" width="199" height="42" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+    <text x="12" y="84" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="7.5">Ventaneo: 512 / 1024 frames</text>
+    <text x="12" y="98" fill="#71717a" font-family="ui-monospace, monospace" font-size="7.5">Matriz 2D: Tiempo × Frecuencia</text>
+
+    <rect x="8" y="116" width="199" height="66" rx="3" fill="#151518" stroke="#27272a" stroke-width="0.8" />
+    <text x="12" y="132" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="7.5">Ventaja / Desventaja:</text>
+    <text x="12" y="146" fill="#a1a1aa" font-size="7.5">Ideal para clasificación y KNN</text>
+    <text x="12" y="158" fill="#a1a1aa" font-size="7.5">(FluCoMa). La reconstrucción a</text>
+    <text x="12" y="170" fill="#a1a1aa" font-size="7.5">audio pierde fase (Griffin-Lim).</text>
+  </g>
+
+  <!-- COLUMNA 3: LATENTES CONTINUOS (RAVE) -->
+  <g transform="translate(470, 45)">
+    <rect width="220" height="195" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="220" height="22" rx="5" fill="#27272a" />
+    <text x="8" y="15" fill="#22c55e" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700">3. LATENTES CONTINUOS (RAVE)</text>
+    
+    <text x="8" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="600">Autoencoders VAE [nn~]</text>
+    <text x="8" y="58" fill="#a1a1aa" font-size="7.5">Espacio continuo comprimido</text>
+
+    <rect x="8" y="68" width="204" height="42" rx="3" fill="#121318" stroke="#27272a" stroke-width="0.8" />
+    <text x="12" y="84" fill="#22c55e" font-family="ui-monospace, monospace" font-size="7.5">Vector: 8 a 16 dimensiones</text>
+    <text x="12" y="98" fill="#71717a" font-family="ui-monospace, monospace" font-size="7.5">Tasa latente: ~100 Hz</text>
+
+    <rect x="8" y="116" width="204" height="66" rx="3" fill="#151518" stroke="#27272a" stroke-width="0.8" />
+    <text x="12" y="132" fill="#22c55e" font-family="ui-monospace, monospace" font-size="7.5">Fuerza en Vivo:</text>
+    <text x="12" y="146" fill="#a1a1aa" font-size="7.5">Transferencia tímbrica directa</text>
+    <text x="12" y="158" fill="#a1a1aa" font-size="7.5">en el Audio Thread. Interpola-</text>
+    <text x="12" y="170" fill="#a1a1aa" font-size="7.5">ción suave entre instrumentos.</text>
+  </g>
+
+  <!-- COLUMNA 4: CODECS NEURONALES DISCRETOS (ACCENT FOCAL) -->
+  <g transform="translate(700, 45)">
+    <rect width="215" height="195" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="215" height="22" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="8" y="15" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700">4. CODECS DISCRETOS (DAC/ENCODEC)</text>
+    
+    <text x="8" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">Tokens Acústicos (RVQ)</text>
+    <text x="8" y="58" fill="#fed7aa" font-size="7.5">Cuantización Vectorial Residual</text>
+
+    <rect x="8" y="68" width="199" height="42" rx="3" fill="#121318" stroke="#eb6c36" stroke-width="0.8" />
+    <text x="12" y="84" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="7.5">Bits: ~1.5 a 6 kbps</text>
+    <text x="12" y="98" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="7.5">Codebooks discretos: N capas</text>
+
+    <rect x="8" y="116" width="199" height="66" rx="3" fill="#121318" stroke="#eb6c36" stroke-width="0.8" />
+    <text x="12" y="132" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="7.5">El Estado del Arte:</text>
+    <text x="12" y="146" fill="#d4d4d8" font-size="7.5">Convierte audio continuo en</text>
+    <text x="12" y="158" fill="#d4d4d8" font-size="7.5">enteros manipulables con [dict],</text>
+    <text x="12" y="170" fill="#d4d4d8" font-size="7.5">[coll] y transformers en Max.</text>
+  </g>
+
+  <!-- PANEL INFERIOR COMPARATIVO DE CRITERIOS INGENIERILES -->
+  <g transform="translate(25, 252)">
+    <rect width="890" height="65" rx="4" fill="#151518" stroke="#27272a" stroke-width="1" />
+    <text x="16" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">CRITERIOS ARQUITECTÓNICOS PARA ELIGE TU REPRESENTACIÓN EN MAX/MSP:</text>
+    <text x="430" y="20" fill="#d4d4d8" font-size="8.5">Balance entre fidelidad tímbrica, latencia causal y costo computacional.</text>
+    <text x="16" y="38" fill="#a1a1aa" font-size="7.8">• Clasificación gestual rápida / Corpus percusivo: Descriptores FluCoMa (MFCC, centroid) con [fluid.kdtree~] (&lt; 5 ms).</text>
+    <text x="16" y="52" fill="#a1a1aa" font-size="7.8">• Transformación tímbrica directa en vivo: Autoencoders RAVE con [nn~] (baja latencia causal sin desarmar la fase).</text>
+    <text x="495" y="52" fill="#fed7aa" font-size="7.8">• Generación generativa y modelos de lenguaje: Codecs neuronales (DAC, Mimi, EnCodec) vía Node for Max.</text>
+  </g>
+</svg>
