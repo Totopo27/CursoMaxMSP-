@@ -703,3 +703,82 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
     </div>
   </div>
 </div>
+
+---
+
+## 7. Ableton Live, Max for Live (M4L) y Live Object Model (LOM)
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Live Object Model (LOM)</h3>
+    <span class="glossary-badge badge-control">Arquitectura M4L / Host API</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">📌 Definición Operativa</div>
+      <p>Árbol jerárquico orientado a objetos que expone la totalidad del estado y las acciones del DAW (pistas, clips, escenas, dispositivos, faders y transporte) como nodos navegables mediante rutas canónicas, observables mediante listeners y mutables por llamadas a funciones en C++ y Python.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">⚡ En Vivo y Concierto</div>
+      <p>Permite construir secuenciadores algorítmicos generativos capaces de disparar clips en tiempo real, conmutar cadenas de mezcla y leer el BPM maestro para sincronizar eventos sin tocar el teclado ni el ratón.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">⚠️ Confusión Típica</div>
+      <p>No es un bus MIDI tradicional ni depende de mapeos CC fijos. Opera como una API directa de introspección sobre la memoria viva del proyecto de Ableton Live.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
+      <p><code>live.path</code>, <code>live.observer</code>, <code>live.object</code>, <code>LiveAPI</code> en JavaScript. Ver <a href="/apendices/apendice-h-ableton-live-y-m4l/">Apéndice H</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Device Freezing (Congelamiento de Dispositivo .amxd)</h3>
+    <span class="glossary-badge badge-sdk">Distribución / Empaquetado</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">📌 Definición Operativa</div>
+      <p>Proceso de serialización atómica que compila e incrusta dentro del contenedor binario <code>.amxd</code> todas las dependencias externas requeridas por el parche: subparches, abstracciones de usuario, archivos JavaScript (<code>.js</code>), tablas JSON y muestras de audio en RAM.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">⚡ En Vivo y Concierto</div>
+      <p>Es la garantía indispensable para llevar un proyecto de estudio a una computadora de gira: evita el colapso por archivos faltantes, rutas relativas rotas o librerías que solo existían en la máquina de desarrollo original.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">⚠️ Confusión Típica</div>
+      <p>No congela el audio a disco como la función "Freeze Track" de los DAWs; lo que congela y sella es el código fuente y las dependencias del propio instrumento o efecto.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
+      <p>Menú contextual <em>Freeze Device</em> en Max for Live. Ver <a href="/apendices/apendice-h-ableton-live-y-m4l/">Apéndice H</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Modulación en Audio Thread (live.remote~)</h3>
+    <span class="glossary-badge badge-dsp">DSP / Control Híbrido</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">📌 Definición Operativa</div>
+      <p>Mecanismo que inyecta una señal de audio flotante continua de 64 bits directamente en un parámetro expuesto de Ableton Live a la frecuencia de muestreo del DAC ($f_s$), puenteando la cola de mensajes de control del hilo de usuario.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">⚡ En Vivo y Concierto</div>
+      <p>Permite modulación extrema por audiofrecuencia (LFOs a 50 Hz, envolventes percusivas hiper-rápidas) sin saturar la GUI ni degradar la pila de deshacer (<em>Undo History</em>) de Ableton Live.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">⚠️ Confusión Típica</div>
+      <p>Confundir modular un parámetro con <code>live.remote~</code> frente a automatizarlo con <code>set value</code> vía <code>live.object</code>. El primero vive en el Audio Thread a costo cero de GUI; el segundo es un mensaje discreto que registra un punto en la línea de automatización.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
+      <p><code>live.remote~</code>, <code>live.dial</code>, <code>phasor~</code>. Ver <a href="/apendices/apendice-h-ableton-live-y-m4l/">Apéndice H</a>.</p>
+    </div>
+  </div>
+</div>
