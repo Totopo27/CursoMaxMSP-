@@ -1,0 +1,65 @@
+# Max/MSP: Del Concepto al Motor Nativo
+> Curso integral de Max/MSP, MSP Audio, Gen~, C SDK y Sistemas Multimedia.
+> URL Canónica: https://curso-max.pajarobobo.xyz
+> Repositorio GitHub: https://github.com/Totopo27/CursoMaxMSP-
+
+Este documento resume la ontología completa del curso, diseñado para proveer una comprensión técnica profunda desde los fundamentos del paradigma Dataflow y el Scheduler temporal determinista hasta el desarrollo de DSP nativo en C++ (perform64, Min-DevKit) y modelos neuronales de audio en tiempo real (RAVE, FluCoMa, Codecs DAC/Mimi).
+
+---
+
+## Índice Completo de Lecciones y Recursos
+
+- [01. Anatomía de la Interfaz y Modos de Operación](https://curso-max.pajarobobo.xyz/00-prologo/01-anatomia-de-la-interfaz-y-modos-de-operacion/): Fundamentos del entorno de desarrollo visual en Max/MSP: modos de ejecución, presentación, inspector y atajos esenciales.
+- [02. Taxonomía de Archivos, Proyectos y Packages](https://curso-max.pajarobobo.xyz/00-prologo/02-taxonomia-de-archivos-proyectos-y-packages/): Estructura de documentos en Max/MSP: patchers (.maxpat), subpatchers [p], abstracciones, proyectos (.maxproj), Packages y Package Manager.
+- [03. Transporte Global, Mapeos y Asignaciones](https://curso-max.pajarobobo.xyz/00-prologo/03-transporte-global-mapeos-y-asignaciones/): Sincronización métrica maestro con el Global Transport [transport], unidades de tiempo musical y mapeo físico directo con MIDI Mapping y Key Mapping.
+- [04. Consola de Max, Diagnóstico y Configuración de Audio](https://curso-max.pajarobobo.xyz/00-prologo/04-consola-de-max-diagnostico-y-configuracion-de-audio/): Diagnóstico en tiempo real mediante la Max Console [print], niveles de logging y configuración técnica de controladores de audio ASIO en Windows.
+- [Módulo 1.1: El Paradigma Dataflow, Semántica de Estado vs. Disparo y Orden de Ejecución](https://curso-max.pajarobobo.xyz/01-fundamentos/01-dataflow-y-inlets/): Capítulo del curso de Max/MSP
+- [Módulo 1.2: El Scheduler de Max, Jerarquía Temporal y Psicoacústica del Ritmo](https://curso-max.pajarobobo.xyz/01-fundamentos/02-scheduler-y-timing/): Capítulo del curso de Max/MSP
+- [Módulo 1.3: Tipos de Datos (Los Átomos de Max), Estructuras de Memoria y Manipulación con `[zl]`](https://curso-max.pajarobobo.xyz/01-fundamentos/03-tipos-de-datos-y-listas-zl/): Capítulo del curso de Max/MSP
+- [Proyecto Integrador 1: Secuenciador Polirrítmico Diatónico Autónomo](https://curso-max.pajarobobo.xyz/01-fundamentos/proyecto-01-integrador/): Capítulo del curso de Max/MSP
+- [Módulo 2.1: Memoria Persistente, Estructuras de Datos (`[table]`, `[coll]`, `[dict]`) y Manejo de Estado](https://curso-max.pajarobobo.xyz/02-datos-y-persistencia/01-estructuras-de-datos-y-dict/): Capítulo del curso de Max/MSP
+- [Módulo 2.2: Gestión de Presets Globales, Morphing de Parámetros e Interpolación con el Ecosistema `[pattr]`](https://curso-max.pajarobobo.xyz/02-datos-y-persistencia/02-ecosistema-pattr-y-morphing/): Capítulo del curso de Max/MSP
+- [Módulo 2.3: Comunicación Inter-Patch sin Cables, Enrutamiento Dinámico y Espacios de Nombres (`[send]`, `[receive]`, `[forward]`, `[pattrforward]`)](https://curso-max.pajarobobo.xyz/02-datos-y-persistencia/03-comunicacion-remota-y-enrutamiento/): Capítulo del curso de Max/MSP
+- [Proyecto Integrador 2: Motor de Presets Jerárquico con Morphing por Interpolación Multidimensional](https://curso-max.pajarobobo.xyz/02-datos-y-persistencia/proyecto-02-integrador/): Capítulo del curso de Max/MSP
+- [Módulo 3.1: Señal vs. Control (`~`), Anatomía del Audio Thread y la Función `perform64` en C](https://curso-max.pajarobobo.xyz/03-dsp-y-audio-digital/01-signal-vs-control-y-audio-thread/): Capítulo del curso de Max/MSP
+- [Módulo 3.2: Generación de Señales Básicas (`[cycle~]`, `[phasor~]`, `[saw~]`, `[noise~]`), Tablas de Onda y Anti-Aliasing](https://curso-max.pajarobobo.xyz/03-dsp-y-audio-digital/02-generacion-de-senales-y-wavetables/): Capítulo del curso de Max/MSP
+- [Módulo 3.3: Aritmética de Audio, Modulación en Anillo (Ring Modulation) y Modulación de Amplitud (AM)](https://curso-max.pajarobobo.xyz/03-dsp-y-audio-digital/03-aritmetica-de-audio-y-modulacion-am-rm/): Capítulo del curso de Max/MSP
+- [Módulo 3.4: Modulación de Frecuencia (FM), Modulación de Fase (PM) y la Matemática de John Chowning](https://curso-max.pajarobobo.xyz/03-dsp-y-audio-digital/04-sintesis-fm-y-modulacion-de-fase/): Capítulo del curso de Max/MSP
+- [Lección 3.5: Envolventes Temporales: line~, curve~, adsr~ y Control de Amplitud Antialias](https://curso-max.pajarobobo.xyz/03-dsp-y-audio-digital/05-envolventes-line-curve-adsr/): Capítulo del curso de Max/MSP
+- [Lección 3.6: Filtrado Digital: Polos, Ceros, biquad~, lores~ y State Variable Filters (svf~)](https://curso-max.pajarobobo.xyz/03-dsp-y-audio-digital/06-filtrado-digital-biquad-lores-svf/): Capítulo del curso de Max/MSP
+- [Lección 3.7: Delays, Buffers Circulares y Modulación Temporal: tapin~, tapout~, Comb Filters, Flanger y Chorus](https://curso-max.pajarobobo.xyz/03-dsp-y-audio-digital/07-delays-flanger-chorus-comb/): Capítulo del curso de Max/MSP
+- [Lección 3.8: Manejo de Muestras en RAM: buffer~, groove~, play~, index~ y Manipulación Varispeed](https://curso-max.pajarobobo.xyz/03-dsp-y-audio-digital/08-muestras-ram-buffer-groove-play/): Capítulo del curso de Max/MSP
+- [Proyecto Integrador 03: Sintetizador Híbrido FM-Sustractivo con Procesador de Retardo Analógico](https://curso-max.pajarobobo.xyz/03-dsp-y-audio-digital/proyecto-03-integrador/): Capítulo del curso de Max/MSP
+- [Lección 4.1: Arquitectura Modular: Subparches [p], Abstracciones, Argumentos (#1..#9) y Aislamiento de Namespaces (#0)](https://curso-max.pajarobobo.xyz/04-polifonia-y-modularidad/01-abstracciones-subparches-y-namespace/): Capítulo del curso de Max/MSP
+- [Lección 4.2: Polifonía Dinámica con poly~: Asignación de Voces, Enrutamiento (target), mute y thispoly~](https://curso-max.pajarobobo.xyz/04-polifonia-y-modularidad/02-polifonia-con-poly-y-gestion-de-voces/): Capítulo del curso de Max/MSP
+- [Lección 4.3: Paralelismo y Concurrencia Real: El Atributo @parallel 1, Hilos del Sistema Operativo y Afinidad de CPU](https://curso-max.pajarobobo.xyz/04-polifonia-y-modularidad/03-procesamiento-paralelo-multicore/): Capítulo del curso de Max/MSP
+- [Proyecto Integrador 04: Sintetizador Polifónico Multicore de 8 Voces con Asignación Dinámica y Mute Automático](https://curso-max.pajarobobo.xyz/04-polifonia-y-modularidad/proyecto-04-integrador/): Capítulo del curso de Max/MSP
+- [Lección 5.1: Gen~ y el Paradigma JIT: Compilación en Tiempo Real, Bucles Muestra a Muestra y LLVM](https://curso-max.pajarobobo.xyz/05-gen-y-dsp-avanzado/01-gen-paradigma-jit-y-compilacion/): Capítulo del curso de Max/MSP
+- [Lección 5.2: Programación Textual en GenExpr: Funciones, Bucles For/While, Condicionales y Kernels DSP](https://curso-max.pajarobobo.xyz/05-gen-y-dsp-avanzado/02-genexpr-codigo-textual-y-estructuras/): Capítulo del curso de Max/MSP
+- [Lección 5.3: Modelado Físico y DSP No Lineal: Cuerdas Karplus-Strong, Waveguides y Ecuaciones Diferenciales](https://curso-max.pajarobobo.xyz/05-gen-y-dsp-avanzado/03-modelado-fisico-y-dsp-no-lineal/): Capítulo del curso de Max/MSP
+- [Módulo 5.4: Exportación de Código C++ y Despliegue Embebido](https://curso-max.pajarobobo.xyz/05-gen-y-dsp-avanzado/04-exportacion-cpp-y-despliegue/): Capítulo del curso de Max/MSP
+- [Proyecto Integrador 05: Sintetizador de Modelado Físico Digital en Gen~ (Guía de Onda / Waveguide Mesh)](https://curso-max.pajarobobo.xyz/05-gen-y-dsp-avanzado/proyecto-05-integrador/): Capítulo del curso de Max/MSP
+- [Módulo 6.1: JavaScript en Max: Arquitectura de los Motores `[js]` y `[v8]`](https://curso-max.pajarobobo.xyz/06-extensiones-sdk-y-sistemas/01-javascript-en-max-js-v8/): Capítulo del curso de Max/MSP
+- [Módulo 6.2: Node for Max (N4M): Procesamiento Asíncrono e IPC](https://curso-max.pajarobobo.xyz/06-extensiones-sdk-y-sistemas/02-node-for-max-n4m-comunicacion-asincrona/): Capítulo del curso de Max/MSP
+- [Módulo 6.3: El SDK de C de Max: Anatomía de un Objeto Externo Nativo](https://curso-max.pajarobobo.xyz/06-extensiones-sdk-y-sistemas/03-c-sdk-anatomia-objeto-externo/): Capítulo del curso de Max/MSP
+- [Proyecto Integrador 06: Sistema Híbrido Multicapa (JS + N4M + DSP de Alto Rendimiento)](https://curso-max.pajarobobo.xyz/06-extensiones-sdk-y-sistemas/proyecto-06-integrador/): Capítulo del curso de Max/MSP
+- [Apéndice A: Computación Visual y Espacial: Jitter, Matrices y `jit.gen`](https://curso-max.pajarobobo.xyz/apendices/apendice-a-jitter-matrices-y-jit-gen/): Capítulo del curso de Max/MSP
+- [Apéndice B: Interoperabilidad Multimedia: Max/MSP y TouchDesigner](https://curso-max.pajarobobo.xyz/apendices/apendice-b-max-y-touchdesigner/): Capítulo del curso de Max/MSP
+- [Apéndice C: Computación Física: Arduino, Sensores e Instalaciones Interactivas 24/7](https://curso-max.pajarobobo.xyz/apendices/apendice-c-instalaciones-y-arduino/): Capítulo del curso de Max/MSP
+- [Apéndice D: Desarrollo en C++ Moderno con Min-DevKit (C++17)](https://curso-max.pajarobobo.xyz/apendices/apendice-d-mindevkit-cpp-moderno/): Capítulo del curso de Max/MSP
+- [Apéndice E: Inteligencia Artificial y Machine Learning en Max (`FluCoMa` y `nn~`)](https://curso-max.pajarobobo.xyz/apendices/apendice-e-ia-y-machine-learning/): Capítulo del curso de Max/MSP
+- [Apéndice F: Espacialización Sonora y Audio Inmersivo 3D (`IRCAM Spat5` y `Ambisonics`)](https://curso-max.pajarobobo.xyz/apendices/apendice-f-audio-espacial-y-spat/): Capítulo del curso de Max/MSP
+- [Apéndice G: Casos de Estudio, Proyectos Paradigmáticos y Ecosistema Creativo](https://curso-max.pajarobobo.xyz/apendices/apendice-g-casos-de-estudio-y-ecosistema-creativo/): De la abstracción matemática de conservatorio al escenario mundial, el arte procedural y la interacción gestual en tiempo real.
+- [Glosario Técnico y Léxico Operativo de Max/MSP](https://curso-max.pajarobobo.xyz/glosario/): Guía canónica de terminología computacional, física acústica, arquitectura de bajo nivel y DSP para Max, MSP, Jitter y Gen~.
+- [Max/MSP — Del Concepto al Motor Nativo](https://curso-max.pajarobobo.xyz/): Curso integral de Max/MSP, MSP Audio, Gen~, C SDK y Sistemas Multimedia.
+- [Referencias Bibliográficas y Tratados Académicos](https://curso-max.pajarobobo.xyz/referencias-bibliograficas/): Compendio catalográfico integral de las fuentes primarias, tratados de conservatorio, tesis doctorales y manuales de ingeniería de audio que fundamentan el curso.
+
+---
+
+## Glosario Técnico de Referencia
+El curso cuenta con un Glosario Técnico Especializado organizado bajo el estándar de 4 bloques operativos (Definición Operativa, En Vivo y Concierto, Confusión Típica y Objetos Vinculados), accesible en:
+https://curso-max.pajarobobo.xyz/glosario/
+
+## Referencias Bibliográficas Primarias
+El compendio bibliográfico catalográfico completo (Roads, Cipriani & Giri, Wakefield & Taylor, Winkler, Colasanto, Di Liscia, Réveillac, Soria, Elsea, etc.) está disponible en:
+https://curso-max.pajarobobo.xyz/referencias-bibliograficas/
