@@ -1,6 +1,6 @@
----
+﻿---
 title: "Lección 4.1: Arquitectura Modular: Subparches [p], Abstracciones, Argumentos (#1..#9) y Aislamiento de Namespaces (#0)"
-description: "Capítulo del curso de Max/MSP"
+description: "Subpatchers y abstracciones en Max: diferencia entre [p] y abstracciones reutilizables, argumentos dinámicos con #1/#2, gestión de namespace y patrones de diseño modular."
 ---
 
 

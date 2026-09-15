@@ -1,6 +1,6 @@
----
+﻿---
 title: "Módulo 3.4: Modulación de Frecuencia (FM), Modulación de Fase (PM) y la Matemática de John Chowning"
-description: "Capítulo del curso de Max/MSP"
+description: "Síntesis FM y modulación de fase: la matemática de John Chowning, índice de modulación, funciones de Bessel y generación de espectros harmónicos e inarmónicos en MSP."
 ---
 
 

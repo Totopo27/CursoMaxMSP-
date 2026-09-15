@@ -1,6 +1,6 @@
----
+﻿---
 title: "Apéndice E: Inteligencia Artificial y Machine Learning en Max (`FluCoMa` y `nn~`)"
-description: "Capítulo del curso de Max/MSP"
+description: "Inteligencia artificial y machine learning en Max: FluCoMa para análisis tímbrico descriptores, redes neuronales con nn~ y síntesis por codec neural RAVE en tiempo real."
 ---
 
 

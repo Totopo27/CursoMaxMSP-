@@ -1,6 +1,6 @@
----
+﻿---
 title: "Apéndice F: Espacialización Sonora y Audio Inmersivo 3D (`IRCAM Spat5` y `Ambisonics`)"
-description: "Capítulo del curso de Max/MSP"
+description: "Audio espacial e inmersivo 3D en Max: IRCAM Spat5, síntesis Ambisonics HOA, VBAP multichannel y binaural rendering con HRTF para experiencias sonoras tridimensionales."
 ---
 
 

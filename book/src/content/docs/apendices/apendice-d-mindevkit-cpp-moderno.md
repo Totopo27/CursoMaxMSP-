@@ -1,6 +1,6 @@
----
+﻿---
 title: "Apéndice D: Desarrollo en C++ Moderno con Min-DevKit (C++17)"
-description: "Capítulo del curso de Max/MSP"
+description: "Min-DevKit y C++ moderno para Max: atributos declarativos, lambdas, metaprogramación con C++17 y desarrollo de externals tipados sobre la capa de abstracción de Cycling '74."
 ---
 
 

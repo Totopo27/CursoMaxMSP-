@@ -1,6 +1,6 @@
----
+﻿---
 title: "Lección 5.3: Modelado Físico y DSP No Lineal: Cuerdas Karplus-Strong, Waveguides y Ecuaciones Diferenciales"
-description: "Capítulo del curso de Max/MSP"
+description: "Modelado físico y DSP no lineal en gen~: síntesis por guía de onda digital (Karplus-Strong), resonadores modales, saturación analógica tanh() y algoritmos de Runge-Kutta."
 ---
 
 

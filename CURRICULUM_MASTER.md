@@ -95,15 +95,26 @@
 
 ```
 CursoMaxMSP/
-├── book/                  # Sitio Web Estático (Astro Starlight)
-│   ├── src/content/docs/  # Capítulos en Markdown / MDX
-│   └── public/patches/    # Parches .maxpat descargables por lección
-├── sources/               # Fuentes de conocimiento
-│   └── max-sdk/           # Submódulo del repositorio oficial Cycling74/max-sdk
-├── pipeline/              # Automatización y Scraping
-│   ├── scripts/
-│   │   ├── extract_sdk.ts # Lee headers y ejemplos C del SDK
-│   │   └── crawler.ts     # Playwright para tutoriales y diagramas web
-│   └── raw_corpus/        # JSON intermedio con la metadata procesada
-└── package.json           # Dependencias del proyecto
+├── book/                    # Sitio Web Estático (Astro Starlight)
+│   ├── src/content/docs/    # Capítulos en Markdown (42 lecciones en 8 módulos + apéndices)
+│   ├── public/
+│   │   ├── patches/         # Parches .maxpat descargables organizados por módulo
+│   │   ├── assets/diagrams/ # 80 diagramas SVG para las lecciones
+│   │   ├── sw.js            # Service Worker (PWA offline — estrategia Network-First)
+│   │   ├── manifest.json    # Web App Manifest para instalación PWA
+│   │   └── progress-tracker.js  # Tracking de progreso en localStorage
+│   ├── clean_emojis.cjs     # Script: purga emojis del corpus Markdown
+│   ├── fix_links.cjs        # Script: convierte rutas file:/// a rutas web /patches/
+│   └── format_docs.cjs      # Script: inserta frontmatter YAML si falta
+├── sources/                 # Fuentes de conocimiento (ebooks, PDFs)
+│   └── max-sdk/             # Submódulo del repositorio oficial Cycling74/max-sdk
+├── pipeline/                # Automatización y análisis de corpus
+│   └── scripts/
+│       ├── scrape_series.ts # Playwright: extrae tutoriales de docs.cycling74.com/__NEXT_DATA__
+│       ├── analyze_ebooks.py # Análisis y extracción de texto de fuentes primarias (ePub/PDF)
+│       └── analyze_pdfs.py  # Procesamiento de PDFs académicos del corpus bibliográfico
+└── package.json             # Dependencias del proyecto (playwright, tsx)
 ```
+
+> **Nota:** Los scripts de pipeline se ejecutan como herramientas de investigación para la construcción del curso, no como parte del build del sitio web.
+

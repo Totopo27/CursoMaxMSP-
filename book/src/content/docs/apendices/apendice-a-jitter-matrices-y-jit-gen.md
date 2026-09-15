@@ -1,6 +1,6 @@
----
+﻿---
 title: "Apéndice A: Computación Visual y Espacial: Jitter, Matrices y `jit.gen`"
-description: "Capítulo del curso de Max/MSP"
+description: "Computación visual en Max: matrices N-dimensionales con Jitter, pipeline GPU con OpenGL, jit.gen para DSP visual y shaders GLSL de procesamiento matricial en tiempo real."
 ---
 
 

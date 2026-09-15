@@ -1,6 +1,6 @@
----
+﻿---
 title: "Proyecto Integrador 05: Sintetizador de Modelado Físico Digital en Gen~ (Guía de Onda / Waveguide Mesh)"
-description: "Capítulo del curso de Max/MSP"
+description: "Proyecto integrador Módulo 5: sintetizador modal por guía de onda digital completa en gen~, con resonadores físicos Karplus-Strong, control de amortiguamiento y exportación a C++ embebido."
 ---
 
 

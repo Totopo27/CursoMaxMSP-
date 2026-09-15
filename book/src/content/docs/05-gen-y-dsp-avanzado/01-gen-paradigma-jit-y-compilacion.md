@@ -1,6 +1,6 @@
----
+﻿---
 title: "Lección 5.1: Gen~ y el Paradigma JIT: Compilación en Tiempo Real, Bucles Muestra a Muestra y LLVM"
-description: "Capítulo del curso de Max/MSP"
+description: "Gen~ y el paradigma JIT: compilación LLVM en tiempo real, el operador history (z^-1), ecuaciones en diferencias muestra a muestra y exportación de código C++ nativo desde Max."
 ---
 
 
@@ -35,7 +35,45 @@ Cuando cerrás la ventana de un objeto `[gen~]`, no se interpreta nada:
 
 ---
 
+## 3. El Operador `history` y la Memoria de Muestra Única ($z^{-1}$)
+
+El operador más poderoso y diferenciador de `gen~` frente al MSP tradicional es **`[history]`**: una celda de memoria que almacena exactamente **una muestra del pasado** y la expone en el instante siguiente.
+
+### La Ecuación en Diferencias Implementable
+
+En el mundo analógico, un filtro de primer orden se describe con la ecuación diferencial:
+
+$$\tau \frac{dy}{dt} + y(t) = x(t)$$
+
+En el dominio digital discreto, discretizada por el método de Euler hacia atrás, se convierte en la **ecuación en diferencias**:
+
+$$y[n] = \alpha \cdot x[n] + (1 - \alpha) \cdot y[n-1]$$
+
+donde $y[n-1]$ es exactamente lo que almacena `[history]` — el valor de salida del tick anterior, con retardo de una sola muestra ($\Delta t = 1/f_s \approx 22.67\ \mu\text{s}$ a $44.1\text{ kHz}$).
+
+### Por qué MSP no puede resolver esto correctamente
+
+En MSP tradicional, `[tapin~]/[tapout~]` tiene una latencia mínima de **$N$ muestras** (el tamaño del Signal Vector, típicamente 64). Intentar construir el lazo $y[n] = f(x[n], y[n-1])$ en MSP introduce un retraso de 64 muestras en el feedback, destruyendo la estabilidad matemática del filtro IIR y cualquier modelo físico que requiera retroalimentación de muestra individual.
+
+En `gen~`, la topología visual se compila a un bucle `while(n--)` donde el valor de `[history]` se actualiza al final de cada iteración — retroalimentación perfecta de 1 muestra con costo computacional cero.
+
+### Diagrama de Implementación
+
+```
+[in 1] ──┐
+          ├──[*]── coef_a ──────[+]──── y[n] ──[out 1]
+[history]─┤                      │         │
+          └──[*]── coef_b        │         └──[history]
+                                 │
+                (y[n] = a*x[n] + b*y[n-1])
+```
+
+Este patrón es la piedra angular de **todos los filtros, osciladores y modelos físicos** implementados en `gen~`.
+
+---
+
 ## 4. Bajo el Capó: Análisis del C++ Exportado (`gen_exported.cpp`)
+
 
 Cuando usamos la función `exportcode` de `gen~`, Max genera código C++ puro compatible con cualquier entorno embebido (VST, AU, Daisy Seed, Bela o Teensy). Observemos la estructura del bucle de procesamiento:
 

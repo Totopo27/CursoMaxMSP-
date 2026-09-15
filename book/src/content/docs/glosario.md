@@ -233,7 +233,7 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
     </div>
     <div class="glossary-block">
       <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
-      <p><code>groove~</code>, <code>play~</code>, <code>wave~</code>, <code>zerox~</code>. Ver <a href="/03-dsp-y-audio-digital/08-muestras-ram-buffers-y-grabacion/">Módulo 3.8</a>.</p>
+      <p><code>groove~</code>, <code>play~</code>, <code>wave~</code>, <code>zerox~</code>. Ver <a href="/03-dsp-y-audio-digital/08-muestras-ram-buffer-groove-play/">Módulo 3.8</a>.</p>
     </div>
   </div>
 </div>
@@ -258,7 +258,7 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
     </div>
     <div class="glossary-block">
       <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
-      <p><code>2d.wave~</code>, <code>lookup~</code>, <code>cycle~</code>, <code>polyblep</code>. Ver <a href="/03-dsp-y-audio-digital/02-sintesis-aditiva-y-tabla-de-ondas/">Módulo 3.2</a>.</p>
+      <p><code>2d.wave~</code>, <code>lookup~</code>, <code>cycle~</code>, <code>polyblep</code>. Ver <a href="/03-dsp-y-audio-digital/02-generacion-de-senales-y-wavetables/">Módulo 3.2</a>.</p>
     </div>
   </div>
 </div>
@@ -283,7 +283,7 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
     </div>
     <div class="glossary-block">
       <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
-      <p><code>poly~</code> con atributo <code>@down</code>/<code>@up</code>, <code>gen~</code>. Ver <a href="/03-dsp-y-audio-digital/01-signal-vs-control-y-audio-thread/">Módulo 3.1</a> y <a href="/03-dsp-y-audio-digital/02-sintesis-aditiva-y-tabla-de-ondas/">3.2</a>.</p>
+      <p><code>poly~</code> con atributo <code>@down</code>/<code>@up</code>, <code>gen~</code>. Ver <a href="/03-dsp-y-audio-digital/01-signal-vs-control-y-audio-thread/">Módulo 3.1</a> y <a href="/03-dsp-y-audio-digital/02-generacion-de-senales-y-wavetables/">3.2</a>.</p>
     </div>
   </div>
 </div>
@@ -308,7 +308,7 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
     </div>
     <div class="glossary-block">
       <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
-      <p><code>biquad~</code>, <code>teeth~</code>, <code>gen~</code>. Ver <a href="/03-dsp-y-audio-digital/06-filtros-iir-fir-y-biquad/">Módulo 3.6</a>.</p>
+      <p><code>biquad~</code>, <code>teeth~</code>, <code>gen~</code>. Ver <a href="/03-dsp-y-audio-digital/06-filtrado-digital-biquad-lores-svf/">Módulo 3.6</a>.</p>
     </div>
   </div>
 </div>
@@ -362,7 +362,7 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
     </div>
     <div class="glossary-block">
       <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
-      <p><code>fold</code>, <code>wrap</code>, <code>clip</code> en Gen~. Ver <a href="/05-gen-y-dsp-avanzado/03-dsp-no-lineal-saturacion-y-modelado-fisico/">Módulo 5.3</a>.</p>
+      <p><code>fold</code>, <code>wrap</code>, <code>clip</code> en Gen~. Ver <a href="/05-gen-y-dsp-avanzado/03-modelado-fisico-y-dsp-no-lineal/">Módulo 5.3</a>.</p>
     </div>
   </div>
 </div>
@@ -387,7 +387,7 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
     </div>
     <div class="glossary-block">
       <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
-      <p><code>codebox</code> (dentro de <code>gen~</code>). Ver <a href="/05-gen-y-dsp-avanzado/02-genexpr-codigo-textual-dentro-de-gen/">Módulo 5.2</a>.</p>
+      <p><code>codebox</code> (dentro de <code>gen~</code>). Ver <a href="/05-gen-y-dsp-avanzado/02-genexpr-codigo-textual-y-estructuras/">Módulo 5.2</a>.</p>
     </div>
   </div>
 </div>
@@ -441,7 +441,7 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
     </div>
     <div class="glossary-block">
       <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
-      <p>Cabecera <code>z_dsp.h</code>, Max SDK, Min-DevKit. Ver <a href="/06-extensiones-sdk-y-sistemas/03-anatomia-de-un-external-en-c-max-sdk/">Módulo 6.3</a>.</p>
+      <p>Cabecera <code>z_dsp.h</code>, Max SDK, Min-DevKit. Ver <a href="/06-extensiones-sdk-y-sistemas/03-c-sdk-anatomia-objeto-externo/">Módulo 6.3</a>.</p>
     </div>
   </div>
 </div>
@@ -466,7 +466,7 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
     </div>
     <div class="glossary-block">
       <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
-      <p><code>z_dsp.h</code>, <code>dsp_setup()</code>, <code>dsp_free()</code>. Ver <a href="/06-extensiones-sdk-y-sistemas/03-anatomia-de-un-external-en-c-max-sdk/">Módulo 6.3</a>.</p>
+      <p><code>z_dsp.h</code>, <code>dsp_setup()</code>, <code>dsp_free()</code>. Ver <a href="/06-extensiones-sdk-y-sistemas/03-c-sdk-anatomia-objeto-externo/">Módulo 6.3</a>.</p>
     </div>
   </div>
 </div>
@@ -491,7 +491,7 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
     </div>
     <div class="glossary-block">
       <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
-      <p><code>atom_getfloat()</code>, <code>atom_getlong()</code>, <code>ext_obex.h</code>. Ver <a href="/06-extensiones-sdk-y-sistemas/03-anatomia-de-un-external-en-c-max-sdk/">Módulo 6.3</a>.</p>
+      <p><code>atom_getfloat()</code>, <code>atom_getlong()</code>, <code>ext_obex.h</code>. Ver <a href="/06-extensiones-sdk-y-sistemas/03-c-sdk-anatomia-objeto-externo/">Módulo 6.3</a>.</p>
     </div>
   </div>
 </div>
@@ -516,7 +516,7 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
     </div>
     <div class="glossary-block">
       <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
-      <p>Min-DevKit, <code>perform64</code>, CMake flags. Ver <a href="/06-extensiones-sdk-y-sistemas/03-anatomia-de-un-external-en-c-max-sdk/">Módulo 6.3</a> y <a href="/apendices/apendice-d-min-devkit-c-plus-plus-moderno/">Apéndice D</a>.</p>
+      <p>Min-DevKit, <code>perform64</code>, CMake flags. Ver <a href="/06-extensiones-sdk-y-sistemas/03-c-sdk-anatomia-objeto-externo/">Módulo 6.3</a> y <a href="/apendices/apendice-d-mindevkit-cpp-moderno/">Apéndice D</a>.</p>
     </div>
   </div>
 </div>
@@ -595,7 +595,7 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
     </div>
     <div class="glossary-block">
       <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
-      <p><code>jit.gl.spoutsender</code>, <code>jit.gl.spoutreceiver</code>, <code>jit.gl.syphonserver</code>. Ver <a href="/apendices/apendice-b-integracion-con-touchdesigner-osc-y-spout/">Apéndice B</a>.</p>
+      <p><code>jit.gl.spoutsender</code>, <code>jit.gl.spoutreceiver</code>, <code>jit.gl.syphonserver</code>. Ver <a href="/apendices/apendice-b-max-y-touchdesigner/">Apéndice B</a>.</p>
     </div>
   </div>
 </div>
@@ -624,7 +624,7 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
     </div>
     <div class="glossary-block">
       <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
-      <p><code>spat5.pan~</code>, <code>spat5.hoa.*</code>, <code>mc.*</code>. Ver <a href="/apendices/apendice-f-audio-espacial-ambisonics-y-spat/">Apéndice F</a>.</p>
+      <p><code>spat5.pan~</code>, <code>spat5.hoa.*</code>, <code>mc.*</code>. Ver <a href="/apendices/apendice-f-audio-espacial-y-spat/">Apéndice F</a>.</p>
     </div>
   </div>
 </div>
@@ -649,7 +649,7 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
     </div>
     <div class="glossary-block">
       <div class="glossary-block-label label-objects">🔗 Objetos & Lecciones</div>
-      <p><code>spat5.hoa.decoder~</code>, <code>spat5.virtualspeakers~</code>. Ver <a href="/apendices/apendice-f-audio-espacial-ambisonics-y-spat/">Apéndice F</a>.</p>
+      <p><code>spat5.hoa.decoder~</code>, <code>spat5.virtualspeakers~</code>. Ver <a href="/apendices/apendice-f-audio-espacial-y-spat/">Apéndice F</a>.</p>
     </div>
   </div>
 </div>

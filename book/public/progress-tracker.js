@@ -8,18 +8,20 @@
 
   const STORAGE_KEY = 'curso_max_progress:v1';
 
-  function getStoredProgress() {
+    function getStoredProgress() {
     try {
-      const data = localStorage.getItem(STORAGE_KEY);
-      if (!data) return { completed: [], lastVisited: '' };
-      const parsed = JSON.parse(data);
-      // Filtrar páginas de consulta que no forman parte del plan curricular
-      if (Array.isArray(parsed.completed)) {
-        parsed.completed = parsed.completed.filter(
-          p => !p.includes('/glosario/') && !p.includes('/referencias-bibliograficas/')
-        );
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return { completed: [], lastVisited: '' };
+      const parsed = JSON.parse(raw);
+      if (!parsed || typeof parsed !== 'object') {
+        return { completed: [], lastVisited: '' };
       }
-      return parsed;
+      const validCompleted = Array.isArray(parsed.completed)
+        ? [...new Set(parsed.completed.filter(x => typeof x === 'string'))]
+            .filter(p => !p.includes('/glosario/') && !p.includes('/referencias-bibliograficas/'))
+        : [];
+      const validLastVisited = typeof parsed.lastVisited === 'string' ? parsed.lastVisited : '';
+      return { completed: validCompleted, lastVisited: validLastVisited };
     } catch (e) {
       return { completed: [], lastVisited: '' };
     }
@@ -66,6 +68,7 @@
       if (!href) return;
       try {
         const url = new URL(href, window.location.origin);
+        if (url.origin !== window.location.origin) return;
         let path = url.pathname;
         if (!path.endsWith('/')) path += '/';
 

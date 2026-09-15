@@ -204,5 +204,5 @@ Para resolver este desafío, la arquitectura de M4L provee **`[live.remote~]`**:
 
 ## 8. Laboratorio y Parches de Demostración
 
-En la carpeta [`book/public/patches/apendices/`](/patches/apendices/) se incluye:
+En la carpeta [`book/public/patches/apendices/`](/patches/apendices/lab_apendice_h_lom_clip_trigger.maxpat) se incluye:
 * `lab_apendice_h_lom_clip_trigger.maxpat`: Dispositivo M4L que detecta dinámicamente la pista actual (`canonical_parent`), monitorea el estado del transporte maestro y ofrece un secuenciador de pasos interactivo que dispara clips según reglas probabilísticas.

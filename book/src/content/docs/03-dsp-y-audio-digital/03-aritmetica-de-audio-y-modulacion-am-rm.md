@@ -1,6 +1,6 @@
----
+﻿---
 title: "Módulo 3.3: Aritmética de Audio, Modulación en Anillo (Ring Modulation) y Modulación de Amplitud (AM)"
-description: "Capítulo del curso de Max/MSP"
+description: "Aritmética de audio en MSP: escalamiento de señal, Ring Modulation (RM) y Amplitude Modulation (AM). Espectros laterales, síntesis tímbrica y el operador multiplicador [*~]."
 ---
 
 

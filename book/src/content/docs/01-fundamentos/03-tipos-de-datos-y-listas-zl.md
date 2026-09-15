@@ -1,6 +1,6 @@
----
+﻿---
 title: "Módulo 1.3: Tipos de Datos (Los Átomos de Max), Estructuras de Memoria y Manipulación con `[zl]`"
-description: "Capítulo del curso de Max/MSP"
+description: "Los átomos de Max: tipado dinámico por etiquetas (bang, int, float, symbol, list), tabla hash de símbolos O(1) y operaciones vectoriales de alto rendimiento con la familia [zl]."
 ---
 
 
@@ -98,7 +98,7 @@ Para resolver toda la manipulación de datos a nivel de memoria C contigua sin p
 
 ---
 
-##  4 Escenarios de la Vida Real (Casos de Estudio)
+## 5. Escenarios de la Vida Real (Casos de Estudio)
 
 Abre el parche interactivo:
 [`book/patches/modulo-01/laboratorio_03_listas_zl.maxpat`](/patches/modulo-01/laboratorio_03_listas_zl.maxpat)
@@ -127,7 +127,7 @@ Abre el parche interactivo:
 
 ---
 
-## 3 Ejercicios Prácticos de Laboratorio
+## 6. Ejercicios Prácticos de Laboratorio
 
 Realiza estos ejercicios en tu copia de Max utilizando el parche [`laboratorio_03_listas_zl.maxpat`](/patches/modulo-01/laboratorio_03_listas_zl.maxpat):
 

@@ -1,6 +1,6 @@
----
+﻿---
 title: "Módulo 2.3: Comunicación Inter-Patch sin Cables, Enrutamiento Dinámico y Espacios de Nombres (`[send]`, `[receive]`, `[forward]`, `[pattrforward]`)"
-description: "Capítulo del curso de Max/MSP"
+description: "Comunicación inter-patch sin cables en Max: [send]/[receive], [forward], espacios de nombres aislados y el patrón Pub/Sub para arquitecturas desacopladas de alta cohesión."
 ---
 
 

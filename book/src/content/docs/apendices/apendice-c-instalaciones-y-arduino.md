@@ -1,6 +1,6 @@
----
+﻿---
 title: "Apéndice C: Computación Física: Arduino, Sensores e Instalaciones Interactivas 24/7"
-description: "Capítulo del curso de Max/MSP"
+description: "Max/MSP e instalaciones físicas interactivas: comunicación serial con Arduino a 115200 baudios, sensores analógicos, Firmata y sistemas tolerantes a fallos para uso 24/7 en museo."
 ---
 
 

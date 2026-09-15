@@ -1,6 +1,6 @@
----
+﻿---
 title: "Módulo 3.1: Señal vs. Control (`~`), Anatomía del Audio Thread y la Función `perform64` en C"
-description: "Capítulo del curso de Max/MSP"
+description: "La frontera señal/control en MSP: por qué existe la tilde (~), anatomía del Audio Thread, vectores de 64 muestras y la función perform64 en C con análisis del Max SDK."
 ---
 
 

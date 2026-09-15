@@ -1,6 +1,6 @@
----
+﻿---
 title: "Módulo 1.2: El Scheduler de Max, Jerarquía Temporal y Psicoacústica del Ritmo"
-description: "Capítulo del curso de Max/MSP"
+description: "Arquitectura de tres hilos de Max: Scheduler, Overdrive y SIAI. Psicoacústica del jitter rítmico, t_clock, t_qelem y desacople de tareas con [defer]/[deferlow]."
 ---
 
 
@@ -84,7 +84,7 @@ En el lenguaje visual de Max, este mecanismo en C se materializa a través de do
 
 ---
 
-##  4 Escenarios de la Vida Real (Casos de Estudio)
+## 6. Escenarios de la Vida Real (Casos de Estudio)
 
 Abre el parche interactivo:
 [`book/patches/modulo-01/laboratorio_02_timing.maxpat`](/patches/modulo-01/laboratorio_02_timing.maxpat)
@@ -114,7 +114,7 @@ Abre el parche interactivo:
 
 ---
 
-## 3 Ejercicios Prácticos de Laboratorio
+## 7. Ejercicios Prácticos de Laboratorio
 
 Realiza estos ejercicios en tu copia de Max utilizando el parche [`laboratorio_02_timing.maxpat`](/patches/modulo-01/laboratorio_02_timing.maxpat):
 

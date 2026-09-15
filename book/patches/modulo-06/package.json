@@ -4,6 +4,6 @@
   "description": "Servidor asincrono y utilidades para Max MSP N4M",
   "main": "servidor_analisis.js",
   "dependencies": {
-    "max-api": "latest"
+    "max-api": "^2.0.0"
   }
 }

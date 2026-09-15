@@ -1,6 +1,6 @@
----
+﻿---
 title: "Lección 4.3: Paralelismo y Concurrencia Real: El Atributo @parallel 1, Hilos del Sistema Operativo y Afinidad de CPU"
-description: "Capítulo del curso de Max/MSP"
+description: "Procesamiento paralelo multicore en Max: el atributo @parallel 1 de [poly~], balanceo de carga entre núcleos de CPU y ciclo de vida de instancias con [thispoly~]."
 ---
 
 

@@ -1,6 +1,6 @@
----
+﻿---
 title: "Módulo 2.1: Memoria Persistente, Estructuras de Datos (`[table]`, `[coll]`, `[dict]`) y Manejo de Estado"
-description: "Capítulo del curso de Max/MSP"
+description: "Estructuras de datos persistentes en Max: [table], [coll] y [dict] JSON para gestión profesional de estado. Análisis de paso por referencia en C y árboles jerárquicos en tiempo real."
 ---
 
 

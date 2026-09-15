@@ -1,6 +1,6 @@
----
+﻿---
 title: "Módulo 1.1: El Paradigma Dataflow, Semántica de Estado vs. Disparo y Orden de Ejecución"
-description: "Capítulo del curso de Max/MSP"
+description: "El paradigma Dataflow de Max/MSP: inlets calientes y fríos, grafos acíclicos dirigidos (DAG), recursión en t=0 y determinismo con [trigger]. Con análisis del C SDK de Cycling '74."
 ---
 
 
@@ -156,7 +156,7 @@ Para diseñar sistemas estables, deterministas y mantenibles a largo plazo, **la
 
 ---
 
-##  4 Escenarios de la Vida Real (Casos de Estudio)
+## 6. Escenarios de la Vida Real (Casos de Estudio)
 
 Abre el parche interactivo:
 [`book/patches/modulo-01/laboratorio_01.maxpat`](/patches/modulo-01/laboratorio_01.maxpat)
@@ -180,7 +180,7 @@ Abre el parche interactivo:
 
 ---
 
-## 3 Ejercicios Prácticos de Laboratorio
+## 7. Ejercicios Prácticos de Laboratorio
 
 Realiza estos ejercicios en tu copia de Max utilizando el parche [`laboratorio_01.maxpat`](/patches/modulo-01/laboratorio_01.maxpat):
 

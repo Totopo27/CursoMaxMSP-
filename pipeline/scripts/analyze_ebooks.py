@@ -3,8 +3,20 @@ import zipfile
 import re
 import json
 
-BIBLIO_DIR = r"D:\DocumentosDiscoD\CursoMaxMSP\referenciasbibliograficas"
-OUTPUT_DIR = r"D:\DocumentosDiscoD\CursoMaxMSP\sources\analyzed_biblio"
+import argparse
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+DEFAULT_BIBLIO = REPO_ROOT / "referenciasbibliograficas"
+DEFAULT_OUTPUT = REPO_ROOT / "sources" / "analyzed_biblio"
+
+parser = argparse.ArgumentParser(description="Analizar Ebooks bibliográficos")
+parser.add_argument("--biblio-dir", type=Path, default=DEFAULT_BIBLIO, help="Directorio de Ebooks")
+parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT, help="Directorio de salida")
+args, _ = parser.parse_known_args()
+
+BIBLIO_DIR = args.biblio_dir
+OUTPUT_DIR = args.output_dir
 
 epub_files = [f for f in os.listdir(BIBLIO_DIR) if f.endswith('.epub')]
 mobi_files = [f for f in os.listdir(BIBLIO_DIR) if f.endswith('.mobi')]

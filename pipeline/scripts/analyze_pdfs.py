@@ -2,8 +2,20 @@ import os
 import json
 from pypdf import PdfReader
 
-BIBLIO_DIR = r"D:\DocumentosDiscoD\CursoMaxMSP\referenciasbibliograficas"
-OUTPUT_DIR = r"D:\DocumentosDiscoD\CursoMaxMSP\sources\analyzed_biblio"
+import argparse
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+DEFAULT_BIBLIO = REPO_ROOT / "referenciasbibliograficas"
+DEFAULT_OUTPUT = REPO_ROOT / "sources" / "analyzed_biblio"
+
+parser = argparse.ArgumentParser(description="Analizar PDFs bibliográficos")
+parser.add_argument("--biblio-dir", type=Path, default=DEFAULT_BIBLIO, help="Directorio de PDFs")
+parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT, help="Directorio de salida")
+args, _ = parser.parse_known_args()
+
+BIBLIO_DIR = args.biblio_dir
+OUTPUT_DIR = args.output_dir
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 

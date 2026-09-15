@@ -1,6 +1,6 @@
----
+﻿---
 title: "Lección 4.2: Polifonía Dinámica con poly~: Asignación de Voces, Enrutamiento (target), mute y thispoly~"
-description: "Capítulo del curso de Max/MSP"
+description: "Polifonía escalable con [poly~]: asignación dinámica de voces, algoritmos de voice stealing, mensajes target y midievent para síntesis MIDI polifónica de grado profesional."
 ---
 
 

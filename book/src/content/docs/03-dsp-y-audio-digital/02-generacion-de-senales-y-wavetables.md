@@ -1,6 +1,6 @@
----
+﻿---
 title: "Módulo 3.2: Generación de Señales Básicas (`[cycle~]`, `[phasor~]`, `[saw~]`, `[noise~]`), Tablas de Onda y Anti-Aliasing"
-description: "Capítulo del curso de Max/MSP"
+description: "Generación de señales básicas en MSP: [cycle~], [phasor~], [saw~] y [noise~]. Series de Fourier, aliasing, band-limiting, tablas de onda e interpolación cúbica de fase."
 ---
 
 
@@ -47,7 +47,7 @@ El resultado son decenas de frecuencias espurias **inarmónicas** que suenan com
 
 ---
 
-##  3. Under the Hood (Max C SDK): Tablas de Onda y Acumuladores de Fase
+## 3. Under the Hood (Max C SDK): Tablas de Onda y Acumuladores de Fase
 
 *(Basado en `simpwave~.c` del Max SDK)*
 

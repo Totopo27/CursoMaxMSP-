@@ -1,6 +1,6 @@
----
+﻿---
 title: "Lección 3.5: Envolventes Temporales: line~, curve~, adsr~ y Control de Amplitud Antialias"
-description: "Capítulo del curso de Max/MSP"
+description: "Envolventes temporales en MSP: [line~], [curve~] y [adsr~]. Origen físico de los clicks digitales y su eliminación mediante rampas de interpolación de amplitud anti-alias."
 ---
 
 

@@ -1,6 +1,6 @@
----
+﻿---
 title: "Módulo 5.4: Exportación de Código C++ y Despliegue Embebido"
-description: "Capítulo del curso de Max/MSP"
+description: "Exportación de C++ desde gen~ y despliegue embebido: arquitectura del perform() generado, parámetros thread-safe, integración con libDaisy para hardware Eurorack y microcontroladores ARM."
 ---
 
 

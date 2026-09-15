@@ -1,6 +1,6 @@
----
+﻿---
 title: "Lección 5.2: Programación Textual en GenExpr: Funciones, Bucles For/While, Condicionales y Kernels DSP"
-description: "Capítulo del curso de Max/MSP"
+description: "GenExpr: programación textual de DSP dentro de gen~. Sintaxis del codebox, estructuras de control, operadores de memoria y puente entre parcheo visual y código fuente nativo."
 ---
 
 

@@ -1,6 +1,6 @@
----
+﻿---
 title: "Proyecto Integrador 06: Sistema Híbrido Multicapa (JS + N4M + DSP de Alto Rendimiento)"
-description: "Capítulo del curso de Max/MSP"
+description: "Proyecto integrador Módulo 6: sistema híbrido multicapa con Node for Max para red asíncrona, JavaScript para lógica generativa y MSP para síntesis DSP de alto rendimiento."
 ---
 
 

@@ -1,20 +1,21 @@
-﻿const fs = require('fs');
+const fs = require('fs');
 const path = require('path');
 
 function walk(dir, fileList = []) {
-  const files = fs.readdirSync(dir);
-  files.forEach(file => {
-    const filePath = path.join(dir, file);
-    if (fs.statSync(filePath).isDirectory()) {
-      walk(filePath, fileList);
-    } else if (filePath.endsWith('.md')) {
-      fileList.push(filePath);
+  if (!fs.existsSync(dir)) return fileList;
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      walk(fullPath, fileList);
+    } else if (entry.name.endsWith('.md')) {
+      fileList.push(fullPath);
     }
-  });
+  }
   return fileList;
 }
 
-const baseDir = 'd:\\DocumentosDiscoD\\CursoMaxMSP\\book';
+const baseDir = __dirname;
 const targets = [
   path.join(baseDir, 'src', 'content', 'docs'),
   path.join(baseDir, 'docs')

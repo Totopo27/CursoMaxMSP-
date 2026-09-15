@@ -1,6 +1,6 @@
----
+﻿---
 title: "Módulo 6.1: JavaScript en Max: Arquitectura de los Motores `[js]` y `[v8]`"
-description: "Capítulo del curso de Max/MSP"
+description: "JavaScript en Max con [js] y el motor V8: scripting de lógica generativa, acceso a la Live API, limitaciones de hilo principal y mejores prácticas para código seguro en el Scheduler."
 ---
 
 

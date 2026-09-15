@@ -1,6 +1,6 @@
----
+﻿---
 title: "Módulo 2.2: Gestión de Presets Globales, Morphing de Parámetros e Interpolación con el Ecosistema `[pattr]`"
-description: "Capítulo del curso de Max/MSP"
+description: "El ecosistema [pattr] y [pattrstorage]: gestión global de presets, morphing de parámetros por interpolación multidimensional y espacios de estados vectoriales en R^N con [pattrstorage]."
 ---
 
 

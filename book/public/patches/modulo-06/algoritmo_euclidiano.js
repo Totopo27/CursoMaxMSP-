@@ -1,5 +1,6 @@
 // algoritmo_euclidiano.js
 // Implementación del Algoritmo de Bjorklund para Ritmos Euclidianos en Max/MSP [js]
+// Versión blindada: control estricto de pasos, pulsos y rotación (prevención de RangeError y bucles infinitos)
 // Autor: Curso Max/MSP - Módulo 6
 
 inlets = 2;
@@ -16,8 +17,12 @@ var rotate = 0;
 var current_step = 0;
 var pattern = [];
 
-// Algoritmo recursivo de Bjorklund (E(k, n))
+// Algoritmo de Bjorklund (E(k, n)) con validación estricta de límites
 function generate_euclidean(k, n) {
+    // Normalización de enteros seguros dentro del rango [1, 4096]
+    n = Math.max(1, Math.min(4096, Math.floor(Number(n) || 1)));
+    k = Math.max(0, Math.min(n, Math.floor(Number(k) || 0)));
+
     if (k <= 0) return new Array(n).fill(0);
     if (k >= n) return new Array(n).fill(1);
 
@@ -53,8 +58,13 @@ function generate_euclidean(k, n) {
 }
 
 function update_pattern() {
+    // Asegurar parámetros saneados
+    steps = Math.max(1, Math.min(4096, Math.floor(Number(steps) || 1)));
+    pulses = Math.max(0, Math.min(steps, Math.floor(Number(pulses) || 0)));
+    rotate = Math.trunc(Number(rotate) || 0);
+
     var raw = generate_euclidean(pulses, steps);
-    // Aplicar rotación circular (shift)
+    // Aplicar rotación circular segura (shift)
     pattern = [];
     var offset = ((rotate % steps) + steps) % steps;
     for (var i = 0; i < steps; i++) {
@@ -67,7 +77,7 @@ function update_pattern() {
 function bang() {
     if (inlet === 0) {
         if (pattern.length === 0) update_pattern();
-        var val = pattern[current_step % pattern.length];
+        var val = pattern[((current_step % pattern.length) + pattern.length) % pattern.length];
         outlet(1, val);
         current_step = (current_step + 1) % pattern.length;
     }
@@ -88,12 +98,14 @@ function list() {
 
 function msg_int(v) {
     if (inlet === 1) {
-        rotate = v;
+        rotate = Math.trunc(Number(v) || 0);
         update_pattern();
     } else {
         // Si entra un entero en inlet 0, lo interpretamos como paso a evaluar
         if (pattern.length > 0) {
-            outlet(1, pattern[v % pattern.length]);
+            var idx = Math.trunc(Number(v) || 0);
+            var safeIdx = ((idx % pattern.length) + pattern.length) % pattern.length;
+            outlet(1, pattern[safeIdx]);
         }
     }
 }

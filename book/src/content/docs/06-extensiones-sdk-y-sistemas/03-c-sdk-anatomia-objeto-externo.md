@@ -1,6 +1,6 @@
----
+﻿---
 title: "Módulo 6.3: El SDK de C de Max: Anatomía de un Objeto Externo Nativo"
-description: "Capítulo del curso de Max/MSP"
+description: "El SDK de C de Cycling '74: ciclo de vida de un external (ext_main, new, free), tabla de despacho, tipos de argumentos A_LONG/A_FLOAT/A_GIMME y thread-safety elemental."
 ---
 
 

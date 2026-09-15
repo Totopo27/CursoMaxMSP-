@@ -39,7 +39,7 @@ function cleanFile(filePath) {
   }
   if (content !== original) {
     fs.writeFileSync(filePath, content, 'utf8');
-    console.log(`Purgado de emojis: ${path.relative('d:/DocumentosDiscoD/CursoMaxMSP', filePath)}`);
+    console.log(`Purgado de emojis: ${path.relative(__dirname, filePath)}`);
   }
 }
 
@@ -57,14 +57,29 @@ function traverse(dir) {
   }
 }
 
-// Limpiar book/src/content/docs, book/docs y la raíz
-traverse('d:/DocumentosDiscoD/CursoMaxMSP/book/src/content/docs');
-traverse('d:/DocumentosDiscoD/CursoMaxMSP/book/docs');
-['d:/DocumentosDiscoD/CursoMaxMSP/CURRICULUM_MASTER.md', 
- 'd:/DocumentosDiscoD/CursoMaxMSP/MAPEO_CONCEPTUAL_BIBLIO.md',
- 'd:/DocumentosDiscoD/CursoMaxMSP/SOURCES_MASTER.md',
- 'd:/DocumentosDiscoD/CursoMaxMSP/PROTOCOLO_BIBLIOGRAFICO.md'].forEach(p => {
-  if (fs.existsSync(p)) cleanFile(p);
+// Raíz del repositorio: dos niveles arriba de book/ (donde vive este script)
+const REPO_ROOT = path.resolve(__dirname, '..', '..');
+const BOOK_DOCS = path.resolve(__dirname, 'src', 'content', 'docs');
+const BOOK_DOCS_ALT = path.resolve(__dirname, 'docs'); // directorio legacy opcional
+
+// Limpiar book/src/content/docs
+traverse(BOOK_DOCS);
+
+// Limpiar book/docs si existe
+if (fs.existsSync(BOOK_DOCS_ALT)) {
+  traverse(BOOK_DOCS_ALT);
+}
+
+// Limpiar archivos markdown de la raíz del repo
+[
+  'CURRICULUM_MASTER.md',
+  'MAPEO_CONCEPTUAL_BIBLIO.md',
+  'SOURCES_MASTER.md',
+  'PROTOCOLO_BIBLIOGRAFICO.md'
+].forEach(filename => {
+  const fullPath = path.join(REPO_ROOT, filename);
+  if (fs.existsSync(fullPath)) cleanFile(fullPath);
 });
 
 console.log('Operación de limpieza terminada. Todo el corpus está libre de emojis.');
+

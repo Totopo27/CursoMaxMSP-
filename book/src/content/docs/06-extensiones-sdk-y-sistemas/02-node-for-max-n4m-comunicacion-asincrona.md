@@ -1,6 +1,6 @@
 ---
 title: "Módulo 6.2: Node for Max (N4M): Procesamiento Asíncrono e IPC"
-description: "Capítulo del curso de Max/MSP"
+description: "Node for Max (N4M): comunicación asíncrona IPC entre Max y Node.js, ecosistema npm en tiempo real, servidores WebSocket sin latencia y aislamiento de cuelgues del proceso."
 ---
 
 
@@ -53,7 +53,7 @@ maxAPI.addHandler(maxAPI.MESSAGE_TYPES.BANG, () => {
 Abrir el parche interactivo: [`book/patches/modulo-06/laboratorio_23_node_for_max.maxpat`](/patches/modulo-06/laboratorio_23_node_for_max.maxpat)
 
 
-En el laboratorio de esta lección creamos un servidor WebSocket local con `ws` en Node.js que:
-- Escucha conexiones de navegadores web o dispositivos móviles.
-- Recibe datos de sensores de orientación (giroscopio/acelerómetro) en JSON.
-- Envía los valores de modulación en tiempo real hacia los sintetizadores de Max/MSP sin latencia perceptible.
+En el laboratorio de esta lección creamos un servidor HTTP REST local seguro (`servidor_analisis.js`) en Node.js que:
+- Escucha peticiones HTTP `POST /sensor` en loopback (`127.0.0.1`) con límite estricto de carga de 64 KiB para prevenir ataques DoS.
+- Valida y parsea datos de orientación (coordenadas numéricas `x`, `y`, `z`) provenientes de dispositivos móviles o aplicaciones externas.
+- Despacha los valores normalizados directo a Max/MSP (`maxAPI.outlet`) de forma no bloqueante y expone un endpoint `GET /health` para monitoreo de telemetría.

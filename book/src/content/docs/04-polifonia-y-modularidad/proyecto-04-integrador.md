@@ -1,6 +1,6 @@
----
+﻿---
 title: "Proyecto Integrador 04: Sintetizador Polifónico Multicore de 8 Voces con Asignación Dinámica y Mute Automático"
-description: "Capítulo del curso de Max/MSP"
+description: "Proyecto integrador Módulo 4: sintetizador polifónico de 8 voces con multihilo real, abstracciones reutilizables y control MPE (MIDI Polyphonic Expression) de grado escénico."
 ---
 
 

@@ -1,6 +1,6 @@
----
+﻿---
 title: "Proyecto Integrador 2: Motor de Presets Jerárquico con Morphing por Interpolación Multidimensional"
-description: "Capítulo del curso de Max/MSP"
+description: "Proyecto integrador Módulo 2: motor de presets jerárquico con morphing por interpolación multidimensional, serialización JSON con [dict] y recuperación determinista de estados complejos."
 ---
 
 

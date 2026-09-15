@@ -1,6 +1,6 @@
----
+﻿---
 title: "Lección 3.6: Filtrado Digital: Polos, Ceros, biquad~, lores~ y State Variable Filters (svf~)"
-description: "Capítulo del curso de Max/MSP"
+description: "Filtrado digital en MSP: teoría de polos y ceros, respuesta en frecuencia, coeficientes [biquad~], [lores~] y State Variable Filters [svf~]. Plano Z y estabilidad de filtros IIR."
 ---
 
 

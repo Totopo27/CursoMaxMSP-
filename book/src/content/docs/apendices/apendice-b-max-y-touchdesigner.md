@@ -1,6 +1,6 @@
----
+﻿---
 title: "Apéndice B: Interoperabilidad Multimedia: Max/MSP y TouchDesigner"
-description: "Capítulo del curso de Max/MSP"
+description: "Interoperabilidad Max/MSP y TouchDesigner: integración GPU por Spout de cero latencia, protocolo OSC sobre UDP y arquitecturas multimedia de bajo latencia multiproceso."
 ---
 
 

@@ -1,6 +1,6 @@
----
+﻿---
 title: "Proyecto Integrador 03: Sintetizador Híbrido FM-Sustractivo con Procesador de Retardo Analógico"
-description: "Capítulo del curso de Max/MSP"
+description: "Proyecto integrador Módulo 3: sintetizador FM híbrido de 2 operadores con envolventes anti-click, filtrado dinámico, delay analógico simulado, buffer~ y mezcla estéreo en MSP."
 ---
 
 

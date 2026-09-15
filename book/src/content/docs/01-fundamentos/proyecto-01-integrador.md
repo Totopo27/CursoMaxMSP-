@@ -1,6 +1,6 @@
----
+﻿---
 title: "Proyecto Integrador 1: Secuenciador Polirrítmico Diatónico Autónomo"
-description: "Capítulo del curso de Max/MSP"
+description: "Proyecto integrador Módulo 1: secuenciador polirrítmico diatónico autónomo con reloj maestro, cuantizador modal pentatónico, permutación circular con [zl.rot] y síntesis FM percusiva."
 ---
 
 
@@ -19,13 +19,13 @@ Este proyecto integra **la totalidad de los conceptos teóricos y prácticos des
 
 ---
 
-##  2. Diagrama de Arquitectura del Sistema
+## 2. Diagrama de Arquitectura del Sistema
 
 ![FIG 1.3 · Arquitectura del Sistema - Secuenciador Polirrítmico Diatónico](/assets/diagrams/diagrama_proyecto_01_arquitectura.svg)
 
 ---
 
-##  3. Desglose de Componentes
+## 3. Desglose de Componentes
 
 ### Componente A: El Master Clock y el Generador Polirrítmico
 * En lugar de usar dos metrónomos desincronizados, usamos un **reloj maestro único** a 125 ms (equivalente a semicorcheas a 120 BPM).
