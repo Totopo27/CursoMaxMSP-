@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Apéndice E: Inteligencia Artificial y Machine Learning en Max (`FluCoMa` y `nn~`)"
 description: "Inteligencia artificial y machine learning en Max: FluCoMa para análisis tímbrico descriptores, redes neuronales con nn~ y síntesis por codec neural RAVE en tiempo real."
 ---
@@ -108,7 +108,22 @@ En instalaciones interactivas y proyectos vocales asistidos por IA, disparar inf
 
 ---
 
-## 6. Laboratorio Práctico: Mapeo Gestual Neuronal (MLP Regressor)
+## 6. Mapeo Gestual Matricial y Reducción de Dimensionalidad: MnM Toolbox (IRCAM)
+
+*(Tratado fundamental de Frédéric Bevilacqua, Rémy Müller y Norbert Schnell, IRCAM Centre Pompidou).*
+
+Mucho antes de la eclosión de FluCoMa y las redes convolucionales profundas, el IRCAM formalizó las matemáticas del mapeo interactivo a través de la **MnM Toolbox** (creada por Norbert Schnell, autor del objeto fundamental `[zl]`, y Frédéric Bevilacqua):
+
+1. **El Problema del Mapeo Multidimensional Uno-a-Muchos**:
+   Conectar directamente 16 canales de sensores analógicos a 16 parámetros de un sintetizador mediante cables individuales produce un control caótico y poco musical. 
+2. **Análisis de Componentes Principales (PCA)**:
+   MnM introduce objetos de álgebra lineal en Max (`[mnm.pca]`, `[mnm.biplot]`) que computan en tiempo real la matriz de covarianza de las señales gestuales y proyectan los datos sobre sus **autovectores dominantes**. Esto reduce un flujo de 10 acelerómetros ruidosos a solo 2 o 3 coordenadas ortogonales continuas que capturan el 95% de la intención expresiva del intérprete humano.
+3. **Modelos Ocultos de Markov (HMM) para Reconocimiento Gestual**:
+   A través de `[mnm.ring]` y matrices de transición de estados continuos, MnM permite entrenar al parche para que reconozca trayectorias espaciales dinámicas (como el ataque de una batuta o el frotado de un arco) y dispare respuestas generativas sincrónicas en Max.
+
+---
+
+## 7. Laboratorio Práctico: Mapeo Gestual Neuronal (MLP Regressor)
 
 En el parche `lab_apendice_e_machine_learning.maxpat`:
 - Simulamos un regresor de red neuronal que aprende a interpolar 4 parámetros de un sintetizador FM complejo a partir de una posición bidimensional $(X, Y)$ en un pad táctil.

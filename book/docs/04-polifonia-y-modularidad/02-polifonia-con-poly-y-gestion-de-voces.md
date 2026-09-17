@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Lección 4.2: Polifonía Dinámica con poly~: Asignación de Voces, Enrutamiento (target), mute y thispoly~"
 description: "Polifonía escalable con [poly~]: asignación dinámica de voces, algoritmos de voice stealing, mensajes target y midievent para síntesis MIDI polifónica de grado profesional."
 ---
@@ -99,7 +99,24 @@ void poly_dsp_chain(t_poly *x, double **ins, double **outs, long frames) {
 
 ---
 
-## 5. Escenarios Reales de Producción
+## 5. Polifonía Algorítmica y Partituras Dinámicas en Tiempo Real
+
+La polifonía en Max no solo sirve para replicar acordes de teclado; es el motor para **procesos contrapuntísticos generativos y ensambles interactivos**:
+
+### 5.1. Cánones RCMC de Vuza y Teselación Temporal: Vuzalizer (Battista, Monopoli & Nicoletti, 2017)
+En su investigación sobre cánones rítmicos canónicos, los investigadores de los conservatorios de Avellino y Foggia implementaron en Max el objeto **Vuzalizer**, basado en la teoría de teselación rítmica del matemático Dan Vuza:
+- **El Canon RCMC (Rhythmical Canon of Maximal Category)**: Es una estructura polifónica donde múltiples voces ejecutan el **mismo patrón rítmico $A$** pero desfasadas en el tiempo según un conjunto de entradas $B$, de forma tal que la suma de todas las voces genera un pulso continuo perfecto:
+  $$A \oplus B = \mathbb{Z}_n$$
+- **Cero Silencios, Cero Colisiones**: En cada subdivisión temporal suena **exactamente una sola voz**. No hay silencios vacíos ni dos notas sonando simultáneamente. En `[poly~]`, esto permite programar cánones contrapuntísticos de complejidad infinita garantizando que la densidad polifónica y la carga del hilo de audio permanezcan estrictamente constantes.
+
+### 5.2. Notación Interactiva y Microtonalidad en Red: MaxScore (Didkovsky & Hajdu)
+Desarrollado en la Universidad Rockefeller y la Hochschule für Musik und Theater Hamburg, **MaxScore** conecta la síntesis polifónica de Max con partituras visuales dinámicas:
+- **Partituras Dinámicas en Red para Ensambles**: MaxScore envía fragmentos de partituras generadas algorítmicamente a tablets o pantallas de músicos en escena a través de WebSockets o OSC.
+- **Microtonalidad Rigurosa**: Mapea divisiones no convencionales de la octava (sistemas microtonales de 19, 31 o 72 tonos por octava) hacia instancias independientes de `[poly~]` mediante mensajes `target` y *pitch bend* por voz, resolviendo el problema histórico de la afinación justa (*Just Intonation*) en tiempo real.
+
+---
+
+## 6. Escenarios Reales de Producción
 
 1. **Sintetizador Polifónico de 16 Voces**: Un pad estéreo complejo con 2 osciladores por voz, filtro bicuadrático y generador de ruido que reduce su consumo de CPU del $65\%$ al $4\%$ cuando no hay teclas presionadas.
 2. **Generador de Enjambre de Granos (Granular Cloud Engine)**: Un `poly~ 64` donde cada voz reproduce un micro-grano de audio en una posición aleatoria de un buffer, activándose y muteándose en lapsos de 30 ms.

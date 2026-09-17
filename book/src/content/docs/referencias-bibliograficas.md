@@ -5,7 +5,7 @@ description: Compendio catalográfico integral de las fuentes primarias, tratado
 
 Este curso fundamenta cada decisión de diseño, algoritmo de procesamiento y paradigma de control en la literatura canónica de la música por computadora, la acústica física, la ingeniería de audio y la investigación académica contemporánea. 
 
-A continuación se presenta el corpus bibliográfico completo (25 obras fundamentales y tratados de investigación) estructurado en 4 áreas del conocimiento, con sus fichas catalográficas y los módulos del curso donde se integran sus postulados.
+A continuación se presenta el corpus bibliográfico completo (32 obras fundamentales y tratados de investigación) estructurado en 4 áreas del conocimiento, con sus fichas catalográficas y los módulos del curso donde se integran sus postulados.
 
 ---
 
@@ -214,6 +214,51 @@ A continuación se presenta el corpus bibliográfico completo (25 obras fundamen
 - **Publicaciones:** *LLM4OSC: Profile-Bound Natural Language Control with Open Sound Control* (2024) y *Towards Real-Time Human-AI Musical Co-Performance* (2024).
 - **Aporte al Curso:** Estado del arte en interacción estética hombre-máquina con modelos generativos modernos. Fundamentan el desacoplamiento de inferencia neuronal en Node for Max sin bloquear el hilo de audio de Max, y la traducción de intenciones expresivas en lenguaje natural hacia perfiles estrictamente tipados de control sonoro en tiempo real mediante OSC.
 - **Módulos Vinculados:** Módulo 6 (Lección 02: Node for Max y Lección 04: Proyecto Integrador).
+
+---
+
+
+### Jan C. Schacher & Philippe Kocher — *Ambisonics Spatialization Tools for Max/MSP*
+- **Institución:** Institute for Computer Music and Sound Technology (ICST) / Zurich School of Music, Drama and Dance (Suiza)
+- **Publicación:** Proceedings of the International Computer Music Conference (ICMC) | **Año:** 2006
+- **Aporte al Curso:** Especificación formal del paquete ICST Ambisonics para Max/MSP. Fundamenta la codificación y decodificación de Higher Order Ambisonics (HOA) en 3D (hasta 7mo orden), las rotaciones analíticas de Euler (Yaw, Pitch, Roll) sobre el dominio B-Format, y la optimización de decodificadores en fase (*In-Phase*) y de máxima energía (*Max rE*).
+- **Módulos Vinculados:** Apéndice F (Audio Espacial y SPAT).
+
+### Nils Peters, Tristan Matthews, Jonas Braasch & Stephen McAdams — *Spatial Sound Rendering in Max/MSP with ViMiC*
+- **Institución:** McGill University / CIRMMT (Montreal, Canadá) & Rensselaer Polytechnic Institute (EE.UU.)
+- **Publicación:** Proceedings of the International Computer Music Conference (ICMC) | **Año:** 2008
+- **Aporte al Curso:** Modelo de espacialización acústica basado en el control de micrófonos virtuales (Virtual Microphone Control - ViMiC). Formaliza el método de fuentes imagen (*Image-Source Method*) para la simulación precisa de reflexiones tempranas según coeficientes de absorción de paredes, y la síntesis de directividad polar continua de cápsulas (omni, cardioide, figura en 8).
+- **Módulos Vinculados:** Apéndice F (Audio Espacial) y Módulo 3 (Lección 07: Delays y Reverberación).
+
+### Frédéric Bevilacqua, Rémy Müller & Norbert Schnell — *MnM: A Max/MSP Mapping Toolbox*
+- **Institución:** Real Time Applications Team / IRCAM Centre Pompidou (París, Francia)
+- **Publicación:** Proceedings of the Conference on New Interfaces for Musical Expression (NIME)
+- **Aporte al Curso:** Obra fundacional desarrollada por Norbert Schnell (creador de [zl]). Establece los principios de álgebra lineal aplicados al mapeo gestual en tiempo real: reducción de dimensionalidad con PCA (*Principal Component Analysis*), modelos ocultos de Markov (HMM) continuos y calibración matricial entre sensores y síntesis sonora.
+- **Módulos Vinculados:** Módulo 1 (Lección 03: Listas zl), Módulo 2 (Morphing) y Apéndice E (IA y Machine Learning).
+
+### Iain C.T. Duncan — *Scheduling Musical Events in Max/MSP with Scheme For Max*
+- **Institución:** University of Victoria (Canadá)
+- **Publicación:** Proceedings of the Scheme and Functional Programming Workshop | **Año:** 2021
+- **Aporte al Curso:** Análisis riguroso sobre la arquitectura del Scheduler de Max y la cola de retardos temporales (*Delta Queue*). Demuestra cómo las pausas de recolección de basura (*Garbage Collection spikes*) en motores imperativos tipo V8/JavaScript introducen jitter rítmico inaceptable (>3 ms), y fundamenta la ejecución determinista en tiempo real mediante programación funcional embebida (s7 Scheme) vinculada directamente a t_clock.
+- **Módulos Vinculados:** Módulo 1 (Lección 02: Scheduler y Timing) y Módulo 6 (Lección 01: JavaScript en Max).
+
+### Nolan Lem & Yann Orlarey — *Kuroscillator: A Max-MSP Object for Sound Synthesis using Coupled-Oscillator Networks*
+- **Institución:** Center for Computer Research in Music and Acoustics (CCRMA, Stanford University) & GRAME (Francia)
+- **Publicación:** International Symposium on Computer Music Multidisciplinary Research (CMMR) | **Año:** 2019
+- **Aporte al Curso:** Implementación del modelo físico-matemático de Kuramoto para redes de osciladores no lineales acoplados en tiempo real. Fundamenta la emergencia de sincronización de fase colectiva, parámetros de orden macroscópico y comportamientos acústicos auto-organizados en Max.
+- **Módulos Vinculados:** Módulo 5 (Lección 03: Modelado Físico y Dinámica No Lineal en Gen~).
+
+### Nick Didkovsky & Georg Hajdu — *MaxScore: Music Notation in Max/MSP*
+- **Institución:** Rockefeller University (New York) & Hochschule für Musik und Theater Hamburg (Alemania)
+- **Publicación:** Proceedings of the International Computer Music Conference (ICMC) | **Año:** 2008
+- **Aporte al Curso:** Tratado sobre notación musical interactiva y partituras dinámicas distribuidas por red en tiempo real. Resuelve la visualización de digitaciones microtonales complejas (sistemas de división múltiple de la octava) coordinadas con instancias de poly~ y síntesis en vivo.
+- **Módulos Vinculados:** Módulo 4 (Lección 02: Polifonía) y Apéndice G (Ecosistema Creativo).
+
+### Alba Francesca Battista, Nicola Monopoli & Matteo Nicoletti — *VUZALIZER: A Max/MSP Object for Real-time Generation of RCMC Canons*
+- **Institución:** Conservatorio D. Cimarosa (Avellino) & Conservatorio U. Giordano (Foggia, Italia)
+- **Publicación:** Computer Science and Information Technology, Vol. 5(2) | **Año:** 2017
+- **Aporte al Curso:** Formalización de los cánones rítmicos canónicos de categoría máxima (RCMC) de Dan Vuza en Max/MSP. Modela la polifonía como teselación temporal estricta ($A oplus B = mathbb{Z}_n$), garantizando flujos polifónicos continuos con densidad determinista constante sin solapamiento de notas ni silencios.
+- **Módulos Vinculados:** Módulo 4 (Lección 02: Polifonía con poly~).
 
 ---
 

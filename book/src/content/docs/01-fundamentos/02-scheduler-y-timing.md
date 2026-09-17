@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Módulo 1.2: El Scheduler de Max, Jerarquía Temporal y Psicoacústica del Ritmo"
 description: "Arquitectura de tres hilos de Max: Scheduler, Overdrive y SIAI. Psicoacústica del jitter rítmico, t_clock, t_qelem y desacople de tareas con [defer]/[deferlow]."
 ---
@@ -54,11 +54,11 @@ En **Options  Audio Status**, estas dos opciones configuran el comportamiento de
 * En lugar de usar el reloj de la placa madre de la PC, los eventos de Max se calculan en el instante exacto en que la tarjeta de sonido solicita el siguiente bloque de muestras de audio.
 * **Beneficio:** Cero desviación de reloj entre eventos MIDI/control y señales continuas de audio de MSP.
 
-> **Gotcha Crítico de los Foros Oficiales (JavaScript y UI Timing):**
-> Un error clásico debatido en la comunidad es programar secuenciadores rítmicos dentro de objetos `[js]` (JavaScript) o disparar metros a través de botones de UI. 
-> - **El motor de JavaScript (`[js]`) y la Live API corren obligatoriamente en el Main Thread (baja prioridad).**
-> - Aunque tengas `Overdrive` y `SIAI` activados, si el pulso pasa por código JS o depende de un elemento de interfaz, sufrirá jitter inmediato cada vez que muevas el mouse o abras un menú.
-> - **Solución de arquitectura:** La generación del pulso temporal debe residir 100% en objetos nativos del Scheduler (`[metro]`, `[delay]`, `[transport]`, `[phasor~]`), relegando JS solo a tareas de cómputo analítico o manipulación de datos en reposo.
+> **Fundamentación Teórica e Investigación (Iain Duncan, University of Victoria, 2021):**
+> En su investigación *Scheduling Musical Events in Max/MSP with Scheme For Max*, Iain Duncan formaliza la anatomía temporal del Scheduler y el dilema de los lenguajes de scripting dinámicos en tiempo real:
+> - **El problema de la Recolección de Basura (Garbage Collection Spikes):** En motores como JavaScript (`[js]`), la recolección de basura (*Stop-the-World GC*) pausa la ejecución de forma no determinista durante lapsos de entre 5 y 40 milisegundos. Dado que el oído humano detecta variaciones de pulso mayores a 3 ms, ejecutar la lógica temporal o loops de secuenciación dentro de un motor con GC destruye la micro-precisión del groove musical.
+> - **La Cola de Retardo Temporal (*Delta Queue*):** Max mantiene una lista enlazada ordenada en tiempo en el Scheduler (`t_clock`). Cuando SIAI está activo, esta cola se atiende en el borde exacto de cada bloque de audio.
+> - **Regla Arquitectónica de Duncan:** Nunca delegues la temporización a temporizadores internos de JavaScript (`setTimeout` o llamadas asíncronas). El reloj debe ser siempre gobernado por el Scheduler de Max (`[metro]`, `[transport]` o rutinas C/Min embebidas que programan directamente en la cola `t_clock`), manteniendo el código interpretado exclusivamente para la evaluación de eventos discretos o cálculo perezoso.
 
 ---
 

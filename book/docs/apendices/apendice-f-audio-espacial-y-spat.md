@@ -38,7 +38,25 @@ En el tratado *Síntesis Espacial de Sonido (UNQ / CMMAS)*, Oscar Pablo Di Lisci
 #### Decodificación de Fase Corregida / Control de Opuestos (Gordon Monro / Malham)
 La decodificación directa general recrea un frente de onda ideal en un punto central infinitesimal (*sweet spot*), pero genera altavoces que emiten señales en contrafase respecto a los opuestos. Como documenta Di Liscia, en una sala de conciertos esto degrada severamente la localización para los oyentes periféricos. 
 Para resolverlo, se aplican **ponderaciones en fase (*in-phase decoding*)** donde la ganancia de cada altavoz $k$ ubicado en $(\theta_k, \phi_k)$ garantiza que todos los parlantes colaboren constructivamente sin cancelaciones destructivas:
-$$P_k = \frac{1}{N} \left( W \sqrt{2} + \frac{2}{3}(X \cos \theta_k + Y \sin \theta_k) \right)$$
+$P_k = \frac{1}{N} \left( W \sqrt{2} + \frac{2}{3}(X \cos \theta_k + Y \sin \theta_k) \right)$
+
+### 1.3. Las Herramientas ICST Ambisonics de Zurich (Schacher & Kocher, ICMC 2006)
+Desarrollado en el *Institute for Computer Music and Sound Technology* (Zurich), el paquete **ICST Ambisonics** es una de las implementaciones canónicas de código abierto más potentes para Max/MSP:
+- **Higher Order Ambisonics (HOA) Escalable**: Soporta codificación y decodificación 3D desde primer orden (4 canales) hasta 7mo orden (64 canales de armónicos esféricos).
+- **Manipulación Espacial en el Dominio B-Format**: En lugar de recalcular las posiciones de los altavoces ante cada movimiento de escena, los objetos de ICST permiten **rotar, inclinar y ladear (*Yaw, Pitch, Roll*) el campo sonoro tridimensional completo** operando directamente sobre la matriz ortogonal de señales B-Format mediante multiplicaciones de armónicos esféricos.
+- **Modos de Decodificación Optimizada**:
+  - *Basic / Strict*: Reconstrucción ideal del frente de onda en el centro geométrico.
+  - *Max $r_E$*: Optimiza el vector de energía para maximizar la nitidez direccional percibida en recintos medianos.
+  - *In-Phase*: Anula totalmente los lóbulos de energía negativa en los altavoces traseros/opuestos, expandiendo el área de escucha útil (*sweet spot*) para toda la audiencia en auditorios.
+
+### 1.4. ViMiC: Virtual Microphone Control (Peters, Matthews, Braasch & McAdams, CIRMMT / McGill, 2008)
+Frente a los métodos vectoriales (VBAP) o de campo difuso (Ambisonics), el paradigma **ViMiC** (*Virtual Microphone Control*) propone una aproximación psicoacústica basada en **técnicas de microfonía física de estudio**:
+1. **Configuración de Cápsulas Virtuales**: El usuario define en el espacio 3D de Max un arreglo de micrófonos virtuales (pares espaciados AB, pares coincidentes XY estéreo, configuraciones binaurales o arreglos multicanal 5.1 / 7.1).
+2. **Directividad Paramétrica Continuamente Variable**: Cada cápsula virtual emula diagramas polares analógicos reales según la ecuación:
+   $D(\theta) = (1 - alpha) + alpha \cos(\theta)$
+   donde $alpha = 0.0$ es omnidireccional, $alpha = 0.5$ cardioide, y $alpha = 1.0$ figura en 8 (bidireccional).
+3. **Reflexiones Tempranas por el Método de Fuentes Imagen (*Image-Source Method*)**:
+   Cada pared, suelo y techo de la sala acústica virtual actúa como un reflector especular. Max calcula la posición de fuentes virtuales espejadas, inyectando los retardos temporales $\tau_i = d_i / c$ y las atenuaciones de pared correspondientes a los coeficientes de absorción de los materiales, proveyendo una sensación de envolvente y tamaño de sala hiperrealista sin sobrecargar la CPU.
 
 ---
 

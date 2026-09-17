@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Módulo 6.1: JavaScript en Max: Arquitectura de los Motores `[js]` y `[v8]`"
 description: "JavaScript en Max con [js] y el motor V8: scripting de lógica generativa, acceso a la Live API, limitaciones de hilo principal y mejores prácticas para código seguro en el Scheduler."
 ---
@@ -90,7 +90,17 @@ function instanciar_cadena(num_filtros) {
 
 ---
 
-## 4. Laboratorio Práctico: Generador de Ritmos Euclidianos
+## 4. Limitaciones Temporales de `[js]`: Recolección de Basura (Iain Duncan, 2021)
+
+Como demuestra Iain Duncan (*Scheduling Musical Events in Max/MSP with Scheme For Max*, Univ. de Victoria), el objeto `[js]` presenta un límite arquitectónico estricto para la música algorítmica en vivo:
+
+1. **Pausas de Recolección de Basura (*Stop-the-World GC*)**: El motor V8 de JavaScript crea y destruye objetos constantemente en el *heap*. Cuando el recolector de basura se activa, congela la ejecución del script durante 5 a 40 ms. En un contexto rítmico a 120 BPM, un retraso de 10 ms destruye el groove y desincroniza la polifonía.
+2. **Confinamiento al Main Thread**: `[js]` se ejecuta fuera del Scheduler de alta prioridad. Si el usuario mueve un slider en la interfaz gráfica o abre un menú en el sistema operativo, los eventos de JavaScript se encolan y sufren *jitter* masivo.
+3. **Criterio de Diseño Senior**: Utilizá `[js]` exclusivamente para **manipulación de estructuras complejas en reposo, transformaciones de partituras y lógica de control asíncrona**. Para secuenciación musical determinista a prueba de balas, la temporización debe residir en objetos nativos de Max (`[metro]`, `[transport]`), extensiones C/C++ (`Min-DevKit`) o entornos funcionales sin pausas de GC como Scheme For Max (`s7`).
+
+---
+
+## 5. Laboratorio Práctico: Generador de Ritmos Euclidianos
 
 Para poner en práctica JavaScript dentro de Max con una aplicación musical compleja, implementaremos el **Algoritmo de Bjorklund (Ritmos Euclidianos)**. Este algoritmo distribuye $K$ pulsos (golpes) lo más uniformemente posible a lo largo de un ciclo de $N$ subdivisiones, resolviendo el problema de la misma forma que el algoritmo de Euclides halla el máximo común divisor (MCD).
 

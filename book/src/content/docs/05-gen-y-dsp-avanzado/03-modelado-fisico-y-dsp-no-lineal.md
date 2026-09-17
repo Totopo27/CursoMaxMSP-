@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Lección 5.3: Modelado Físico y DSP No Lineal: Cuerdas Karplus-Strong, Waveguides y Ecuaciones Diferenciales"
 description: "Modelado físico y DSP no lineal en gen~: síntesis por guía de onda digital (Karplus-Strong), resonadores modales, saturación analógica tanh() y algoritmos de Runge-Kutta."
 ---
@@ -59,6 +59,15 @@ Bajo la condición de estabilidad de Courant-Friedrichs-Lewy ($\text{CFL} \le 1$
 Como expone Edmar Soria en *Procedural / Sonora*, cuando los instrumentos acústicos son forzados a regímenes extremos (sobre-presión del arco sobre la cuerda o membranas con rigidez no lineal), la respuesta deja de ser lineal y entra en el territorio de los **sistemas dinámicos discretos no lineales** gobernados por mapas caóticos (como el mapa logístico o el atractor de Hénon):
 $$x_{n+1} = 1 - a x_n^2 + y_n, \quad y_{n+1} = b x_n$$
 Al acoplar estos mapas a la excitación de guías de onda dentro de `[gen~]`, el instrumento digital exhibe bifurcaciones periódicas, armónicos sub-graves y comportamientos acústicos orgánicos idénticos a los de instrumentos orquestales reales en manos de músicos virtuosos.
+
+### Redes de Osciladores Acoplados de Kuramoto: Kuroscillator (Nolan Lem & Yann Orlarey, CCRMA / GRAME, 2019)
+En su investigación sobre síntesis sonora basada en dinámicas colectivas, Nolan Lem (CCRMA Stanford) y Yann Orlarey (GRAME) formalizan el **modelo de Kuramoto** para redes de $N$ osciladores no lineales acoplados en tiempo real dentro de Max:
+
+$$\frac{d\theta_i}{dt} = \omega_i + \frac{K}{N} \sum_{j=1}^N \sin(\theta_j - \theta_i)$$
+
+donde $\theta_i$ es la fase del oscilador $i$, $\omega_i$ es su frecuencia angular intrínseca, y $K$ es la constante de acoplamiento mutuo.
+- **Transición de Fase y Parámetro de Orden**: Al aumentar $K$, la red pasa de un estado caótico incoherente (ruido de batimiento desordenado) a un régimen de **sincronización de fase colectiva espontánea** (modo unísono resonante).
+- **Implementación Muestra a Muestra en `gen~`**: En MSP estándar, resolver la interacción cruzada de $N \times N$ osciladores introduce un retardo de bloque que desestabiliza la ecuación diferencial. En `gen~`, las fases se actualizan e integran en memoria contigua utilizando arrays de diferencias angulares sin retardo parásito, permitiendo emular fenómenos acústicos emergentes como el canto sincronizado de cigarras, aplausos colectivos o batimientos microtonales densos.
 
 ---
 
