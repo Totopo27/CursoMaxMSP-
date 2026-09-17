@@ -1,0 +1,87 @@
+<svg viewBox="0 0 940 280" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+    <marker id="arr-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arr-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#22c55e"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="22" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">LIVE OBJECT MODEL (LOM): LA TRÍADA CANÓNICA DE OBJETOS EN MAX FOR LIVE</text>
+  <text x="915" y="22" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG H.2 · HIERARCHICAL NAVIGATION, REACTIVE OBSERVATION &amp; MUTATION</text>
+  <line x1="25" y1="30" x2="915" y2="30" stroke="#27272a" stroke-width="1"/>
+
+  <!-- NODO 1: LIVE.PATH (NAVEGADOR) -->
+  <g transform="translate(25, 55)">
+    <rect width="270" height="190" rx="5" fill="#18181b" stroke="#eb6c36" stroke-width="1.3" />
+    <rect width="270" height="22" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+    <rect y="17" width="270" height="5" fill="rgba(235, 108, 54, 0.18)" />
+    <text x="12" y="15" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700">1. NAVEGACIÓN JERÁRQUICA</text>
+    
+    <text x="14" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="12" font-weight="700">[live.path]</text>
+    <text x="14" y="64" fill="#fed7aa" font-size="8.5">Navega el árbol del Live Set:</text>
+    <text x="14" y="80" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8">path live_set tracks 0 clip_slots 0</text>
+    
+    <rect x="14" y="98" width="242" height="65" rx="3" fill="#121318" stroke="#3f3f46" stroke-width="0.8" />
+    <text x="22" y="118" fill="#e4e4e7" font-size="8.5">Resuelve la ruta y emite:</text>
+    <text x="22" y="136" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="10" font-weight="700">id 1248 (Puntero al Nodo)</text>
+    <text x="22" y="152" fill="#71717a" font-size="7.5">Referencia persistente al objeto Live</text>
+  </g>
+
+  <!-- FLECHAS DE DISTRIBUCIÓN DEL ID -->
+  <path d="M 295 150 L 345 105" fill="none" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arr-blue)" />
+  <text x="325" y="120" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700">id</text>
+
+  <path d="M 295 150 L 345 195" fill="none" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arr-green)" />
+  <text x="325" y="185" fill="#22c55e" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700">id</text>
+
+  <!-- NODO 2: LIVE.OBSERVER (OBSERVACIÓN) -->
+  <g transform="translate(345, 50)">
+    <rect width="270" height="95" rx="5" fill="#18181b" stroke="#38bdf8" stroke-width="1.2" />
+    <rect width="270" height="22" rx="5" fill="#27272a" />
+    <rect y="17" width="270" height="5" fill="#27272a" />
+    <text x="12" y="15" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="8" font-weight="700">2. ESCUCHA REACTIVA ASÍNCRONA</text>
+    
+    <text x="14" y="42" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="700">[live.observer property playing_status]</text>
+    <text x="14" y="60" fill="#cbd5e1" font-size="8.5">• Escucha cambios sin saturar polling</text>
+    <text x="14" y="76" fill="#38bdf8" font-size="8.5">Emite inmediatamente: 1 (Play) / 0 (Stop)</text>
+  </g>
+
+  <!-- NODO 3: LIVE.OBJECT (MUTACIÓN Y CONTROL) -->
+  <g transform="translate(345, 155)">
+    <rect width="270" height="95" rx="5" fill="#18181b" stroke="#22c55e" stroke-width="1.2" />
+    <rect width="270" height="22" rx="5" fill="#27272a" />
+    <rect y="17" width="270" height="5" fill="#27272a" />
+    <text x="12" y="15" fill="#22c55e" font-family="ui-monospace, monospace" font-size="8" font-weight="700">3. MUTACIÓN Y CONTROL ACTIVO</text>
+    
+    <text x="14" y="42" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="700">[live.object]</text>
+    <text x="14" y="60" fill="#bbf7d0" font-size="8.5">• Mensaje set volume 0.85</text>
+    <text x="14" y="76" fill="#22c55e" font-size="8.5">• Llamadas RPC: call fire / call duplicate</text>
+  </g>
+
+  <!-- PANEL DERECHO: ABLETON LIVE HOST SET -->
+  <g transform="translate(645, 55)">
+    <rect width="270" height="190" rx="5" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+    <rect width="270" height="22" rx="5" fill="#27272a" />
+    <rect y="17" width="270" height="5" fill="#27272a" />
+    <text x="12" y="15" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">ESTRUCTURA DEL HOST DAW</text>
+    
+    <text x="14" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="600">Ableton Live Session Engine</text>
+    <text x="14" y="62" fill="#fed7aa" font-size="8.5">• Pistas de Audio y MIDI</text>
+    <text x="14" y="77" fill="#fed7aa" font-size="8.5">• Clips y Ranuras de Lanzamiento</text>
+    <text x="14" y="92" fill="#fed7aa" font-size="8.5">• Dispositivos, Instrumentos y VSTs</text>
+    <text x="14" y="107" fill="#fed7aa" font-size="8.5">• Racks de Efectos y Envíos/Retornos</text>
+
+    <rect x="14" y="122" width="242" height="48" rx="3" fill="#121318" stroke="#3f3f46" stroke-width="0.8" />
+    <text x="22" y="142" fill="#22c55e" font-size="8">Sincronía bidireccional atómica</text>
+    <text x="22" y="156" fill="#71717a" font-size="7.5">Control sin fisuras por C++ API interna</text>
+  </g>
+
+  <path d="M 615 97 L 645 110" fill="none" stroke="#38bdf8" stroke-width="1.2" marker-end="url(#arr-blue)" />
+  <path d="M 615 202 L 645 190" fill="none" stroke="#22c55e" stroke-width="1.2" marker-end="url(#arr-green)" />
+</svg>

@@ -61,21 +61,7 @@ Los controles visuales genéricos de Max (`dial`, `slider`, `number`) no están 
 * `[live.gain~]`: Fader de ganancia logarítmica calibrado en decibeles con medidor RMS/Pico.
 * `[live.meter~]`: Vúmetro de audio estéreo de alta eficiencia gráfica.
 
-```
-                  ┌──────────────────────┐
-                  │     [live.dial]      │
-                  │   Type: Float        │
-                  │   Range: 20. - 20000.│
-                  │   Unit: Hz           │
-                  │   Exponent: 3.5      │
-                  └──────────┬───────────┘
-                             │
-     ┌───────────────────────┴───────────────────────┐
-     ▼                                               ▼
-[Automatización en Live]                      [Audio Thread / DSP]
-Líneas de envolvente en el clip               [lores~] / [biquad~]
-Guardado automático en el .als
-```
+![FIG H.1 · Parameter Mode Enabled, DAW Automation & DSP Thread](/assets/diagrams/diagrama_m4l_live_ui_parametros.svg)
 
 ### Parameter Mode Enabled y la Pila de Undo
 Cuando un control Live UI tiene activado el atributo `Parameter Mode Enabled` (por defecto):
@@ -98,14 +84,7 @@ A través del LOM es posible:
 
 ### La Tríada Canónica de Objetos LOM:
 
-```
-[live.path]     ──► Navega la ruta dentro del árbol del proyecto.
-      │ (id del objeto encontrado)
-      ▼
-[live.observer] ──► Escucha cambios en tiempo real y emite su nuevo valor.
-      o
-[live.object]   ──► Modifica atributos o ejecuta métodos de acción (call).
-```
+![FIG H.2 · Hierarchical Navigation, Reactive Observation & Mutation](/assets/diagrams/diagrama_m4l_lom_triada.svg)
 
 #### 1. `[live.path]` (Navegación del Árbol Jerárquico)
 Navega el árbol mediante sintaxis de ruta (*Path Syntax*) o palabras clave relativas:
