@@ -4,7 +4,8 @@ description: "Síntesis FM y modulación de fase: la matemática de John Chownin
 ---
 
 
-> *"La síntesis FM es la alquimia del audio digital: con solo dos osciladores sinusoidales simples, podemos generar desde la calidez armónica de un clarinete hasta el brillo metálico de un gong tibetano."*
+> *"La síntesis FM es la alquimia del audio digital: con solo dos osciladores sinusoidales simples, podemos generar desde la calidez armónica de un clarinete hasta el brillo metálico de un gong tibetano."*  
+> — **John Chowning**, *The Synthesis of Complex Audio Spectra by Means of Frequency Modulation*
 
 ---
 

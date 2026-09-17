@@ -4,7 +4,8 @@ description: "Generación de señales básicas en MSP: [cycle~], [phasor~], [saw
 ---
 
 
-> *"En matemáticas, una onda de diente de sierra tiene un salto instantáneo vertical con infinitos armónicos; en audio digital, los infinitos armónicos rebotan contra el límite de Nyquist y destruyen tu timbre. Quien no comprende el aliasing, programa generadores de ruido en lugar de sintetizadores."*
+> *"En matemáticas, una onda de diente de sierra tiene un salto instantáneo vertical con infinitos armónicos; en audio digital, los infinitos armónicos rebotan contra el límite de Nyquist y destruyen tu timbre. Quien no comprende el aliasing, programa generadores de ruido en lugar de sintetizadores."*  
+> — **David Creasey**, *Audio Processes: Musical Analysis, Modification, Synthesis*
 
 ---
 

@@ -4,7 +4,8 @@ description: "El ecosistema [pattr] y [pattrstorage]: gestión global de presets
 ---
 
 
-> *"Un preset no es una fotografía estática del pasado; es un punto vectorial en un espacio n-dimensional por el que podemos viajar continuamente."*
+> *"Un preset no es una fotografía estática del pasado; es un punto vectorial en un espacio n-dimensional por el que podemos viajar continuamente."*  
+> — **Alessandro Cipriani & Maurizio Giri**, *Música Electrónica y Diseño Sonoro: Teoría y Práctica con Max 8*
 
 ---
 

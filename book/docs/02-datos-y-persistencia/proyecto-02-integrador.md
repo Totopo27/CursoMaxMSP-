@@ -4,7 +4,8 @@ description: "Proyecto integrador Módulo 2: motor de presets jerárquico con mo
 ---
 
 
-> *"Un sintetizador profesional no es solo un conjunto de osciladores y filtros; es un gestor de estados capaz de viajar fluidamente por un hiperespacio de timbres sin artefactos, caídas de audio ni saltos espurios."*
+> *"Un sintetizador profesional no es solo un conjunto de osciladores y filtros; es un gestor de estados capaz de viajar fluidamente por un hiperespacio de timbres sin artefactos, caídas de audio ni saltos espurios."*  
+> — **V.J. Manzo**, *Max/MSP/Jitter for Music: A Practical Guide to Developing Interactive Music Systems*
 
 ---
 

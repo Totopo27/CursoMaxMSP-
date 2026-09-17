@@ -4,7 +4,8 @@ description: "Aritmética de audio en MSP: escalamiento de señal, Ring Modulati
 ---
 
 
-> *"Multiplicar dos señales de audio no es un simple control de volumen; es una colisión trigonométrica que crea nuevas frecuencias que jamás existieron en los osciladores originales."*
+> *"Multiplicar dos señales de audio no es un simple control de volumen; es una colisión trigonométrica que crea nuevas frecuencias que jamás existieron en los osciladores originales."*  
+> — **Jean-Michel Réveillac**, *Musical Sound Effects: Analog and Digital Sound Processing*
 
 ---
 

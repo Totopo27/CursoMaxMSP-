@@ -4,7 +4,8 @@ description: "El paradigma Dataflow de Max/MSP: inlets calientes y fríos, grafo
 ---
 
 
-> *"En Max, el orden de las cosas no está en las líneas de texto, sino en la teoría de grafos, en la organología acústica y en la pila de llamadas del procesador."*
+> *"En Max, el orden de las cosas no está en las líneas de texto, sino en la teoría de grafos, en la organología acústica y en la pila de llamadas del procesador."*  
+> — **Miller Puckette**, *The Theory and Technique of Electronic Music*
 
 ---
 

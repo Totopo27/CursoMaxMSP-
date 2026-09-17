@@ -4,7 +4,8 @@ description: "Proyecto integrador Módulo 1: secuenciador polirrítmico diatóni
 ---
 
 
-> *"La robustez de un sistema en Max se demuestra cuando el parche es capaz de generar procesos musicales complejos a partir de reglas arquitectónicas mínimas, deterministas y matemáticamente estables."*
+> *"La robustez de un sistema en Max se demuestra cuando el parche es capaz de generar procesos musicales complejos a partir de reglas arquitectónicas mínimas, deterministas y matemáticamente estables."*  
+> — **Todd Winkler**, *Composing Interactive Music: Techniques and Ideas Using Max*
 
 ---
 

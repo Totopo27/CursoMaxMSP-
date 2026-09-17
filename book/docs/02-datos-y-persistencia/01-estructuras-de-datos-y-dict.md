@@ -4,7 +4,8 @@ description: "Estructuras de datos persistentes en Max: [table], [coll] y [dict]
 ---
 
 
-> *"Un algoritmo sin memoria es solo una función reactiva; con memoria se convierte en un sistema musical vivo."*
+> *"Un algoritmo sin memoria es solo una función reactiva; con memoria se convierte en un sistema musical vivo."*  
+> — **Robert Rowe**, *Machine Musicianship*
 
 ---
 

@@ -4,7 +4,8 @@ description: "Comunicación inter-patch sin cables en Max: [send]/[receive], [fo
 ---
 
 
-> *"Tirar un cable en Max crea una autopista determinista; eliminar el cable crea un éter de difusión. Quien no comprende el alcance de sus variables globales, construye sistemas caóticos que colapsan al escalar."*
+> *"Tirar un cable en Max crea una autopista determinista; eliminar el cable crea un éter de difusión. Quien no comprende el alcance de sus variables globales, construye sistemas caóticos que colapsan al escalar."*  
+> — **David Zicarelli**, *How I Learned to Love a Patching Language*
 
 ---
 

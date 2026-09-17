@@ -4,7 +4,8 @@ description: "La frontera señal/control en MSP: por qué existe la tilde (~), a
 ---
 
 
-> *"En el mundo del control, el tiempo avanza a saltos cuando un evento ocurre; en el mundo de la señal, el tiempo es un río inmutable de 48.000 muestras por segundo que jamás puede detenerse."*
+> *"En el mundo del control, el tiempo avanza a saltos cuando un evento ocurre; en el mundo de la señal, el tiempo es un río inmutable de 48.000 muestras por segundo que jamás puede detenerse."*  
+> — **Miller Puckette**, *The Theory and Technique of Electronic Music*
 
 ---
 

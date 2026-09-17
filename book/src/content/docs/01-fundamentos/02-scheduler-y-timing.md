@@ -4,7 +4,8 @@ description: "Arquitectura de tres hilos de Max: Scheduler, Overdrive y SIAI. Ps
 ---
 
 
-> *"El tiempo en la música por computadora no es una línea uniforme; es una jerarquía de velocidades que va desde el micro-tiempo del timbre hasta el macro-tiempo de la forma musical."*
+> *"El tiempo en la música por computadora no es una línea uniforme; es una jerarquía de velocidades que va desde el micro-tiempo del timbre hasta el macro-tiempo de la forma musical."*  
+> — **Curtis Roads**, *The Computer Music Tutorial*
 
 ---
 

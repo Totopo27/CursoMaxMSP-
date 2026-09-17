@@ -4,7 +4,8 @@ description: "Los átomos de Max: tipado dinámico por etiquetas (bang, int, flo
 ---
 
 
-> *"En la computación de flujo de datos, la eficiencia no se mide en líneas de código, sino en la contigüidad espacial de la memoria y en el costo de serialización de cada mensaje."*
+> *"En la computación de flujo de datos, la eficiencia no se mide en líneas de código, sino en la contigüidad espacial de la memoria y en el costo de serialización de cada mensaje."*  
+> — **Norbert Schnell**, *IRCAM Real-Time Applications Team*
 
 ---
 
