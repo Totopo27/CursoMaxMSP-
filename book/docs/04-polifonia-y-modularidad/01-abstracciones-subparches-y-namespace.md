@@ -62,6 +62,32 @@ Instancia 2 (ID 1025):  [send 1025_volumen] ---> [receive 1025_volumen]  (Aislad
 
 ---
 
+
+### C. Patrón de Diseño: Argument Fallback Dinámico (`ab.sus`)
+
+Si bien el objeto `[patcherargs]` resuelve con elegancia los valores por defecto estáticos en el instante de carga del parche, en sistemas de audio interactivo surge un problema recurrente durante el flujo dinámico de datos: **¿qué ocurre si un mensaje de control envía un `0` o un valor nulo que desestabiliza el algoritmo interno?**
+
+Para resolver esto con máxima economía de objetos, se utiliza el patrón **`ab.sus`** (*Argument Substitution*):
+
+```text
+[ inlet (frecuencia / control) ]
+               │
+             [ f ]
+               │
+          [ sel 0. ]
+          ├── 0. (bang) ──> [ message #1 ] ──> [ outlet ]
+          └── else (val) ─────────────────────> [ outlet ]
+```
+
+#### Mecánica de Ejecución:
+1. **Detección de Valor Cero/Nulo**: Al entrar un número flotante por el inlet, pasa por `[sel 0.]`.
+2. **Disparo del Argumento por Defecto**: Si el valor es exactamente `0.` (o la entrada llega vacía), `[sel 0.]` emite un `bang` por su salida izquierda, disparando la caja de mensaje `[#1]`. De este modo, la abstracción sustituye el cero por el valor por defecto configurado al instanciarla (ej. `440.`).
+3. **Paso Transparente**: Si entra cualquier valor distinto de cero (ej. `880.`), sale inmediatamente por la salida derecha (*match fail*) de `[sel 0.]` hacia el outlet sin alteración.
+
+Este patrón desacopla la validación de límites dentro de módulos DSP, garantizando que un oscilador o filtro jamás reciba una frecuencia de $0	ext{ Hz}$ que congele los cálculos internos.
+
+---
+
 ## 3. Bajo el Capó: El Objeto `t_patcher` y la Tabla de Símbolos en el SDK de Max
 
 En el código fuente en C de Max (`ext_obex.h`, `ext_symtab.h`), una abstracción se carga como un objeto de tipo `t_patcher`.
@@ -112,8 +138,16 @@ Construí una abstracción que utilice un bus global (`[send master_heartbeat]`)
 
 ---
 
+
+### Desafío 4: El Selector de Onda Modular con Respaldo Dinámico y Sincronía Dura
+Construí una voz de sintetizador que combine `[subsynth.osc~ 220.]` y `[ab.sus 220.]`. Verificá cómo al alimentar una frecuencia de $0	ext{ Hz}$, el sistema recurre de inmediato a los $220	ext{ Hz}$ de fábrica. Conectá una segunda onda sierra rápida al inlet de sincronía dura (*hard-sync*) y analizá en un osciloscopio `[scope~]` cómo se generan los clásicos timbres metálicos de barrido de fase analógico.
+
+---
+
 ## 6. Archivos del Laboratorio
 
 Para este laboratorio disponemos de dos parches complementarios:
 1. [`mi_filtro_voz.maxpat`](/patches/modulo-04/mi_filtro_voz.maxpat): La abstracción reutilizable que implementa un generador oscilador + filtro `lores~` con argumentos `#1` (frecuencia) y `#2` (resonancia) y buses locales `#0_mod`.
 2. [`laboratorio_15_abstracciones.maxpat`](/patches/modulo-04/laboratorio_15_abstracciones.maxpat): El parche principal que instancia múltiples copias de la abstracción, demostrando la independencia absoluta de parámetros y la inmunidad contra colisiones de namespace.
+3. [`ab.sus.maxpat`](/patches/modulo-04/ab.sus.maxpat): Abstracción atómica de tolerancia a fallos que sustituye dinámicamente una entrada nula o cero por el argumento por defecto `#1`.
+4. [`subsynth.osc~.maxpat`](/patches/modulo-04/subsynth.osc~.maxpat): Módulo de voz compuesto con 4 tipos de onda, modulación de ancho de pulso (PWM) y sincronización dura (*hard-sync*).

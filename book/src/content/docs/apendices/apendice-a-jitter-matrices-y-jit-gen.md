@@ -62,16 +62,73 @@ De forma análoga a cómo `gen~` revoluciona el audio compilando C++ al vuelo, e
 
 ## 4. Sonificación y Visualización Audiovisual Reactiva
 
-Uno de los puntos más altos de Max es la interacción bidireccional entre sonido y visuales:
-1. **Audio hacia Video**: Podemos capturar un bloque de audio de MSP mediante `[jit.catch~]` y transformarlo instantáneamente en una matriz Jitter de 1 dimensión para dibujar osciloscopios 3D o deformar mallas poligonales al ritmo del espectro de frecuencias.
-2. **Video hacia Audio**: A través de `[jit.spill~]` o `[jit.peek~]`, los píxeles de una imagen o modelo generative pueden leerse como tablas de ondas (*wavetables*) o disparadores de síntesis granular.
+Uno de los puntos más altos de Max es la interacción bidireccional entre sonido y visuales. Sin embargo, no todos los métodos de enlace entre MSP y Jitter son equivalentes: la elección de la arquitectura determina si el sistema funcionará suavemente a 60 FPS o si colapsará por caídas de cuadros y colisiones de reloj (*thread locking*).
+
+### 4.1. Paradigma 1: Captura en el Hilo de Control (`[jit.catch~]` y `[peakamp~]`)
+
+El enfoque tradicional consiste en muestrear la señal de audio periódicamente desde el hilo de control o de renderizado:
+- **`[peakamp~ intervalo]`**: Calcula el valor de pico en una ventana de milisegundos y emite un número flotante hacia la GPU para modular parámetros geométricos (como escala `scale $1 $1 $1` o rotación). Es liviano y robusto para animación reactiva básica, pero descarta toda la información de fase y distribución armónica.
+- **`[jit.catch~ @mode 2]`**: Captura un búfer de muestras de audio en el dominio del tiempo y lo empaqueta en una matriz Jitter 1D cada vez que recibe un `bang` del reloj de video.
+
+> [!WARNING]
+> **El Cuello de Botella del Hilo de Eventos**: Si la tasa de refresco del render loop de Jitter oscila o el hilo gráfico sufre una sobrecarga temporal, la captura por sondeo (*polling*) puede desfasarse respecto al flujo continuo de audio, introduciendo aliasing temporal y fluctuaciones visuales (*jitter*).
 
 ---
 
-## 5. Laboratorio Práctico: Visualizador Reactivo Deformado por Audio
+### 4.2. Paradigma 2: El Puente Canónico Audio-GPU con `[pfft~]` y `[jit.poke~]`
 
-En el archivo complementario `lab_apendice_a_jitter.maxpat` construimos un sistema completo:
-- Una esfera geodésica generada mediante `jit.gl.gridshape`.
-- El audio de un sintetizador FM pasa por `jit.catch~` para extraer la envolvente de señal.
-- Un operador `jit.gen` / `jit.gl.pix` toma la señal de audio y deforma las normales de los vértices 3D en tiempo real.
-- Sistema protegido contra caídas de FPS mediante desacoplamiento en el hilo de dibujo.
+Para análisis espectral en tiempo real con máxima precisión matemática, el estándar profesional de la industria consiste en procesar la señal en el dominio de la frecuencia dentro de un subpatcher **`[pfft~]`** y escribir las magnitudes de los *bins* de Fourier directamente en la memoria de una matriz Jitter utilizando **`[jit.poke~]`**.
+
+```text
+[ audio in ] ---> [ pfft~ FreqAnalysis.pfft 512 2 ]
+                        │
+                  [ fftin~ 1 ]
+                   ├── Re  ──> [ cartopol~ ] ──> Magnitud (r) ──> [ jit.poke~ analysis 2 0 ]
+                   ├── Im  ──> [ cartopol~ ]                           ▲            ▲
+                   └── Bin Index (0..255) ─────────────────────────────┘            │
+                                                                           [ sig~ 0 ]
+```
+
+#### Mecánica Interna del Subpatcher `FreqAnalysis.pfft`:
+1. **Descomposición Cartesiana a Polar**:
+   El objeto `[fftin~ 1]` entrega la parte real ($	ext{Re}$) en su salida 1, la parte imaginaria ($	ext{Im}$) en su salida 2, y el **índice entero del bin espectral** en su salida 3 como señal de audio sincronizada. El objeto `[cartopol~]` calcula instantáneamente la amplitud o magnitud euclídea:
+   $$r = sqrt{	ext{Re}^2 + 	ext{Im}^2}$$
+2. **Escritura Directa en Memoria de Matriz (`[jit.poke~]`)**:
+   En lugar de esperar un evento de control, `[jit.poke~ analysis 2 0]` escribe la magnitud calculada directamente en la celda correspondiente de la matriz flotante `[jit.matrix analysis 1 float32 1 1]` a velocidad de audio ($f_s$), indexada por la coordenada del bin ($Y = 	ext{bin index}$, $X = 0$).
+3. **Dimensionamiento Dinámico con `[fftinfo~]`**:
+   El objeto `[fftinfo~]` entrega el número exacto de bins espectrales útiles ($N/2$). Enviando el mensaje `dim 1 $1` a `[jit.matrix analysis]`, la matriz adapta su resolución al tamaño FFT sin desperdicio de memoria.
+
+---
+
+### 4.3. Deformación de Mallas 3D y Renderizado OpenGL (`[jit.gl.mesh]`) a 60 FPS
+
+Una vez que la matriz espectral contiene las amplitudes por frecuencia, la GPU toma el control absoluto:
+
+```text
+[ bang (jit.world) ] ──> [ pfft~ (emite matriz) ]
+                               │
+                       [ jit.dimmap @invert 0 1 ]
+                               │
+                       [ jit.gen (mapeo X,Y,Z) ]
+                               │
+             [ jit.gl.mesh ctx @draw_mode line_strip ]
+```
+
+1. **Sincronización con el Render Loop**: El reloj maestro de `[jit.world]` dispara un `bang` por cada cuadro visual, solicitando la matriz resultante de `[pfft~]`.
+2. **Transformación Geométrica en `[jit.gen]`**: Mediante operadores vectoriales (`snorm`, `swiz`, `vec`), la GPU asigna el índice de frecuencia al eje horizontal ($X$) y la magnitud calculada al desplazamiento vertical ($Y$):
+   $$ec{P} = langle 	ext{snorm.y},; r cdot k,; 0.0 angle$$
+3. **Malla Acelerada por Hardware (`[jit.gl.mesh]`)**: Configurado con `@draw_mode line_strip` o `@draw_mode tri_grid`, el objeto dibuja la cinta espectral directamente en el búfer de vértices de la tarjeta de video, logrando un visualizador espectral 3D de alta fidelidad sin penalizar el hilo de audio ni el hilo de interfaz.
+
+---
+
+## 5. Laboratorio Práctico: Visualizador Reactivo Dual (Toroide + Malla Espectral 3D)
+
+En los archivos complementarios:
+- [`book/patches/apendices/lab_apendice_a_jitter.maxpat`](/patches/apendices/lab_apendice_a_jitter.maxpat)
+- [`book/patches/apendices/FreqAnalysis.pfft.maxpat`](/patches/apendices/FreqAnalysis.pfft.maxpat)
+
+Construimos un entorno visual y acústico completo que compara ambos paradigmas frente a frente:
+- **Módulo de Audio**: Un oscilador sinusoidal (`cycle~ 220`) sumado a una onda sierra (`saw~ 330`) genera un espectro rico con fundamental y múltiples armónicos.
+- **Rama 1 (Control-Rate)**: `peakamp~ 20` modula la escala y rotación de un toroide 3D (`jit.gl.gridshape @shape torus`).
+- **Rama 2 (Signal-to-GPU)**: El subpatcher `[pfft~ FreqAnalysis.pfft 512 2]` escribe las amplitudes de los 256 bins en una matriz flotante, procesada por `jit.gen` para deformar una cinta tridimensional en tiempo real con `[jit.gl.mesh @draw_mode line_strip @color 0.2 0.8 1. 1.]` a 60 cuadros por segundo.
+

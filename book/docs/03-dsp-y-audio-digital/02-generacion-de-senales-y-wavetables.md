@@ -39,6 +39,41 @@ $$x(t) = \sum_{k=1}^{\infty} A_k \sin(2\pi k f_0 t + \phi_k)$$
 
 ---
 
+
+### 1.2. Síntesis Aditiva de Fourier: El Dilema Arquitectónico Escalar vs. Multicanal (`[mc.*~]`)
+
+La síntesis aditiva es la implementación computacional directa del teorema de Fourier:
+$$x(t) = \sum_{k=1}^{N} A_k \sin(2\pi f_k t + \phi_k)$$
+
+Cualquier timbre acústico o sintético puede modelarse como una superposición de $N$ componentes sinusoidales simples (parciales), donde cada parcial cuenta con su propia frecuencia $f_k$, amplitud instantánea $A_k(t)$ y fase inicial $\phi_k$.
+
+#### El Problema del Paradigma Escalar Clásico:
+Durante tres décadas, construir un sintetizador aditivo de tan solo 16 parciales en Max requería instanciar 16 objetos `[cycle~]`, 16 multiplicadores `[*~]`, 16 envolventes o generadores de control y una red de suma con más de 90 conexiones de cables (patrón observable en los parches clásicos de Max 4/5). Este enfoque adolece de serios problemas de ingeniería de software:
+- **Inflexibilidad topológica**: Duplicar el número de parciales a 32 o 64 exige duplicar físicamente las cajas y cables en el lienzo gráfico.
+- **Costo de mantenimiento insostenible**: Modificar dinámicamente las relaciones de frecuencia o aplicar envolventes complejas exige mapeos masivos mediante enrutadores como `[route]` o matrices de conexiones.
+
+#### La Revolución Multichannel en Max (`[mc.cycle~]` y `[mc.*~]`):
+El subsistema **Multichannel (MC)** introducido en Max 8 transforma un circuito de 90 objetos en una arquitectura elegante de **3 objetos**:
+
+```text
+[ flonum f0 ] ──> [ harmonic 1 $1 ] ──> [ mc.cycle~ @chans 16 ]
+                                               │
+[ multislider 16 ] ──> [ applyvalues ... ] ──> [ mc.*~ ]
+                                               │
+                                       [ mc.mixdown~ 1 @autogain 1 ] ──> [ dac~ ]
+```
+
+1. **Generación Simultánea de Parciales**: Con `[mc.cycle~ @chans 16]`, Max gestiona 16 osciladores independientes dentro de un único cable virtual multicanal.
+2. **Distribución de Frecuencias Armónicas**: Al enviar el mensaje `harmonic 1 $1`, el objeto calcula instantáneamente una serie armónica perfecta:
+   $$f_k = k \cdot f_0 \quad (k = 1, 2, \dots, 16)$$
+3. **Ponderación Espectral en Bloque**: Un único objeto `[mc.*~]` recibe un vector de 16 amplitudes desde un `[multislider]` mediante el mensaje `prepend applyvalues`, modulando la energía de cada armónico individualmente.
+4. **Timbres Inarmónicos Complejos (Campanas y Metales)**:
+   Para sintetizar cuerpos resonantes inarmónicos (campanas de iglesia, barras de vibráfono o placas de acero analizadas por John Chowning y Jean-Claude Risset), basta con reemplazar el mensaje `harmonic` por una lista arbitraria de frecuencias relativas:
+   `values 110. 303.6 594. 982.3 1475. 2040. 2700. 3450. 4280. 5200.`
+   Esta capacidad de mutar la estructura modal de un cuerpo resonante en tiempo real sin alterar la topología del parche constituye uno de los saltos de productividad más trascendentes en la historia de Max.
+
+---
+
 ## 2. El Peligro del Aliasing y Osciladores con Banda Limitada (Band-Limited)
 
 En el mundo matemático analógico, las ondas cuadradas y de sierra tienen esquinas infinitamente afiladas. En el dominio digital, una discontinuidad vertical infinita genera armónicos que sobrepasan con creces la frecuencia de Nyquist ($f_N = f_s / 2 = 24.000\text{ Hz}$).
@@ -154,6 +189,13 @@ Abre el parche interactivo complementario:
 
 ---
 
+
+### Escenario 5: Banco Aditivo Armónico e Inarmónico en 3 Objetos con Multichannel
+* **El Problema:** Diseñar un motor aditivo de 10 armónicos/inarmónicos sin poblar el parche con decenas de osciladores individuales ni sufrir una maraña inmanejable de conexiones.
+* **La Solución:** Implementar `[mc.cycle~ @chans 10]` alimentado por el mensaje `harmonic 1 $1` para modo armónico (sierra/cuadrada por suma de Fourier) o una lista de frecuencias inarmónicas `values 110. 303.6 594. ...` para timbres metálicos de campana, ponderando cada canal con `[mc.*~]` y un `multislider` de 10 barras antes de reducir a mono con `[mc.mixdown~ 1 @autogain 1]`.
+
+---
+
 ## 5. 3 Desafíos de Ingeniería de Laboratorio
 
 Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_08_osciladores.maxpat`](/patches/modulo-03/laboratorio_08_osciladores.maxpat):
@@ -169,6 +211,13 @@ Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_08_oscil
 ### ️ Ejercicio 3: Fase Cero Senoidal vs Cosenoidal
 * **Objetivo:** Demuestra la fase inicial de `[cycle~]`.
 * **Desafío:** Conecta `[cycle~]` a un `[scope~]`. Envía un mensaje `0.` al inlet derecho de fase y observa dónde arranca la onda. Luego envía `0.75` y observa cómo se convierte en una onda senoidal pura que nace en cero sin producir click de inicio.
+
+---
+
+
+###  Ejercicio 4: Campana Inarmónica Aditiva con `[mc.cycle~]`
+* **Objetivo:** Sintetizar una campana inarmónica clásica de Risset mediante un banco multicanal.
+* **Desafío:** Utiliza `[mc.cycle~ @chans 10]` con las relaciones de frecuencia inarmónicas de Risset: $[1.0, 2.76, 5.40, 8.93, 13.34, 18.64, 24.85, 31.98, 40.01, 48.96]$. Modula las amplitudes con el multislider y experimenta cómo el timbre muta de un espectro armónico claro a un cuerpo metálico denso.
 
 ---
 
