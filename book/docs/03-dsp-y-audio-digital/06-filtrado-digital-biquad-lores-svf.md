@@ -1,4 +1,8 @@
-# Lección 3.6: Filtrado Digital: Polos, Ceros, biquad~, lores~ y State Variable Filters (svf~)
+﻿---
+title: "Lección 3.6: Filtrado Digital: Polos, Ceros, biquad~, lores~ y State Variable Filters (svf~)"
+description: "Filtrado digital en MSP: teoría de polos y ceros, respuesta en frecuencia, coeficientes [biquad~], [lores~] y State Variable Filters [svf~]. Plano Z y estabilidad de filtros IIR."
+---
+
 
 > *"Un filtro digital no elimina frecuencias de forma mágica: retrasa la señal de entrada, la multiplica por coeficientes algebraicos cuidadosamente calibrados y la realimenta sobre sí misma. La diferencia de fase resultante cancela destructivamente ciertas frecuencias y refuerza constructivamente otras."*  
 > — **Richard Boulanger**, *The Audio Programming Book*
@@ -33,16 +37,7 @@ $$H(z) = \frac{b_0 + b_1 z^{-1} + b_2 z^{-2}}{1 + a_1 z^{-1} + a_2 z^{-2}}$$
   $$|p_k| < 1 \quad \forall k$$
   Si un polo toca el círculo ($|p| = 1$), el sistema se convierte en un oscilador senoidal puro no amortiguado (auto-oscilación). Si cruza hacia afuera ($|p| > 1$), los valores de amplitud crecen exponencialmente hasta saturar los registros flotantes de 64 bits en `+inf` o `NaN`, silenciando el motor de audio de Max.
 
-```
-       Im(z)
-         |     x (Polo fuera: ¡EXPLOSIÓN!)
-      1.0|   .---.
-         |  /  x  \  (Polo dentro: Estable y resonante)
-   ------+-(---+---)+------ Re(z)
-         |  \     /
-     -1.0|   '---' (Círculo Unitario |z|=1)
-         |
-```
+![FIG 3.7 · Estabilidad Asintótica en el Plano Complejo Z y Círculo Unitario](/assets/diagrams/diagrama_plano_z_estabilidad_filtros.svg)
 
 ---
 
@@ -65,6 +60,18 @@ $$H(z) = \frac{b_0 + b_1 z^{-1} + b_2 z^{-2}}{1 + a_1 z^{-1} + a_2 z^{-2}}$$
 - **Outlet 3**: Bandpass (paso-banda)
 - **Outlet 4**: Notch (rechazo de banda)
 - **Propiedad única**: Permite barrer el espectro de un sintetizador mientras se conserva la energía simultánea en múltiples bandas sin recalcular matrices de coeficientes completas.
+
+### Topologías de Conexión: Serie vs. Paralelo (Cipriani & Giri / Réveillac)
+En *Musical Sound Effects*, Jean-Michel Réveillac analiza en detalle las implicancias de fase y ganancia según cómo conectemos múltiples etapas de filtrado:
+
+1. **Conexión en Cascada (Serie):**
+   $$H_{total}(z) = H_1(z) \cdot H_2(z) \cdot \dots \cdot H_k(z)$$
+   - Las pendientes de atenuación se suman: dos filtros Butterworth de 2 polos (12 dB/oct) en serie producen un filtro Linkwitz-Riley de 4 polos (24 dB/oct).
+   - Es la arquitectura obligatoria para ecualizadores paramétricos de bandas múltiples y filtros crossover estables.
+2. **Conexión en Paralelo:**
+   $$H_{total}(z) = H_1(z) + H_2(z) + \dots + H_k(z)$$
+   - Las salidas se suman algebraicamente en el dominio del tiempo.
+   - **Peligro acústico:** Si las bandas adyacentes tienen desfases relativos cercanos a $180^\circ$, la suma producirá cancelaciones destructivas profundas (*comb filtering* accidental) en las frecuencias de cruce. Como advierten Cipriani y Giri en *Música Electrónica y Diseño Sonoro*, el filtrado paralelo solo debe emplearse para síntesis de formantes vocales o bancos de resonadores desacoplados.
 
 ---
 

@@ -1,10 +1,14 @@
-# Módulo 2.2: Gestión de Presets Globales, Morphing de Parámetros e Interpolación con el Ecosistema `[pattr]`
+﻿---
+title: "Módulo 2.2: Gestión de Presets Globales, Morphing de Parámetros e Interpolación con el Ecosistema `[pattr]`"
+description: "El ecosistema [pattr] y [pattrstorage]: gestión global de presets, morphing de parámetros por interpolación multidimensional y espacios de estados vectoriales en R^N con [pattrstorage]."
+---
+
 
 > *"Un preset no es una fotografía estática del pasado; es un punto vectorial en un espacio n-dimensional por el que podemos viajar continuamente."*
 
 ---
 
-## ️ 1. Fundamento Teórico: El Espacio de Estados y la Interpolación N-Dimensional
+##  1. Fundamento Teórico: El Espacio de Estados y la Interpolación N-Dimensional
 
 *(Inspirado en Todd Winkler, *Composing Interactive Music*, MIT Press, y Cipriani & Giri, *Electronic Music and Sound Design*, Vol. 2)*
 
@@ -24,18 +28,7 @@ Imagina un sintetizador o procesador de efectos que tiene $N$ parámetros contin
 Cada estado o preset $P_k$ es un vector en un espacio euclidiano $\mathbb{R}^N$:
 $$\vec{P}_k = \begin{bmatrix} p_{1,k} \\ p_{2,k} \\ \vdots \\ p_{N,k} \end{bmatrix}$$
 
-```
-   Parámetro 2 (Resonancia)
-        ▲
-        │          Preset 2 [P2] (0.8, 0.9)
-        │             ●
-        │            /
-        │           /  ◄── Trayectoria de Interpolación (Morphing continuo)
-        │          /
-        │         ● 
-        │     Preset 1 [P1] (0.2, 0.3)
-        └────────────────────────► Parámetro 1 (Cutoff)
-```
+![FIG 2.1 · Espacio de Estados N-Dimensional y Morphing Continuo](/assets/diagrams/diagrama_morphing_espacio_estados.svg)
 
 Si queremos viajar suavemente del **Preset 1** al **Preset 2**, no saltamos: aplicamos una función de **interpolación lineal** (Lerp) gobernada por una variable escalar continua $\alpha \in [0.0, 1.0]$:
 
@@ -51,24 +44,7 @@ El ecosistema **`[pattr]`** de Max/MSP fue creado precisamente para resolver est
 
 El sistema `pattr` no es un único objeto; es un protocolo distribuido compuesto por cuatro pilares fundamentales:
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                           ARQUITECTURA PATTR                                │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│   [pattrstorage mi_banco] ◄──── Memoria Central, Morphing, Guardado en JSON │
-│              ▲                                                              │
-│              │ (Protocolo de Binding Interno - Sin cables)                  │
-│              ▼                                                              │
-│      [autopattr] ─────────► Escanea automáticamente el patcher              │
-│         │     │             y expone sliders, dials y números con script-name│
-│         ▼     ▼                                                             │
-│      [pattr cutoff] ──────► Enlace bidireccional explícito a UI             │
-│         │                                                                   │
-│         ▼                                                                   │
-│      [live.dial] o [flonum]                                                 │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+![FIG 2.2 · Protocolo pattrstorage & Binding Bidireccional](/assets/diagrams/diagrama_pattr_jerarquia.svg)
 
 ### A. `[pattr]`: El Agente de Enlace Bidireccional
 * **Propósito:** Asocia un valor o interfaz a un nombre identificable único (ej: `[pattr cutoff @bindto dial_filtro]`).
@@ -91,25 +67,25 @@ El sistema `pattr` no es un único objeto; es un protocolo distribuido compuesto
 
 ---
 
-### Trampas Críticas de la Comunidad y Foros Oficiales (Pattr Gotchas)
+### Consideraciones Críticas en la Gestión de Estados (Arquitectura de Pattr)
 
-La experiencia de años en los foros de Cycling '74 destaca tres problemas recurrentes que paralizan proyectos reales si no se conocen:
+Tres factores determinantes en el diseño de arquitecturas con `pattr` que condicionan la estabilidad del sistema:
 
-1. **El Bucle Recursivo Infinito de `autopattr` (Stack Overflow):**
-   - Si creas un número o slider para enviar el comando `recall $1` a `[pattrstorage]` y ese slider tiene un scripting name o es absorbido por `[autopattr]`, **crearás un bucle mortal**: al restaurar el preset, `pattrstorage` actualiza el slider, el slider envía un nuevo `recall`, y Max se congela por stack overflow en $t=0$.
-   - **Regla de oro:** El control de disparo/recall **NUNCA** debe ser cliente de su propio `[pattrstorage]`.
+1. **Recursión Infinita por Auto-vinculación (Stack Overflow):**
+   - Si un elemento de interfaz (como un dial o caja numérica) que despacha comandos `recall $1` hacia `[pattrstorage]` posee un `varname` y es registrado como cliente por `[autopattr]`, se genera un ciclo de retroalimentación inmediata: al restaurar el preset, `pattrstorage` actualiza el elemento, este reenvía un nuevo `recall`, y el hilo de ejecución colapsa por desbordamiento de pila en $t=0$.
+   - **Criterio de diseño:** El objeto emisor del comando de restauración (`recall`) debe excluirse rigurosamente de la lista de clientes del almacén de estados.
 
-2. **Orden de Restauración y la Columna `Priority`:**
-   - Si un objeto depende de otro (por ejemplo, la cantidad de columnas de una matriz debe crearse antes de cargar los datos de cada celda), no puedes confiar en el orden alfabético de los nombres.
-   - En la ventana `clientwindow` de `[pattrstorage]`, debes asignar valores a la columna **Priority** (números más bajos se restauran primero, ej: `0` para dimensiones, `1` para parámetros hijos).
+2. **Secuencia Determinista de Carga y Atributo `priority`:**
+   - En estructuras donde existen dependencias de inicialización (por ejemplo, definir la dimensión de una matriz antes de inyectar los coeficientes en sus celdas), no es viable asumir un orden arbitrario o alfabético.
+   - En la interfaz de gestión (`clientwindow`) de `[pattrstorage]`, debe configurarse explícitamente el atributo **Priority** (los valores numéricos menores se restauran de manera prioritaria; por ejemplo, prioridad `0` para dimensiones y `1` para parámetros dependientes).
 
-3. **Sobrecarga de CPU en Morphing Masivo y Max for Live (M4L):**
-   - Si interpolas 300 parámetros usando un objeto `[line]` a 10 ms, saturas la cola del Main Thread provocando tartamudeos visuales.
-   - En **Max for Live**, si los parámetros tienen activado *Parameter Mode Enabled* en el Inspector, el morphing rápido colisiona con el historial de Undo/Redo de Ableton Live. En M4L se recomienda desacoplar la interpolación continua de los controles directamente expuestos al DAW.
+3. **Sobrecarga de Despacho en Morphing Multivariable y Max for Live (M4L):**
+   - La interpolación simultánea de cientos de parámetros con generadores de rampa de alta frecuencia (`[line]`) puede saturar la cola de eventos del hilo principal (*Main Thread*).
+   - En entornos como **Max for Live**, cuando los objetos tienen habilitado *Parameter Mode Enabled*, las variaciones continuas de alta tasa interfieren con el motor de automatización y el búfer de deshacer/rehacer del DAW anfitrión. En estos contextos se recomienda desacoplar la interpolación continua interna respecto a los controles directamente expuestos al host.
 
 ---
 
-## ️ 3. Under the Hood (Max C SDK): Obex, Notificaciones y Attributes
+##  3. Under the Hood (Max C SDK): Obex, Notificaciones y Attributes
 
 *(Basado en el análisis de `ext_obex.h` y `shepherd.c` en `Cycling74/max-sdk`)*
 
@@ -152,7 +128,7 @@ Durante el **morphing**, `[pattrstorage]` calcula los valores intermedios en mem
 
 ---
 
-## ️ 4. 4 Escenarios del Mundo Real
+##  4. 4 Escenarios del Mundo Real
 
 Abre el parche interactivo complementario:
 [`book/patches/modulo-02/laboratorio_05_pattr.maxpat`](/patches/modulo-02/laboratorio_05_pattr.maxpat)
@@ -179,15 +155,15 @@ Abre el parche interactivo complementario:
 
 Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_05_pattr.maxpat`](/patches/modulo-02/laboratorio_05_pattr.maxpat):
 
-### ️ Ejercicio 1: El Conmutador Inmune al Morphing (`@interp 0`)
+###  Ejercicio 1: El Conmutador Inmune al Morphing (`@interp 0`)
 * **Objetivo:** Configura un sintetizador donde los filtros y frecuencias se interpolen continuamente durante un morphing de 3 segundos, pero el selector de forma de onda (que conmuta entre Sine = 0, Saw = 1, Square = 2) cambie de forma discreta sin pasar por valores fraccionarios intermedios (como 0.45 o 1.7).
 * **Pista:** Investiga el atributo `@interp` dentro del inspector de `[pattr]` o a través de la ventana `clientwindow` de `[pattrstorage]`.
 
-### ️ Ejercicio 2: Automatización LFO de Morphing
+###  Ejercicio 2: Automatización LFO de Morphing
 * **Objetivo:** Conecta un oscilador de baja frecuencia (`[phasor~]` o un `[metro]` con `[line]`) a la entrada de interpolación continua de `[pattrstorage]` para crear un timbre que respire cíclicamente entre el Preset 1 y el Preset 2 cada 8 segundos.
 * **Pista:** Escala una señal normalizada de 0.0 a 1.0 al mensaje `recall 1 2 $1`.
 
-### ️ Ejercicio 3: Serializador y Restaurador Automático de Sesión
+###  Ejercicio 3: Serializador y Restaurador Automático de Sesión
 * **Objetivo:** Configura `[pattrstorage]` con los atributos `@savemode 2` y `@autorestore 1`.
 * **Desafío:** Comprueba que al modificar sliders en el parche y guardar el archivo `.maxpat`, al cerrarlo y volverlo a abrir, Max reconstruye con precisión quirúrgica el último preset activo sin necesidad de presionar ningún botón manual.
 

@@ -1,4 +1,8 @@
-# Lección 3.7: Delays, Buffers Circulares y Modulación Temporal: tapin~, tapout~, Comb Filters, Flanger y Chorus
+﻿---
+title: "Lección 3.7: Delays, Buffers Circulares y Modulación Temporal: tapin~, tapout~, Comb Filters, Flanger y Chorus"
+description: "Delays y modulación temporal en MSP: buffers circulares, [tapin~]/[tapout~], filtros comb resonantes, Flanger y Chorus por LFO. Retroalimentación controlada y efectos de tiempo."
+---
+
 
 > *"El tiempo en audio no es una constante inmutable; es una cinta elástica. Si retrasás una señal unos pocos milisegundos y la sumás consigo misma, obtenés un filtro peine. Si modulás ese tiempo con un LFO, hacés cantar a la física mediante el efecto Doppler."*  
 > — **Curtis Roads**, *The Computer Music Tutorial*
@@ -26,16 +30,7 @@ donde $N$ es la capacidad máxima del buffer en muestras y $D$ es el retardo des
 
 $$D = \frac{\tau_{\text{ms}}}{1000} \cdot f_s$$
 
-```
-               [ Buffer Circular en RAM (N muestras) ]
-                        .--- [0] ---.
-                       /             \
-                   [N-1]             [1]  <-- Write Pointer (Avanza a fs)
-                     |                 |
-                   [N-2]             [2]
-                       \             /    <-- Read Pointer (D muestras detrás)
-                        '--- [...] -'
-```
+![FIG 3.8 · Arquitectura de Memoria Temporal: Buffer Circular (Ring Buffer)](/assets/diagrams/diagrama_buffer_circular_delays.svg)
 
 ---
 
@@ -137,12 +132,18 @@ Para construir reverberaciones de sala hiper-densas sin modos estacionarios, el 
 
 ---
 
-## 5. Escenarios Reales de Producción
+## 5. Escenarios Reales de Producción y Modelado Acústico
 
 1. **Ping-Pong Delay Estéreo**: Dos líneas de `tapin~` cruzadas con retroalimentación alternada de canal izquierdo a derecho para ensanchamiento psicoacústico.
 2. **Emulador de Cinta Analógica (Tape Delay)**: Un delay con un filtro paso-bajo (`lores~ 2500.`) en la rama de realimentación y una micro-modulación aleatoria (`noise~` pasado por filtro lento) para simular el estiramiento mecánico de la cinta (*wow & flutter*).
-3. **Flanger Thru-Zero**: Retrasar la señal directa por un tiempo estático de 5 ms mientras el flanger oscila entre 0 ms y 10 ms. Cuando ambos tiempos coinciden en 5 ms, la resta produce una **cancelación absoluta a silencio (cero absoluto)**, el sello distintivo del flanger de cinta de Abbey Road.
-4. **Resonador Karplus-Strong Básico**: Un `tapin~` de 5 ms excitado con una ráfaga de 5 ms de `noise~` y realimentado con $g = 0.98$ produce una cuerda pulsada acústica convincente.
+3. **Flanger Thru-Zero (Modelado de Jean-Michel Réveillac)**: Retrasar la señal directa por un tiempo estático $\tau_0 = 5\text{ ms}$ mientras la línea modulada oscila entre $0\text{ ms}$ y $10\text{ ms}$. Cuando ambos retardos coinciden exactamente en $\tau(t) = \tau_0$, la resta de señales en contrafase produce una **cancelación destructiva absoluta en todas las frecuencias** ($y[n] = x[n - \tau_0] - x[n - \tau_0] \equiv 0$). Este "paso por el cero absoluto" es la firma acústica inimitable del flanger de cinta analógico clásico de Abbey Road.
+4. **Simulación Física del Altavoz Rotativo Leslie (Efecto Doppler + Difracción AM)**:
+   Como detalla Réveillac en *Musical Sound Effects*, un altavoz Leslie no es un simple vibrato:
+   - **Modulación de Frecuencia (FM por Efecto Doppler):** El giro de la bocina respecto al oyente provoca un corrimiento de frecuencia continuo:
+     $$f_{aparente} = f_0 \cdot \left( \frac{c}{c \pm v_{rotor}} \right)$$
+     Esto se modela en Max modulando el tiempo de retardo de un `[tapout~]` mediante un oscilador senoidal `[cycle~]`.
+   - **Modulación de Amplitud (Tremolo por Difracción):** Simultáneamente, el patrón de radiación direccional del rotor atenúa la señal cuando la bocina apunta hacia la parte trasera del gabinete. En Max se multiplica la señal por un segundo `[cycle~]` desfasado $90^\circ$ respecto al modulador de retardo.
+5. **Resonador Karplus-Strong Básico**: Un `tapin~` de 5 ms excitado con una ráfaga de 5 ms de `noise~` y realimentado con $g = 0.98$ produce una cuerda pulsada acústica convincente.
 
 ---
 

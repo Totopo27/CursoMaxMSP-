@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Módulo 1.3: Tipos de Datos (Los Átomos de Max), Estructuras de Memoria y Manipulación con `[zl]`"
 description: "Los átomos de Max: tipado dinámico por etiquetas (bang, int, float, symbol, list), tabla hash de símbolos O(1) y operaciones vectoriales de alto rendimiento con la familia [zl]."
 ---
@@ -124,6 +124,23 @@ Abre el parche interactivo:
 * **La Solución:** Permutación de fase melódica:
   - Lista original: `60 64 67 71 74` (Acorde con 9na).
   - Pasada por `[zl.rot 1]`: `74 60 64 67 71`. Las mismas notas en una inversión rítmica y tímbrica coherente.
+
+### Escenario 5: Machine Listening y Densidad Rítmica con `[zl.stream]` y `[zl.median]`
+*(Arquitectura de escucha interactiva según Robert Rowe, Machine Musicianship, MIT Press, 2001).*
+* **El Problema:** Para que un parche responda musicalmente a un instrumentista humano en vivo (*interactive accompaniment*), el sistema debe evaluar el nivel de agitación rítmica del intérprete sin distorsionarse por notas fantasmas o pausas de respiración.
+* **La Solución:** 
+  - Con un objeto `[timer]` se mide el tiempo transcurrido (IOI - *Inter-Onset Interval*) en milisegundos entre notas sucesivas.
+  - `[zl.stream 8]` conserva en un buffer FIFO deslizante los últimos 8 intervalos temporales.
+  - `[zl.median]` extrae el valor mediano de la ventana, suprimiendo los transitorios atípicos (*outliers*).
+  - `[zl.sum]` calcula la duración acumulada del paquete; dividiendo 8 por dicha suma se obtiene la **densidad rítmica instantánea** (notas por segundo) para modular en tiempo real la agresividad o textura del acompañamiento.
+
+### Escenario 6: Cuantizador Modal y Re-afinación Armónica con `[zl.lookup]`
+*(Técnicas de análisis y composición interactiva de V.J. Manzo, Max/MSP/Jitter for Music).*
+* **El Problema:** Un sensor gestual o un flujo continuo de pitch tracking genera notas cromáticas desordenadas ($0 \dots 127$) que deben anclarse obligatoriamente a una escala modal definida (por ejemplo, modo Dórico o pentatónica menor).
+* **La Solución:**
+  - Se descompone la nota en octava y clase de altura (*pitch class*) con `[/ 12]` y `[% 12]`.
+  - La clase de altura ($0 \dots 11$) indexa una lista base de notas permitidas con `[zl.lookup 0 2 3 5 7 9 10]`.
+  - La altura cuantizada se reconstituye sumando la octava multiplicada por 12. Toda la resolución ocurre en la memoria caché en menos de un microsegundo.
 
 ---
 

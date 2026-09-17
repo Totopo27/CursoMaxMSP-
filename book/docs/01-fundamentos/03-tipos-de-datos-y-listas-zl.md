@@ -1,10 +1,14 @@
-# Módulo 1.3: Tipos de Datos (Los Átomos de Max), Estructuras de Memoria y Manipulación con `[zl]`
+---
+title: "Módulo 1.3: Tipos de Datos (Los Átomos de Max), Estructuras de Memoria y Manipulación con `[zl]`"
+description: "Los átomos de Max: tipado dinámico por etiquetas (bang, int, float, symbol, list), tabla hash de símbolos O(1) y operaciones vectoriales de alto rendimiento con la familia [zl]."
+---
+
 
 > *"En la computación de flujo de datos, la eficiencia no se mide en líneas de código, sino en la contigüidad espacial de la memoria y en el costo de serialización de cada mensaje."*
 
 ---
 
-## ️ 1. Fundamento Teórico: Tipado Dinámico por Etiquetas y Localidad Espacial
+##  1. Fundamento Teórico: Tipado Dinámico por Etiquetas y Localidad Espacial
 
 *(Inspirado en la arquitectura de Miller Puckette y los fundamentos de Todd Winkler, MIT Press)*
 
@@ -27,14 +31,7 @@ typedef struct atom {
 } t_atom;
 ```
 
-```
-┌────────────────────────────────────────────────────────┐
-│                   ESTRUCTURA T_ATOM                    │
-├──────────────────────────┬─────────────────────────────┤
-│  a_type (2 bytes)        │  a_w (8 bytes - Union)      │
-│  Identificador de Tipo   │  Almacena long, float o ptr │
-└──────────────────────────┴─────────────────────────────┘
-```
+![FIG 1.2 · Disposición Binaria del Struct t_atom](/assets/diagrams/diagrama_atom_c_struct.svg)
 
 > **Principio de Localidad de Caché:** Un array de átomos en Max (`t_atom argv[]`) es un bloque **contiguo de memoria RAM**. Esto permite que la CPU lo cargue directamente en su memoria caché L1/L2, permitiendo que una lista de 100 números se transmita entre objetos en apenas unos pocos nanosegundos.
 
@@ -52,9 +49,7 @@ En Max, un `symbol` **NO es un string convencional en el heap**:
 2. Max consulta una **Tabla Hash Global única**.
 3. Si el texto ya existe en la tabla, devuelve el puntero exacto a esa entrada. Si no existe, lo crea una sola vez de forma inmutable.
 
-```
-"mi_variable" ──► [ Función Hash ] ──► Puntero 0x7FFF12A0 (Único e Inmutable)
-```
+![FIG 1.2B · Teoría de Símbolos en C: Interning y Tabla Hash Global con gensym()](/assets/diagrams/diagrama_gensym_tabla_hash.svg)
 
 ### La Consecuencia Arquitectónica:
 * **Comparaciones en Tiempo Constante $O(1)$:** Para saber si dos símbolos en Max son idénticos, la CPU **solo compara las direcciones de sus dos punteros** (`ptrA == ptrB`), en un solo ciclo de reloj.
@@ -75,19 +70,16 @@ void mi_objeto_list(t_mi_objeto *x, t_symbol *s, long argc, t_atom *argv);
 * `argc`: Cantidad total de elementos (*argument count*).
 * `argv`: Puntero al primer átomo del vector (*argument vector*).
 
-### La Trampa del Novato: "El Infierno de los Unpackers"
-Muchos principiantes manipulan listas utilizando cadenas masivas de objetos gráficos individuales:
-```
-[ lista ] ──► [ unpack 0 0 0 0 ] ──► [ cable1 ] [ cable2 ] ... ──► [ pack 0 0 0 0 ]
-```
-**Por qué esto es una pésima arquitectura:**
+### Antipatrón de Diseño: Desempaquetado Gráfico Ineficiente
+![FIG 1.2C · Manipulación de Listas: Antipatrón Gráfico vs. Operaciones Vectoriales [zl]](/assets/diagrams/diagrama_antipatron_unpack_vs_zl.svg)
+**Inconvenientes de esta aproximación:**
 1. Cada conexión gráfica individual (`patchcord`) involucra una llamada a función en C con resolución de inlets y comprobación de tipos.
 2. Desempaquetar una lista de 16 elementos por cables visuales genera 16 saltos de pila innecesarios.
-3. Se destruye la contigüidad en la memoria caché del procesador.
+3. Se destruye la contigüidad espacial en la memoria caché del procesador.
 
 ---
 
-## ️ 4. La Familia `[zl]`: Operaciones Vectoriales de Alto Rendimiento
+##  4. La Familia `[zl]`: Operaciones Vectoriales de Alto Rendimiento
 
 Para resolver toda la manipulación de datos a nivel de memoria C contigua sin penalización gráfica, Cycling '74 creó el objeto maestro **`[zl]`** (desarrollado originalmente por Norbert Schnell en el IRCAM).
 
@@ -106,7 +98,7 @@ Para resolver toda la manipulación de datos a nivel de memoria C contigua sin p
 
 ---
 
-##  4 Escenarios de la Vida Real (Casos de Estudio)
+## 5. Escenarios de la Vida Real (Casos de Estudio)
 
 Abre el parche interactivo:
 [`book/patches/modulo-01/laboratorio_03_listas_zl.maxpat`](/patches/modulo-01/laboratorio_03_listas_zl.maxpat)
@@ -133,21 +125,38 @@ Abre el parche interactivo:
   - Lista original: `60 64 67 71 74` (Acorde con 9na).
   - Pasada por `[zl.rot 1]`: `74 60 64 67 71`. Las mismas notas en una inversión rítmica y tímbrica coherente.
 
+### Escenario 5: Machine Listening y Densidad Rítmica con `[zl.stream]` y `[zl.median]`
+*(Arquitectura de escucha interactiva según Robert Rowe, Machine Musicianship, MIT Press, 2001).*
+* **El Problema:** Para que un parche responda musicalmente a un instrumentista humano en vivo (*interactive accompaniment*), el sistema debe evaluar el nivel de agitación rítmica del intérprete sin distorsionarse por notas fantasmas o pausas de respiración.
+* **La Solución:** 
+  - Con un objeto `[timer]` se mide el tiempo transcurrido (IOI - *Inter-Onset Interval*) en milisegundos entre notas sucesivas.
+  - `[zl.stream 8]` conserva en un buffer FIFO deslizante los últimos 8 intervalos temporales.
+  - `[zl.median]` extrae el valor mediano de la ventana, suprimiendo los transitorios atípicos (*outliers*).
+  - `[zl.sum]` calcula la duración acumulada del paquete; dividiendo 8 por dicha suma se obtiene la **densidad rítmica instantánea** (notas por segundo) para modular en tiempo real la agresividad o textura del acompañamiento.
+
+### Escenario 6: Cuantizador Modal y Re-afinación Armónica con `[zl.lookup]`
+*(Técnicas de análisis y composición interactiva de V.J. Manzo, Max/MSP/Jitter for Music).*
+* **El Problema:** Un sensor gestual o un flujo continuo de pitch tracking genera notas cromáticas desordenadas ($0 \dots 127$) que deben anclarse obligatoriamente a una escala modal definida (por ejemplo, modo Dórico o pentatónica menor).
+* **La Solución:**
+  - Se descompone la nota en octava y clase de altura (*pitch class*) con `[/ 12]` y `[% 12]`.
+  - La clase de altura ($0 \dots 11$) indexa una lista base de notas permitidas con `[zl.lookup 0 2 3 5 7 9 10]`.
+  - La altura cuantizada se reconstituye sumando la octava multiplicada por 12. Toda la resolución ocurre en la memoria caché en menos de un microsegundo.
+
 ---
 
-## 3 Ejercicios Prácticos de Laboratorio
+## 6. Ejercicios Prácticos de Laboratorio
 
 Realiza estos ejercicios en tu copia de Max utilizando el parche [`laboratorio_03_listas_zl.maxpat`](/patches/modulo-01/laboratorio_03_listas_zl.maxpat):
 
-### ️ Ejercicio 1: El Analizador Estadístico de Rango Dinámico
+###  Ejercicio 1: El Analizador Estadístico de Rango Dinámico
 * **Objetivo:** Construye un analizador que reciba una lista de números desordenados (ej. `45 12 89 3 67 99 21`).
 * **Desafío:** Utilizando exclusivamente `[zl.sort]` y `[zl.slice]`, extrae en dos cajas numéricas separadas el valor mínimo y el valor máximo, y calcula el rango dinámico total.
 
-### ️ Ejercicio 2: El Inversor de Acordes Diatónico
+###  Ejercicio 2: El Inversor de Acordes Diatónico
 * **Objetivo:** Recibe una lista de 3 o 4 notas MIDI.
 * **Desafío:** Utilizando `[zl.rot 1]` y el operador de lista `[+ 12]`, toma la nota que rotó a la primera posición y transpónla una octava arriba (+12 semitonos) para generar la primera inversión formal del acorde.
 
-### ️ Ejercicio 3: Deserializador Rítmico con `[zl.iter]` y `[pipe]`
+###  Ejercicio 3: Deserializador Rítmico con `[zl.iter]` y `[pipe]`
 * **Objetivo:** Recibe una lista completa de 8 notas musicales agrupadas.
 * **Desafío:** Transfórmala en una secuencia de notas individuales espaciadas en el tiempo a 125 ms cada una utilizando `[zl.iter 1]` combinado con `[pipe]`.
 

@@ -1,4 +1,8 @@
-# Lección 3.5: Envolventes Temporales: line~, curve~, adsr~ y Control de Amplitud Antialias
+﻿---
+title: "Lección 3.5: Envolventes Temporales: line~, curve~, adsr~ y Control de Amplitud Antialias"
+description: "Envolventes temporales en MSP: [line~], [curve~] y [adsr~]. Origen físico de los clicks digitales y su eliminación mediante rampas de interpolación de amplitud anti-alias."
+---
+
 
 > *"Una forma de onda pura sin control dinámico de amplitud no es música: es una señal de prueba de laboratorio. La música vive en la evolución temporal de su energía, en el ataque que define su timbre inicial y en la caída que emula la fricción de la materia."*  
 > — **Miller Puckette**, *The Theory and Technique of Electronic Music*
@@ -21,14 +25,7 @@ $$\mathcal{F}\{x(t) \cdot u(t)\} = X(f) * \left( \frac{1}{2}\delta(f) + \frac{1}
 
 Esta convolución desparrama energía hacia todas las frecuencias audibles e inaudibles hasta el límite de Nyquist ($\frac{f_s}{2}$), manifestándose acústicamente como un **clic seco o golpe de transitorio no deseado**. Para evitar esto, toda transición de amplitud debe ser continua y diferenciable, requiriendo un tiempo de subida (*rise time*) y bajada (*fall time*) finito.
 
-```
-Discontinuidad (Paso Escalón)          Rampa Suavizada (Anti-click)
-       A                                      A
-   1.0 |   +---------+                    1.0 |     /---------\
-       |   |         |                        |    /           \
-   0.0 +---+---------+---> t              0.0 +---+-------------+---> t
-        ¡CLIC! (Gibbs / Aliasing)              Transición C1 Continua
-```
+![FIG 3.6 · Discontinuidad Escalón (Gibbs) vs. Transición Continua C^1 Anti-click](/assets/diagrams/diagrama_anticlick_envolventes.svg)
 
 ---
 

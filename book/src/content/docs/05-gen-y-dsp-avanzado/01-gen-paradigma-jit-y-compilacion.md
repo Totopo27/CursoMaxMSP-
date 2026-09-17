@@ -70,6 +70,27 @@ En `gen~`, la topología visual se compila a un bucle `while(n--)` donde el valo
 
 Este patrón es la piedra angular de **todos los filtros, osciladores y modelos físicos** implementados en `gen~`.
 
+### 3.1. Acumulación Temporal y Generación de Fase (Wakefield & Taylor)
+
+En su tratado fundamental *Generating Sound & Organizing Time: Thinking with gen~* (Cycling '74, 2022), Graham Wakefield y Gregory Taylor establecen que el concepto de "tiempo" en DSP no debe concebirse como una sucesión de eventos disparados por un reloj o metrónomo externo, sino como un **acumulador continuo de fase normalizada**:
+
+$\phi[n] = (\phi[n-1] + \Delta \phi) \pmod 1$
+
+donde el incremento diferencial de fase por muestra $\Delta \phi$ viene dictado por la frecuencia deseada $f$ y la tasa de muestreo $f_s$:
+
+$\Delta \phi = \frac{f}{f_s}$
+
+```text
+[in 1: freq] ──> [/ samplerate] ──> [+] ──> [wrap 0 1] ──┬──> [out 1: phasor]
+                                     ▲                   │
+                                     └─── [history] ─────┘
+```
+
+#### Por qué este fasor en `gen~` supera al `[phasor~]` de MSP:
+1. **Modulación de Frecuencia Audio-Rate Pura**: En MSP tradicional, modular la frecuencia de un `[phasor~]` con otra señal a frecuencias de audio introduce sutiles discontinuidades y jitter en los bordes de cada bloque vectorial de 64 muestras. En `gen~`, la fase se integra y evalúa muestra por muestra de forma continua y suave.
+2. **Sincronización Dura (Hard Sync) y Reseteo Instantáneo**: La fase puede forzarse a cero o a cualquier valor arbitrario en el ciclo exacto de una muestra mediante una condición lógica (`if` o operador `?`), permitiendo osciladores antialiasing tipo PolyBLEP y sincronización maestra/esclava sin dispersión de fase.
+3. **Aritmética de Plegado y Deformación Temporal**: Aplicando funciones no lineales a la rampa de fase (como potencias, senos o funciones de conformación de onda *waveshaping*), el tiempo mismo se estira y contrae a nivel de nanosegundos antes de indexar tablas de ondas o secuencias de envolventes.
+
 ---
 
 ## 4. Bajo el Capó: Análisis del C++ Exportado (`gen_exported.cpp`)

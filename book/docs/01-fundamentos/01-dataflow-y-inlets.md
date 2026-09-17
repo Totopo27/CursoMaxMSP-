@@ -1,10 +1,14 @@
-# Módulo 1.1: El Paradigma Dataflow, Semántica de Estado vs. Disparo y Orden de Ejecución
+﻿---
+title: "Módulo 1.1: El Paradigma Dataflow, Semántica de Estado vs. Disparo y Orden de Ejecución"
+description: "El paradigma Dataflow de Max/MSP: inlets calientes y fríos, grafos acíclicos dirigidos (DAG), recursión en t=0 y determinismo con [trigger]. Con análisis del C SDK de Cycling '74."
+---
+
 
 > *"En Max, el orden de las cosas no está en las líneas de texto, sino en la teoría de grafos, en la organología acústica y en la pila de llamadas del procesador."*
 
 ---
 
-## ️ 1. Fundamento Epistemológico: Ruptura con el Modelo Von Neumann
+##  1. Fundamento Epistemológico: Ruptura con el Modelo Von Neumann
 
 Para entender Max en profundidad, primero debemos desaprender cómo programan los lenguajes tradicionales.
 
@@ -13,11 +17,6 @@ La computación moderna convencional se rige por la **Arquitectura Von Neumann**
 * El contador avanza secuencialmente instrucción por instrucción (paso 1, paso 2, paso 3).
 * El programador controla activamente el flujo temporal mediante bucles (`for`, `while`) y sentencias condicionales (`if/else`).
 
-```
-[ Modelo Von Neumann (Python / C++ / Rust) ]
-   Instrucción 1 ──► Instrucción 2 ──► Instrucción 3 (Secuencia Forzada)
-```
-
 ### El Paradigma Dataflow (Dennis, MIT 1974)
 Max no es imperativo ni lineal; implementa el modelo de **Computación por Flujo de Datos (Dataflow)**:
 * **No existe un Contador de Programa que recorra el parche.**
@@ -25,17 +24,17 @@ Max no es imperativo ni lineal; implementa el modelo de **Computación por Flujo
 * Un nodo permanece en **estado de reposo absoluto** hasta que un mensaje llega físicamente a una de sus entradas.
 * El cómputo no se ejecuta porque "le toca el turno en el código", sino **únicamente cuando hay datos disponibles para ser transformados**.
 
-```
-[ Modelo Dataflow de Max ]
-       [ Entrada A ]       [ Entrada B ]
-             │                   │
-             └────────► ◯ ◄──────┘
-                    (Nodo)
-             Se activa SOLO cuando
-             llega energía de datos.
-```
+![FIG 1.1 · Von Neumann vs. Dataflow Reactivo](/assets/diagrams/diagrama_von_neumann_vs_dataflow.svg)
 
 > **Por qué esto importa:** En interacción musical en tiempo real, no puedes congelar la CPU en un bucle `while(true)` esperando a que el músico toque una nota. El sistema debe ser **completamente reactivo y asíncrono**.
+
+### Comparativa Arquitectónica: Max Dataflow vs. Servidor UGen de SuperCollider
+Tal como documentan Scott Wilson, David Cottle y Nick Collins en *The SuperCollider Book (The MIT Press)*, existen dos grandes filosofías para abordar la computación musical en tiempo real:
+
+1. **El Modelo Reactivo Guiado por Eventos (Max/MSP):** El lenguaje de control y el entorno visual constituyen un grafo directo acoplado. Los mensajes viajan físicamente a través de cables en memoria compartida mediante punteros a estructuras `t_object`. La latencia de control responde a la prioridad del Scheduler.
+2. **El Modelo Cliente-Servidor Desacoplado (SuperCollider):** La generación de audio reside en un proceso servidor dedicado (`scsynth` / `supernova`) que evalúa un grafo estático de unidades generadoras (UGens) ordenado topológicamente en bloques vectoriales. El lenguaje de control (`sclang`) se comunica con el motor de audio exclusivamente mediante mensajes asíncronos bajo el protocolo **Open Sound Control (OSC)** sobre sockets UDP/TCP.
+
+Comprender esta distinción es vital: mientras que en SuperCollider la síntesis se define como una función matemática pura compilada en el servidor, en Max el conexionado de inlets calientes y fríos define tanto la topología acústica como la pila de llamadas del procesador en tiempo real.
 
 ---
 
@@ -55,18 +54,7 @@ Para que la cuerda suene, necesitas aplicar **energía cinética**: frotar el ar
 * En Max, el **Inlet Caliente** (generalmente el izquierdo) representa la **excitación del sistema**.
 * Al recibir un dato o un mensaje de disparo (`bang`), toma el estado interno actual guardado en los inlets fríos, ejecuta la operación matemática y **dispara inmediatamente el resultado hacia el exterior**.
 
-```
-    [ Parámetro de Estado ]          [ Señal de Excitación ]
-    (Longitud de la cuerda)          (Golpe del arco / Púa)
-               │                                │
-               ▼ (Inlet Frío)                   ▼ (Inlet Caliente)
-       ┌────────────────────────────────────────────────┐
-       │              OBJETO / INSTRUMENTO              │
-       └───────────────────────┬────────────────────────┘
-                               │
-                               ▼
-                       [ Salida / Sonido ]
-```
+![FIG 1.1B · Estado Pasivo (Cold) vs. Excitación Activa (Hot)](/assets/diagrams/diagrama_inlets_hot_cold.svg)
 
 ---
 
@@ -81,12 +69,7 @@ Un parche de Max es, formalmente, un **Grafo Acíclico Dirigido (Directed Acycli
 ### El Teorema del Bucle Infinito en Tiempo Lógico Cero ($t = 0$)
 ¿Qué sucede si conectas la salida de un objeto de vuelta a su propio inlet caliente en un ciclo cerrado?
 
-```
-          ┌─────────────┐
-          │     + 1     │◄──────┐  (Bucle Cerrado en t = 0)
-          └──────┬──────┘       │
-                 └──────────────┘
-```
+![FIG 1.1C · Grafo Dirigido Acíclico (DAG) vs. Bucle Infinito en t = 0](/assets/diagrams/diagrama_dag_feedback_delay.svg)
 
 En física, ningún efecto puede ser su propia causa en el mismo instante temporal. En computación:
 1. El objeto emite un valor por su salida.
@@ -101,7 +84,7 @@ En física, ningún efecto puede ser su propia causa en el mismo instante tempor
 
 ##  4. Bajo el Capó: La Verdad Mecánica en C (Cycling '74 Max SDK)
 
-Para un Senior Architect, los conceptos teóricos tienen una implementación física concreta en memoria. Mirá cómo implementa Cycling '74 este diseño en el código fuente de [`sources/max-sdk/source/basics/plussz/plussz.c`](https://github.com/Cycling74/max-sdk/blob/main/source/basics/plussz/plussz.c):
+Los conceptos teóricos del flujo de datos tienen una implementación física concreta en memoria. La arquitectura interna de Cycling '74 implementa este diseño en el código fuente de [`sources/max-sdk/source/basics/plussz/plussz.c`](https://github.com/Cycling74/max-sdk/blob/main/source/basics/plussz/plussz.c):
 
 ### 1. La Estructura de Memoria (`struct`)
 ```c
@@ -144,52 +127,36 @@ Cuando un solo outlet se bifurca hacia múltiples inlets, el compilador dinámic
 
 > **Right-to-Left (Derecha a Izquierda), Bottom-to-Top (Abajo hacia Arriba)**
 
-```
-             ┌───────────┐
-             │   [bang]  │
-             └─────┬─────┘
-           ┌───────┴───────┐
-           ▼               ▼
-      [print Dos]     [print Uno]  <-- [print Uno] está más a la derecha,
-                                       por lo tanto se ejecuta PRIMERO.
-```
+![FIG 1.1D · Regla Espacial Right-to-Left vs. Determinismo Estructural con Trigger](/assets/diagrams/diagrama_right_to_left_trigger.svg)
 
-### El Peligro de las "Condiciones de Carrera Visuales" (The "Fragile Patch" Problem)
-En los foros de Cycling '74, uno de los errores más recurrentes de programadores novatos se conoce como el **"Fragile Patch Problem"**:
-* Un parche funciona perfectamente hoy.
-* Mañana el desarrollador decide "embellecerlo", alinea un par de cajas o las mueve unos milímetros en el lienzo.
-* **El parche deja de funcionar o produce resultados erráticos.**
+### El Peligro de las Condiciones de Carrera Visuales (The "Fragile Patch" Problem)
+Uno de los problemas estructurales más frecuentes en la programación visual dentro de Max se conoce como el **"Fragile Patch Problem"**:
+* Un parche funciona correctamente durante su desarrollo inicial.
+* Posteriormente, al alinear cajas o reorganizar su disposición gráfica en el lienzo,
+* **el parche deja de funcionar o produce resultados inconsistentes.**
 
-¿Por qué ocurre esto? Porque Max resuelve los cables de un mismo outlet ordenando los objetos de destino según sus coordenadas rectangulares (`rect.x` y `rect.y`). Si dos objetos están verticalmente alineados, la regla secundaria es **Bottom-to-Top** (de abajo hacia arriba). Mover un objeto 1 píxel puede invertir la secuencia de ejecución de tus variables.
+¿Por qué ocurre esto? Porque Max resuelve los cables de un mismo outlet ordenando los objetos de destino según sus coordenadas rectangulares (`rect.x` y `rect.y`). Si dos objetos están verticalmente alineados, la regla secundaria es **Bottom-to-Top** (de abajo hacia arriba). Mover un objeto 1 píxel puede invertir la secuencia de ejecución de las variables.
 
 ### El Algoritmo de Despacho: Depth-First Traversal (Búsqueda en Profundidad)
-Otro hallazgo vital discutido en la comunidad oficial: **Max NO evalúa el grafo en paralelo (Breadth-First), sino estrictamente en profundidad (Depth-First).**
+Un aspecto arquitectónico fundamental documentado en el núcleo de Max es que **el grafo no se evalúa en paralelo (Breadth-First), sino estrictamente en profundidad (Depth-First).**
 Cuando un objeto envía un mensaje por su salida hacia el primer destino:
-1. Max congela la ejecución del resto de los destinos.
-2. Sigue todo el camino del primer mensaje hasta el final de la cadena (incluso si pasa por 50 objetos intermedios).
-3. **Solo cuando esa rama completa termina de ejecutarse y retorna en la pila de llamadas (call stack), Max pasa al siguiente objeto conectado.**
+1. Max suspende la ejecución del resto de los destinos.
+2. Sigue toda la trayectoria del primer mensaje hasta el final de la rama (incluso a través de múltiples objetos intermedios).
+3. **Solo cuando esa rama completa termina su ejecución y retorna en la pila de llamadas (call stack), Max despacha el mensaje hacia el siguiente objeto conectado.**
 
-### El Salvador: El Objeto `[trigger]` (`[t]`)
-Para diseñar software profesional, determinista y mantenible a largo plazo, **la regla de oro de la comunidad es: NUNCA confíes en la posición espacial de los cables**. Usamos **`[trigger]`** (abreviado **`[t]`**):
+### Determinismo Estructural: El Objeto `[trigger]` (`[t]`)
+Para diseñar sistemas estables, deterministas y mantenibles a largo plazo, **la regla de diseño fundamental establece que nunca debe dependerse de la posición geométrica de los objetos**. Se utiliza **`[trigger]`** (abreviado **`[t]`**):
 * Recibe cualquier mensaje de entrada.
 * Despacha sus salidas **estrictamente de derecha a izquierda** en una secuencia determinista inmutable y tipada (`b` = bang, `i` = int, `f` = float, `l` = list, `s` = symbol).
-* Garantiza que el código no se rompa aunque muevas los objetos por toda la pantalla.
+* Garantiza la integridad del flujo lógico independientemente de cualquier cambio en la disposición gráfica del lienzo.
 
-```
-               [ 25 ]
-                 │
-            ┌────┴────┐
-            │ t i i   │   <-- trigger int int
-            └─┬─────┬─┘
-              │     └────────► [Inlet Frío (+)] (1°: Actualiza Estado en RAM)
-              └──────────────► [Inlet Caliente (+)] (2°: Dispara la Excitación)
-```
+![FIG 1.1 · Depth-First Traversal & Trigger Determinism](/assets/diagrams/diagrama_dataflow_callstack.svg)
 
-> **Consejo Pro de los Foros Oficiales (Debugging):** Si tenés dudas sobre el orden real en que viajan los mensajes en un parche enmarañado, no adivines: abrí el **Max Debugger Window** y agregá **Watchpoints** en los cables. Max pausará la ejecución y te mostrará paso a paso cómo la pila recorre el grafo.
+> **Técnica de Depuración Recomendada:** Para inspeccionar el orden exacto en que circulan los mensajes a través de un parche complejo, se recomienda utilizar la ventana **Max Debugger Window** e incorporar **Watchpoints** en los cables de conexión. Max detendrá la ejecución de forma interactiva y exhibirá el recorrido detallado de la pila de llamadas a lo largo del grafo.
 
 ---
 
-##  4 Escenarios de la Vida Real (Casos de Estudio)
+## 6. Escenarios de la Vida Real (Casos de Estudio)
 
 Abre el parche interactivo:
 [`book/patches/modulo-01/laboratorio_01.maxpat`](/patches/modulo-01/laboratorio_01.maxpat)
@@ -213,21 +180,21 @@ Abre el parche interactivo:
 
 ---
 
-## 3 Ejercicios Prácticos de Laboratorio
+## 7. Ejercicios Prácticos de Laboratorio
 
 Realiza estos ejercicios en tu copia de Max utilizando el parche [`laboratorio_01.maxpat`](/patches/modulo-01/laboratorio_01.maxpat):
 
-### ️ Ejercicio 1: El Divisor Protegido contra División por Cero
+###  Ejercicio 1: El Divisor Protegido contra División por Cero
 * **Objetivo:** Construir una calculadora de división (`/`) que reciba Numerador y Denominador.
 * **Desafío:** Si el usuario ingresa un `0` en el denominador, el divisor debe advertir con un mensaje de error en consola y NO ejecutar la división.
 * **Requisito:** Utiliza `[trigger]` para evaluar el denominador antes de permitir que el numerador golpee el inlet caliente de `/`.
 
-### ️ Ejercicio 2: El Acumulador Rítmico con Límite (Step Sequencer Core)
+###  Ejercicio 2: El Acumulador Rítmico con Límite (Step Sequencer Core)
 * **Objetivo:** Cada vez que pulses una tecla espaciadora (`[key]`), un contador debe sumar `1`.
 * **Desafío:** Cuando llegue a `16`, debe resetearse automáticamente a `1`.
 * **Requisito:** Orquesta la retroalimentación de la suma con un `[i 0]` y `[t b i]` para evitar el error de recursión infinita (stack overflow en $t=0$) en el scheduler de Max.
 
-### ️ Ejercicio 3: Enrutador A/B con Preservación de Estado
+###  Ejercicio 3: Enrutador A/B con Preservación de Estado
 * **Objetivo:** Construir un sistema con 2 potenciómetros y un selector (A o B).
 * **Desafío:** Al conmutar entre A y B, la salida debe actualizarse inmediatamente con el último valor conocido del canal seleccionado, sin requerir que muevas de nuevo el potenciómetro.
 * **Requisito:** Utiliza dos objetos `[i]` (como memoria de estado para A y B) y conéctalos a un `[gate 2]` o un selector orquestado por `[trigger]`.

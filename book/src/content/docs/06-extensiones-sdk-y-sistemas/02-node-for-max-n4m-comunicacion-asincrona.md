@@ -48,7 +48,38 @@ maxAPI.addHandler(maxAPI.MESSAGE_TYPES.BANG, () => {
 
 ---
 
-## 3. Laboratorio Práctico: `laboratorio_23_node_for_max.maxpat`
+## 3. Estado del Arte: Agentes de IA, LLMs y Co-Performance Musical en Tiempo Real
+
+*(Fundamentos contemporáneos basados en LLM4OSC y Human-AI Musical Co-Performance, 2024).*
+
+La arquitectura asíncrona de Node for Max se ha convertido en la puerta de entrada para integrar **Modelos de Lenguaje Grande (LLMs) y Agentes Autónomos de Inteligencia Artificial** dentro de sistemas musicales interactivos.
+
+### 3.1. Arquitectura Desacoplada: El Pipeline LLM4OSC
+Ejecutar inferencia de redes neuronales o llamadas a APIs de lenguaje en el Scheduler Thread de Max congelaría el motor de audio de inmediato. El protocolo **LLM4OSC** (*Profile-Bound Natural Language Control with OSC*) resuelve esto estableciendo una separación estricta:
+
+1. **Ingesta de Intención Sonora en Lenguaje Natural**: El músico introduce una instrucción estética ("hacé que la reverberación sea más cavernosa y oscurecé los armónicos superiores").
+2. **Traducción Asíncrona en Node for Max**: El script en Node.js consulta un modelo LLM local (ej. vía Ollama o llama.cpp) o en la nube mediante un cliente REST asíncrono con gramáticas JSON restringidas (*structured outputs*).
+3. **Mapeo Tipado a Open Sound Control (OSC)**: El LLM no escupe texto libre; emite un payload acotado a un perfil de parámetros conocidos:
+   ```json
+   {
+     "address": "/dsp/reverb/decay",
+     "value": 8.5
+   },
+   {
+     "address": "/dsp/filter/damping",
+     "value": 0.72
+   }
+   ```
+4. **Despacho Atómico a Max**: `maxAPI.outlet()` despacha los parámetros tipados a Max sin bloquear jamás el motor DSP.
+
+### 3.2. Co-Performance Humano-IA: El Bucle Bidireccional
+En sistemas de co-improvisación en tiempo real:
+- **Max / MSP (Capa de Escucha y Síntesis)**: Analiza el audio entrante con descriptores rápidos (densidad rítmica, pitch tracking con `[retune~]`, centroide espectral) y los envía por IPC a Node.js en ventanas de 50 ms.
+- **Node for Max (Capa Cognitiva de IA)**: El agente de IA evalúa la trayectoria musical del instrumentista humano y predice la respuesta armónica o contrapuntística, devolviendo secuencias de control a Max para su síntesis inmediata.
+
+---
+
+## 4. Laboratorio Práctico: `laboratorio_23_node_for_max.maxpat`
 
 Abrir el parche interactivo: [`book/patches/modulo-06/laboratorio_23_node_for_max.maxpat`](/patches/modulo-06/laboratorio_23_node_for_max.maxpat)
 

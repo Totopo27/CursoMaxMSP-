@@ -1,4 +1,8 @@
-# Proyecto Integrador 05: Sintetizador de Modelado Físico Digital en Gen~ (Guía de Onda / Waveguide Mesh)
+﻿---
+title: "Proyecto Integrador 05: Sintetizador de Modelado Físico Digital en Gen~ (Guía de Onda / Waveguide Mesh)"
+description: "Proyecto integrador Módulo 5: sintetizador modal por guía de onda digital completa en gen~, con resonadores físicos Karplus-Strong, control de amortiguamiento y exportación a C++ embebido."
+---
+
 
 Bienvenidos al proyecto cumbre del **Módulo 5**. Aquí abandonamos definitivamente las limitaciones del procesamiento por bloques vectoriales ($N = 64$) de MSP y consolidamos la potencia del paradigma JIT de `gen~`.
 
@@ -14,26 +18,7 @@ $$\psi(x, t) = \psi^+(t - x/c) + \psi^-(t + x/c)$$
 
 En tiempo discreto, esto se sintetiza mediante dos líneas de retardo acopladas con reflexión en los extremos, filtros de dispersión y pérdidas de energía acústica:
 
-```mermaid
-graph LR
-    subgraph Excitacion
-        Exc["Generador de Impulso / Ruido / Arco"]
-    end
-
-    subgraph GuiaDeOndaGen["Núcleo DSP gen~ (z^-1 exacto)"]
-        DelayRight["Delay Superior: Onda Derecha (+)"]
-        DelayLeft["Delay Inferior: Onda Izquierda (-)"]
-        ReflectL["Reflexión Izquierda: R1"]
-        ReflectR["Reflexión Derecha: R2 + Filtro Lowpass (Pérdidas)"]
-        Dispersion["Allpass de Dispersión (Rigidez)"]
-        NonLinear["Saturación Tanh (Amortiguamiento no lineal)"]
-    end
-
-    Exc -->|Suma en Puente| DelayRight
-    DelayRight --> Dispersion --> ReflectR --> DelayLeft
-    DelayLeft --> NonLinear --> ReflectL --> DelayRight
-    DelayRight -->|Pick-up Posicional| Out["Salida Audio L/R"]
-```
+![FIG 5.2 · Karplus-Strong Extendido & Bucle No Lineal](/assets/diagrams/diagrama_waveguide_gen.svg)
 
 ### 1.1. Los Módulos del Algoritmo en GenExpr
 

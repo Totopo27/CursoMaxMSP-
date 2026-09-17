@@ -1,4 +1,8 @@
-# Proyecto Integrador 03: Sintetizador Híbrido FM-Sustractivo con Procesador de Retardo Analógico
+﻿---
+title: "Proyecto Integrador 03: Sintetizador Híbrido FM-Sustractivo con Procesador de Retardo Analógico"
+description: "Proyecto integrador Módulo 3: sintetizador FM híbrido de 2 operadores con envolventes anti-click, filtrado dinámico, delay analógico simulado, buffer~ y mezcla estéreo en MSP."
+---
+
 
 > *"Un sintetizador completo no es un agregado aleatorio de objetos DSP: es una arquitectura balanceada donde la generación de armónicos por modulación no lineal, el filtrado dinámico dependiente de la velocidad y el espacio acústico temporal convergen en un único instrumento expresivo."*  
 > — **Jean-Claude Risset**, *Computer Music Pioneer*
@@ -15,51 +19,7 @@
 
 ## 1. Diagrama de Arquitectura del Instrumento
 
-```
-                    +-----------------------+
-                    |  MIDI / kslider Note  |
-                    +-----------------------+
-                      |                   |
-               (Freq fc)                  (Gate / Velocity)
-                      |                   |
-            +---------v---------+  +------v------+
-            |  C:M Ratio Math   |  |   ADSR~     | ---> [VCA Principal]
-            +-------------------+  |  Envolvente |
-             | (fc)        | (fm)  +-------------+
-             |      +------v------+
-             |      | Modulador   |
-             |      |  cycle~     |
-             |      +------+------+
-             |             |
-             |      +------v------+
-             |      |  FM Index   | <--- [ADSR~ Timbre Env]
-             |      |  Multiplic. |
-             |      +------+------+
-             |             | (d(t))
-            +v-------------v----+
-            |     Carrier       |
-            |     cycle~        |
-            +---------+---------+
-                      | (FM Signal)
-            +---------v---------+
-            |  Filtro Resonante | <--- [LFO Modulación Corte]
-            |      lores~       |
-            +---------+---------+
-                      |
-            +---------v---------+
-            |   VCA Amplitud    | <--- [*~ Headroom 0.35]
-            +---------+---------+
-                      |
-            +---------v---------+
-            | Tape Delay Stereo | <--- [tapin~ / tapout~ con LFO Doppler]
-            +----+---------+----+
-                 |         |
-               (Left)   (Right)
-                 |         |
-            +----v---------v----+
-            |      ezdac~       |
-            +-------------------+
-```
+![FIG 3.5 · Arquitectura DSP del Sintetizador Híbrido FM-Sustractivo (Proyecto Integrador 03)](/assets/diagrams/diagrama_proyecto_03_arquitectura.svg)
 
 ---
 

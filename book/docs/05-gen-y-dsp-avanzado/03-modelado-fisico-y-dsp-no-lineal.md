@@ -1,4 +1,8 @@
-# Lección 5.3: Modelado Físico y DSP No Lineal: Cuerdas Karplus-Strong, Waveguides y Ecuaciones Diferenciales
+﻿---
+title: "Lección 5.3: Modelado Físico y DSP No Lineal: Cuerdas Karplus-Strong, Waveguides y Ecuaciones Diferenciales"
+description: "Modelado físico y DSP no lineal en gen~: síntesis por guía de onda digital (Karplus-Strong), resonadores modales, saturación analógica tanh() y algoritmos de Runge-Kutta."
+---
+
 
 > *"La síntesis aditiva y sustractiva parten de formas de onda abstractas y las esculpen. El modelado físico parte de la física del mundo real: la elasticidad de una cuerda de nylon tensada, la fricción no lineal de las cerdas de un arco impregnadas en colofonia, y la pérdida de energía dispersiva en el puente de una guitarra. No sintetizamos el sonido: simulamos el instrumento."*  
 > — **Julius O. Smith III**, *Physical Audio Signal Processing*
@@ -30,16 +34,7 @@ $$y(x,t) = y^+(t - x/c) + y^-(t + x/c)$$
 
 En el dominio digital, esto se traduce en **dos líneas de retardo acopladas que viajan en sentidos contrarios**, reflejándose en los extremos fijos con inversión de fase (coeficiente de reflexión $R = -1.0$).
 
-```
-                Extremo Fijo (Cejuela)                       Extremo Fijo (Puente)
-             +-----[ R = -1 ]<-------------------\                     |
-             |                                    \                    |
-             v                                     \                   v
-   +--->[ Delay Line Superior y+(t - x/c) ]---------\------------>[ Bridge Filter ]---+
-   |                                                 \                                 |
-   |                                                  \                                |
-   +---[ Inversión ]<----------------------------------\----[ Delay Line Inferior y- ]-+
-```
+![FIG 5.2 · Digital Waveguide: Ondas Viajeras Bidireccionales y Reflexión de Fase](/assets/diagrams/diagrama_digital_waveguide.svg)
 
 ---
 
@@ -52,6 +47,18 @@ $$y[n] = x[n] + g \cdot \frac{y[n - D] + y[n - D - 1]}{2}$$
 1. **Excitación Inicial**: Una ráfaga de ruido blanco corto ($N = D$ muestras) que modela el golpe de la púa o el pellizco del dedo.
 2. **Lazo de Realimentación (Feedback Loop)**: El sonido circula indefinidamente por el buffer.
 3. **Filtro de Damping**: El promedio entre dos muestras adyacentes es un filtro paso-bajo FIR simple ($H(z) = 0.5 + 0.5 z^{-1}$). En cada vuelta, los armónicos agudos pierden energía más rápido que los graves, **emulando con exactitud la amortiguación física de las cuerdas reales**.
+
+### Esquemas en Diferencias Finitas de Cuarto Orden (Aguilar & Salinas, 2003)
+En su investigación sobre síntesis por modelado físico, Juan R. Aguilar y Renato Salinas formalizan la discretización directa de la ecuación de onda sin recurrir a guías de onda simplificadas, transformando la ecuación continua en un **esquema explícito en diferencias finitas de cuarto orden** tanto en el dominio espacial como temporal:
+
+$$y_i^{n+1} = 2 y_i^n - y_i^{n-1} + \left(\frac{c \Delta t}{\Delta x}\right)^2 \left( y_{i+1}^n - 2 y_i^n + y_{i-1}^n \right)$$
+
+Bajo la condición de estabilidad de Courant-Friedrichs-Lewy ($\text{CFL} \le 1$, donde $\Delta t \le \Delta x / c$), este sistema resuelve en cada muestra la aceleración de cada segmento físico de la cuerda o membrana. En `[gen~]`, este esquema se implementa con precisión muestra a muestra utilizando arrays de memoria contiguos indexados en el código de GenExpr.
+
+### Dinámica No Lineal y Atractores Caóticos (Edmar Soria, 2022)
+Como expone Edmar Soria en *Procedural / Sonora*, cuando los instrumentos acústicos son forzados a regímenes extremos (sobre-presión del arco sobre la cuerda o membranas con rigidez no lineal), la respuesta deja de ser lineal y entra en el territorio de los **sistemas dinámicos discretos no lineales** gobernados por mapas caóticos (como el mapa logístico o el atractor de Hénon):
+$$x_{n+1} = 1 - a x_n^2 + y_n, \quad y_{n+1} = b x_n$$
+Al acoplar estos mapas a la excitación de guías de onda dentro de `[gen~]`, el instrumento digital exhibe bifurcaciones periódicas, armónicos sub-graves y comportamientos acústicos orgánicos idénticos a los de instrumentos orquestales reales en manos de músicos virtuosos.
 
 ---
 

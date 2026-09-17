@@ -1,32 +1,20 @@
-# Módulo 3.1: Señal vs. Control (`~`), Anatomía del Audio Thread y la Función `perform64` en C
+﻿---
+title: "Módulo 3.1: Señal vs. Control (`~`), Anatomía del Audio Thread y la Función `perform64` en C"
+description: "La frontera señal/control en MSP: por qué existe la tilde (~), anatomía del Audio Thread, vectores de 64 muestras y la función perform64 en C con análisis del Max SDK."
+---
+
 
 > *"En el mundo del control, el tiempo avanza a saltos cuando un evento ocurre; en el mundo de la señal, el tiempo es un río inmutable de 48.000 muestras por segundo que jamás puede detenerse."*
 
 ---
 
-## ️ 1. Fundamento Acústico y Computacional: De Eventos Discretos al Continuo Numérico
+##  1. Fundamento Acústico y Computacional: De Eventos Discretos al Continuo Numérico
 
 *(Inspirado en Miller Puckette, *Theory and Technique of Electronic Music*, y Alessandro Cipriani & Maurizio Giri, *Electronic Music and Sound Design*, Vol. 1)*
 
 Para entender el procesamiento digital de señales (DSP) en Max, debemos comprender la fractura ontológica entre dos reinos temporales:
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                       LOS DOS REINOS TEMPORALES DE MAX                      │
-├─────────────────────────────────────────────────────────────────────────────┤
-│ 1. EL REINO DEL CONTROL (Eventos Asíncronos / Macro-tiempo)                 │
-│    • Objetos estándar de Max (sin tilde: [metro], [+], [counter]).          │
-│    • Los mensajes viajan por cables finos solo cuando algo cambia.          │
-│    • Si no tocas una tecla, la tasa de cómputo es CERO (CPU en reposo).     │
-│    • Resolución temporal típica: ~1 milisegundo (1.000 Hz).                 │
-│                                                                             │
-│ 2. EL REINO DEL AUDIO / MSP (Señales Síncronas / Micro-tiempo)              │
-│    • Objetos con tilde (~): [cycle~], [+~], [lores~], [ezdac~].             │
-│    • Cables amarillos/negros rayados que transportan un flujo continuo.     │
-│    • La CPU calcula valores ininterrumpidamente, haya o no sonido.          │
-│    • A 48.000 Hz (Sample Rate), cada muestra dura apenas 20.83 microsegundos│
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+![FIG 3.0 · Los Dos Reinos Temporales de Max: Control vs. Señal MSP](/assets/diagrams/diagrama_reinos_control_audio.svg)
 
 ### El Teorema de Muestreo de Nyquist-Shannon
 
@@ -39,30 +27,20 @@ $$f_s \ge 44.100\text{ Hz} \quad \text{o} \quad 48.000\text{ Hz}$$
 
 Si intentamos representar una señal por encima de la frecuencia de Nyquist ($f_N = f_s / 2 = 24.000\text{ Hz}$ a 48 kHz), ocurre el fenómeno de **Aliasing (Plegamiento Espectral)**: las frecuencias inaudibles se reflejan matemáticamente hacia abajo en el espectro audible como tonos espurios y disonantes.
 
+> **Fundamento Físico Histórico (Sir George Biddell Airy, 1871):**
+> Mucho antes de la discretización digital, Sir George Biddell Airy demostró en su célebre tratado *On Sound and Atmospheric Vibrations with the Mathematical Elements of Music (Cambridge)* que el sonido en el aire no es un transporte de materia, sino una **propagación de estados de presión y deformación elástica infinitesimal** en un medio continuo gobernada por la ecuación diferencial de onda unidimensional:
+> $$\frac{\partial^2 y}{\partial t^2} = c^2 \frac{\partial^2 y}{\partial x^2}$$
+> En el procesamiento digital contemporáneo con MSP, sustituimos la elasticidad continua del aire por arreglos numéricos contiguos de punto flotante (`t_double*`) muestreados a intervalos regulares $T = 1/f_s$. La fidelidad con la que el motor en C reproduce las ondas mecánicas deducidas por Airy depende de respetar la tasa de Nyquist y evitar discontinuidades en el Audio Thread.
+
 ---
 
-## ️ 2. Anatomía del Audio Thread: Vector Sizes y Latencia
+##  2. Anatomía del Audio Thread: Vector Sizes y Latencia
 
 El procesador de tu computadora no puede interrumpir sus registros 48.000 veces por segundo para calcular una muestra a la vez; el costo de cambio de contexto (*context switching*) consumiría el 100% de la CPU.
 
 Por ello, MSP procesa el audio en **bloques o vectores de muestras** (*Sample Frames*):
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                    I/O VECTOR SIZE VS. SIGNAL VECTOR SIZE                   │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│  Tarjeta de Sonido (Hardware Driver ASIO / CoreAudio):                      │
-│  [ I/O Vector Size = 256 muestras ] ──► Latencia = 256 / 48000 = 5.33 ms    │
-│  │                                                                          │
-│  │ (Subdividido internamente en MSP)                                        │
-│  ▼                                                                          │
-│  [ Signal Vector Size = 64 muestras ] ◄── Bloque de cómputo en C (perform64)│
-│  [ 64 muestras ] [ 64 muestras ] [ 64 muestras ] [ 64 muestras ]            │
-│                                                                             │
-│  Regla: Signal Vector Size <= I/O Vector Size (Siempre en potencias de 2)   │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+![FIG 3.1 · I/O Vector, Signal Vector & perform64](/assets/diagrams/diagrama_perform64_vectores.svg)
 
 ### La Física de la Latencia Hardware vs. Latencia de Cómputo:
 
@@ -82,7 +60,7 @@ Por ello, MSP procesa el audio en **bloques o vectores de muestras** (*Sample Fr
 
 *(Basado en el análisis de `simplemsp~.c` en `Cycling74/max-sdk`)*
 
-¿Cómo se ejecuta físicamente un objeto de audio en el kernel de Max? Mirá el código fuente real del SDK:
+La ejecución física de un objeto de audio en el núcleo de Max queda determinada por su función de procesamiento vectorial en el SDK:
 
 ```c
 // simplemsp~.c del Cycling '74 Max SDK
@@ -109,22 +87,44 @@ void simplemsp_perform64(t_simplemsp *x, t_object *dsp64,
 
 ---
 
-### Gotchas Críticos de los Foros Oficiales de Cycling '74
+### Consideraciones Críticas de Rendimiento y Sincronización en MSP
 
-1. **Jitter en Disparos de Audio desde el Macro-tiempo:**
-   - Si disparas un grano o envolvente con un botón de control o un `[metro]` normal, el instante exacto en que comienza el sonido se alinea con el inicio del próximo bloque I/O. 
-   - Con un I/O Vector de 512 muestras, hay una incertidumbre temporal (jitter) de hasta $10.6\text{ ms}$.
-   - **Solución:** Si requieres precisión de muestra (*sample-accurate*), la rampa o disparo debe generarse con señales continuas (`[phasor~]`, `[click~]`, `[line~]`).
+1. **Incertidumbre Temporal (Jitter) en Disparos de Audio desde el Dominio de Control:**
+   - Si se dispara un grano o envolvente mediante un mensaje de control o un objeto `[metro]`, el instante temporal exacto de inicio se alinea necesariamente con el límite del próximo bloque I/O.
+   - Con un I/O Vector de 512 muestras a 48 kHz, existe una ventana de incertidumbre de hasta $10.6\text{ ms}$.
+   - **Solución técnica:** Para garantizar sincronía a nivel de muestra individual (*sample-accurate*), la activación y las curvas temporales deben modularse exclusivamente mediante señales de audio continuas (`[phasor~]`, `[click~]`, `[line~]`).
 
-2. **La Regla de las Potencias de 2:**
-   - Configurar buffers que no sean potencias de 2 (como 300 o 500 muestras) desestabiliza los drivers ASIO y provoca caídas de sincronización. Usa siempre $64, 128, 256, 512, 1024$.
+2. **Alineamiento en Potencias de 2:**
+   - La asignación de tamaños de búfer que no sigan potencias exactas de base 2 (como 300 o 500 muestras) introduce inestabilidad en las capas de controladores ASIO/CoreAudio y provoca desincronización en las rutinas SIMD. Deben emplearse siempre valores de la serie $64, 128, 256, 512, 1024$.
 
-3. **Demora de Feedback en `send~` / `receive~`:**
-   - Todo bucle de retroalimentación cerrado sin cables directos añade exactamente **1 Signal Vector Size de retraso** (a 64 muestras, $1.33\text{ ms}$ de desfase).
+3. **Latencia de Retroalimentación en Enlaces Remotos (`send~` / `receive~`):**
+   - Cualquier topología de bucle cerrado de retroalimentación resuelta sin conexiones explícitas directas incorpora un retardo fijo inherente de **un Signal Vector Size** ($1.33\text{ ms}$ a 64 muestras y 48 kHz).
 
 ---
 
-## ️ 4. 4 Escenarios del Mundo Real
+## 4. La Señal de Audio como Función de Control Continuo (El Enfoque Dobrian & AlgoComp)
+
+Como documenta Christopher Dobrian en su tratado *Computer Music Programming (CMP)* y en los ensayos de *Algorithmic Composition*, uno de los saltos epistemológicos más potentes en la programación musical con Max consiste en **desmitificar la señal de audio como mero material audible**.
+
+Un cable de audio (`~`) no es necesariamente sonido que deba salir a los altavoces; es un **flujo de control continuo a resolución de microsegundos**:
+
+1. **Osciladores de Baja Frecuencia (LFO) como Formas de Onda de Control**:
+   - Una onda senoidal generada con `[cycle~ 0.2]` (un ciclo cada 5 segundos) no produce un tono perceptible por el oído humano, pero provee una trayectoria continua perfecta e inmune al jitter del sistema operativo.
+   - Mientras que un temporizador de control (`[metro]`) está sujeto a las interrupciones del hilo de la interfaz gráfica, un LFO generado en el Audio Thread evalúa 48.000 puntos de modulación por segundo con precisión matemática absoluta.
+
+2. **Modulación de Moduladores (*Modulating the Modulators*)**:
+   - En *Algorithmic Composition*, Dobrian plantea que las curvas musicales orgánicas surgen cuando la frecuencia, amplitud o fase de un oscilador de control es modulada a su vez por un segundo oscilador de frecuencia aún menor:
+
+![FIG 3.1B · Composición Algorítmica: Modulación de Moduladores en Audio Thread](/assets/diagrams/diagrama_modulacion_moduladores_dobrian.svg)
+
+   - Esta técnica rompe la predictibilidad mecánica de los LFOs cíclicos simples, produciendo evoluciones tímbricas continuas cuasi-periódicas que emulan el comportamiento dinámico de los instrumentos acústicos.
+
+3. **Mapeo No Lineal e Interpolación en Audio**:
+   - El objeto `[scale~]` permite trasladar el rango bipolar natural de los osciladores de MSP ($-1.0$ a $+1.0$) a cualquier dominio físico continuo (por ejemplo, frecuencias de corte de filtros entre $80\text{ Hz}$ y $12.000\text{ Hz}$ o posiciones espaciales), aplicando curvaturas exponenciales y logarítmicas en tiempo real muestra a muestra.
+
+---
+
+##  5. 4 Escenarios del Mundo Real
 
 Abre el parche interactivo complementario:
 [`book/patches/modulo-03/laboratorio_07_audio_basics.maxpat`](/patches/modulo-03/laboratorio_07_audio_basics.maxpat)
@@ -151,15 +151,15 @@ Abre el parche interactivo complementario:
 
 Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_07_audio_basics.maxpat`](/patches/modulo-03/laboratorio_07_audio_basics.maxpat):
 
-### ️ Ejercicio 1: Eliminación de Zipper Noise con `[line~]`
+###  Ejercicio 1: Eliminación de Zipper Noise con `[line~]`
 * **Objetivo:** Conecta un generador sinusoidal continuo a un control de volumen.
 * **Desafío:** Compara dos métodos de atenuación: mover un slider directamente conectado a `[sig~]` vs. pasar el valor por un mensaje `$1 20` hacia `[line~]`. Observa en el osciloscopio `[scope~]` cómo el escalón discontinuo desaparece convirtiéndose en una rampa continua.
 
-### ️ Ejercicio 2: El Sonda de Muestreo Cuántico con `[snapshot~]`
+###  Ejercicio 2: El Sonda de Muestreo Cuántico con `[snapshot~]`
 * **Objetivo:** Captura el estado de un LFO de audio ultra-lento (`[cycle~ 0.5]`).
 * **Desafío:** Usa un `[metro 50]` para muestrear la señal con `[snapshot~]` y muestra el valor en pantalla. Comprueba matemáticamente que los valores capturados oscilan exactamente entre $-1.0$ y $+1.0$.
 
-### ️ Ejercicio 3: Prueba de Esfuerzo Vectorial
+###  Ejercicio 3: Prueba de Esfuerzo Vectorial
 * **Objetivo:** Experimenta con la carga de CPU y la latencia.
 * **Desafío:** Abre la ventana Audio Status. Cambia el I/O Vector Size de 64 a 1024 muestras y observa cómo cambia el tiempo de respuesta y el indicador de CPU en Max.
 

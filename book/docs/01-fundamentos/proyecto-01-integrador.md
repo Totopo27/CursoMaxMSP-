@@ -1,6 +1,10 @@
-# Proyecto Integrador 1: Secuenciador Polirrítmico Diatónico Autónomo
+﻿---
+title: "Proyecto Integrador 1: Secuenciador Polirrítmico Diatónico Autónomo"
+description: "Proyecto integrador Módulo 1: secuenciador polirrítmico diatónico autónomo con reloj maestro, cuantizador modal pentatónico, permutación circular con [zl.rot] y síntesis FM percusiva."
+---
 
-> *"La madurez de un ingeniero de software y sonido en Max se demuestra cuando el sistema puede generar música compleja y viva a partir de reglas arquitectónicas mínimas, elegantes y matemáticamente estables."*
+
+> *"La robustez de un sistema en Max se demuestra cuando el parche es capaz de generar procesos musicales complejos a partir de reglas arquitectónicas mínimas, deterministas y matemáticamente estables."*
 
 ---
 
@@ -15,45 +19,13 @@ Este proyecto integra **la totalidad de los conceptos teóricos y prácticos des
 
 ---
 
-## ️ 2. Diagrama de Arquitectura del Sistema
+## 2. Diagrama de Arquitectura del Sistema
 
-```
-┌───────────────────────────────────────────────────────────────────────────┐
-│                      1. SUBSISTEMA TEMPORAL (LISTENER)                    │
-│   [toggle] ──► [metro 125ms] ──► [counter 0 11] (Master Clock 16th notes) │
-└─────────────────────────────────────┬─────────────────────────────────────┘
-                                      │
-              ┌───────────────────────┴───────────────────────┐
-              ▼                                               ▼
-┌──────────────────────────┐                     ┌──────────────────────────┐
-│  Polirritmo A: [% 4]     │                     │  Polirritmo B: [% 3]     │
-│  Base Cuaternaria (Kick) │                     │  Tresillo / Síncopa (Lead│
-└─────────────┬────────────┘                     └────────────┬─────────────┘
-              │                                               │
-              ▼                                               ▼
-┌──────────────────────────┐                     ┌──────────────────────────┐
-│ 2. MOTOR SINTESIS BASS   │                     │ 3. MOTOR COMPOSER MODAL  │
-│ Pitch Envelope ([line~]) │                     │ Random + Cuantizador     │
-│ Sinusoide Pura ([cycle~])│                     │ Rotación con [zl.rot]    │
-└─────────────┬────────────┘                     └────────────┬─────────────┘
-              │                                               │
-              │                                               ▼
-              │                                  ┌──────────────────────────┐
-              │                                  │ 4. MOTOR SINTESIS LEAD   │
-              │                                  │ Modulador FM + Envolvente│
-              └───────────────────────┬──────────┴──────────────────────────┘
-                                      │
-                                      ▼
-                      ┌───────────────────────────────┐
-                      │    5. STAGE FINAL DE SALIDA   │
-                      │     Fader de Ganancia [gain~] │
-                      │    Salida de Audio [ezdac~]   │
-                      └───────────────────────────────┘
-```
+![FIG 1.3 · Arquitectura del Sistema - Secuenciador Polirrítmico Diatónico](/assets/diagrams/diagrama_proyecto_01_arquitectura.svg)
 
 ---
 
-##  3. Desglose de Componentes
+## 3. Desglose de Componentes
 
 ### Componente A: El Master Clock y el Generador Polirrítmico
 * En lugar de usar dos metrónomos desincronizados, usamos un **reloj maestro único** a 125 ms (equivalente a semicorcheas a 120 BPM).
@@ -67,6 +39,10 @@ Este proyecto integra **la totalidad de los conceptos teóricos y prácticos des
   `MIDI: 57 60 62 64 67 69 72`
 * El pulso polirrítmico selecciona una nota de la escala usando `[zl.lookup]`.
 * Cada 12 compases, un pulso ejecuta un `[zl.rot 1]`, haciendo que la escala rote circularmente. Las mismas notas se ejecutan con una sensación armónica renovada e hipnótica.
+
+> **Fundamentación Teórica (Edmar Soria / Federico Schumacher):**
+> En *Procedural / Sonora*, Edmar Soria formaliza la **transducción rítmica y modal** a través de la teoría de conjuntos y grupos de permutaciones: las rotaciones circulares mediante `[zl.rot]` representan acciones de un grupo cíclico $C_n$ sobre el conjunto discreto de alturas, preservando la consonancia interválica mientras generan variación temporal continua sin recurrir al azar destructivo.
+> Asimismo, como demuestra Federico Schumacher en su investigación doctoral sobre la herramienta *AMI (UNAM / CMMAS)*, la estructuración de colecciones simbólicas en memoria mediante tablas indexadas (`coll` y matrices probabilísticas) permite desacoplar el motor generativo de la síntesis final, garantizando reproducibilidad y calificación analítica de los parámetros generados en tiempo real.
 
 ### Componente C: La Voz de Sintetizador Percusivo (MSP)
 * **Bombo / Sub-Bass:** Un oscilador `[cycle~]` modulado con una caída rápida de frecuencia (de 150 Hz a 40 Hz en 80 ms con `[line~]`) y una envolvente de amplitud exponencial para dar pegada contundente.

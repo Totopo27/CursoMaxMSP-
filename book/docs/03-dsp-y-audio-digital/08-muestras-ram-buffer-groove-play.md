@@ -1,4 +1,8 @@
-# Lección 3.8: Manejo de Muestras en RAM: buffer~, groove~, play~, index~ y Manipulación Varispeed
+﻿---
+title: "Lección 3.8: Manejo de Muestras en RAM: buffer~, groove~, play~, index~ y Manipulación Varispeed"
+description: "Manejo de muestras en RAM: [buffer~] como bloque de memoria compartida, [play~], [groove~] y [wave~]. Windowing, lectura multi-cabezal y gestión de archivos de audio."
+---
+
 
 > *"La grabación en cinta permitía cambiar la velocidad alterando las revoluciones del motor, cambiando tanto la afinación como la duración simultáneamente. En el dominio digital, una muestra cargada en RAM es un arreglo arbitrario de números flotantes que podemos recorrer a cualquier velocidad, en reversa o en fragmentos de microsegundos con precisión de fase perfecta."*  
 > — **Curtis Roads**, *Microsound*
@@ -20,16 +24,7 @@
 
 Un objeto `[buffer~]` no procesa audio por sí mismo: es un contenedor de datos de memoria compartida identificado por un **nombre simbólico global** dentro del entorno de Max (por ejemplo `buffer~ mi_sample 2000 2`).
 
-```
-[ RAM Global de Max ]
-+----------------------------------------------------------------+
-| buffer~ mi_sample (2 canales, 44100 Hz, 88200 muestras)        |
-+----------------------------------------------------------------+
-       ^                          ^                       ^
-       |                          |                       |
-   [play~]                   [groove~]                 [index~]
- (Rampa ms)            (Señal Varispeed 1.0)        (Índice sample)
-```
+![FIG 3.9 · Arquitectura de Memoria RAM de buffer~ y los Tres Lectores Canónicos](/assets/diagrams/diagrama_buffer_lectores_ram.svg)
 
 ### El Cálculo del Consumo de RAM
 Para calcular la memoria requerida por un buffer de audio sin comprimir a 32 bits en coma flotante:
@@ -139,12 +134,22 @@ Según formaliza Curtis Roads, un grano acústico individual opera en la escala 
 
 ---
 
-## 4. Escenarios Reales de Producción
+## 4. Escenarios Reales de Producción y Teoría Micro-Temporal
 
 1. **Scratches Estilo Vinilo**: Conectar un `[flonum]` suavizado con `[line~]` o la salida de una tableta gráfica/mouse hacia el inlet de velocidad de `groove~` para emular el frenado y empuje físico de una bandeja giradiscos.
 2. **Repulidor de Bucles con Crossfade**: Eliminar clics en los puntos de unión de un bucle percusivo aplicando una pequeña rampa de ganancia senoidal (`cos~`) en los extremos con ayuda del outlet de sincronía de `groove~`.
-3. **Reproductor Polifónico One-Shot (Drum Machine)**: Subpatchers polifónicos con `[play~]` disparados por mensajes de nota MIDI, leyendo de un buffer común cargado con bombos, tambores y platillos.
-4. **Sintetizador Granular de Micro-Lazos**: Disparar cientos de lecturas cortas (10 a 50 ms) en posiciones aleatorias de un `buffer~` largo de voz humana para generar un manto ambiental o textura densa (*drone*).
+3. **Morfología de Envolventes Granulares (Curtis Roads, *Microsound*)**:
+   Al segmentar un buffer en granos microscópicos (10 a 50 ms), aplicar una ventana rectangular causa discontinuidades que introducen armónicos de alta frecuencia (clics). Como demuestra Roads en *Microsound*, la elección de la función de enventanado gobierna la pureza espectral del flujo granular (*grain stream*):
+   - **Ventana de Von Hann (Hanning):**
+     $$w[n] = 0.5 \left( 1 - \cos\left(\frac{2\pi n}{N-1}\right) \right)$$
+     Garantiza reconstrucción perfecta a ganancia unitaria con solapamiento (*overlap*) al 50%. Se genera típicamente leyendo medio ciclo de `[cycle~]` o mediante tablas en `[buffer~]`.
+   - **Ventana Gaussiana (Quanta de Gabor):**
+     $$w[n] = \exp\left( -0.5 \left( \frac{n - (N-1)/2}{\sigma (N-1)/2} \right)^2 \right)$$
+     Minimiza el producto de la incertidumbre temporal y frecuencial ($\Delta t \cdot \Delta f = 1/2$), siendo el estándar para estiramiento temporal (*time-stretching*) sin artefactos metálicos.
+4. **Scrubbing Sincrónico Multicanal con `[2d.wave~]`**: Recorrer una matriz de dos dimensiones en memoria RAM utilizando un `[phasor~]` en el eje temporal y un controlador MIDI en el eje de posición espacial.
+
+5. **Reproductor Polifónico One-Shot (Drum Machine)**: Subpatchers polifónicos con `[play~]` disparados por mensajes de nota MIDI, leyendo de un buffer común cargado con bombos, tambores y platillos.
+6. **Sintetizador Granular de Micro-Lazos**: Disparar cientos de lecturas cortas (10 a 50 ms) en posiciones aleatorias de un `buffer~` largo de voz humana para generar un manto ambiental o textura densa (*drone*).
 
 ---
 

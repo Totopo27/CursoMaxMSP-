@@ -1,4 +1,8 @@
-# Lección 5.2: Programación Textual en GenExpr: Funciones, Bucles For/While, Condicionales y Kernels DSP
+﻿---
+title: "Lección 5.2: Programación Textual en GenExpr: Funciones, Bucles For/While, Condicionales y Kernels DSP"
+description: "GenExpr: programación textual de DSP dentro de gen~. Sintaxis del codebox, estructuras de control, operadores de memoria y puente entre parcheo visual y código fuente nativo."
+---
+
 
 > *"El parcheo visual es insuperable para la macro-arquitectura de un sintetizador, pero para implementar un algoritmo iterativo, una convolución polinómica o un solver numérico Runge-Kutta, colocar 50 cajas y 80 cables es contraproducente e ilegible. GenExpr ofrece la concisión del texto compilado a máquina con la modularidad del flujo de datos."*  
 > — **Gregory Taylor**, *Step by Step: Adventures in Sequencing with Max*
@@ -20,16 +24,7 @@
 
 Dentro de un subparche `[gen~]`, podés crear el objeto `[codebox]`. Todo el texto dentro de `codebox` se escribe en **GenExpr** (un dialecto de sintaxis basada en C/JavaScript optimizado estrictamente para DSP de coma flotante).
 
-```
-[ Entradas in1, in2 ] ---> +-------------------------------+
-                           | codebox (GenExpr)             |
-                           | Param drive(1.0);             |
-                           | History y(0);                 |
-                           | x = in1 * drive;              |
-                           | y = tanh(x);                  |
-                           | out1 = y;                     |
-                           +-------------------------------+ ---> [ Salida out1 ]
-```
+![FIG 5.4 · Anatomía del Objeto [codebox] y Sintaxis GenExpr](/assets/diagrams/diagrama_genexpr_codebox_pipeline.svg)
 
 ### Reglas Sintácticas Fundamentales
 - Cada instrucción termina con punto y coma (`;`).

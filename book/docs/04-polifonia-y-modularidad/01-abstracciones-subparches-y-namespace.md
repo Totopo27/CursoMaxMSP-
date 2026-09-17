@@ -1,4 +1,8 @@
-# Lección 4.1: Arquitectura Modular: Subparches [p], Abstracciones, Argumentos (#1..#9) y Aislamiento de Namespaces (#0)
+---
+title: "Lección 4.1: Arquitectura Modular: Subparches [p], Abstracciones, Argumentos (#1..#9) y Aislamiento de Namespaces (#0)"
+description: "Subpatchers y abstracciones en Max: diferencia entre [p] y abstracciones reutilizables, argumentos dinámicos con #1/#2, gestión de namespace y patrones de diseño modular."
+---
+
 
 > *"El código espagueti no es un problema exclusivo del texto; en entornos visuales basados en flujo de datos es todavía más pernicioso. La diferencia entre un aficionado y un arquitecto de sistemas en Max radica en la capacidad de crear módulos atómicos, reutilizables y con aislamiento estricto de memoria."*  
 > — **David Zicarelli**, *Architectural Evolution of Max*
@@ -25,13 +29,7 @@ En Max existen dos formas de encapsular complejidad:
 | **Argumentos posicionales** | No soporta `#1`, `#2` (mismo espacio que el padre) | Soporta `#1`, `#2` y atributos `@param` |
 | **Aislamiento de namespace** | Comparte el namespace `#0` del padre | Genera un ID `#0` **único e irrepetible** por instancia |
 
-```
-                       [ Patch Principal ]
-                      /                   \
-        [p submodulo]                       [mi_abstraccion 440.]
-     (Embebido en el JSON)              (Lee archivo externo en disco)
-     (Comparte variables #0)             (Namespace propio #0 = 1042)
-```
+![FIG 4.0 · Subparche [p] vs. Abstracción Modular y Aislamiento de Namespace #0](/assets/diagrams/diagrama_abstraccion_namespace.svg)
 
 ---
 
@@ -52,10 +50,7 @@ Si dos abstracciones contienen un objeto `[send volumen]`, ambas modularán la m
   `[send #0_volumen]` y `[receive #0_volumen]`.
 - Al instanciar, Max sustituye `#0` por un entero único incremental (por ejemplo `1084_volumen`). De este modo, la instancia A jamás interferirá con la instancia B.
 
-```
-Instancia 1 (ID 1024):  [send 1024_volumen] ---> [receive 1024_volumen]  (Aislado)
-Instancia 2 (ID 1025):  [send 1025_volumen] ---> [receive 1025_volumen]  (Aislado)
-```
+![FIG 4.0B · Modularidad y Namespace: Aislamiento de Instancias con el Prefijo #0](/assets/diagrams/diagrama_namespace_aislamiento_instancias.svg)
 
 > [!WARNING]
 > **Gotcha Crítico de los Mensajes de Control**: Si escribís `#0` dentro de una caja de mensaje (`[message]`), Max **NO** sustituye `#0` en tiempo de carga. `#0` solo se sustituye automáticamente en **cajas de objetos** (`[newobj]`). Para pasar `#0` a un mensaje, debés inyectarlo desde un objeto con el argumento `#0` o conectarlo mediante `[$1]`.
@@ -122,6 +117,19 @@ Cuando el símbolo `1042_volumen` se registra en la tabla de símbolos del siste
 2. **Canal de Mezcla Modular (Channel Strip)**: Diseñar un strip con EQ de 3 bandas, compresor y fader de ganancia. Usar `#0_meter` para conectar medidores visuales locales sin ensuciar el bus global.
 3. **Macro GUI Reutilizable**: Un panel con potenciómetro rotativo, etiqueta de texto y display numérico empaquetado en una abstracción que se adapta al nombre de parámetro especificado en `#1`.
 4. **Enrutador de Efectos Dinámico**: Utilizar abstracciones con nombres variables mediante `[bpatcher]` para cargar módulos de efectos en caliente (reverb, chorus, distorsión) dentro del mismo espacio de interfaz gráfica.
+
+
+5. **Arquitectura de Voz Modular: Oscilador Compuesto Multi-forma (`subsynth.osc~`)**:
+   Empaquetar un generador analógico virtual que reúne 4 formas de onda esenciales:
+   - Diente de sierra con banda limitada (`saw~ #1`)
+   - Onda triangular (`tri~ #1`)
+   - Onda de pulso con ancho variable PWM (`rect~ #1`)
+   - Generador estocástico de ruido blanco (`noise~`)
+   
+   La conmutación limpia entre formas se implementa con `[selector~ 4]`, mientras que la señal de **sincronización dura (*hard-sync*)** se conecta simultáneamente a los inlets de reinicio de fase de `saw~`, `tri~` y `rect~`. La frecuencia de entrada se blinda mediante el patrón `ab.sus #1`, logrando un bloque de voz inmune a fallos de inicialización.
+
+> **Fundamentación de Robustez en Concierto (Daniel Quaranta / Daniel Luís Barreiro):**
+> En *Creación musical, investigación y producción académica*, Daniel Luís Barreiro analiza los criterios de ingeniería para obras mixtas y conciertos con sistemas multicanales e interfaces gestuales: la separación en **abstracciones atómicas cerradas con namespace `#0`** no es solo una buena práctica estética, sino el único mecanismo que previene colisiones en vivo ante la duplicación o re-enrutamiento dinámico de señales de control de sensores y partituras interactivas sobre el escenario.
 
 ---
 

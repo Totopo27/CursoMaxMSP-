@@ -1,39 +1,26 @@
-# Módulo 1.2: El Scheduler de Max, Jerarquía Temporal y Psicoacústica del Ritmo
+﻿---
+title: "Módulo 1.2: El Scheduler de Max, Jerarquía Temporal y Psicoacústica del Ritmo"
+description: "Arquitectura de tres hilos de Max: Scheduler, Overdrive y SIAI. Psicoacústica del jitter rítmico, t_clock, t_qelem y desacople de tareas con [defer]/[deferlow]."
+---
+
 
 > *"El tiempo en la música por computadora no es una línea uniforme; es una jerarquía de velocidades que va desde el micro-tiempo del timbre hasta el macro-tiempo de la forma musical."*
 
 ---
 
-## ️ 1. Fundamento Psicoacústico: Las Tres Escalas del Tiempo Sonoro
+##  1. Fundamento Psicoacústico: Las Tres Escalas del Tiempo Sonoro
 
 *(Inspirado en los tratados de David Creasey y Miller Puckette)*
 
 En la computación musical clásica y la ingeniería de audio, el tiempo no se procesa como un único continuo. El oído y el cerebro humano perciben los intervalos temporales de maneras radicalmente distintas según su escala de magnitud:
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                   LAS TRES ESCALAS TEMPORALES                          │
-├────────────────────────────────────────────────────────────────────────┤
-│ 1. MICRO-TIEMPO (< 20 ms)  DOMINIO DEL TIMBRE Y LA FASE               │
-│    • El cerebro no distingue eventos separados.                        │
-│    • Las oscilaciones se perciben como ALTURA (Pitch) o COLOR TIMBRAL. │
-│    • Es el territorio exclusivo del AUDIO THREAD (MSP a 48 kHz).       │
-│                                                                        │
-│ 2. MESO-TIEMPO (20 ms a 100 ms)  RETARDOS Y ESPACIALIDAD              │
-│    • Efecto Haas, ecos tempranos, flanging y transitorios de ataque.   │
-│    • Límite perceptivo del retraso táctil en teclados MIDI.            │
-│                                                                        │
-│ 3. MACRO-TIEMPO (> 100 ms)  DOMINIO DEL RITMO Y LA FORMA              │
-│    • Sucesión de pulsos perceptibles como eventos musicales discretos. │
-│    • Es el territorio del SCHEDULER THREAD ([metro], [delay], [pipe]). │
-└────────────────────────────────────────────────────────────────────────┘
-```
+![FIG 1.0 · Las Tres Escalas del Tiempo Sonoro: Micro, Meso y Macro-tiempo](/assets/diagrams/diagrama_escalas_tiempo_sonoro.svg)
 
 > **La Consecuencia Arquitectónica:** Intentar procesar el *micro-tiempo* con objetos de control (`[metro]`, `[delay]`) genera **Jitter masivo y distorsión**, porque el sistema operativo no puede despachar interrupciones de software a 48.000 veces por segundo sin colapsar. Para el micro-tiempo existe **MSP** y **`gen~`**. Para el macro-tiempo existe el **Scheduler**.
 
 ---
 
-## ️ 2. El Problema del Jitter Temporal y la Percepción Rítmica Humana
+##  2. El Problema del Jitter Temporal y la Percepción Rítmica Humana
 
 *(Inspirado en Geoffrey Kidde, "Learning Music Theory with Max", Routledge)*
 
@@ -50,26 +37,7 @@ En un sistema operativo de propósito general como Windows o macOS, la CPU está
 
 Para garantizar determinismo rítmico inmutable frente a la carga del sistema operativo, Cycling '74 diseñó una arquitectura estricta de **tres hilos concurrentes**:
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                        ARQUITECTURA DE HILOS                           │
-├────────────────────────────────────────────────────────────────────────┤
-│ 1. MAIN THREAD (Baja Prioridad / Cola de Eventos de la UI)             │
-│    • Tareas lentas y no deterministas: dibujo de ventanas, inspectores,│
-│      sliders, botones, renderizado web ([jweb]).                       │
-│    • Operaciones con disco duro: carga de archivos ([coll], [dict]).   │
-│                                                                        │
-│ 2. SCHEDULER THREAD (Alta Prioridad / Temporizador del Sistema)        │
-│    • Manejo de eventos en tiempo real: [metro], [delay], [pipe].       │
-│    • Mensajes de control MIDI y protocolos de red rápida (OSC).        │
-│    • Con Overdrive [X], este hilo interrumpe forzosamente al Main Thread│
-│                                                                        │
-│ 3. AUDIO THREAD (MSP / DSP en Bloques de Muestras a 64-bit)            │
-│    • Procesa vectores fijos de audio (ej. 64 muestras) a 48.000 Hz.   │
-│    • Es el hilo más crítico del sistema; si se demora, ocurre un click │
-│      o 'dropout' audible de audio.                                     │
-└────────────────────────────────────────────────────────────────────────┘
-```
+![FIG 1.2 · Scheduler, Overdrive & t_qelem Bridge](/assets/diagrams/diagrama_scheduler_hilos.svg)
 
 ---
 
@@ -116,7 +84,7 @@ En el lenguaje visual de Max, este mecanismo en C se materializa a través de do
 
 ---
 
-##  4 Escenarios de la Vida Real (Casos de Estudio)
+## 6. Escenarios de la Vida Real (Casos de Estudio)
 
 Abre el parche interactivo:
 [`book/patches/modulo-01/laboratorio_02_timing.maxpat`](/patches/modulo-01/laboratorio_02_timing.maxpat)
@@ -137,13 +105,8 @@ Abre el parche interactivo:
 ### Escenario 3: Desacople de UI Pesada con `[deferlow]` para Prevenir Clicks de Audio
 * **El Problema:** Cada vez que cargas un preset de 500 parámetros desde un `[dict]` o redibujas una matriz visual de gran tamaño, el Scheduler se detiene a pintar la pantalla. Si estás reproduciendo audio con MSP, escucharás un chasquido (*dropout* o click).
 * **La Solución Arquitectónica:**
-  ```
-       [ Disparo de Preset / UI ]
-                   │
-              [ deferlow ]  <-- Traslada la ejecución a la cola baja (qelem)
-                   │
-         [ Carga Pesada / Dibujo ]
-  ```
+
+![FIG 1.1F · Desacople de Hilos entre Scheduler y Main Thread con [deferlow]](/assets/diagrams/diagrama_deferlow_qelem_desacople.svg)
 
 ### Escenario 4: Reloj Polirrítmico Puro por Subdivisión de Módulo
 * **El Problema:** Si usamos dos objetos `[metro]` independientes para ritmos compuestos (ej. `metro 333.33` para tresillos y `metro 250` para semicorcheas), los errores de redondeo de coma flotante en milisegundos hacen que ambos ritmos se desfasen con el paso de los compases (*drift* temporal).
@@ -151,20 +114,20 @@ Abre el parche interactivo:
 
 ---
 
-## 3 Ejercicios Prácticos de Laboratorio
+## 7. Ejercicios Prácticos de Laboratorio
 
 Realiza estos ejercicios en tu copia de Max utilizando el parche [`laboratorio_02_timing.maxpat`](/patches/modulo-01/laboratorio_02_timing.maxpat):
 
-### ️ Ejercicio 1: El Cuantizador de Rebotes (Debouncer de Hardware)
+###  Ejercicio 1: El Cuantizador de Rebotes (Debouncer de Hardware)
 * **Objetivo:** Cuando un botón físico o pedal se presiona, las vibraciones mecánicas de los contactos generan múltiples `bang`s falsos en menos de 10 ms.
 * **Desafío:** Construye un subcircuito con `[delay]` y `[gate]` que deje pasar el primer `bang`, cierre la compuerta inmediatamente durante 50 ms y luego la vuelva a abrir automáticamente.
 
-### ️ Ejercicio 2: El Tap Tempo con Detección de Inactividad
+###  Ejercicio 2: El Tap Tempo con Detección de Inactividad
 * **Objetivo:** Calcula los milisegundos entre dos pulsaciones seguidas de una tecla para sincronizar el tempo musical.
 * **Desafío:** Si el usuario no presiona nada durante más de 2000 ms, el sistema debe resetear el cálculo para no promediar tiempos absurdamente lentos.
 * **Requisito:** Utiliza `[timer]` para medir el delta y `[delay 2000]` para disparar el reset por inactividad.
 
-### ️ Ejercicio 3: Eco MIDI con Desvanecimiento Exponencial de Velocidad
+###  Ejercicio 3: Eco MIDI con Desvanecimiento Exponencial de Velocidad
 * **Objetivo:** Construye una máquina de delay MIDI de 3 repeticiones utilizando `[pipe]`.
 * **Desafío:** Cada repetición debe ocurrir a 250 ms y su velocidad MIDI debe multiplicarse por `0.7` (haciendo que el eco suene cada vez más suave hasta extinguirse de forma natural).
 

@@ -1,4 +1,8 @@
-# Proyecto Integrador 2: Motor de Presets Jerárquico con Morphing por Interpolación Multidimensional
+﻿---
+title: "Proyecto Integrador 2: Motor de Presets Jerárquico con Morphing por Interpolación Multidimensional"
+description: "Proyecto integrador Módulo 2: motor de presets jerárquico con morphing por interpolación multidimensional, serialización JSON con [dict] y recuperación determinista de estados complejos."
+---
+
 
 > *"Un sintetizador profesional no es solo un conjunto de osciladores y filtros; es un gestor de estados capaz de viajar fluidamente por un hiperespacio de timbres sin artefactos, caídas de audio ni saltos espurios."*
 
@@ -18,43 +22,9 @@ Este proyecto corona el **Módulo 2 (Estructuras de Datos, Persistencia y Comuni
 
 ---
 
-## ️ 2. Diagrama de Arquitectura del Sistema
+##  2. Diagrama de Arquitectura del Sistema
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                    PROYECTO 2: MORPHING PRESET ENGINE                       │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│   [nodes] (Pad 2D) ──────────► [prepend recall multi]                       │
-│                                           │                                 │
-│   Comandos Temporales ────────────────────┼──────────► [pattrstorage]       │
-│   ('recall 1 2 4000.')                    │                    ▲            │
-│                                           ▼                    │            │
-│   Archivos JSON ─────────────► write/read banco.json           │ (Obex)     │
-│                                                                ▼            │
-│                                                        [autopattr]          │
-│                                                                │            │
-│            ┌───────────────────┬───────────────────┬───────────┴───────┐    │
-│            ▼                   ▼                   ▼                   ▼    │
-│     [varname cutoff]   [varname res]      [varname mod]       [varname amp] │
-│            │                   │                   │                   │    │
-│            └───────────────────┼───────────────────┼───────────────────┘    │
-│                                │                   │                        │
-│                                ▼                   ▼                        │
-│                       ┌─────────────────────────────────────┐               │
-│                       │      MOTOR ACÚSTICO MULTI-MODO      │               │
-│                       │  cycle~ (Carrier) + cycle~ (Mod FM) │               │
-│                       │  Filtro lores~ + Envolvente line~   │               │
-│                       │  Atenuador *~ 0.5 (Anti-clipping)   │               │
-│                       └──────────────────┬──────────────────┘               │
-│                                          │                                  │
-│                                          ▼                                  │
-│                       ┌─────────────────────────────────────┐               │
-│                       │     STAGE FINAL DAC (FlexASIO)      │               │
-│                       │   Bus global_panic para silenciar   │               │
-│                       └─────────────────────────────────────┘               │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+![FIG 2.4 · Arquitectura del Motor de Morphing y Presets (Proyecto Integrador 02)](/assets/diagrams/diagrama_proyecto_02_arquitectura.svg)
 
 ---
 
@@ -80,7 +50,7 @@ Este proyecto corona el **Módulo 2 (Estructuras de Datos, Persistencia y Comuni
 
 ---
 
-## ️ 4. Guía de Operación y Validación
+##  4. Guía de Operación y Validación
 
 1. **Apertura:** Abre [`book/patches/modulo-02/proyecto_02_morphing.maxpat`](/patches/modulo-02/proyecto_02_morphing.maxpat).
 2. **Encendido DSP:** Activa el botón de encendido del `[ezdac~]` y sube moderadamente el fader de `[gain~]`.

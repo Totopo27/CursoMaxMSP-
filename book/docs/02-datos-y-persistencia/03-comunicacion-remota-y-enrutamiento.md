@@ -1,10 +1,14 @@
-# Módulo 2.3: Comunicación Inter-Patch sin Cables, Enrutamiento Dinámico y Espacios de Nombres (`[send]`, `[receive]`, `[forward]`, `[pattrforward]`)
+﻿---
+title: "Módulo 2.3: Comunicación Inter-Patch sin Cables, Enrutamiento Dinámico y Espacios de Nombres (`[send]`, `[receive]`, `[forward]`, `[pattrforward]`)"
+description: "Comunicación inter-patch sin cables en Max: [send]/[receive], [forward], espacios de nombres aislados y el patrón Pub/Sub para arquitecturas desacopladas de alta cohesión."
+---
+
 
 > *"Tirar un cable en Max crea una autopista determinista; eliminar el cable crea un éter de difusión. Quien no comprende el alcance de sus variables globales, construye sistemas caóticos que colapsan al escalar."*
 
 ---
 
-## ️ 1. Fundamento Teórico: Paradigmas de Acoplamiento y Espacios de Nombres
+##  1. Fundamento Teórico: Paradigmas de Acoplamiento y Espacios de Nombres
 
 *(Inspirado en Miller Puckette, *Theory and Technique of Electronic Music*, y Todd Winkler, *Composing Interactive Music*, MIT Press)*
 
@@ -12,20 +16,7 @@ En ingeniería de software y computación musical, los sistemas complejos requie
 1. **Acoplamiento Fuerte (Tight Coupling):** Objetos unidos físicamente por cables. El orden de ejecución es predecible, determinista y local. Sin embargo, al escalar a parches gigantes con cientos de submódulos, la interfaz se convierte en un nido ininteligible de cables ("spaghetti patch").
 2. **Desacoplamiento Débil (Loose Coupling / Publish-Subscribe):** Objetos que emiten datos a un canal nombrado sin saber quién los escucha. Elimina el desorden visual y permite comunicación inter-ventana, pero **introduce el riesgo de colisión de nombres y no-determinismo temporal**.
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                    MODELO PUNTO A PUNTO VS. MODELO PUB/SUB                  │
-├─────────────────────────────────────────────────────────────────────────────┤
-│ Cable Directo (Punto a Punto):                                              │
-│   [Origen] ───────────────────► [Destino]  (Orden Determinista R-to-L)      │
-│                                                                             │
-│ Difusión Remota (Publish / Subscribe):                                      │
-│                ┌──────────────► [receive canal_A] (Receptor 1)              │
-│   [send canal_A]                                                            │
-│                └──────────────► [receive canal_A] (Receptor 2)              │
-│   (¡Orden de recepción NO DETERMINISTA si hay múltiples receptores!)        │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+![FIG 2.3 · Modelo Punto a Punto vs. Modelo Publish / Subscribe](/assets/diagrams/diagrama_pubsub_vs_direct.svg)
 
 ### El Espacio de Nombres Global (Global Namespace)
 
@@ -58,7 +49,7 @@ Max ofrece tres niveles progresivos de enrutamiento sin cables:
 
 ---
 
-## ️ 3. Under the Hood (Max C SDK): Tablas Hash y Despacho en C
+##  3. Under the Hood (Max C SDK): Tablas Hash y Despacho en C
 
 *(Basado en el análisis de `ext_obex.h` y el sistema de mensajería del Max SDK)*
 
@@ -82,26 +73,26 @@ struct symbol {
 
 ---
 
-### Trampas Críticas de la Comunidad y Foros Oficiales (Remote Gotchas)
+### Consideraciones Críticas en Sistemas Distribuidos (Enrutamiento Remoto)
 
-La experiencia colectiva de décadas en los foros de Cycling '74 resalta cuatro problemas vitales:
+Cuatro factores técnicos indispensables para preservar la predictibilidad y el determinismo en la comunicación remota:
 
-1. **No-Determinismo de Múltiples `[receive]`:**
-   - Si tienes un `[send nota]` y tres objetos `[receive nota]`, **el orden en que los tres reciben el mensaje NO es determinista**.
-   - No sigue la regla visual Right-to-Left ni Bottom-to-Top porque no hay cables. Depende del orden en que los objetos fueron creados en el archivo JSON del parche.
-   - **Regla de oro:** Si el orden de ejecución importa (ej. fijar valor y luego disparar cálculo), **NUNCA uses múltiples `[receive]`**; usa un solo `[receive]` conectado a un `[trigger]`.
+1. **No-Determinismo en Múltiples Receptores (`[receive]`):**
+   - Cuando un emisor `[send nota]` despacha datos hacia múltiples receptores `[receive nota]`, **el orden secuencial de recepción no es determinista**.
+   - Al no existir cables, no aplica la convención visual Right-to-Left ni Bottom-to-Top. El orden de despacho queda subordinado al orden interno de instanciación en el archivo serializado del parche.
+   - **Criterio de diseño:** Cuando el orden de procesamiento sea crítico (por ejemplo, definir un valor de estado antes de excitar una operación), debe emplearse un único nodo `[receive]` vinculado inmediatamente a un objeto `[trigger]`.
 
-2. **El Argumento Salvador `#0` (Local Namespace):**
-   - En abstracciones reutilizables (ej: `mi_filtro.maxpat`), nunca nombres un canal `[send volumen]`.
-   - Debes nombrarlo **`[send #0_volumen]`** y **`[receive #0_volumen]`**.
-   - En tiempo de instanciación, Max sustituye `#0` por un número entero único de 4 dígitos generado aleatoriamente (ej: `1042_volumen`). Esto aísla las variables dentro de esa instancia, evitando que una copia interfiera con otra.
+2. **Aislamiento de Ámbito Local Mediante el Prefijo `#0`:**
+   - En abstracciones modulares reutilizables, los canales de comunicación global nunca deben utilizar identificadores genéricos (`[send volumen]`).
+   - Se debe anteponer el comodín local: **`[send #0_volumen]`** y **`[receive #0_volumen]`**.
+   - Durante la instanciación, Max sustituye de manera determinista `#0` por un identificador numérico único de la instancia. Esto previene la colisión de espacios de nombres (*namespace collisions*) entre múltiples clones de un mismo módulo.
 
-3. **Latencia Vectorial en `[send~]` / `[receive~]` (Audio Thread):**
-   - En señales de audio (`MSP`), un par `[send~]` / `[receive~]` no procesa muestras instantáneamente: introduce un retraso de **1 Signal Vector Size (ej. 64 muestras)** cuando se usa para cerrar bucles de retroalimentación (feedback).
+3. **Retardo Vectorial en Conexiones Remotas de Señal (`[send~]` / `[receive~]`):**
+   - En el procesamiento de audio (`MSP`), un par de comunicación remota introduce un retardo inherente equivalente exactamente a **un Signal Vector Size (típicamente 64 muestras)** cuando conforma un ciclo cerrado de retroalimentación (*feedback loop*).
 
 ---
 
-## ️ 4. 4 Escenarios del Mundo Real
+##  4. 4 Escenarios del Mundo Real
 
 Abre el parche interactivo complementario:
 [`book/patches/modulo-02/laboratorio_06_comunicacion.maxpat`](/patches/modulo-02/laboratorio_06_comunicacion.maxpat)
@@ -128,15 +119,15 @@ Abre el parche interactivo complementario:
 
 Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_06_comunicacion.maxpat`](/patches/modulo-02/laboratorio_06_comunicacion.maxpat):
 
-### ️ Ejercicio 1: El Router de Mensajería con `[forward]`
+###  Ejercicio 1: El Router de Mensajería con `[forward]`
 * **Objetivo:** Construye un sistema con 4 destinos nombrados (`canal_A`, `canal_B`, `canal_C`, `canal_D`).
 * **Desafío:** Utiliza un solo objeto `[forward]` y un selector numérico para despachar listas de datos al canal elegido en tiempo real. Comprueba con medidores independientes que solo el canal activo recibe los datos.
 
-### ️ Ejercicio 2: Diagnóstico de Colisión de Nombres
+###  Ejercicio 2: Diagnóstico de Colisión de Nombres
 * **Objetivo:** Reproduce intencionalmente un conflicto de variables globales.
 * **Desafío:** Crea dos cajas `[receive volumen]` en diferentes esquinas de tu parche. Envía un valor desde `[send volumen]`. Intenta depender del orden en que reciben el dato para encender una luz y luego reproducir un sonido. Verifica por qué esto falla y rediséñalo usando un único `[receive]` con `[trigger]`.
 
-### ️ Ejercicio 3: Inyección de Presets con `[pattrforward]`
+###  Ejercicio 3: Inyección de Presets con `[pattrforward]`
 * **Objetivo:** Controla a distancia el filtro de un subpatcher encapsulado (`[p audio_engine]`).
 * **Desafío:** Asigna un Scripting Name al subpatcher y al dial de frecuencia. Utiliza `[pattrforward]` desde el parche principal para modular la frecuencia en tiempo real mediante un slider, sin tirar cables hacia el subpatcher.
 

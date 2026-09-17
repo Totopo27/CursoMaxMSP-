@@ -1,10 +1,14 @@
-# Módulo 3.4: Modulación de Frecuencia (FM), Modulación de Fase (PM) y la Matemática de John Chowning
+﻿---
+title: "Módulo 3.4: Modulación de Frecuencia (FM), Modulación de Fase (PM) y la Matemática de John Chowning"
+description: "Síntesis FM y modulación de fase: la matemática de John Chowning, índice de modulación, funciones de Bessel y generación de espectros harmónicos e inarmónicos en MSP."
+---
+
 
 > *"La síntesis FM es la alquimia del audio digital: con solo dos osciladores sinusoidales simples, podemos generar desde la calidez armónica de un clarinete hasta el brillo metálico de un gong tibetano."*
 
 ---
 
-## ️ 1. Fundamento Acústico y Matemático: El Descubrimiento de John Chowning (Stanford, 1973)
+##  1. Fundamento Acústico y Matemático: El Descubrimiento de John Chowning (Stanford, 1973)
 
 *(Inspirado en John Chowning, *The Synthesis of Complex Audio Spectra by Means of Frequency Modulation*, y Cipriani & Giri, Vol. 1)*
 
@@ -34,17 +38,7 @@ $$f_{\text{parciales}} = f_c \pm k \cdot f_m \quad (k = 1, 2, 3, 4, \dots)$$
 ### ¿Qué determina la energía de cada parcial? Las Funciones de Bessel de Primera Especie $J_k(I)$
 La amplitud de cada armónico $k$ está gobernada estrictamente por la función matemática $J_k(I)$:
 
-```
-Amplitud
-  ▲
-1.0│  J0(I) [Portadora]
-   │  \          J1(I) [1er Parcial]
-0.5│   \        /\          J2(I) [2do Parcial]
-   │    \      /  \        /\
-0.0┼─────\────/────\──────/──\────────► Índice de Modulación (I)
-   │      \  /      \    /    \
--0.4│       \/        \  /      \
-```
+![FIG 3.5B · Teoría de Síntesis FM: Funciones de Bessel de Primera Especie Jk(I)](/assets/diagrams/diagrama_funciones_bessel_fm.svg)
 
 ### Principios Espectrales de Bessel:
 1. **Con $I = 0$:** $J_0(0) = 1.0$ y todos los demás $J_k(0) = 0$. La señal es una sinusoide pura idéntica a la portadora.
@@ -53,29 +47,13 @@ Amplitud
 
 ---
 
-## ️ 3. La Relación Armónica (Harmonicity Ratio $C:M$)
+##  3. La Relación Armónica (Harmonicity Ratio $C:M$)
 
 La naturaleza tímbrica del sonido final (si suena a un instrumento musical tradicional o a un efecto metálico disonante) está dictada por el cociente entre ambas frecuencias:
 
 $$\text{Harmonicity Ratio} = \frac{f_c}{f_m}$$
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                 GUÍA DE RELACIONES ARMÓNICAS EN SÍNTESIS FM                 │
-├─────────────────────────────────────────────────────────────────────────────┤
-│ • Relación 1 : 1 (Ej: Carrier 440 Hz, Mod 440 Hz)                           │
-│   Parciales: 440, 880, 1320, 1760 Hz (Serie Armónica Completa: Tipo Diente)│
-│                                                                             │
-│ • Relación 1 : 2 (Ej: Carrier 440 Hz, Mod 880 Hz)                           │
-│   Parciales: 440, 1320, 2200, 3080 Hz (Solo Armónicos Impares: Clarinete)  │
-│                                                                             │
-│ • Relaciones Fraccionarias / Racionales (Ej: 1 : 3.5, 2 : 3)                │
-│   Parciales armónicos con sub-armónicos o fondos formánticos cálidos.       │
-│                                                                             │
-│ • Relaciones Irracionales (Ej: 1 : 1.414, 1 : 2.718)                       │
-│   Parciales inarmónicos sin relación de múltiplos enteros: Campanas, gongs. │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+![FIG 3.4 · Relaciones Armónicas (Ratio C:M) y Estructura Tímbrica en Síntesis FM](/assets/diagrams/diagrama_relaciones_armonicas_fm.svg)
 
 ---
 
@@ -99,16 +77,16 @@ x->phase += x->phase_step;                         // El paso fundamental perman
 
 ---
 
-### Gotchas Críticos de los Foros Oficiales de Cycling '74
+### Comportamientos Espectrales Críticos en Síntesis FM y PM
 
-1. **El Desvío hacia Frecuencias Negativas:**
-   - Si el índice $I$ es alto o la portadora es grave ($f_c < f_m$), parciales inferiores ($f_c - k \cdot f_m$) caen en números negativos. En el plano complejo, una frecuencia negativa es una rotación en sentido horario: **rebota en $0\text{ Hz}$ como positiva con inversión de fase de $180^\circ$**. Si no controlas el índice, estos parciales rebotados cancelan destructivamente armónicos existentes creando huecos tímbricos misteriosos.
-2. **Explosión por Feedback Infinito:**
-   - La retroalimentación de un oscilador hacia sí mismo en Max (`cycle~` a través de un cable a su inlet derecho de fase) requiere un escalado cuidadoso ($\le 0.2$). Superar ese umbral convierte inmediatamente la sinusoide en ruido blanco áspero con aliasing destructivo.
+1. **Reflexión de Frecuencias Negativas y Cancelación de Fase:**
+   - Cuando el índice de modulación $I$ es elevado o la frecuencia portadora es inferior a la moduladora ($f_c < f_m$), los componentes de las bandas laterales inferiores ($f_c - k \cdot f_m$) adoptan valores algebraicamente negativos. En el plano complejo, una frecuencia negativa describe una rotación de fase horaria: **se refleja en el eje de $0\text{ Hz}$ hacia el dominio positivo con inversión de fase de $180^\circ$**. De no preverse analíticamente, estos parciales reflejados provocan interferencias destructivas con armónicos preexistentes, originando atenuaciones pronunciadas en la respuesta tímbrica.
+2. **Inestabilidad por Retroalimentación de Fase (Feedback PM):**
+   - La retroalimentación directa de un oscilador sobre su propio puerto de modulación de fase (`[cycle~]`) exige una atenuación estricta del factor de ganancia ($\beta \le 0.2$). Exceder dicho margen desestabiliza la función de transferencia y precipita la señal a un régimen de ruido caótico con aliasing destructivo no lineal.
 
 ---
 
-## ️ 5. 4 Escenarios del Mundo Real
+##  5. 4 Escenarios del Mundo Real
 
 Abre el parche interactivo complementario:
 [`book/patches/modulo-03/laboratorio_10_sintesis_fm.maxpat`](/patches/modulo-03/laboratorio_10_sintesis_fm.maxpat)
@@ -135,15 +113,15 @@ Abre el parche interactivo complementario:
 
 Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_10_sintesis_fm.maxpat`](/patches/modulo-03/laboratorio_10_sintesis_fm.maxpat):
 
-### ️ Ejercicio 1: El Calibrador de la Serie Armónica
+###  Ejercicio 1: El Calibrador de la Serie Armónica
 * **Objetivo:** Experimenta con las relaciones enteras de Chowning.
 * **Desafío:** Configura una portadora a $200\text{ Hz}$ y prueba las razones $1:1$, $1:2$, $1:3$ y $1:4$. Comprueba en el osciloscopio y analizador de espectro cómo cada razón genera una familia tímbrica clásica (diente de sierra, clarinete, nasal, hueco).
 
-### ️ Ejercicio 2: El Envolvente Tímbrico Dinámico
+###  Ejercicio 2: El Envolvente Tímbrico Dinámico
 * **Objetivo:** Desacopla la envolvente de amplitud de la envolvente tímbrica.
 * **Desafío:** Usa dos objetos `[line~]`: uno para el volumen final y otro para el índice de modulación $I$. Ajusta los tiempos para que el timbre se vuelva más brillante a mitad de la nota (efecto *brass swell*).
 
-### ️ Ejercicio 3: Diagnóstico de Rebote de Frecuencias Negativas
+###  Ejercicio 3: Diagnóstico de Rebote de Frecuencias Negativas
 * **Objetivo:** Visualiza la cancelación de armónicos por frecuencias negativas.
 * **Desafío:** Con $f_c = 100\text{ Hz}$ y $f_m = 250\text{ Hz}$, sube el índice $I$ por encima de $4.0$. Observa cómo la banda $-150\text{ Hz}$ rebota como $+150\text{ Hz}$ y genera batimientos acústicos audibles con el resto de parciales.
 

@@ -1,4 +1,8 @@
-# Lección 5.1: Gen~ y el Paradigma JIT: Compilación en Tiempo Real, Bucles Muestra a Muestra y LLVM
+﻿---
+title: "Lección 5.1: Gen~ y el Paradigma JIT: Compilación en Tiempo Real, Bucles Muestra a Muestra y LLVM"
+description: "Gen~ y el paradigma JIT: compilación LLVM en tiempo real, el operador history (z^-1), ecuaciones en diferencias muestra a muestra y exportación de código C++ nativo desde Max."
+---
+
 
 > *"En MSP tradicional estás encadenando cajas negras que se comunican mediante vectores de 64 muestras: la retroalimentación de una sola muestra es físicamente imposible sin introducir un retraso de bloque entero. Con `gen~`, el lienzo visual se traduce directamente a código C++ de bajo nivel y se compila a instrucciones de máquina en nanosegundos mediante LLVM: la barrera entre el parcheo visual y la programación nativa ha desaparecido."*  
 > — **Graham Wakefield & Gregory Taylor**, *Generating Sound & Organizing Time*
@@ -17,18 +21,7 @@
 
 En el motor tradicional de MSP (como vimos en las Lecciones 3.1 y 3.6), el procesamiento ocurre en bloques vectoriales de tamaño $V$ (típicamente $64$ muestras):
 
-```
-MSP Tradicional (Por Bloques):
-Entrada: [ x0, x1, x2, ... x63 ] ---> perform64() ---> Salida: [ y0, y1, y2, ... y63 ]
-¡Cualquier realimentación debe esperar al siguiente bloque de 64 muestras!
-
-Gen~ (Muestra a Muestra Nativo JIT):
-Bucle C++ compilado:
-for (int n = 0; n < vectorsize; n++) {
-    y[n] = x[n] + a * y_prev;  // y_prev es y[n-1] EXACTO
-    y_prev = y[n];             // Retroalimentación de 1 muestra (history)
-}
-```
+![FIG 5.0 · Procesamiento por Bloques Vectoriales en MSP vs. Cálculo Muestra a Muestra en gen~](/assets/diagrams/diagrama_bloque_vs_muestra_gen.svg)
 
 Si intentás construir un filtro IIR analógico de saturación no lineal con diodos o un oscilador caótico de Lorenz en MSP normal, el retardo de 64 muestras en el lazo de feedback destruye la estabilidad matemática de la ecuación diferencial. **En `gen~`, el retardo de feedback es de 1 sola muestra ($z^{-1}$), permitiendo modelado físico y DSP analógico virtual (VA) con precisión matemática absoluta.**
 
@@ -38,57 +31,70 @@ Si intentás construir un filtro IIR analógico de saturación no lineal con dio
 
 Cuando cerrás la ventana de un objeto `[gen~]`, no se interpreta nada:
 
-```
-[ Patcher gen~ / Código GenExpr ]
-               |
-               v
- [ Generador de AST (Abstract Syntax Tree) ]
-               |
-               v
- [ Emisión de Código Intermedio C++ ]
-               |
-               v
-   [ Compilador JIT / LLVM Engine ]
-               |
-               v
-[ Código de Máquina Binario x86-64 / ARM64 ]
-               |
-               v
-   [ Enlace Directo a RAM de Audio ]
-```
-
-- **Cero Overhead de Mensajería**: Dentro de `gen~` no existen los objetos Obex de Max ni el scheduler de eventos. Todas las operaciones matemáticas (`+`, `*`, `sin`, `tanh`) se compilan como instrucciones de ensamblador directas en la CPU (`fadd`, `fmul`, registros SSE/AVX o NEON).
-- **Parámetros Flotantes en el Hilo de Audio**: Los objetos `[param]` se actualizan en memoria atómica en cada muestra sin provocar *zipper noise*.
+![FIG 5.1 · Pipeline JIT / LLVM y Retardo de Historial (z^-1) en gen~](/assets/diagrams/diagrama_gen_jit_pipeline.svg)
 
 ---
 
-## 3. El Operador Fundamental: `history` ($z^{-1}$)
+## 3. El Operador `history` y la Memoria de Muestra Única ($z^{-1}$)
 
-En `gen~`, el operador `[history]` define una celda de memoria que almacena el valor de la muestra anterior:
+El operador más poderoso y diferenciador de `gen~` frente al MSP tradicional es **`[history]`**: una celda de memoria que almacena exactamente **una muestra del pasado** y la expone en el instante siguiente.
 
-$$y[n] = x[n] + g \cdot y[n-1]$$
+### La Ecuación en Diferencias Implementable
 
-En el lienzo de `gen~`:
-- La salida de un operador se conecta a la entrada de `[history mi_memoria]`.
-- La salida de `[history]` se realimenta a la suma de entrada.
-- Al compilarse, `[history]` se convierte simplemente en una variable flotante local en C++: `double mi_memoria;`.
+En el mundo analógico, un filtro de primer orden se describe con la ecuación diferencial:
+
+$$\tau \frac{dy}{dt} + y(t) = x(t)$$
+
+En el dominio digital discreto, discretizada por el método de Euler hacia atrás, se convierte en la **ecuación en diferencias**:
+
+$$y[n] = \alpha \cdot x[n] + (1 - \alpha) \cdot y[n-1]$$
+
+donde $y[n-1]$ es exactamente lo que almacena `[history]` — el valor de salida del tick anterior, con retardo de una sola muestra ($\Delta t = 1/f_s \approx 22.67\ \mu\text{s}$ a $44.1\text{ kHz}$).
+
+### Por qué MSP no puede resolver esto correctamente
+
+En MSP tradicional, `[tapin~]/[tapout~]` tiene una latencia mínima de **$N$ muestras** (el tamaño del Signal Vector, típicamente 64). Intentar construir el lazo $y[n] = f(x[n], y[n-1])$ en MSP introduce un retraso de 64 muestras en el feedback, destruyendo la estabilidad matemática del filtro IIR y cualquier modelo físico que requiera retroalimentación de muestra individual.
+
+En `gen~`, la topología visual se compila a un bucle `while(n--)` donde el valor de `[history]` se actualiza al final de cada iteración — retroalimentación perfecta de 1 muestra con costo computacional cero.
+
+### Diagrama de Implementación
 
 ```
-          in 1 (x[n])
-            |
-            v
-          [ + ] <-------------+
-            |                 |
-            +---> out 1       |
-            |                 |
-         [ * 0.95 ]           |
-            |                 |
-       [ history ] -----------+  (Retardo exacto z^-1)
+[in 1] ──┐
+          ├──[*]── coef_a ──────[+]──── y[n] ──[out 1]
+[history]─┤                      │         │
+          └──[*]── coef_b        │         └──[history]
+                                 │
+                (y[n] = a*x[n] + b*y[n-1])
 ```
+
+Este patrón es la piedra angular de **todos los filtros, osciladores y modelos físicos** implementados en `gen~`.
+
+### 3.1. Acumulación Temporal y Generación de Fase (Wakefield & Taylor)
+
+En su tratado fundamental *Generating Sound & Organizing Time: Thinking with gen~* (Cycling '74, 2022), Graham Wakefield y Gregory Taylor establecen que el concepto de "tiempo" en DSP no debe concebirse como una sucesión de eventos disparados por un reloj o metrónomo externo, sino como un **acumulador continuo de fase normalizada**:
+
+$\phi[n] = (\phi[n-1] + \Delta \phi) \pmod 1$
+
+donde el incremento diferencial de fase por muestra $\Delta \phi$ viene dictado por la frecuencia deseada $f$ y la tasa de muestreo $f_s$:
+
+$\Delta \phi = \frac{f}{f_s}$
+
+```text
+[in 1: freq] ──> [/ samplerate] ──> [+] ──> [wrap 0 1] ──┬──> [out 1: phasor]
+                                     ▲                   │
+                                     └─── [history] ─────┘
+```
+
+#### Por qué este fasor en `gen~` supera al `[phasor~]` de MSP:
+1. **Modulación de Frecuencia Audio-Rate Pura**: En MSP tradicional, modular la frecuencia de un `[phasor~]` con otra señal a frecuencias de audio introduce sutiles discontinuidades y jitter en los bordes de cada bloque vectorial de 64 muestras. En `gen~`, la fase se integra y evalúa muestra por muestra de forma continua y suave.
+2. **Sincronización Dura (Hard Sync) y Reseteo Instantáneo**: La fase puede forzarse a cero o a cualquier valor arbitrario en el ciclo exacto de una muestra mediante una condición lógica (`if` o operador `?`), permitiendo osciladores antialiasing tipo PolyBLEP y sincronización maestra/esclava sin dispersión de fase.
+3. **Aritmética de Plegado y Deformación Temporal**: Aplicando funciones no lineales a la rampa de fase (como potencias, senos o funciones de conformación de onda *waveshaping*), el tiempo mismo se estira y contrae a nivel de nanosegundos antes de indexar tablas de ondas o secuencias de envolventes.
 
 ---
 
 ## 4. Bajo el Capó: Análisis del C++ Exportado (`gen_exported.cpp`)
+
 
 Cuando usamos la función `exportcode` de `gen~`, Max genera código C++ puro compatible con cualquier entorno embebido (VST, AU, Daisy Seed, Bela o Teensy). Observemos la estructura del bucle de procesamiento:
 

@@ -1,4 +1,8 @@
-# Lección 4.2: Polifonía Dinámica con poly~: Asignación de Voces, Enrutamiento (target), mute y thispoly~
+﻿---
+title: "Lección 4.2: Polifonía Dinámica con poly~: Asignación de Voces, Enrutamiento (target), mute y thispoly~"
+description: "Polifonía escalable con [poly~]: asignación dinámica de voces, algoritmos de voice stealing, mensajes target y midievent para síntesis MIDI polifónica de grado profesional."
+---
+
 
 > *"Un sintetizador monofónico es una línea melódica solitaria; la polifonía es arquitectura armónica en el tiempo. Pero multiplicar 16 voces de síntesis por la fuerza bruta de copiar y pegar parches es la bancarrota del CPU: la polifonía digital profesional exige asignación dinámica, reciclaje de voces y apagado absoluto de hilos inactivos."*  
 > — **F. Richard Moore**, *Elements of Computer Music*
@@ -21,23 +25,7 @@
 `poly~ [nombre_subparche_voz] [cantidad_de_voces]`
 Ejemplo: `poly~ voz_polifonica 8`
 
-```
-                      [ Patch Principal ]
-                               | (midievent / target)
-                               v
-                     +-------------------+
-                     |      poly~ 8      |
-                     +-------------------+
-                     | Voz 1 (Activa)    | ---> perform64() (CPU ON)
-                     | Voz 2 (Activa)    | ---> perform64() (CPU ON)
-                     | Voz 3 (Muteada)   | ---> [Bypass]    (CPU 0%)
-                     | Voz 4 (Muteada)   | ---> [Bypass]    (CPU 0%)
-                     | ...               |
-                     +-------------------+
-                               | (Suma de Audio out~)
-                               v
-                            [out~ 1]
-```
+![FIG 4.2 · Gestión de Voces y Silenciado Automático (mute) en poly~](/assets/diagrams/diagrama_poly_voice_stealing.svg)
 
 ### Los Objetos Especiales de Comunicación Interna
 Dentro del subparche de voz instanciado por `poly~`, los inlets y outlets estándar se reemplazan por:
@@ -50,20 +38,11 @@ Dentro del subparche de voz instanciado por `poly~`, los inlets y outlets están
 
 ## 2. El Ciclo de Vida de una Voz: `thispoly~` y el Protocolo `mute`
 
-El error más común en principiantes es dejar que las 16 o 32 voces de un sintetizador corran constantemente en segundo plano. Aunque no suenen, multiplicar ceros en filtros y osciladores consume la misma cantidad de ciclos de instrucción por muestra que tocar un acorde masivo.
+Un error recurrente en el diseño de sintetizadores es permitir que la totalidad de las voces (ej. 16 o 32) permanezca activa de forma continua en segundo plano. Aun en ausencia de señal audible, evaluar ecuaciones de diferencias y multiplicar ceros en filtros y osciladores consume la misma cantidad de ciclos de instrucción por muestra que computar un pasaje polifónico completo.
 
-Para solucionar esto, cada voz incluye un objeto `[thispoly~]`:
+Para mitigar este costo computacional, cada instancia de voz incorpora un objeto `[thispoly~]`:
 
-```
-          [adsr~ 10. 150. 0.5 300.]
-             |                 | (3er Outlet: Estado de Actividad 1/0)
-             v                 v
-          [*~ audio]        [!= 0.]  (1 cuando suena, 0 cuando calla)
-                               |
-                        [message: mute $1, $1]
-                               |
-                         [thispoly~]
-```
+![FIG 4.2B · Ciclo de Vida Polifónico: El Protocolo mute y el Objeto [thispoly~]](/assets/diagrams/diagrama_thispoly_mute_ciclo_vida.svg)
 
 ### Sintaxis del Mensaje `mute [estado_mute] [estado_busy]`
 - `mute 1 0`: **Mute ON, Busy OFF**. La voz se apaga en el motor DSP (consume **0% de CPU**) y se marca como **libre** para que `poly~` pueda asignarle una nueva nota.

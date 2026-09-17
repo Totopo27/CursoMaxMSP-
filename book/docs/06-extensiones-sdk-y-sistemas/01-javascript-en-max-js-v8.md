@@ -1,4 +1,8 @@
-# Módulo 6.1: JavaScript en Max: Arquitectura de los Motores `[js]` y `[v8]`
+﻿---
+title: "Módulo 6.1: JavaScript en Max: Arquitectura de los Motores `[js]` y `[v8]`"
+description: "JavaScript en Max con [js] y el motor V8: scripting de lógica generativa, acceso a la Live API, limitaciones de hilo principal y mejores prácticas para código seguro en el Scheduler."
+---
+
 
 A lo largo de los módulos anteriores cubrimos exhaustivamente el paradigma de flujo de datos síncrono (Max Control), el paradigma asíncrono de colas/prioridades (Scheduler vs Low-priority Queue), la computación vectorial en DSP (MSP) y el procesamiento compilado muestra a muestra (`gen~`).
 
@@ -24,18 +28,7 @@ Históricamente, Max integró el motor **SpiderMonkey** (Mozilla) en el objeto `
 
 Cuando Max carga un script `.js`, crea una instancia del intérprete vinculada al entorno del patcher. Existen variables globales reservadas inyectadas por Max en el scope global del script:
 
-```mermaid
-graph TD
-    Inlet["Inlet de Max (Entero, Flotante, Lista, Bang)"] -->|Despacho de Eventos| JSDispatcher["Dispatcher JS Interno"]
-    subgraph EntornoJS["Scope Global JS (Max Context)"]
-        Inlets["inlets = 2; outlets = 2;"]
-        GlobalFuncs["bang(), msg_int(val), list()"]
-        MaxAPI["max.pcall(), post(), outlet(n, val)"]
-        PatcherScripting["this.patcher (Traversals & Scripting)"]
-    end
-    JSDispatcher --> GlobalFuncs
-    GlobalFuncs --> Outlets["outlet(0, resultado)"]
-```
+![FIG 6.1 · SpiderMonkey [js] vs Google V8 [v8] & max-api](/assets/diagrams/diagrama_js_v8_arquitectura.svg)
 
 ### 2.1. Puertos de Entrada y Salida Dinámicos
 

@@ -1,4 +1,8 @@
-# Apéndice A: Computación Visual y Espacial: Jitter, Matrices y `jit.gen`
+﻿---
+title: "Apéndice A: Computación Visual y Espacial: Jitter, Matrices y `jit.gen`"
+description: "Computación visual en Max: matrices N-dimensionales con Jitter, pipeline GPU con OpenGL, jit.gen para DSP visual y shaders GLSL de procesamiento matricial en tiempo real."
+---
+
 
 Mientras que MSP manipula flujos unidimensionales de audio a frecuencias de muestreo elevadas ($f_s = 48\text{ kHz}$), **Jitter** es la extensión de Max diseñada para el procesamiento multidimensional de datos a velocidades de cuadro (*framerate* de control o video, típicamente de 30 a 120 fps). 
 
@@ -12,16 +16,7 @@ Toda información en Jitter se representa mediante una matriz definida estrictam
 
 $$\text{Matriz Jitter} = \langle \text{Planos}, \text{Tipo}, \text{Dimensiones} \rangle$$
 
-```mermaid
-graph TD
-    subgraph MemoriaMatricial["Estructura en Memoria (Contiguous Buffer)"]
-        Planes["Planos (Planes): Canales intercalados [ARGB] o Coordenadas [XYZ]"]
-        DataType["Tipo de Dato (Type): char (uint8), long (int32), float32, float64"]
-        Dims["Dimensiones (Dim): Ancho (X), Alto (Y), Profundidad (Z), Tiempo (W)..."]
-    end
-    JitObject["Objeto Jitter (ej. [jit.matrix])"] --> MemoriaMatricial
-    MemoriaMatricial --> Rendering["Destino: Textura GPU [jit.gl.texture] o Análisis Numérico"]
-```
+![FIG A.1 · Planes, Types & Texturas GPU GLSL](/assets/diagrams/diagrama_jitter_matrices.svg)
 
 ### 1.1. Planos (*Planes*)
 Un plano representa una capa paralela de datos para cada celda de la matriz:
@@ -41,21 +36,7 @@ Un plano representa una capa paralela de datos para cada celda de la matriz:
 
 En las versiones modernas de Max, procesar matrices píxel por píxel en la CPU es una práctica obsoleta para gráficos complejos. El ecosistema **`jit.gl`** delega todo el cálculo gráfico a la GPU mediante texturas y buffers de vértices.
 
-```
-+-------------------------------------------------------------+
-|                     Pipeline de GPU Jitter                  |
-|                                                             |
-|  [jit.world] (Contexto Maestro, Render Loop a 60 fps)       |
-|       |                                                     |
-|       +---> [jit.gl.gridshape] (Geometría: Esfera / Toro)   |
-|       |          | (Vértices 3D)                            |
-|       |          v                                          |
-|       +---> [jit.gl.pix] / [jit.gen] (Fragment & Vertex DSP)|
-|       |          | (Transformación matricial JIT en GPU)    |
-|       |          v                                          |
-|       +---> [jit.gl.node] (Sub-escena con cámara / luces)   |
-+-------------------------------------------------------------+
-```
+![FIG A.2 · Pipeline Gráfico y Shaders Acelerados en GPU (jit.gl)](/assets/diagrams/diagrama_jitter_gpu_pipeline.svg)
 
 ### 2.1. El Rol Central de `jit.world`
 El objeto `[jit.world nombre_contexto]` unifica la ventana de visualización, el contexto de renderizado de hardware y el reloj maestro (*render loop*):

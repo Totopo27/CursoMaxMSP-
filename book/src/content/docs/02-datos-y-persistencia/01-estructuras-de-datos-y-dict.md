@@ -127,7 +127,27 @@ Abre el parche interactivo:
 * **El Problema:** Necesitamos almacenar una secuencia polifónica compleja con notas, velocidades y duraciones, y poder reproducirla hacia adelante, hacia atrás o saltar a compases específicos.
 * **La Solución:** `[coll]` con claves numéricas indexadas. Con el mensaje `next` recorremos la partitura paso a paso, y con un número saltamos a cualquier evento de inmediato.
 
-### Escenario 3: Base de Datos de Presets Estructurados con `[dict]`
+### Escenario 3: Gramáticas Musicales y Modelado de Markov con `[dict]`
+*(Inspirado en Robert Rowe, Machine Musicianship, y Todd Winkler, Composing Interactive Music).*
+* **El Problema:** Al construir un agente de improvisación armónica, las tablas planas no permiten representar probabilidades condicionales dependientes del acorde anterior ni almacenar jerarquías complejas de transiciones.
+* **La Solución:** Representar el autómata probabilístico en un `[dict]` jerárquico:
+```json
+{
+  "tónica": {
+    "alturas": [60, 64, 67],
+    "probabilidades": { "subdominante": 0.35, "dominante": 0.55, "tónica": 0.10 }
+  },
+  "dominante": {
+    "alturas": [67, 71, 74],
+    "probabilidades": { "tónica": 0.85, "subdominante": 0.15 }
+  }
+}
+```
+  - Max consulta los pesos de transición directamente en $O(1)$ sin cables:
+    `get tónica::probabilidades::dominante`
+  - La persistencia se comparte instantáneamente entre polifonías `[poly~]`, scripts `[js]` y el motor de síntesis sin duplicar estructuras en memoria RAM.
+
+### Escenario 4: Base de Datos de Presets Estructurados con `[dict]`
 * **El Problema:** Un sintetizador tiene 4 módulos (Oscilador, Filtro, LFO, Efectos). Guardar los parámetros en variables sueltas hace imposible exportar o compartir presets.
 * **La Solución:** `[dict]` con jerarquía de claves. Un solo botón `write` exporta el estado completo a un archivo `.json` en disco legible por humanos y compatible con cualquier aplicación externa.
 
