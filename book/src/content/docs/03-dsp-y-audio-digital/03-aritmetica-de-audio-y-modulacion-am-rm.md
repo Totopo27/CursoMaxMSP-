@@ -65,6 +65,45 @@ Max implementa optimizaciones **SIMD (Single Instruction, Multiple Data)** a niv
 
 ---
 
+
+---
+
+## 4. Modulación de Banda Lateral Única (SSB) y Desplazamiento de Frecuencia (*Frequency Shifter*)
+
+*(Inspirado en Miller Puckette, *Theory and Technique of Electronic Music*, y Cipriani & Giri, *Electronic Music and Sound Design*, Vol. 2)*
+
+Uno de los errores más extendidos en la producción musical y el diseño de audio consiste en confundir **Pitch Shifting** (transposición de tono) con **Frequency Shifting** (desplazamiento de frecuencia de Bode):
+
+| Parámetro | Transposición de Tono (*Pitch Shifting*) | Desplazamiento de Frecuencia (*Frequency Shifting*) |
+| :--- | :--- | :--- |
+| **Operación Matemática** | Multiplicación escalar: $f_n' = k \cdot f_n$ | Suma aditiva constante: $f_n' = f_n + \Delta f$ |
+| **Relación Armónica** | **Se preserva**: $100, 200, 300 \rightarrow 200, 400, 600\text{ Hz}$ | **Se destruye**: $100, 200, 300 \rightarrow 150, 250, 350\text{ Hz}$ |
+| **Percepción Acústica** | Mismo instrumento en distinta nota musical | Sonido inarmónico alienígena, campanas, timbres metálicos |
+
+### 4.1. La Señal Analítica en Cuadratura y el Objeto `[hilbert~]`
+En la Modulación en Anillo clásica (`*~`), multiplicar una señal $x(t)$ por una portadora de frecuencia $f_c$ genera inevitablemente **dos bandas laterales**: la suma ($f_s + f_c$) y la diferencia ($f_s - f_c$).
+
+Para aislar una sola banda lateral (Single Sideband / SSB) y lograr un auténtico *Frequency Shifter*, debemos transformar la señal de audio real en una **señal analítica compleja**:
+$$z(t) = x(t) + j \cdot \mathcal{H}\{x(t)\}$$
+Donde $\mathcal{H}\{x(t)\}$ es la **Transformada de Hilbert**, que desfasa exactamente $90^\circ$ todas las frecuencias componentes sin alterar sus amplitudes.
+
+```text
+                 ┌── Real (0°)  ──────> [*~] ──┐
+[ audio in ] ──> [ hilbert~ ]                   ├── [-~] ──> Banda Lateral Superior (fc + fs)
+                 └── Imag (-90°) ────> [*~] ──┤
+                                        ▲   ▲   └── [+~] ──> Banda Lateral Inferior (|fc - fs|)
+                 [ cycle~ fc (cos) ] ───┘   │
+                 [ cycle~ fc (sin) ] ───────┘ (desfase 0.25)
+```
+
+### 4.2. Cancelación Trigonométrica de Bandas en Max
+1. El objeto `[hilbert~]` descompone la entrada en dos señales: salida izquierda (en fase) y salida derecha ($90^\circ$ en cuadratura).
+2. Modulamos ambas señales con dos osciladores en cuadratura de frecuencia $\Delta f$ (un `[cycle~]` en fase cero evaluando coseno y otro con fase $0.25$ evaluando seno).
+3. Restando los productos (`[-~]`), la banda inferior se cancela matemáticamente por interferencia destructiva, dejando únicamente la banda lateral superior ($f + \Delta f$).
+4. Sumando los productos (`[+~]`), se cancela la banda superior, aislando el espectro desplazado hacia abajo.
+
+---
+
 ##  4. 4 Escenarios del Mundo Real
 
 Abre el parche interactivo complementario:

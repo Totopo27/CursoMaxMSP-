@@ -49,6 +49,20 @@ A continuación se presenta el corpus bibliográfico completo (20 obras fundamen
 
 ---
 
+### Miller Puckette — *The Theory and Technique of Electronic Music*
+- **Editorial:** World Scientific Publishing / University of California, San Diego (UCSD)
+- **Año:** 2007 | **Páginas:** 340 | **ISBN:** 978-981-270-077-3
+- **Aporte al Curso:** Obra cumbre del creador original de Max y Pure Data. Fundamenta matemáticamente el procesamiento de audio en tiempo real basado en dataflow, modulación en anillo y frecuencia, síntesis por distorsión de fase, líneas de retardo circulares y diseño espectral de filtros digitales.
+- **Módulos Vinculados:** Módulo 1 (Dataflow), Módulo 3 (Lecciones 01, 02, 03, 04, 07) y Módulo 6.
+
+### Eric Lyon — *Designing Audio Objects for Max/MSP and Pd*
+- **Editorial:** A-R Editions (Computer Music and Digital Audio Series, Middleton, Wisconsin)
+- **Año:** 2012 (Actualización 64-bit 2016) | **Páginas:** 320+ | **ISBN:** 978-0-89579-715-5
+- **Aporte al Curso:** El tratado canónico definitivo para la programación de objetos externos nativos en C para Max/MSP. Establece la anatomía estricta de herencia binaria con `t_pxobject`, la compilación del grafo DSP (`dsp64`), la rutina de procesamiento de 64 bits (`perform64`), la prevención de números desnormalizados (*anti-denormal protection*), la gestión de memoria segura con `sysmem` y el sistema de atributos declarativos Obex.
+- **Módulos Vinculados:** Módulo 6 (Lección 03 y Proyecto Integrador 06) y Apéndice D.
+
+---
+
 ## 2. Pedagogía de Conservatorio, Tratamiento de Señal y Diseño Sonoro
 
 ### Alessandro Cipriani & Maurizio Giri — *Música Electrónica y Diseño Sonoro: Teoría y Práctica con Max 8 (Volumen 1 y Volumen 2)*

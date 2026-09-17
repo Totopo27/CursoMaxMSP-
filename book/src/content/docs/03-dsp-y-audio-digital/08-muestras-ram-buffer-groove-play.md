@@ -100,6 +100,40 @@ void my_sampler_perform64(t_my_sampler *x, t_object *dsp64, double **ins, long n
 
 ---
 
+
+---
+
+## 4. Síntesis Granular Formal y la Morfología del Microsonido
+
+*(Fundamentado en Curtis Roads, *Microsound*, MIT Press 2001, y *The Computer Music Tutorial*, 2nd ed. 2023)*
+
+Mientras que la síntesis tradicional concibe el sonido como ondas continuas infinitas moduladas por envolventes lentas, la **Síntesis Granular** descompone la materia acústica en cuantos microscópicos de energía sonora denominados **granos acústicos**.
+
+### 4.1. Anatomía de un Grano Acústico
+Según formaliza Curtis Roads, un grano acústico individual opera en la escala temporal microfónica ($1 \text{ a } 100\text{ ms}$):
+
+```text
+                      Duración del Grano (Δt ≈ 20-50 ms)
+                    ├──────────────────────────────────┤
+          1.0 ──┐                 ╭───╮
+                │               ╭─╯   ╰─╮
+                │             ╭─╯       ╰─╮          Ventana (Hanning / Gauss)
+          0.0 ──┴───────────╭─╯           ╰─╮────────
+                            │  WAVETABLE    │
+                            │  ~ ~ ~ ~ ~ ~  │        Audio Interno (buffer~)
+```
+
+1. **Duración (Grain Duration, $\Delta t$)**: Típicamente entre 10 y 50 ms. Por debajo de 10 ms se percibe como un click impulsivo; por encima de 100 ms el cerebro distingue la nota o palabra original.
+2. **Función de Ventana (Windowing Envelope)**: Imprescindible para atenuar a cero los extremos inicial y final del grano. Si se corta el audio abruptamente, la discontinuidad vertical genera un espectro de banda ancha audible como chasquido o click digital. Se emplean ventanas de Hanning ($w(t) = 0.5 - 0.5\cos(2\pi t)$), Blackman o Gaussianas leídas mediante `[wave~ mi_ventana]`.
+3. **Puntero de Escaneo (Buffer Offset / Scrubbing)**: Posición en memoria RAM desde donde se extrae la información sonora. Modulando este puntero lentamente se logra estirar el tiempo (*time-stretching*) de manera infinita sin alterar la afinación musical.
+4. **Factor de Transposición (Playback Rate)**: Velocidad de recorrido del puntero interno dentro del grano, determinando la altura tonal o pitch.
+
+### 4.2. Topologías Granulares en Max: Síncrona vs. Asíncrona
+- **Granulación Síncrona (Sincronizada por Reloj)**: Los granos se disparan a intervalos periódicos estrictos mediante un `[phasor~]` o `[train~]`. Cuando la frecuencia de disparo entra en el rango audible ($> 20\text{ Hz}$), la repetición periódica produce una nueva altura tonal perceptible (*pitch fundamental emergente*).
+- **Nubes Granulares Asíncronas (Estocásticas)**: La activación de granos se distribuye probabilísticamente en el tiempo siguiendo procesos de Poisson o densidades Gaussianas mediante generadores pseudoaleatorios. Crea paisajes sonoros texturales, nubes masivas y transiciones continuas de orden a caos.
+
+---
+
 ## 4. Escenarios Reales de Producción y Teoría Micro-Temporal
 
 1. **Scratches Estilo Vinilo**: Conectar un `[flonum]` suavizado con `[line~]` o la salida de una tableta gráfica/mouse hacia el inlet de velocidad de `groove~` para emular el frenado y empuje físico de una bandeja giradiscos.

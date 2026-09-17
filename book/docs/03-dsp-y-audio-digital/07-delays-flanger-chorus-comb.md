@@ -101,6 +101,42 @@ double read_tapout(t_delayline *dl, double delay_samples) {
 
 ---
 
+
+---
+
+## 4. Reverberación Algorítmica: Filtros Todo-Paso (Allpass) y Redes FDN
+
+*(Basado en Manfred Schroeder, Julius O. Smith y Curtis Roads, *The Computer Music Tutorial*)*
+
+Cuando intentamos simular la acústica de una sala real interconectando simples líneas de retardo con retroalimentación (`[comb~]`), el sonido adquiere rápidamente una coloración metálica y estridente. Esto se debe a que un filtro de peine posee picos resonantes equidistantes (*comb modes*) que refuerzan ciertas frecuencias y anulan otras.
+
+### 4.1. El Filtro Todo-Paso (*Allpass Filter*) de Schroeder
+Para crear densidad de ecos y difusión espacial sin alterar el equilibrio tonal del sonido original, Manfred Schroeder diseñó el **filtro todo-paso (Allpass)**:
+$$H(z) = \frac{-g + z^{-D}}{1 - g \cdot z^{-D}}$$
+
+```text
+                  ┌──────────────────────┐
+                  │                      ▼
+[ in ] ──> [+] ───┴──> [ delay~ D ] ──> [+] ──> [ out ]
+            ▲                            │
+            │           ┌── [*~ -g] ─────┘
+            └── [*~ g] ─┤
+                        ▲
+```
+
+#### Propiedad Psicoacústica Fundamental:
+La respuesta en frecuencia en magnitud de un filtro Allpass es rigurosamente plana para todo el espectro audible:
+$$|H(e^{j\omega})| = 1.0 \quad \forall \omega$$
+No añade ecualización ni colorea el timbre, pero **dispersa las fases relativas de los armónicos a lo largo del tiempo**. En Max se implementa con el objeto nativo `[allpass~]`. Encadenar 3 o 4 filtros Allpass con tiempos de retardo primos relativos (ej. 5 ms, 1.7 ms, 0.6 ms) transforma un transitorio percusivo filoso en una ráfaga difusa de micro-reflexiones.
+
+### 4.2. Redes de Retardo con Retroalimentación (Feedback Delay Networks - FDN)
+Para construir reverberaciones de sala hiper-densas sin modos estacionarios, el estándar moderno (desarrollado por Jean-Marc Jot en el IRCAM y Julius O. Smith en CCRMA) consiste en una **FDN**:
+1. Un banco de $N$ líneas de retardo paralelas ($N = 4, 8, 16$) con tiempos de retardo mutuamente primos para prevenir colisiones periódicas.
+2. Cada salida pasa por un filtro paso-bajos de absorción de aire (`[onepole~]`) para modelar la amortiguación natural de altas frecuencias con la distancia.
+3. Las $N$ señales de realimentación se multiplican por una **matriz unitaria de rotación (Hadamard / Householder)** antes de reinyectarse en las entradas, garantizando recirculación infinita de energía con preservación del headroom y difusión tridimensional estéreo.
+
+---
+
 ## 5. Escenarios Reales de Producción
 
 1. **Ping-Pong Delay Estéreo**: Dos líneas de `tapin~` cruzadas con retroalimentación alternada de canal izquierdo a derecho para ensanchamiento psicoacústico.

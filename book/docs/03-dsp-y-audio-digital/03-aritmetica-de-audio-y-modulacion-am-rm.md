@@ -1,10 +1,14 @@
-# Módulo 3.3: Aritmética de Audio, Modulación en Anillo (Ring Modulation) y Modulación de Amplitud (AM)
+﻿---
+title: "Módulo 3.3: Aritmética de Audio, Modulación en Anillo (Ring Modulation) y Modulación de Amplitud (AM)"
+description: "Aritmética de audio en MSP: escalamiento de señal, Ring Modulation (RM) y Amplitude Modulation (AM). Espectros laterales, síntesis tímbrica y el operador multiplicador [*~]."
+---
+
 
 > *"Multiplicar dos señales de audio no es un simple control de volumen; es una colisión trigonométrica que crea nuevas frecuencias que jamás existieron en los osciladores originales."*
 
 ---
 
-## ️ 1. Fundamento Matemático: Trigonometría de la Multiplicación de Señales
+##  1. Fundamento Matemático: Trigonometría de la Multiplicación de Señales
 
 *(Inspirado en Miller Puckette, *Theory and Technique of Electronic Music*, y Cipriani & Giri, *Electronic Music and Sound Design*, Vol. 1)*
 
@@ -17,51 +21,8 @@ Cuando multiplicas dos ondas continuas con frecuencias $f_c$ (Portadora / Carrie
 
 $$\cos(2\pi f_c t) \cdot \cos(2\pi f_m t) = \frac{1}{2}\cos\big(2\pi (f_c + f_m) t\big) + \frac{1}{2}\cos\big(2\pi (f_c - f_m) t\big)$$
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                 ESPECTRO RESULTANTE: MODULACIÓN EN ANILLO                   │
-├─────────────────────────────────────────────────────────────────────────────┤
-│ Señal Portadora (Carrier):    f_c = 440 Hz                                  │
-│ Señal Moduladora (Modulator): f_m = 100 Hz                                  │
-│                                                                             │
-│ Espectro de Salida:                                                         │
-│   • Banda Lateral Inferior: f_c - f_m = 440 - 100 = 340 Hz                  │
-│   • Banda Lateral Superior: f_c + f_m = 440 + 100 = 540 Hz                  │
-│   • ¡LA FUNDAMENTAL ORIGINAL (440 Hz) DESAPARECE POR COMPLETO!              │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+![FIG 3.2 · Modulación en Anillo (Bipolar) vs. Modulación de Amplitud (Unipolar)](/assets/diagrams/diagrama_rm_vs_am.svg)
 
----
-
-## 2. Modulación en Anillo (RM) vs. Modulación de Amplitud (AM)
-
-La diferencia entre RM y AM radica en un único componente: **el Offset de Corriente Continua (DC Offset)** de la señal moduladora.
-
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                       RING MODULATION VS. AMPLITUDE MOD                     │
-├─────────────────────────────────────────────────────────────────────────────┤
-│ 1. RING MODULATION (RM / Bipolar):                                          │
-│    • Moduladora bipolar: oscila entre -1.0 y +1.0 (media = 0.0).            │
-│    • Salida: ÚNICAMENTE bandas laterales (f_c - f_m) y (f_c + f_m).         │
-│    • Sonido: Metálico, acampanado, robótico y radicalmente inarmónico.      │
-│                                                                             │
-│ 2. AMPLITUDE MODULATION (AM / Unipolar):                                    │
-│    • Moduladora unipolar: oscila entre 0.0 y 1.0 (con offset DC).           │
-│    • Fórmula: Carrier * (1.0 + Modulator)                                   │
-│    • Salida: La portadora f_c PERMANECE + las dos bandas laterales.         │
-│    • Sonido: Trémolo (en bajas frecuencias) o refuerzo armónico cálido.     │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
-
-```
-   Espectro Ring Mod (RM):           Espectro Amplitude Mod (AM):
-        │                                 │          f_c
-        │                                 │           │
-     f_c-f_m        f_c+f_m            f_c-f_m        │        f_c+f_m
-        │              │                  │           │           │
-    ────┴──────────────┴─────►        ────┴───────────┴───────────┴─────►
-```
 
 ---
 
@@ -94,17 +55,56 @@ Max implementa optimizaciones **SIMD (Single Instruction, Multiple Data)** a niv
 
 ---
 
-### Gotchas Críticos de los Foros Oficiales de Cycling '74
+### Comportamientos Críticos en Modulación y Aritmética de Audio
 
-1. **Bandas Laterales Negativas y Aliasing (Foldover):**
-   - Si $f_m > f_c$, la banda inferior resulta negativa: $440\text{ Hz} - 600\text{ Hz} = -160\text{ Hz}$.
-   - En audio analógico y digital, una frecuencia negativa no se cancela: **se refleja con fase invertida como $+160\text{ Hz}$**. Si no vigilas las frecuencias, crearás armónicos impredecibles en el registro grave.
-2. **Multiplicación Control vs Multiplicación Señal:**
-   - Si multiplicas una señal `cycle~` por un número de control usando el inlet derecho de `[*~ 0.]`, Max conmuta internamente a la rutina `scale_perform64_method` (un solo escalar para todo el vector). Pero si cambias ese número bruscamente desde un slider, cada bloque de 64 muestras tendrá un salto escalonado que producirá **ruido de cremallera (zipper clicks)**. Para automatización limpia, conecta siempre una señal generada con `[line~]`.
+1. **Bandas Laterales Negativas y Aliasing Espectral (Foldover):**
+   - Cuando $f_m > f_c$, la banda lateral inferior arroja un valor algebraico negativo: por ejemplo, $440\text{ Hz} - 600\text{ Hz} = -160\text{ Hz}$.
+   - En el dominio de señales reales, una componente de frecuencia negativa no desaparece: **se refleja en el espectro positivo con inversión de fase de $180^\circ$ como $+160\text{ Hz}$**. Si no se calculan analíticamente las relaciones armónicas, estos componentes reflejados introducen frecuencias espurias en el registro grave.
+2. **Multiplicación Escalar vs. Multiplicación Señal a Señal:**
+   - Al multiplicar una señal de audio por un valor de control en el inlet derecho de `[*~ 0.]`, Max conmuta internamente a la rutina `scale_perform64_method` (aplicando un único escalar invariable a todo el vector). No obstante, si dicho valor cambia abruptamente desde la interfaz gráfica, cada bloque de 64 muestras sufrirá una discontinuidad escalonada que introduce **ruido de cremallera (*zipper noise*)**. Para transiciones continuas sin artefactos audibles, la modulación debe modularse siempre a tasa de audio mediante rampas suavizadas con `[line~]`.
 
 ---
 
-## ️ 4. 4 Escenarios del Mundo Real
+
+---
+
+## 4. Modulación de Banda Lateral Única (SSB) y Desplazamiento de Frecuencia (*Frequency Shifter*)
+
+*(Inspirado en Miller Puckette, *Theory and Technique of Electronic Music*, y Cipriani & Giri, *Electronic Music and Sound Design*, Vol. 2)*
+
+Uno de los errores más extendidos en la producción musical y el diseño de audio consiste en confundir **Pitch Shifting** (transposición de tono) con **Frequency Shifting** (desplazamiento de frecuencia de Bode):
+
+| Parámetro | Transposición de Tono (*Pitch Shifting*) | Desplazamiento de Frecuencia (*Frequency Shifting*) |
+| :--- | :--- | :--- |
+| **Operación Matemática** | Multiplicación escalar: $f_n' = k \cdot f_n$ | Suma aditiva constante: $f_n' = f_n + \Delta f$ |
+| **Relación Armónica** | **Se preserva**: $100, 200, 300 \rightarrow 200, 400, 600\text{ Hz}$ | **Se destruye**: $100, 200, 300 \rightarrow 150, 250, 350\text{ Hz}$ |
+| **Percepción Acústica** | Mismo instrumento en distinta nota musical | Sonido inarmónico alienígena, campanas, timbres metálicos |
+
+### 4.1. La Señal Analítica en Cuadratura y el Objeto `[hilbert~]`
+En la Modulación en Anillo clásica (`*~`), multiplicar una señal $x(t)$ por una portadora de frecuencia $f_c$ genera inevitablemente **dos bandas laterales**: la suma ($f_s + f_c$) y la diferencia ($f_s - f_c$).
+
+Para aislar una sola banda lateral (Single Sideband / SSB) y lograr un auténtico *Frequency Shifter*, debemos transformar la señal de audio real en una **señal analítica compleja**:
+$$z(t) = x(t) + j \cdot \mathcal{H}\{x(t)\}$$
+Donde $\mathcal{H}\{x(t)\}$ es la **Transformada de Hilbert**, que desfasa exactamente $90^\circ$ todas las frecuencias componentes sin alterar sus amplitudes.
+
+```text
+                 ┌── Real (0°)  ──────> [*~] ──┐
+[ audio in ] ──> [ hilbert~ ]                   ├── [-~] ──> Banda Lateral Superior (fc + fs)
+                 └── Imag (-90°) ────> [*~] ──┤
+                                        ▲   ▲   └── [+~] ──> Banda Lateral Inferior (|fc - fs|)
+                 [ cycle~ fc (cos) ] ───┘   │
+                 [ cycle~ fc (sin) ] ───────┘ (desfase 0.25)
+```
+
+### 4.2. Cancelación Trigonométrica de Bandas en Max
+1. El objeto `[hilbert~]` descompone la entrada en dos señales: salida izquierda (en fase) y salida derecha ($90^\circ$ en cuadratura).
+2. Modulamos ambas señales con dos osciladores en cuadratura de frecuencia $\Delta f$ (un `[cycle~]` en fase cero evaluando coseno y otro con fase $0.25$ evaluando seno).
+3. Restando los productos (`[-~]`), la banda inferior se cancela matemáticamente por interferencia destructiva, dejando únicamente la banda lateral superior ($f + \Delta f$).
+4. Sumando los productos (`[+~]`), se cancela la banda superior, aislando el espectro desplazado hacia abajo.
+
+---
+
+##  4. 4 Escenarios del Mundo Real
 
 Abre el parche interactivo complementario:
 [`book/patches/modulo-03/laboratorio_09_modulacion_am_rm.maxpat`](/patches/modulo-03/laboratorio_09_modulacion_am_rm.maxpat)
@@ -133,15 +133,15 @@ Abre el parche interactivo complementario:
 
 Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_09_modulacion_am_rm.maxpat`](/patches/modulo-03/laboratorio_09_modulacion_am_rm.maxpat):
 
-### ️ Ejercicio 1: El Conmutador Morfológico RM / AM
+###  Ejercicio 1: El Conmutador Morfológico RM / AM
 * **Objetivo:** Diseña un control continuo que permita pasar de Ring Modulation puro (bipolar) a Amplitude Modulation (unipolar) mediante un solo slider.
 * **Pista:** Usa un multiplicador para atenuar o inyectar el offset de corriente continua con `[+~]`.
 
-### ️ Ejercicio 2: El Generador de Campana con Decaimiento Tímbrico
+###  Ejercicio 2: El Generador de Campana con Decaimiento Tímbrico
 * **Objetivo:** Modula la profundidad de las bandas laterales en el tiempo.
 * **Desafío:** Haz que el índice de modulación comience muy alto al presionar una tecla (produciendo un impacto metálico muy brillante) y decaiga rápidamente a cero con una envolvente `[line~]`, dejando únicamente la frecuencia portadora pura en el sustain.
 
-### ️ Ejercicio 3: Detección y Escucha de Frecuencias Negativas (Foldover)
+###  Ejercicio 3: Detección y Escucha de Frecuencias Negativas (Foldover)
 * **Objetivo:** Comprueba auditivamente el rebote de frecuencias negativas.
 * **Desafío:** Fija la portadora en $300\text{ Hz}$ y sube la moduladora lentamente de $200\text{ Hz}$ a $500\text{ Hz}$. Escucha con atención cómo la banda inferior desciende hasta $0\text{ Hz}$ y luego, al pasar los $300\text{ Hz}$, vuelve a subir como frecuencia positiva rebotada.
 
