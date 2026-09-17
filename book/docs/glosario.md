@@ -161,6 +161,82 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
 
 ---
 
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Garbage Collection Spikes &amp; Delta Queue Jitter</h3>
+    <span class="glossary-badge badge-control">Timing / Determinismo</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">Definición Operativa</div>
+      <p>Interrupción o fluctuación aperiódica (<em>jitter</em>) en la entrega temporal de eventos producida cuando el recolector de basura (<em>Garbage Collector</em>) de un motor de scripting en tiempo de ejecución (como V8 en Node for Max o SpiderMonkey en <code>js</code>) detiene el hilo para liberar memoria de objetos huérfanos.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">En Vivo y Concierto</div>
+      <p>Genera micro-congelamientos audibles y desfasajes en pasajes de alta densidad rítmica. Entornos como <strong>Scheme For Max</strong> mitigan este problema acoplando un intérprete Lisp de tamaño acotado directamente a la <em>Delta Queue</em> de Max a nivel de milisegundo de hardware.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">Confusión Típica</div>
+      <p>No es una sobrecarga de CPU por cálculos pesados; es una pausa no determinista e involuntaria del runtime al reciclar punteros de memoria dinámica no reutilizada.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">Objetos &amp; Lecciones</div>
+      <p><code>js</code>, <code>node.script</code>, <code>s4m</code>. Ver <a href="/06-extensiones-sdk-y-sistemas/01-javascript-en-max-js-v8/">Módulo 6.1</a> y <a href="/06-extensiones-sdk-y-sistemas/02-node-for-max-n4m-comunicacion-asincrona/">Módulo 6.2</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Cánones RCMC de Vuza (Teselación Rítmica Regular)</h3>
+    <span class="glossary-badge badge-control">Composición Algorítmica</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">Definición Operativa</div>
+      <p>Modelos rítmicos canónicos basados en la factorización formal de grupos cíclicos finitos $\mathbb{Z}_n = R \oplus S$. Permiten teselar el tiempo discreto de manera exhaustiva, de modo que la superposición de voces idénticas a diferentes desfases periódicos cubra cada pulso de la línea temporal sin vacíos ni colisiones.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">En Vivo y Concierto</div>
+      <p>Sustenta estructuras polirrítmicas infinitas perfectamente balanceadas para secuenciadores y cajas de ritmo complejas, asegurando que no existan picos aperiódicos acumulativos ni solapamientos destructivos de energía de transitorios.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">Confusión Típica</div>
+      <p>No es un canon polifónico tradicional con imitaciones armónicas libres; es una propiedad combinatoria estricta descubierta por Dan Vuza aplicable al diseño de particiones rítmicas auto-sostenidas.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">Objetos &amp; Lecciones</div>
+      <p><code>dict</code>, <code>zl.group</code>, <code>vuzalizer</code>, <code>bach</code>. Ver <a href="/01-fundamentos/03-tipos-de-datos-y-listas-zl/">Módulo 1.3</a> y <a href="/referencias-bibliograficas/">Referencias Bibliográficas</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Handshaking Serial &amp; Histéresis de Schmitt</h3>
+    <span class="glossary-badge badge-comm">Physical Computing</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">Definición Operativa</div>
+      <p>Protocolo bidireccional de control de flujo (<em>Call-and-Response</em>) para comunicaciones serie por microcontroladores, combinado con acondicionamiento de entrada mediante doble umbral de histéresis (<em>Schmitt Trigger</em>) para descartar fluctuaciones inducidas por ruido electrostático en el conversor ADC.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">En Vivo y Concierto</div>
+      <p>El sondeo por handshaking impide que un sensor mande paquetes a ráfaga libre y desborde el buffer circular del puerto serie; la histéresis elimina los disparos espurios (falsos bangs) causados por el rebote de contacto o vibraciones de escenario.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">Confusión Típica</div>
+      <p>Creer que leer sensores a máxima tasa libre ($1000\text{ Hz}$) mejora la precisión; en realidad colapsa el Scheduler. La tasa debe gobernarse por sondeo coordinado y filtrado histérico de umbral.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">Objetos &amp; Lecciones</div>
+      <p><code>serial</code>, <code>speedlim</code>, <code>split</code>, <code>thresh</code>. Ver <a href="/apendices/apendice-c-instalaciones-y-arduino/">Apéndice C</a>.</p>
+    </div>
+  </div>
+</div>
+
 ## 2. DSP, Audio Digital y Motor MSP
 
 <div class="glossary-term-card not-content">
@@ -314,6 +390,107 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
 </div>
 
 ---
+
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Virtual Analog (VA) &amp; Zero-Delay Feedback (ZDF)</h3>
+    <span class="glossary-badge badge-dsp">DSP / Modelado Físico</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">Definición Operativa</div>
+      <p>Metodología de diseño de filtros y circuitos no lineales que resuelve los lazos de retroalimentación instantáneos del dominio analógico sin introducir el retardo parásito unitario ($z^{-1}$) inherente a la discretización digital clásica, resolviendo analíticamente la ecuación algebraica implícita o mediante iteraciones de Newton-Raphson.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">En Vivo y Concierto</div>
+      <p>Permite modular la resonancia y el corte hasta el punto de auto-oscilación extrema sin que el filtro explote en coeficientes inestables ni altere catastróficamente su frecuencia de corte ante variaciones rápidas de LFO.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">Confusión Típica</div>
+      <p>Creer que un filtro digital tradicional en <code>biquad~</code> equivale a un filtro ladder analógico; el filtro IIR estándar añade un retardo de una muestra en el lazo que destruye el comportamiento acústico de la resonancia no lineal analógica.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">Objetos &amp; Lecciones</div>
+      <p><code>gen~</code>, <code>codebox</code>, <code>history</code>. Ver <a href="/05-gen-y-dsp-avanzado/03-modelado-fisico-y-dsp-no-lineal/">Módulo 5.3</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Transformada Bilineal &amp; Frequency Pre-Warping</h3>
+    <span class="glossary-badge badge-dsp">Matemática DSP</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">Definición Operativa</div>
+      <p>Técnica de mapeo conforme que transforma funciones de transferencia analógicas continuas $H(s)$ en filtros digitales discretos $H(z)$ mediante la sustitución $s = \frac{2}{T}\frac{1 - z^{-1}}{1 + z^{-1}}$. Debido a la compresión no lineal del eje frecuencial $(\omega = \frac{2}{T} \arctan(\frac{\Omega T}{2}))$, el <em>Pre-Warping</em> pre-distorsiona la frecuencia analógica de diseño ($\omega_a = \frac{2}{T}\tan(\frac{\omega_d T}{2})$) para que el corte digital coincida con precisión absoluta.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">En Vivo y Concierto</div>
+      <p>Evita el corrimiento espectral y la compresión plástica del sonido en las frecuencias altas cuando se diseñan ecualizadores de precisión quirúrgica o filtros resonantes cerca del límite de Nyquist.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">Confusión Típica</div>
+      <p>Ignorar el pre-warping provoca que un filtro ajustado teóricamente a $12\text{ kHz}$ termine resonando en $9.8\text{ kHz}$ cuando opera a $44.1\text{ kHz}$, descalibrando afinaciones y armónicos de sintetizadores.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">Objetos &amp; Lecciones</div>
+      <p><code>filtergraph~</code>, <code>biquad~</code>, <code>gen~</code>. Ver <a href="/03-dsp-y-audio-digital/06-filtrado-digital-biquad-lores-svf/">Módulo 3.6</a> y <a href="/referencias-bibliograficas/">Referencias Bibliográficas</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Parameter Smoothing &amp; Zipper Noise</h3>
+    <span class="glossary-badge badge-dsp">DSP / Acondicionamiento</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">Definición Operativa</div>
+      <p>El <em>Zipper Noise</em> es un artefacto acústico generado por pasos en escalera (discontinuidades instantáneas de amplitud o frecuencia) cuando un parámetro de control discreto a baja tasa modula una señal de audio. El <em>Parameter Smoothing</em> aplica un filtro pasa-bajos de un polo ($1$-pole, $y[n] = x[n]\cdot \alpha + y[n-1]\cdot(1-\alpha)$) para interpolar exponencialmente cada muestra.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">En Vivo y Concierto</div>
+      <p>Erradica los molestos chasquidos y estallidos percusivos al mover faders de volumen, barridos de corte de filtro o controles de ganancia durante una presentación ante sistemas de PA de alta potencia.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">Confusión Típica</div>
+      <p>Conectar una salida de control discreta directamente al factor multiplicador de <code>*~</code> sin usar <code>line~</code> o <code>slide~</code> para amortiguar la transición muestra a muestra.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">Objetos &amp; Lecciones</div>
+      <p><code>line~</code>, <code>slide~</code>, <code>rampsmooth~</code>, <code>slide</code> en <code>gen~</code>. Ver <a href="/03-dsp-y-audio-digital/05-envolventes-line-curve-adsr/">Módulo 3.5</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Sincronización de Fase de Kuramoto</h3>
+    <span class="glossary-badge badge-dsp">Dinámica No Lineal / Síntesis</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">Definición Operativa</div>
+      <p>Modelo matemático que describe la transición de orden en una población de osciladores acoplados no lineales con frecuencias naturales dispersas: $\frac{d\theta_i}{dt} = \omega_i + \frac{K}{N}\sum_{j=1}^{N}\sin(\theta_j - \theta_i)$. Al superar un umbral crítico de acoplamiento $K_c$, los osciladores convergen espontáneamente a un ritmo común.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">En Vivo y Concierto</div>
+      <p>Permite construir motores rítmicos y polifónicos generativos con comportamiento biológico y orgánico, donde los pulsos no están sincronizados mecánicamente a un metrónomo rígido sino que "respiran" y se alinean como bandadas de aves o luciérnagas.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">Confusión Típica</div>
+      <p>No es una modulación por modulación de frecuencia cruzada (FM compleja caótica); es una auto-organización de fase colectiva que conserva frecuencias estables con balance emergente.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">Objetos &amp; Lecciones</div>
+      <p><code>gen~</code>, <code>kuroscillator</code>, <code>cycle~</code>, <code>phasor~</code>. Ver <a href="/05-gen-y-dsp-avanzado/03-modelado-fisico-y-dsp-no-lineal/">Módulo 5.3</a> y <a href="/referencias-bibliograficas/">Referencias Bibliográficas</a>.</p>
+    </div>
+  </div>
+</div>
 
 ## 3. Gen~ y Computación a Nivel de Muestra
 
@@ -523,6 +700,32 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
 
 ---
 
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Min-DevKit &amp; RAII en C++17</h3>
+    <span class="glossary-badge badge-sdk">Arquitectura C++ / SDK</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">Definición Operativa</div>
+      <p>Framework moderno de abstracción basado en C++17 para la creación de objetos externos de Max. Reemplaza la manipulación manual de punteros y estructuras opacas de la API clásica de C (<code>t_object</code>, <code>sysmem_newptr</code>) por semántica de objetos tipados, gestión de recursos por vida útil (<em>Resource Acquisition Is Initialization - RAII</em>), lambdas y metaprogramación declarativa.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">En Vivo y Concierto</div>
+      <p>Garantiza ausencia total de fugas de memoria (<em>memory leaks</em>) y desreferencias de punteros nulos durante la ejecución continuada en vivo de parches con alta rotación de instancias dinámicas o inicializaciones dinámicas.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">Confusión Típica</div>
+      <p>Creer que Min-DevKit introduce sobrecarga o latencia frente al C SDK puro; al basarse en templates y funciones en línea (<em>inlining</em>), el compilador C++ optimiza el código hasta generar instrucciones de máquina equivalentes o superiores en rendimiento.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">Objetos &amp; Lecciones</div>
+      <p>Clases <code>min::object</code>, <code>min::inlet</code>, <code>min::outlet</code>, <code>min::attribute</code>. Ver <a href="/apendices/apendice-d-mindevkit-cpp-moderno/">Apéndice D</a>.</p>
+    </div>
+  </div>
+</div>
+
 ## 5. Computación Visual y Matrices (Jitter)
 
 <div class="glossary-term-card not-content">
@@ -705,6 +908,82 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
 </div>
 
 ---
+
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Higher Order Ambisonics (HOA) &amp; ICST Ambisonics</h3>
+    <span class="glossary-badge badge-spatial">Audio Espacial</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">Definición Operativa</div>
+      <p>Representación matemática del campo acústico tridimensional basada en el desarrollo en serie de Fourier en coordenadas esféricas mediante armónicos esféricos $Y_n^m(\theta, \phi)$ de orden $N \ge 2$. Requiere $(N + 1)^2$ canales de transmisión independientes e independiza la codificación posicional del arreglo físico de altavoces de reproducción.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">En Vivo y Concierto</div>
+      <p>Permite expandir el <em>sweet spot</em> auditivo a audiencias completas en auditorios o cúpulas de proyección esférica, rotando el campo sonoro global en tiempo real mediante matrices ortogonales de Euler (<em>Yaw, Pitch, Roll</em>) sin distorsionar la geometría acústica.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">Confusión Típica</div>
+      <p>Confundir Ambisonics de primer orden (4 canales FuMa/AmbiX: W, X, Y, Z) con HOA; el primer orden produce una localización difusa en recintos grandes, mientras que órdenes 3º ($16$ canales) o 5º ($36$ canales) entregan precisión de imagen casi holográfica.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">Objetos &amp; Lecciones</div>
+      <p><code>hoa.2d.encoder~</code>, <code>hoa.3d.scope~</code>, <code>icst.ambipack</code>, <code>icst.ambimonitor</code>. Ver <a href="/apendices/apendice-f-audio-espacial-y-spat/">Apéndice F</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Virtual Microphone Control (ViMiC) &amp; Método de Fuentes Imagen</h3>
+    <span class="glossary-badge badge-spatial">Acústica / Espacialización</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">Definición Operativa</div>
+      <p>Paradigma de síntesis de campo sonoro en salas cerradas que modela fuentes puntuales virtuales recibidas por una constelación de micrófonos virtuales con patrones de captación polares específicos (cardioide, omni, figura 8), calculando reflexiones tempranas exactas mediante el método de fuentes imagen en geometrías de paralelepípedo.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">En Vivo y Concierto</div>
+      <p>Otorga profundidad tridimensional perceptual instantánea (eje Z de distancia) a fuentes de síntesis o instrumentos acústicos microfoneados en seco, sin el enmascaramiento farragoso y pérdida de inteligibilidad característicos de las reverberaciones convolutivas estándar.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">Confusión Típica</div>
+      <p>No es un paneador envolvente por intensidad ni un retardo Haas estático; computa atenuación por distancia cuadrática inversa, absorción atmosférica en alta frecuencia y directividad angular por cada cápsula microfónica virtual.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">Objetos &amp; Lecciones</div>
+      <p><code>spat5.vimic~</code>, <code>spat5.early~</code>, <code>icst.spat</code>. Ver <a href="/apendices/apendice-f-audio-espacial-y-spat/">Apéndice F</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
+    <h3 class="glossary-term-title">PCA (Principal Component Analysis) en Mapeo Gestual</h3>
+    <span class="glossary-badge badge-ai">Inteligencia Artificial / Gestos</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">Definición Operativa</div>
+      <p>Procedimiento matemático de álgebra lineal que calcula la descomposición en valores singulares (SVD) de una matriz de covarianza para transformar un conjunto de variables de sensores correlacionadas en un nuevo sistema de coordenadas ortogonales (ejes principales o autovectores) no correlacionados, ordenados por varianza explicada.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">En Vivo y Concierto</div>
+      <p>Permite tomar capturas de movimiento complejas (guantes con 10 flexómetros y acelerómetros 9-DOF) y proyectar los gestos expresivos en sólo 2 o 3 faders ortogonales de control de síntesis, eliminando redundancias y haciendo que el instrumento responda con fluidez corporal intuitiva.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">Confusión Típica</div>
+      <p>No es un clasificador de gestos categórico (como un modelo k-NN o SVM); no etiqueta gestos, sino que comprime el espacio dimensional continuo preservando la máxima información dinámica.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">Objetos &amp; Lecciones</div>
+      <p><code>mnm.pca</code>, <code>fluid.pca~</code>, <code>mubu.pca</code>. Ver <a href="/apendices/apendice-e-ia-y-machine-learning/">Apéndice E</a> y <a href="/02-datos-y-persistencia/02-ecosistema-pattr-y-morphing/">Módulo 2.2</a>.</p>
+    </div>
+  </div>
+</div>
 
 ## 7. Ableton Live, Max for Live (M4L) y Live Object Model (LOM)
 
