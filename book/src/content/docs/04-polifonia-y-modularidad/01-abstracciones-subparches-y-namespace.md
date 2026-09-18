@@ -33,6 +33,21 @@ En Max existen dos formas de encapsular complejidad:
 
 ---
 
+### Marco Teórico: La Anatomía del Concepto de Daniel Jackson en Max
+
+*(Inspirado en Daniel Jackson, The Essence of Software: Why Concepts Matter for Great Design, Princeton University Press)*
+
+En su tratado seminal *The Essence of Software*, **Daniel Jackson** (MIT) demuestra que la mayor causa de fragilidad, confusión y bugs en sistemas computacionales no proviene de errores de sintaxis, sino de **defectos en el diseño conceptual**: módulos que mezclan múltiples responsabilidades disjuntas, estados ambiguos sin invariantes claras y colisiones semánticas (*concept clashes*).
+
+Para construir abstracciones de nivel profesional en Max/MSP, cada módulo debe responder a la **anatomía cuádruple de un concepto**:
+
+1. **Propósito Singular (*Purpose / Specificity*):** Cada abstracción debe resolver exactamente **un solo problema** o necesidad funcional (ej. *generar una forma de onda analógica virtual*, *enrutar señales de modulación*, o *gestionar una envolvente ADSR*). Si una abstracción intenta sintetizar audio, guardar presets, secuenciar notas y dibujar una interfaz compleja simultáneamente, sufre de **sobrecarga conceptual (*concept overloading*)** y debe dividirse en módulos desacoplados.
+2. **Estado e Invariantes (*State & Invariants*):** El conjunto de variables en memoria que la abstracción controla internamente (frecuencias base, factores de resonancia, coeficientes de filtro). Sus invariantes deben mantenerse inviolables ante entradas erráticas: por ejemplo, la frecuencia jamás puede descender a cero o infinito (protegida por patrones como `ab.sus`).
+3. **Acciones Atómicas (*Actions*):** Las operaciones de control expuestas hacia el exterior a través de inlets canónicos. En el paradigma dataflow, una acción es una transición de estado discreta disparada por la llegada de un mensaje específico (`bang`, listas tipadas, mensajes de comando `set`).
+4. **Principio Operacional (*Operational Principle*):** El escenario mínimo que explica cómo la abstracción cumple su propósito mediante la interacción coordinada de sus entradas, estado y salidas. Documentar el principio operacional permite que cualquier desarrollador comprenda el contrato del módulo sin necesidad de descifrar la maraña interna de cables.
+
+---
+
 ## 2. El Mecanismo de Sustitución de Argumentos: `#1` hasta `#9` y `#0`
 
 Cuando Max carga una abstracción en memoria, su parser de texto realiza una pasada de sustitución léxica previa a la inicialización de los objetos en C:

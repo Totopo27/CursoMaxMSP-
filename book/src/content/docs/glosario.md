@@ -214,6 +214,31 @@ Este glosario condensa la terminología matemática, acústica y de ciencias de 
 
 <div class="glossary-term-card not-content">
   <div class="glossary-card-header">
+    <h3 class="glossary-term-title">Diseño Conceptual &amp; Concept Clashes (Daniel Jackson)</h3>
+    <span class="glossary-badge badge-control">Arquitectura de Software</span>
+  </div>
+  <div class="glossary-grid-blocks">
+    <div class="glossary-block">
+      <div class="glossary-block-label label-definition">Definición Operativa</div>
+      <p>Paradigma de ingeniería propuesto por Daniel Jackson (MIT) en <em>The Essence of Software</em> que descompone un sistema computacional en conceptos autónomos formados por cuatro elementos: un propósito singular (<em>specificity</em>), un modelo de estado con invariantes, acciones atómicas y un principio operacional. Un <em>Concept Clash</em> ocurre cuando dos conceptos incompatibles o acoplados compiten por el mismo recurso o estado sin sincronización determinista.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-live">En Vivo y Concierto</div>
+      <p>En parches complejos y dispositivos Max for Live, aplicar diseño conceptual previene colisiones catastróficas entre el hilo de audio de alta prioridad y la asincronía del modelo de objetos (LOM), garantizando que las abstracciones mantengan un contrato de ejecución limpio e inmune a comportamientos erráticos durante la performance.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-confusion">Confusión Típica</div>
+      <p>Confundir un concepto con una clase o un objeto de Max. Un objeto de Max es una implementación sintáctica en C; un concepto es el modelo mental de propósito y comportamiento que gobierna la interacción modular del sistema.</p>
+    </div>
+    <div class="glossary-block">
+      <div class="glossary-block-label label-objects">Objetos &amp; Lecciones</div>
+      <p><code>patcherargs</code>, <code>bpatcher</code>, <code>dict</code>, <code>live.object</code>. Ver <a href="/04-polifonia-y-modularidad/01-abstracciones-subparches-y-namespace/">Módulo 4.1</a> y <a href="/referencias-bibliograficas/">Referencias Bibliográficas</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="glossary-term-card not-content">
+  <div class="glossary-card-header">
     <h3 class="glossary-term-title">Handshaking Serial &amp; Histéresis de Schmitt</h3>
     <span class="glossary-badge badge-comm">Physical Computing</span>
   </div>

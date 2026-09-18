@@ -5,7 +5,7 @@ description: Compendio catalográfico integral de las fuentes primarias, tratado
 
 Este curso fundamenta cada decisión de diseño, algoritmo de procesamiento y paradigma de control en la literatura canónica de la música por computadora, la acústica física, la ingeniería de audio y la investigación académica contemporánea. 
 
-A continuación se presenta el corpus bibliográfico completo (32 obras fundamentales y tratados de investigación) estructurado en 4 áreas del conocimiento, con sus fichas catalográficas y los módulos del curso donde se integran sus postulados.
+A continuación se presenta el corpus bibliográfico completo (33 obras fundamentales y tratados de investigación) estructurado en 4 áreas del conocimiento, con sus fichas catalográficas y los módulos del curso donde se integran sus postulados.
 
 ---
 
@@ -207,6 +207,13 @@ A continuación se presenta el corpus bibliográfico completo (32 obras fundamen
 - **Año:** 2007 | **Páginas:** 92 | **ISBN:** 978-3-8364-1298-8
 - **Aporte al Curso:** Arquitectura de software para instalaciones interactivas de gran escala, procesamiento de sensores físicos, visión artificial por cámara y robustez en entornos de galería y museo.
 - **Módulos Vinculados:** Apéndice C (Instalaciones y Arduino) y Apéndice A (Jitter).
+
+### Daniel Jackson — *The Essence of Software: Why Concepts Matter for Great Design*
+- **Editorial:** Princeton University Press (Princeton & Oxford)
+- **Año:** 2021 | **Páginas:** 328 | **ISBN:** 978-0-691-22538-8
+- **Aporte al Curso:** Tratado fundamental de teoría y arquitectura de software. Establece el paradigma del *Concept Design* (Diseño Conceptual): la descomposición de sistemas en conceptos independientes con un único propósito (*specificity*), estado e invariantes propios, acciones atómicas y principios operacionales (*operational principles*). Fundamenta el diseño modular de abstracciones en Max, la separación estricta entre modelo de datos y vista gráfica, la prevención de colisiones conceptuales (*concept clashes*) y la sincronización determinista en entornos dataflow complejos.
+- **Módulos Vinculados:** Módulo 1 (Lección 01: Semántica de Estado vs. Disparo), Módulo 2 (Persistencia y Modelado de Datos) y Módulo 4 (Lección 01: Arquitectura Modular de Abstracciones).
+
 ---
 
 
