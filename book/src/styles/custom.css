@@ -583,3 +583,25 @@ h1#_top {
     scroll-behavior: auto !important;
   }
 }
+
+/* Visibilidad de selector de tema (Modo Oscuro/Claro) en dispositivos móviles */
+@media (max-width: 50rem) {
+  header .right-group {
+    display: flex !important;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* Ocultar icono de GitHub en pantallas estrechas para no saturar el header */
+  header .right-group .social-icons {
+    display: none !important;
+  }
+
+  header starlight-theme-select {
+    display: block !important;
+  }
+
+  header starlight-theme-select label {
+    --sl-select-width: 5.5em;
+  }
+}
