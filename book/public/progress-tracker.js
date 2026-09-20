@@ -98,10 +98,13 @@
 
     let summaryEl = document.getElementById('global-progress-pill');
     if (summaryEl) {
+      summaryEl.setAttribute('role', 'status');
+      summaryEl.setAttribute('aria-live', 'polite');
+      summaryEl.setAttribute('aria-label', `Avance del curso: ${completedCount} de ${totalLessons} lecciones completadas (${percent}%)`);
       summaryEl.innerHTML = `
-        <span class="progress-pill-icon">⚡</span>
-        <span class="progress-pill-text">Avance: <strong>${completedCount}/${totalLessons}</strong> (${percent}%)</span>
-        <div class="progress-pill-bar"><div class="progress-pill-bar-fill" style="width: ${percent}%;"></div></div>
+        <span class="progress-pill-icon" aria-hidden="true">⚡</span>
+        <span class="progress-pill-text">Avance: <strong class="tabular-nums">${completedCount}/${totalLessons}</strong> (<span class="tabular-nums">${percent}%</span>)</span>
+        <div class="progress-bar-track" role="progressbar" aria-valuenow="${percent}" aria-valuemin="0" aria-valuemax="100" aria-label="Progreso general del curso"><div class="progress-bar-fill" style="width: ${percent}%;"></div></div>
       `;
     }
   }
@@ -130,8 +133,8 @@
             <h4 class="completion-title">${completed ? '¡Lección y Laboratorio Completados!' : '¿Terminaste de estudiar esta lección?'}</h4>
             <p class="completion-desc">${completed ? 'Esta lección está guardada como dominada en tu navegador.' : 'Marcá tu avance para llevar control de los conceptos y parches asimilados.'}</p>
           </div>
-          <button id="btn-toggle-completion" class="btn-completion ${completed ? 'is-completed' : ''}" type="button">
-            <span class="btn-icon">${completed ? '✓' : '○'}</span>
+          <button id="btn-toggle-completion" class="btn-completion ${completed ? 'is-completed' : ''}" type="button" aria-label="${completed ? 'Lección completada. Haz clic para desmarcar.' : 'Marcar lección y laboratorio como completados'}" aria-pressed="${completed ? 'true' : 'false'}">
+            <span class="btn-icon" aria-hidden="true">${completed ? '✓' : '○'}</span>
             <span class="btn-text">${completed ? 'Completada' : 'Marcar como Completada'}</span>
           </button>
         </div>
