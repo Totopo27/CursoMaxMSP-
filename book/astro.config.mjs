@@ -16,6 +16,7 @@ export default defineConfig({
       favicon: '/favicon.svg',
       head: [
         { tag: 'script', attrs: { src: '/progress-tracker.js', defer: true } },
+        { tag: 'script', attrs: { src: '/image-zoom.js', defer: true } },
         { tag: 'link', attrs: { rel: 'manifest', href: '/manifest.json' } },
         { tag: 'meta', attrs: { name: 'theme-color', content: '#eb6c36' } },
       ],
