@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Lección 3.7: Delays, Buffers Circulares y Modulación Temporal: tapin~, tapout~, Comb Filters, Flanger y Chorus"
 description: "Delays y modulación temporal en MSP: buffers circulares, [tapin~]/[tapout~], filtros comb resonantes, Flanger y Chorus por LFO. Retroalimentación controlada y efectos de tiempo."
 ---
@@ -144,6 +144,7 @@ Para construir reverberaciones de sala hiper-densas sin modos estacionarios, el 
      Esto se modela en Max modulando el tiempo de retardo de un `[tapout~]` mediante un oscilador senoidal `[cycle~]`.
    - **Modulación de Amplitud (Tremolo por Difracción):** Simultáneamente, el patrón de radiación direccional del rotor atenúa la señal cuando la bocina apunta hacia la parte trasera del gabinete. En Max se multiplica la señal por un segundo `[cycle~]` desfasado $90^\circ$ respecto al modulador de retardo.
 5. **Resonador Karplus-Strong Básico**: Un `tapin~` de 5 ms excitado con una ráfaga de 5 ms de `noise~` y realimentado con $g = 0.98$ produce una cuerda pulsada acústica convincente.
+6. **Líneas Todo-Paso Moduladas Estocásticamente (Drunk Schroeder)**: En reverberadores canónicos de Schroeder, los filtros Allpass pueden generar timbres metálicos estáticos si los tiempos de retardo son fijos. Aplicar una caminata aleatoria continua (*random walk*) a la longitud del retardo —como ejemplifica `or.drunkSchroeder` de Oscar Recarte— dispersa los modos resonantes, introduce micro-desplazamientos de frecuencia Doppler y ensancha el panorama estéreo de forma orgánica sin perder la respuesta plana en magnitud.
 
 ---
 

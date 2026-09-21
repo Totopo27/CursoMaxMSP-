@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Lección 3.5: Envolventes Temporales: line~, curve~, adsr~ y Control de Amplitud Antialias"
 description: "Envolventes temporales en MSP: [line~], [curve~] y [adsr~]. Origen físico de los clicks digitales y su eliminación mediante rampas de interpolación de amplitud anti-alias."
 ---
@@ -99,6 +99,7 @@ Si enviás un mensaje de control a `line~` a la mitad de un vector DSP, el nuevo
 2. **Emulación de Percusión Clásica (808 Bass Drum)**: El cuerpo de una 808 requiere una envolvente doble: una envolvente rápida de frecuencia (pitch drop exponencial con `curve~` de 150 Hz a 45 Hz en 40 ms) y una envolvente lenta de amplitud con decaimiento cóncavo (`factor_curvatura = -0.8`).
 3. **Polyphonic Voice Allocation Cleanup**: En un sintetizador polifónico, una voz no debe apagarse hasta que su `[adsr~]` haya completado el Release. Conectar el tercer outlet de `[adsr~]` (salida de estado de activación) hacia `[thispoly~]` asegura que la voz libere ciclos de CPU cuando calla.
 4. **Morphing de Modulación LFO**: Usar `[curve~]` para interpolar la velocidad de un LFO de 0.1 Hz a 20 Hz de forma logarítmica sin saltos discontinuos de fase.
+5. **Envolventes Percusivas a Velocidad de Muestra (Signal-Rate Envelopes)**: Para transitorios percusivos ultrarrápidos donde el jitter del Scheduler de control es inaceptable, las envolventes se calculan íntegramente en el dominio de audio con `gen~` (inspirándose en el generador canónico `Env.perc` de SuperCollider). Un ejemplo práctico de referencia abierta es `or.envPerc` de Oscar Recarte, que permite disparar y modular tiempos de ataque y decaimiento percusivo directamente mediante señales de audio sin latencia de vector.
 
 ---
 

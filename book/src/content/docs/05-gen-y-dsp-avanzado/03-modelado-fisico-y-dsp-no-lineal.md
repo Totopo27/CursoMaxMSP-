@@ -146,6 +146,7 @@ out1 = filtered;
 3. **Instrumento de Cuerda Frotada (Cello/Violín)**: Inyección continua mediante función no lineal de frotamiento de arco:
    $$\mu(v_{\text{rel}}) = \text{sign}(v_{\text{rel}}) \cdot (|v_{\text{rel}}| + 0.1)^{-0.5}$$
 4. **Tubos de Viento (Clarinete/Flauta)**: Guía de onda con reflexión positiva en un extremo y saturador no lineal de caña elástica en la boquilla.
+5. **Funciones de Transferencia No Lineales y Saturación en `gen~`**: En el modelado de amplificadores y distorsiones analógicas, la traslación de ecuaciones matemáticas continuas a algoritmos discretos muestra a muestra en `gen~` evita el overhead de vectores. La suite abierta de *Hack Audio Distortion Examples* desarrollada por Oscar Recarte ejemplifica la implementación en `gen~` de las funciones de saturación no lineal del texto canónico de Eric Tarr (*soft clipping*, *hard clipping*, distorsión asimétrica y modelado cúbico) con mínima latencia y cero aliasing indeseado.
 
 ---
 

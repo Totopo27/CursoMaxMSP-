@@ -296,3 +296,14 @@ A continuación se presenta el corpus bibliográfico completo (33 obras fundamen
 - **Enlace Oficial:** [docs.cycling74.com](https://docs.cycling74.com)
 - **Aporte al Curso:** Especificación de los operadores muestra a muestra, funciones intrínsecas de DSP, resolución de retardos de una sola muestra (history) y exportación automática a código nativo C++ (gen~.translate).
 - **Módulos Vinculados:** Módulo 5 (Lecciones 01 a 04).
+
+---
+
+## 6. Desarrollos Notables de la Comunidad y Repositorios Abiertos
+
+### Oscar Recarte — *Max Patches & Gen~ DSP Modules*
+- **Autor:** Oscar Recarte (Música por computadora / Live Electronics)
+- **Repositorio y Documentación:** [recarteblog.wordpress.com/max-patches](https://recarteblog.wordpress.com/max-patches/)
+- **Aporte al Curso:** Colección de parches y módulos de procesamiento de audio en tiempo real y *live electronics*. Destaca por su rigurosa traslación de paradigmas entre SuperCollider y Max/MSP en `gen~` a velocidad de señal (*sample-accurate signal rate*), integración de librerías avanzadas como *FluCoMa* (segmentación de audio por transitorios con `BS_a`) y *Grainflow* (`grainScrubber`), implementaciones en `gen~` de funciones de transferencia no lineal basadas en *Hack Audio* de Eric Tarr, y módulos de modulación de retardo aleatorio (`or.drunkSchroeder`) y percusión tonal por modulación de fase (`or.PMPerc`, `or.envPerc`).
+- **Módulos Vinculados:** Módulo 3 (Lecciones 05, 07 y 08), Módulo 5 (Lecciones 01 y 03) y Apéndice E (Machine Learning e IA para Audio).
+
