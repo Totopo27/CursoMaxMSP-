@@ -176,15 +176,7 @@ En Max no se utiliza `malloc()` ni `free()` de la biblioteca estándar de C. Cyc
 
 Max provee el mecanismo **`t_qelem`** (*Queue Element*):
 
-```
-[ perform64 (Audio Thread) ] ──> qelem_set(x->qelem_gui)
-                                            │
-                                            ▼
-                           [ Event Loop de Max (Main Thread) ]
-                                            │
-                                            ▼
-                          mi_objeto_qelem_callback() ──> outlet_float(out, peak)
-```
+![FIG 6.3B · Comunicación Segura Audio Thread a GUI mediante t_qelem](/assets/diagrams/diagrama_c_sdk_qelem_thread_bridge.svg)
 
 1. En el Audio Thread, cuando calculamos un nuevo valor de pico, ejecutamos `qelem_set(x->qelem_gui)`. Esta llamada es atómica, libre de bloqueos y toma menos de 10 nanosegundos.
 2. Si el Audio Thread llama a `qelem_set` 100 veces por segundo, `qelem` **colapsa los eventos redundantes**, ejecutando el callback en el hilo principal solo cuando la GUI está libre para refrescar pantalla.

@@ -59,14 +59,7 @@ En `gen~`, la topología visual se compila a un bucle `while(n--)` donde el valo
 
 ### Diagrama de Implementación
 
-```
-[in 1] ──┐
-          ├──[*]── coef_a ──────[+]──── y[n] ──[out 1]
-[history]─┤                      │         │
-          └──[*]── coef_b        │         └──[history]
-                                 │
-                (y[n] = a*x[n] + b*y[n-1])
-```
+![FIG 5.1C · Filtro Recursivo de Primer Orden en gen~](/assets/diagrams/diagrama_gen_filtro_recursivo_history.svg)
 
 Este patrón es la piedra angular de **todos los filtros, osciladores y modelos físicos** implementados en `gen~`.
 

@@ -1,0 +1,81 @@
+<svg viewBox="0 0 940 280" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">ANÁLISIS ESPECTRAL EN TIEMPO REAL · PUENTE AUDIO-RATE A MATRIZ VRAM</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG A.3 · PIPELINE ESPECTRAL [PFFT~] A MATRIZ JITTER CON [JIT.POKE~]</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <g transform="translate(25, 45)">
+    <rect width="890" height="215" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+
+    <!-- ENTRADA DE AUDIO -->
+    <g transform="translate(25, 80)">
+      <rect width="90" height="42" rx="4" fill="#27272a" stroke="#52525b" stroke-width="1" />
+      <text x="45" y="26" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">[ audio in ]</text>
+    </g>
+
+    <path d="M 115 101 L 155 101" stroke="#71717a" stroke-width="1.6" marker-end="url(#arr-neutral)" />
+
+    <!-- CONTENEDOR PFFT~ -->
+    <g transform="translate(160, 25)">
+      <rect width="390" height="165" rx="5" fill="#141417" stroke="#eb6c36" stroke-width="1.2" stroke-dasharray="4 4" />
+      <text x="12" y="18" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">SUBPATCHER [pfft~ FreqAnalysis.pfft 512 2]</text>
+
+      <!-- OBJETO FFTIN~ 1 -->
+      <g transform="translate(15, 30)">
+        <rect width="105" height="110" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.2" />
+        <text x="52" y="22" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">[ fftin~ 1 ]</text>
+        <text x="10" y="50" fill="#a1a1aa" font-size="8">Out 1: Re</text>
+        <text x="10" y="75" fill="#a1a1aa" font-size="8">Out 2: Im</text>
+        <text x="10" y="100" fill="#fed7aa" font-size="8">Out 3: Bin Index</text>
+      </g>
+
+      <!-- OBJETO CARTOPOL~ -->
+      <g transform="translate(160, 30)">
+        <rect width="100" height="65" rx="4" fill="#222226" stroke="#52525b" stroke-width="1" />
+        <text x="50" y="24" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" text-anchor="middle">[ cartopol~ ]</text>
+        <text x="10" y="44" fill="#67e8f9" font-size="8">r = √(Re² + Im²)</text>
+        <text x="10" y="58" fill="#a1a1aa" font-size="7.5">Magnitud Espectral</text>
+      </g>
+
+      <!-- CABLES FFTIN -> CARTOPOL -->
+      <path d="M 120 75 L 155 52" stroke="#71717a" stroke-width="1.4" marker-end="url(#arr-neutral)" />
+      <path d="M 120 100 L 155 72" stroke="#71717a" stroke-width="1.4" marker-end="url(#arr-neutral)" />
+
+      <!-- SALIDA MAGNITUD R HACIA JIT.POKE~ -->
+      <path d="M 260 55 L 295 55" stroke="#eb6c36" stroke-width="1.6" marker-end="url(#arr-accent)" />
+
+      <!-- CABLE BIN INDEX (SALIDA 3) HACIA JIT.POKE~ (COORDENADA Y) -->
+      <path d="M 120 125 L 305 125 L 305 85" stroke="#fed7aa" stroke-width="1.4" fill="none" marker-end="url(#arr-neutral)" />
+
+      <!-- OBJETO JIT.POKE~ -->
+      <g transform="translate(285, 30)">
+        <rect width="90" height="42" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+        <text x="45" y="24" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9" font-weight="700" text-anchor="middle">[ jit.poke~ ]</text>
+        <text x="45" y="36" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="7.5" text-anchor="middle">analysis 2 0</text>
+      </g>
+    </g>
+
+    <!-- FLECHA DE ESCRITURA EN VRAM DIRECTA -->
+    <path d="M 555 105 L 610 105" stroke="#eb6c36" stroke-width="2" marker-end="url(#arr-accent)" />
+    <text x="582" y="95" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" text-anchor="middle">Escritura VRAM</text>
+
+    <!-- NODO DESTINO: MATRIZ JITTER FLOTANTE -->
+    <g transform="translate(615, 60)">
+      <rect width="250" height="90" rx="5" fill="#1c1613" stroke="#eb6c36" stroke-width="1.4" />
+      <rect width="250" height="20" rx="5" fill="rgba(235, 108, 54, 0.18)" />
+      <text x="12" y="14" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700">MATRIZ JITTER (MEMORIA COMPARTIDA)</text>
+      <text x="12" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">jit.matrix analysis 1 float32 1 256</text>
+      <text x="12" y="62" fill="#a7f3d0" font-size="8.5">Actualizada a velocidad de audio (fs)</text>
+      <text x="12" y="76" fill="#71717a" font-size="8">Disponible inmediatamente para GPU OpenGL</text>
+    </g>
+  </g>
+</svg>

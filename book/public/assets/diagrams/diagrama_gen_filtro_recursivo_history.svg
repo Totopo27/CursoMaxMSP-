@@ -1,0 +1,91 @@
+<svg viewBox="0 0 940 280" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">ECUACIÓN EN DIFERENCIAS · TOPOLOGÍA IIR CON CELDA [HISTORY]</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 5.1C · FILTRO RECURSIVO DE PRIMER ORDEN EN GEN~</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <g transform="translate(25, 45)">
+    <rect width="890" height="215" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+
+    <!-- ENTRADA [in 1: x[n]] -->
+    <g transform="translate(30, 45)">
+      <rect width="120" height="42" rx="4" fill="#27272a" stroke="#52525b" stroke-width="1" />
+      <text x="60" y="26" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">[ in 1: x[n] ]</text>
+    </g>
+
+    <!-- CABLE A COEFICIENTE A [* coef_a] -->
+    <path d="M 150 66 L 215 66" stroke="#71717a" stroke-width="1.6" marker-end="url(#arr-neutral)" />
+
+    <!-- COEFICIENTE A -->
+    <g transform="translate(220, 45)">
+      <rect width="130" height="42" rx="4" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="65" y="26" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">[* coef_a]</text>
+    </g>
+    <text x="285" y="38" fill="#a1a1aa" font-size="8" text-anchor="middle">Escalado directo α</text>
+
+    <!-- CABLE COEF A A SUMADOR -->
+    <path d="M 350 66 L 435 66" stroke="#71717a" stroke-width="1.6" marker-end="url(#arr-neutral)" />
+
+    <!-- SUMADOR [+] -->
+    <g transform="translate(440, 47)">
+      <circle cx="19" cy="19" r="19" fill="#222226" stroke="#eb6c36" stroke-width="1.4" />
+      <text x="19" y="25" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="16" font-weight="700" text-anchor="middle">+</text>
+    </g>
+
+    <!-- CABLE SUMADOR A BIFURCACIÓN -->
+    <path d="M 478 66 L 560 66" stroke="#eb6c36" stroke-width="2" />
+    <circle cx="560" cy="66" r="3.5" fill="#eb6c36" />
+    <text x="520" y="55" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="9" font-weight="700">y[n]</text>
+
+    <!-- SALIDA [out 1: y[n]] -->
+    <path d="M 560 66 L 640 66" stroke="#eb6c36" stroke-width="1.8" marker-end="url(#arr-accent)" />
+    <g transform="translate(645, 45)">
+      <rect width="130" height="42" rx="4" fill="#27272a" stroke="#52525b" stroke-width="1" />
+      <text x="65" y="26" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">[ out 1: y[n] ]</text>
+    </g>
+
+    <!-- BUCLE FEEDBACK RECURSIVO: DESDE y[n] HACIA [history] -->
+    <path d="M 560 66 L 560 155 L 435 155" stroke="#71717a" stroke-width="1.6" fill="none" marker-end="url(#arr-neutral)" />
+
+    <!-- CELDA [history] (RETARDO z^-1 DE 1 MUESTRA) -->
+    <g transform="translate(305, 135)">
+      <rect width="125" height="42" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+      <rect width="125" height="15" rx="4" fill="rgba(235, 108, 54, 0.18)" />
+      <text x="8" y="11" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="7.5" font-weight="700">RETARDO 1 MUESTRA</text>
+      <text x="62" y="33" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">[ history ]</text>
+    </g>
+    <text x="250" y="148" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5">y[n-1]</text>
+
+    <!-- CABLE [history] A COEFICIENTE B -->
+    <path d="M 305 155 L 235 155" stroke="#71717a" stroke-width="1.6" marker-end="url(#arr-neutral)" />
+
+    <!-- COEFICIENTE B [* coef_b] -->
+    <g transform="translate(100, 135)">
+      <rect width="130" height="42" rx="4" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="65" y="26" fill="#fca5a5" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">[* coef_b]</text>
+    </g>
+    <text x="165" y="126" fill="#a1a1aa" font-size="8" text-anchor="middle">Retroalimentación (1-α)</text>
+
+    <!-- RETORNO DESDE COEF B HACIA SUMADOR [+] -->
+    <path d="M 165 177 L 165 195 L 459 195 L 459 90" stroke="#eb6c36" stroke-width="1.6" fill="none" marker-end="url(#arr-accent)" />
+
+    <!-- RECUADRO MATEMÁTICO LATERAL DERECHO -->
+    <g transform="translate(645, 115)">
+      <rect width="215" height="85" rx="4" fill="#141417" stroke="#27272a" stroke-width="1" />
+      <text x="12" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">GARANTÍA DETERMINISTA</text>
+      <text x="12" y="38" fill="#f4f4f5" font-size="8.5">En MSP normal tapin/tapout</text>
+      <text x="12" y="52" fill="#fca5a5" font-size="8.5">tarda 64 muestras (inestable).</text>
+      <text x="12" y="68" fill="#a7f3d0" font-size="8.5">En gen~ el bucle C++ compila</text>
+      <text x="12" y="80" fill="#a7f3d0" font-size="8">exactamente con Δt = 1 muestra.</text>
+    </g>
+  </g>
+</svg>

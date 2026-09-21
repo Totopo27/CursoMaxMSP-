@@ -35,18 +35,7 @@ Para construir sistemas musicales de nivel profesional, el mayor error consiste 
 
 ## 2. Flujo de Datos End-to-End y Garantías de Estabilidad
 
-```text
-[ Cliente Externo / Web ]
-           │ HTTP POST /sensor
-           ▼
-[ Node for Max: servidor_analisis.js ] ── (IPC max-api)
-                                                │
-                                                ▼
-[ JavaScript: algoritmo_euclidiano.js ] ── (Scheduler Events)
-                                                │
-                                                ▼
-[ External C: mi_objeto_msp~ ] ────────── (Audio Thread 64-bit) ──> [ dac~ ]
-```
+![FIG 6.4B · Flujo de Datos End-to-End: Red → Scheduler → Audio Thread](/assets/diagrams/diagrama_proyecto_06_pipeline_flujo.svg)
 
 1. **Zero Audio Drops**: La variabilidad de latencia de paquetes de red queda totalmente confinada en el subproceso de Node.js.
 2. **Despacho Atómico a la GUI**: Las métricas de pico calculadas en C se transmiten de vuelta al hilo de control mediante `t_qelem`, garantizando que la visualización gráfica jamás interfiera con el cómputo de señal.

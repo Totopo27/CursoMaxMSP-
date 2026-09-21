@@ -77,13 +77,7 @@ Donde $\alpha \in (0.0, 1.0)$ determina el factor de suavizado:
 - $\alpha = 0.8$: Respuesta ultrarrápida (ideal para transitorios rítmicos).
 - $\alpha = 0.1$: Inercia suave y libre de temblores (ideal para modular filtros o volumen master).
 
-```text
-[ sensor_in ] ──> [* 0.2] ───┐
-                             ├── [+] ───┬──> [ out_filtrado ]
-      ┌── [ f ] ── [* 0.8] ──┘          │
-      │                                 │
-      └─────────────────────────────────┘ (feedback previo z^-1)
-```
+![FIG C.2 · Filtro EMA con Feedback en Control (Discreto z^-1)](/assets/diagrams/diagrama_arduino_ema_filter_feedback.svg)
 
 ---
 

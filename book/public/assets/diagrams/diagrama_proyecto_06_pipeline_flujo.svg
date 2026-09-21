@@ -1,0 +1,71 @@
+<svg viewBox="0 0 940 280" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">SISTEMA INTEGRADO · PIPELINE DE EJECUCIÓN ASÍNCRONA Y COMPUTACIÓN NATIVA</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 6.4B · FLUJO DE DATOS END-TO-END: RED → SCHEDULER → AUDIO THREAD</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <g transform="translate(25, 45)">
+    <rect width="890" height="215" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+
+    <!-- NODO 1: CLIENTE WEB / IOT -->
+    <g transform="translate(20, 50)">
+      <rect width="165" height="105" rx="4" fill="#141417" stroke="#3f3f46" stroke-width="1.2" />
+      <rect width="165" height="20" rx="4" fill="#27272a" />
+      <text x="10" y="14" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" font-weight="700">CLIENTE WEB / IOT</text>
+      <text x="10" y="44" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="600">HTTP POST /sensor</text>
+      <text x="10" y="64" fill="#71717a" font-size="8.5">Telemetría de sensores</text>
+      <text x="10" y="82" fill="#71717a" font-size="8.5">Loopback 127.0.0.1:3000</text>
+    </g>
+
+    <path d="M 190 102 L 235 102" stroke="#eb6c36" stroke-width="1.8" marker-end="url(#arr-accent)" />
+
+    <!-- NODO 2: NODE FOR MAX -->
+    <g transform="translate(240, 50)">
+      <rect width="195" height="105" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+      <rect width="195" height="20" rx="4" fill="rgba(235, 108, 54, 0.18)" />
+      <text x="10" y="14" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700">NODE FOR MAX (SUBPROCESO)</text>
+      <text x="10" y="42" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">servidor_analisis.js</text>
+      <text x="10" y="62" fill="#fed7aa" font-size="8.5">libuv event loop asíncrono</text>
+      <text x="10" y="80" fill="#22c55e" font-size="8.5">max-api: IPC sin audio drop</text>
+    </g>
+
+    <path d="M 440 102 L 485 102" stroke="#eb6c36" stroke-width="1.8" marker-end="url(#arr-accent)" />
+
+    <!-- NODO 3: JAVASCRIPT CORE SCHEDULER -->
+    <g transform="translate(490, 50)">
+      <rect width="180" height="105" rx="4" fill="#141417" stroke="#3f3f46" stroke-width="1.2" />
+      <rect width="180" height="20" rx="4" fill="#27272a" />
+      <text x="10" y="14" fill="#67e8f9" font-family="ui-monospace, monospace" font-size="8" font-weight="700">SCHEDULER ENGINE [JS]</text>
+      <text x="10" y="42" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10" font-weight="700">algoritmo_euclidiano.js</text>
+      <text x="10" y="62" fill="#a1a1aa" font-size="8.5">Patrón rítmico E(k, n)</text>
+      <text x="10" y="80" fill="#a1a1aa" font-size="8.5">Disparo sincronizado por reloj</text>
+    </g>
+
+    <path d="M 675 102 L 720 102" stroke="#eb6c36" stroke-width="1.8" marker-end="url(#arr-accent)" />
+
+    <!-- NODO 4: EXTERNAL C (AUDIO THREAD) -->
+    <g transform="translate(725, 50)">
+      <rect width="145" height="105" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.4" />
+      <rect width="145" height="20" rx="4" fill="rgba(235, 108, 54, 0.18)" />
+      <text x="8" y="14" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700">MOTOR C NATIVO MSP</text>
+      <text x="8" y="42" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">mi_objeto_msp~</text>
+      <text x="8" y="62" fill="#a7f3d0" font-size="8.5">perform64() vectorizado</text>
+      <text x="8" y="80" fill="#22c55e" font-size="8.5">Salida directa a [dac~]</text>
+    </g>
+
+    <!-- PIE INFORMATIVO CON GARANTÍAS -->
+    <g transform="translate(20, 175)">
+      <text x="0" y="18" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">GARANTÍA ARQUITECTÓNICA:</text>
+      <text x="210" y="18" fill="#f4f4f5" font-size="8.5">Cero bloqueos de E/S de red en el hilo de audio · Desacoplamiento tripartito: Red (Node) | Lógica (JS) | DSP (C)</text>
+    </g>
+  </g>
+</svg>

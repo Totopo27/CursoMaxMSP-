@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Apéndice A: Computación Visual y Espacial: Jitter, Matrices y `jit.gen`"
 description: "Computación visual en Max: matrices N-dimensionales con Jitter, pipeline GPU con OpenGL, jit.gen para DSP visual y shaders GLSL de procesamiento matricial en tiempo real."
 ---
@@ -79,22 +79,14 @@ El enfoque tradicional consiste en muestrear la señal de audio periódicamente 
 
 Para análisis espectral en tiempo real con máxima precisión matemática, el estándar profesional de la industria consiste en procesar la señal en el dominio de la frecuencia dentro de un subpatcher **`[pfft~]`** y escribir las magnitudes de los *bins* de Fourier directamente en la memoria de una matriz Jitter utilizando **`[jit.poke~]`**.
 
-```text
-[ audio in ] ---> [ pfft~ FreqAnalysis.pfft 512 2 ]
-                        │
-                  [ fftin~ 1 ]
-                   ├── Re  ──> [ cartopol~ ] ──> Magnitud (r) ──> [ jit.poke~ analysis 2 0 ]
-                   ├── Im  ──> [ cartopol~ ]                           ▲            ▲
-                   └── Bin Index (0..255) ─────────────────────────────┘            │
-                                                                           [ sig~ 0 ]
-```
+![FIG A.3 · Pipeline Espectral [pfft~] a Matriz Jitter con [jit.poke~]](/assets/diagrams/diagrama_jitter_pfft_poke_gpu.svg)
 
 #### Mecánica Interna del Subpatcher `FreqAnalysis.pfft`:
 1. **Descomposición Cartesiana a Polar**:
-   El objeto `[fftin~ 1]` entrega la parte real ($	ext{Re}$) en su salida 1, la parte imaginaria ($	ext{Im}$) en su salida 2, y el **índice entero del bin espectral** en su salida 3 como señal de audio sincronizada. El objeto `[cartopol~]` calcula instantáneamente la amplitud o magnitud euclídea:
-   $$r = sqrt{	ext{Re}^2 + 	ext{Im}^2}$$
+   El objeto `[fftin~ 1]` entrega la parte real ($\text{Re}$) en su salida 1, la parte imaginaria ($\text{Im}$) en su salida 2, y el **índice entero del bin espectral** en su salida 3 como señal de audio sincronizada. El objeto `[cartopol~]` calcula instantáneamente la amplitud o magnitud euclídea:
+   $$r = \sqrt{\text{Re}^2 + \text{Im}^2}$$
 2. **Escritura Directa en Memoria de Matriz (`[jit.poke~]`)**:
-   En lugar de esperar un evento de control, `[jit.poke~ analysis 2 0]` escribe la magnitud calculada directamente en la celda correspondiente de la matriz flotante `[jit.matrix analysis 1 float32 1 1]` a velocidad de audio ($f_s$), indexada por la coordenada del bin ($Y = 	ext{bin index}$, $X = 0$).
+   En lugar de esperar un evento de control, `[jit.poke~ analysis 2 0]` escribe la magnitud calculada directamente en la celda correspondiente de la matriz flotante `[jit.matrix analysis 1 float32 1 1]` a velocidad de audio ($f_s$), indexada por la coordenada del bin ($Y = \text{bin index}$, $X = 0$).
 3. **Dimensionamiento Dinámico con `[fftinfo~]`**:
    El objeto `[fftinfo~]` entrega el número exacto de bins espectrales útiles ($N/2$). Enviando el mensaje `dim 1 $1` a `[jit.matrix analysis]`, la matriz adapta su resolución al tamaño FFT sin desperdicio de memoria.
 
@@ -104,19 +96,11 @@ Para análisis espectral en tiempo real con máxima precisión matemática, el e
 
 Una vez que la matriz espectral contiene las amplitudes por frecuencia, la GPU toma el control absoluto:
 
-```text
-[ bang (jit.world) ] ──> [ pfft~ (emite matriz) ]
-                               │
-                       [ jit.dimmap @invert 0 1 ]
-                               │
-                       [ jit.gen (mapeo X,Y,Z) ]
-                               │
-             [ jit.gl.mesh ctx @draw_mode line_strip ]
-```
+![FIG A.4 · Deformación de Mallas 3D en GPU con [jit.gl.mesh] a 60 FPS](/assets/diagrams/diagrama_jitter_mesh_opengl_render.svg)
 
 1. **Sincronización con el Render Loop**: El reloj maestro de `[jit.world]` dispara un `bang` por cada cuadro visual, solicitando la matriz resultante de `[pfft~]`.
 2. **Transformación Geométrica en `[jit.gen]`**: Mediante operadores vectoriales (`snorm`, `swiz`, `vec`), la GPU asigna el índice de frecuencia al eje horizontal ($X$) y la magnitud calculada al desplazamiento vertical ($Y$):
-   $$ec{P} = langle 	ext{snorm.y},; r cdot k,; 0.0 angle$$
+   $$\vec{P} = \langle \text{snorm.y},\; r \cdot k,\; 0.0 \rangle$$
 3. **Malla Acelerada por Hardware (`[jit.gl.mesh]`)**: Configurado con `@draw_mode line_strip` o `@draw_mode tri_grid`, el objeto dibuja la cinta espectral directamente en el búfer de vértices de la tarjeta de video, logrando un visualizador espectral 3D de alta fidelidad sin penalizar el hilo de audio ni el hilo de interfaz.
 
 ---

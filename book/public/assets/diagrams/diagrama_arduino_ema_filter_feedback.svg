@@ -1,0 +1,85 @@
+<svg viewBox="0 0 940 280" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">ACONDICIONAMIENTO DE SENSORES ANALÓGICOS · EXPONENTIAL MOVING AVERAGE (EMA)</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG C.2 · FILTRO EMA CON FEEDBACK EN CONTROL (DISCRETO Z^-1)</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <g transform="translate(25, 45)">
+    <rect width="890" height="215" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+
+    <!-- ENTRADA [ sensor_in ] -->
+    <g transform="translate(25, 45)">
+      <rect width="130" height="42" rx="4" fill="#27272a" stroke="#52525b" stroke-width="1" />
+      <text x="65" y="26" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" text-anchor="middle">[ sensor_in ]</text>
+    </g>
+
+    <path d="M 155 66 L 210 66" stroke="#71717a" stroke-width="1.6" marker-end="url(#arr-neutral)" />
+
+    <!-- FACTOR DIRECTO [* 0.2] (ALFA = 0.2) -->
+    <g transform="translate(215, 45)">
+      <rect width="115" height="42" rx="4" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="57" y="26" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">[* 0.2]</text>
+    </g>
+    <text x="272" y="38" fill="#a1a1aa" font-size="8" text-anchor="middle">Factor α (inercia)</text>
+
+    <!-- CABLE AL SUMADOR [+] -->
+    <path d="M 330 66 L 415 66" stroke="#71717a" stroke-width="1.6" marker-end="url(#arr-neutral)" />
+
+    <!-- SUMADOR [+] -->
+    <g transform="translate(420, 47)">
+      <circle cx="19" cy="19" r="19" fill="#222226" stroke="#eb6c36" stroke-width="1.4" />
+      <text x="19" y="25" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="16" font-weight="700" text-anchor="middle">+</text>
+    </g>
+
+    <!-- BIFURCACIÓN DE SALIDA -->
+    <path d="M 458 66 L 540 66" stroke="#eb6c36" stroke-width="2" />
+    <circle cx="540" cy="66" r="3.5" fill="#eb6c36" />
+    <text x="500" y="55" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="9" font-weight="700">y[n]</text>
+
+    <!-- SALIDA FILTRADA [ out_filtrado ] -->
+    <path d="M 540 66 L 620 66" stroke="#eb6c36" stroke-width="1.8" marker-end="url(#arr-accent)" />
+    <g transform="translate(625, 45)">
+      <rect width="145" height="42" rx="4" fill="#27272a" stroke="#52525b" stroke-width="1" />
+      <text x="72" y="26" fill="#a7f3d0" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" text-anchor="middle">[ out_filtrado ]</text>
+    </g>
+
+    <!-- BUCLE FEEDBACK INFERIOR (MEMORIA DE CONTROL [f] = z^-1) -->
+    <path d="M 540 66 L 540 155 L 430 155" stroke="#71717a" stroke-width="1.6" fill="none" marker-end="url(#arr-neutral)" />
+
+    <!-- OBJETO [ f ] (MEMORIA FLOTANTE z^-1) -->
+    <g transform="translate(370, 135)">
+      <rect width="60" height="42" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+      <text x="30" y="26" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="12" font-weight="700" text-anchor="middle">[ f ]</text>
+    </g>
+    <text x="400" y="190" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="7.5" text-anchor="middle">Memoria z^-1</text>
+
+    <!-- FACTOR COMPLEMENTARIO [* 0.8] (1 - ALFA) -->
+    <path d="M 370 155 L 305 155" stroke="#71717a" stroke-width="1.6" marker-end="url(#arr-neutral)" />
+    <g transform="translate(190, 135)">
+      <rect width="115" height="42" rx="4" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="57" y="26" fill="#fca5a5" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">[* 0.8]</text>
+    </g>
+    <text x="247" y="126" fill="#a1a1aa" font-size="8" text-anchor="middle">Factor (1 - α)</text>
+
+    <!-- RETORNO HACIA EL SUMADOR [+] -->
+    <path d="M 190 155 L 140 155 L 140 195 L 439 195 L 439 90" stroke="#eb6c36" stroke-width="1.6" fill="none" marker-end="url(#arr-accent)" />
+
+    <!-- EXPLICACIÓN LATERAL -->
+    <g transform="translate(625, 115)">
+      <rect width="230" height="85" rx="4" fill="#141417" stroke="#27272a" stroke-width="1" />
+      <text x="12" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700">SUAVIZADO GESTUAL</text>
+      <text x="12" y="38" fill="#f4f4f5" font-size="8.5">Elimina jitter eléctrico de potenciómetros</text>
+      <text x="12" y="52" fill="#f4f4f5" font-size="8.5">y sensores analógicos en museos.</text>
+      <text x="12" y="68" fill="#a7f3d0" font-size="8.5">Ecuación: y[n] = 0.2·x[n] + 0.8·y[n-1]</text>
+    </g>
+  </g>
+</svg>
