@@ -1,0 +1,102 @@
+<svg viewBox="0 0 940 310" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">REVERBERACIÓN ALGORÍTMICA · MANFRED SCHROEDER &amp; JULIUS O. SMITH</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 3.8B · TOPOLOGÍA DEL FILTRO TODO-PASO (ALLPASS) EN CELOSÍA</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <!-- PANEL PRINCIPAL DE FLUJO DSP EN CELOSÍA -->
+  <g transform="translate(25, 45)">
+    <rect width="890" height="245" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+
+    <!-- ENTRADA [ in ] -->
+    <g transform="translate(25, 90)">
+      <rect width="70" height="38" rx="4" fill="#27272a" stroke="#52525b" stroke-width="1" />
+      <text x="35" y="24" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">[ in ]</text>
+    </g>
+
+    <!-- CABLE ENTRADA -> PRIMER SUMADOR [+] -->
+    <path d="M 95 109 L 140 109" stroke="#71717a" stroke-width="1.8" marker-end="url(#arr-neutral)" />
+
+    <!-- SUMADOR 1 [+] -->
+    <g transform="translate(145, 90)">
+      <circle cx="19" cy="19" r="19" fill="#222226" stroke="#eb6c36" stroke-width="1.4" />
+      <text x="19" y="25" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="16" font-weight="700" text-anchor="middle">+</text>
+    </g>
+
+    <!-- NODO DE BIFURCACIÓN TRAS SUMADOR 1 -->
+    <path d="M 183 109 L 230 109" stroke="#71717a" stroke-width="1.8" />
+    <circle cx="230" cy="109" r="3.5" fill="#eb6c36" />
+
+    <!-- RAMA FEEDFORWARD SUPERIOR: BIFURCACIÓN -> SUMADOR 2 -->
+    <path d="M 230 109 L 230 45 L 615 45 L 615 90" stroke="#eb6c36" stroke-width="1.6" fill="none" marker-end="url(#arr-accent)" />
+    <text x="420" y="38" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" text-anchor="middle">RAMA DIRECTA FEEDFORWARD (+1.0)</text>
+
+    <!-- RAMA CENTRAL: LÍNEA DE RETARDO [ delay~ D ] -->
+    <path d="M 230 109 L 280 109" stroke="#71717a" stroke-width="1.8" marker-end="url(#arr-neutral)" />
+
+    <!-- OBJETO RETARDO [ delay~ D ] -->
+    <g transform="translate(285, 85)">
+      <rect width="180" height="48" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.4" />
+      <rect width="180" height="18" rx="4" fill="rgba(235, 108, 54, 0.18)" />
+      <rect y="13" width="180" height="5" fill="rgba(235, 108, 54, 0.18)" />
+      <text x="10" y="13" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700">RETARDO z^-D (BUFFER CIRCULAR)</text>
+      <text x="90" y="38" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="12" font-weight="700" text-anchor="middle">[ delay~ D ]</text>
+    </g>
+
+    <!-- CABLE RETARDO -> SUMADOR 2 -->
+    <path d="M 465 109 L 595 109" stroke="#71717a" stroke-width="1.8" marker-end="url(#arr-neutral)" />
+
+    <!-- SUMADOR 2 [+] -->
+    <g transform="translate(600, 90)">
+      <circle cx="19" cy="19" r="19" fill="#222226" stroke="#eb6c36" stroke-width="1.4" />
+      <text x="19" y="25" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="16" font-weight="700" text-anchor="middle">+</text>
+    </g>
+
+    <!-- CABLE SUMADOR 2 -> NODO SALIDA -->
+    <path d="M 638 109 L 710 109" stroke="#71717a" stroke-width="1.8" />
+    <circle cx="710" cy="109" r="3.5" fill="#eb6c36" />
+
+    <!-- SALIDA [ out ] -->
+    <path d="M 710 109 L 775 109" stroke="#71717a" stroke-width="1.8" marker-end="url(#arr-neutral)" />
+    <g transform="translate(780, 90)">
+      <rect width="80" height="38" rx="4" fill="#27272a" stroke="#52525b" stroke-width="1" />
+      <text x="40" y="24" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">[ out ]</text>
+    </g>
+
+    <!-- BUCLE FEEDBACK INVERSO DESDE LA SALIDA DEL RETARDO / SALIDA TOTAL -->
+    <path d="M 710 109 L 710 185 L 610 185" stroke="#71717a" stroke-width="1.6" fill="none" marker-end="url(#arr-neutral)" />
+
+    <!-- GANANCIA [*~ -g] -->
+    <g transform="translate(480, 165)">
+      <rect width="125" height="40" rx="4" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="62" y="25" fill="#fca5a5" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">[*~ -g]</text>
+    </g>
+
+    <!-- GANANCIA [*~ g] (RETROALIMENTACIÓN AL PRIMER SUMADOR) -->
+    <path d="M 480 185 L 375 185" stroke="#71717a" stroke-width="1.6" fill="none" marker-end="url(#arr-neutral)" />
+
+    <g transform="translate(250, 165)">
+      <rect width="120" height="40" rx="4" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="60" y="25" fill="#a7f3d0" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">[*~ g]</text>
+    </g>
+
+    <!-- RETORNO DESDE [*~ g] HACIA EL SUMADOR 1 -->
+    <path d="M 250 185 L 164 185 L 164 133" stroke="#eb6c36" stroke-width="1.6" fill="none" marker-end="url(#arr-accent)" />
+    <text x="175" y="165" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="7.5">Bucle IIR</text>
+
+    <!-- CAJA DE EXPLICACIÓN MATEMÁTICA Y PSICOACÚSTICA INFERIOR -->
+    <g transform="translate(25, 215)">
+      <text x="0" y="15" fill="#a1a1aa" font-size="9">Ecuación en Z: <tspan fill="#f4f4f5" font-family="ui-monospace, monospace">H(z) = (-g + z^-D) / (1 - g·z^-D)</tspan></text>
+      <text x="470" y="15" fill="#eb6c36" font-size="9" font-weight="600">Magnitud rigurosamente plana: |H(e^jω)| = 1.0 ∀ ω (Difusión de fase pura sin ecualización)</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,76 @@
+<svg viewBox="0 0 940 280" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">DSP MUESTRA A MUESTRA · GRAHAM WAKEFIELD &amp; GREGORY TAYLOR</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 5.1B · ACUMULADOR DE FASE CONTINUO CON OPERADOR [HISTORY] EN GEN~</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <g transform="translate(25, 45)">
+    <rect width="890" height="215" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+
+    <!-- ENTRADA [ in 1: freq ] -->
+    <g transform="translate(25, 60)">
+      <rect width="120" height="42" rx="4" fill="#27272a" stroke="#52525b" stroke-width="1" />
+      <text x="60" y="26" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" text-anchor="middle">[ in 1: freq ]</text>
+    </g>
+
+    <path d="M 145 81 L 195 81" stroke="#71717a" stroke-width="1.6" marker-end="url(#arr-neutral)" />
+
+    <!-- OBJETO [/ samplerate] -->
+    <g transform="translate(200, 60)">
+      <rect width="150" height="42" rx="4" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="75" y="26" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">[/ samplerate]</text>
+    </g>
+    <text x="275" y="52" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" text-anchor="middle">Δφ = f / fs</text>
+
+    <path d="M 350 81 L 405 81" stroke="#eb6c36" stroke-width="1.6" marker-end="url(#arr-accent)" />
+
+    <!-- SUMADOR ACUMULADOR [+] -->
+    <g transform="translate(410, 62)">
+      <circle cx="19" cy="19" r="19" fill="#222226" stroke="#eb6c36" stroke-width="1.4" />
+      <text x="19" y="25" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="16" font-weight="700" text-anchor="middle">+</text>
+    </g>
+
+    <path d="M 448 81 L 495 81" stroke="#71717a" stroke-width="1.6" marker-end="url(#arr-neutral)" />
+
+    <!-- OBJETO [wrap 0 1] -->
+    <g transform="translate(500, 60)">
+      <rect width="130" height="42" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.4" />
+      <text x="65" y="26" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">[ wrap 0 1 ]</text>
+    </g>
+    <text x="565" y="52" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" text-anchor="middle">φ[n] mod 1.0</text>
+
+    <!-- NODO BIFURCACIÓN TRAS WRAP -->
+    <path d="M 630 81 L 690 81" stroke="#71717a" stroke-width="1.8" />
+    <circle cx="690" cy="81" r="3.5" fill="#eb6c36" />
+
+    <!-- SALIDA [ out 1: phasor ] -->
+    <path d="M 690 81 L 750 81" stroke="#eb6c36" stroke-width="1.8" marker-end="url(#arr-accent)" />
+    <g transform="translate(755, 60)">
+      <rect width="115" height="42" rx="4" fill="#27272a" stroke="#52525b" stroke-width="1" />
+      <text x="57" y="26" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">[ out 1 ]</text>
+    </g>
+
+    <!-- BUCLE DE FEEDBACK CON [ history ] (RETARDO DE 1 MUESTRA z^-1) -->
+    <path d="M 690 81 L 690 155 L 595 155" stroke="#71717a" stroke-width="1.6" fill="none" marker-end="url(#arr-neutral)" />
+
+    <!-- OBJETO [ history ] -->
+    <g transform="translate(480, 135)">
+      <rect width="110" height="40" rx="4" fill="#222226" stroke="#eb6c36" stroke-width="1.3" />
+      <text x="55" y="25" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">[ history ]</text>
+    </g>
+    <text x="535" y="190" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8" text-anchor="middle">Retardo exacto z^-1 (1 muestra)</text>
+
+    <!-- RETORNO DE [ history ] HACIA SUMADOR [+] -->
+    <path d="M 480 155 L 429 155 L 429 105" stroke="#eb6c36" stroke-width="1.6" fill="none" marker-end="url(#arr-accent)" />
+    <text x="400" y="140" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8">φ[n-1]</text>
+  </g>
+</svg>

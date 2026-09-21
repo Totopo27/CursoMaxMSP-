@@ -1,0 +1,75 @@
+<svg viewBox="0 0 940 280" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">PATRONES DE DISEÑO EN ABSTRACCIONES · ESPACIO DE NOMBRES Y ROBUSTEZ</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 4.0C · PATRÓN AB.SUS: ARGUMENT SUBSTITUTION &amp; FALLBACK</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <g transform="translate(25, 45)">
+    <rect width="890" height="215" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+
+    <!-- ENTRADA [ inlet (control / freq) ] -->
+    <g transform="translate(370, 15)">
+      <rect width="150" height="35" rx="4" fill="#27272a" stroke="#52525b" stroke-width="1" />
+      <text x="75" y="22" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">[ inlet ]</text>
+    </g>
+
+    <path d="M 445 50 L 445 70" stroke="#71717a" stroke-width="1.6" marker-end="url(#arr-neutral)" />
+
+    <!-- OBJETO [ f ] -->
+    <g transform="translate(415, 72)">
+      <rect width="60" height="32" rx="4" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="30" y="21" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">[ f ]</text>
+    </g>
+
+    <path d="M 445 104 L 445 125" stroke="#71717a" stroke-width="1.6" marker-end="url(#arr-neutral)" />
+
+    <!-- SELECTOR [ sel 0. ] -->
+    <g transform="translate(395, 127)">
+      <rect width="100" height="35" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+      <text x="50" y="22" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">[ sel 0. ]</text>
+    </g>
+
+    <!-- SALIDA IZQUIERDA: MATCH CERO -> DISPARA ARGUMENTO #1 -->
+    <path d="M 420 162 L 420 175 L 265 175" stroke="#eb6c36" stroke-width="1.6" fill="none" marker-end="url(#arr-accent)" />
+    <text x="340" y="170" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8">bang (si es 0.)</text>
+
+    <!-- CAJA MENSAJE [#1] (VALOR POR DEFECTO) -->
+    <g transform="translate(170, 160)">
+      <rect width="90" height="32" rx="3" fill="#222226" stroke="#eb6c36" stroke-width="1.2" />
+      <text x="45" y="21" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">[ #1 ]</text>
+    </g>
+
+    <!-- SALIDA DERECHA: MATCH FAIL (VALOR VÁLIDO != 0) PASA DIRECTO -->
+    <path d="M 470 162 L 470 205 L 450 205" stroke="#71717a" stroke-width="1.6" fill="none" />
+    <text x="480" y="185" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="8">pass-through (si ≠ 0.)</text>
+
+    <!-- CONVERGENCIA AL OUTLET -->
+    <path d="M 170 176 L 120 176 L 120 205 L 430 205" stroke="#eb6c36" stroke-width="1.6" fill="none" />
+    <path d="M 445 205 L 445 220" stroke="#71717a" stroke-width="1.6" marker-end="url(#arr-neutral)" />
+
+    <!-- OBJETO [ outlet ] -->
+    <g transform="translate(395, 222)">
+      <rect width="100" height="30" rx="4" fill="#27272a" stroke="#52525b" stroke-width="1" />
+      <text x="50" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">[ outlet ]</text>
+    </g>
+
+    <!-- NOTA EXPLICATIVA LATERAL -->
+    <g transform="translate(590, 50)">
+      <rect width="270" height="130" rx="5" fill="#141417" stroke="#27272a" stroke-width="1" />
+      <text x="14" y="24" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="9" font-weight="700">GARANTÍA DE ESTABILIDAD DSP</text>
+      <text x="14" y="46" fill="#f4f4f5" font-size="8.5">• Previene frecuencias 0.0 Hz que congelen filtros.</text>
+      <text x="14" y="66" fill="#f4f4f5" font-size="8.5">• Si el usuario no envía parámetro, asume #1.</text>
+      <text x="14" y="86" fill="#f4f4f5" font-size="8.5">• Reemplazo determinista sin sobrecarga de CPU.</text>
+      <text x="14" y="106" fill="#a1a1aa" font-size="8">• Se integra dentro de cualquier patcher modular.</text>
+    </g>
+  </g>
+</svg>

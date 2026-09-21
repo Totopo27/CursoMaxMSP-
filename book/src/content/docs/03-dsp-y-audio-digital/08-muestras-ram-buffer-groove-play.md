@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Lección 3.8: Manejo de Muestras en RAM: buffer~, groove~, play~, index~ y Manipulación Varispeed"
 description: "Manejo de muestras en RAM: [buffer~] como bloque de memoria compartida, [play~], [groove~] y [wave~]. Windowing, lectura multi-cabezal y gestión de archivos de audio."
 ---
@@ -112,16 +112,7 @@ Mientras que la síntesis tradicional concibe el sonido como ondas continuas inf
 ### 4.1. Anatomía de un Grano Acústico
 Según formaliza Curtis Roads, un grano acústico individual opera en la escala temporal microfónica ($1 \text{ a } 100\text{ ms}$):
 
-```text
-                      Duración del Grano (Δt ≈ 20-50 ms)
-                    ├──────────────────────────────────┤
-          1.0 ──┐                 ╭───╮
-                │               ╭─╯   ╰─╮
-                │             ╭─╯       ╰─╮          Ventana (Hanning / Gauss)
-          0.0 ──┴───────────╭─╯           ╰─╮────────
-                            │  WAVETABLE    │
-                            │  ~ ~ ~ ~ ~ ~  │        Audio Interno (buffer~)
-```
+![FIG 3.9B · Anatomía del Grano Acústico & Ventana Temporal](/assets/diagrams/diagrama_grano_acustico_roads.svg)
 
 1. **Duración (Grain Duration, $\Delta t$)**: Típicamente entre 10 y 50 ms. Por debajo de 10 ms se percibe como un click impulsivo; por encima de 100 ms el cerebro distingue la nota o palabra original.
 2. **Función de Ventana (Windowing Envelope)**: Imprescindible para atenuar a cero los extremos inicial y final del grano. Si se corta el audio abruptamente, la discontinuidad vertical genera un espectro de banda ancha audible como chasquido o click digital. Se emplean ventanas de Hanning ($w(t) = 0.5 - 0.5\cos(2\pi t)$), Blackman o Gaussianas leídas mediante `[wave~ mi_ventana]`.

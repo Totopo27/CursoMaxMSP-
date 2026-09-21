@@ -109,15 +109,7 @@ Cuando intentamos simular la acústica de una sala real interconectando simples 
 Para crear densidad de ecos y difusión espacial sin alterar el equilibrio tonal del sonido original, Manfred Schroeder diseñó el **filtro todo-paso (Allpass)**:
 $$H(z) = \frac{-g + z^{-D}}{1 - g \cdot z^{-D}}$$
 
-```text
-                  ┌──────────────────────┐
-                  │                      ▼
-[ in ] ──> [+] ───┴──> [ delay~ D ] ──> [+] ──> [ out ]
-            ▲                            │
-            │           ┌── [*~ -g] ─────┘
-            └── [*~ g] ─┤
-                        ▲
-```
+![FIG 3.8B · Topología del Filtro Todo-Paso (Allpass) en Celosía](/assets/diagrams/diagrama_schroeder_allpass.svg)
 
 #### Propiedad Psicoacústica Fundamental:
 La respuesta en frecuencia en magnitud de un filtro Allpass es rigurosamente plana para todo el espectro audible:

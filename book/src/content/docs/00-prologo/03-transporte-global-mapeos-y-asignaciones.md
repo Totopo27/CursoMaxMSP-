@@ -13,7 +13,7 @@ En la creación de sistemas musicales, generativos o performáticos interactivos
 
 Max incorpora un motor de sincronización de tiempo musical denominado **Global Transport**. Este reloj centraliza el estado de reproducción (`play`/`stop`), el tempo métrico en BPM, la signatura de compás (*time signature*) y la resolución temporal en ticks (480 PPQ: *Pulses Per Quarter Note*).
 
-![Arquitectura del Global Transport](/assets/diagrams/diagrama_global_transport.svg)
+![FIG 0.6 · Arquitectura del Global Transport](/assets/diagrams/diagrama_global_transport.svg)
 
 ### 1.1. El Objeto `[transport]`
 El objeto `[transport]` permite consultar y manipular programáticamente el estado del reloj maestro:

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Módulo 3.3: Aritmética de Audio, Modulación en Anillo (Ring Modulation) y Modulación de Amplitud (AM)"
 description: "Aritmética de audio en MSP: escalamiento de señal, Ring Modulation (RM) y Amplitude Modulation (AM). Espectros laterales, síntesis tímbrica y el operador multiplicador [*~]."
 ---
@@ -88,14 +88,7 @@ Para aislar una sola banda lateral (Single Sideband / SSB) y lograr un auténtic
 $$z(t) = x(t) + j \cdot \mathcal{H}\{x(t)\}$$
 Donde $\mathcal{H}\{x(t)\}$ es la **Transformada de Hilbert**, que desfasa exactamente $90^\circ$ todas las frecuencias componentes sin alterar sus amplitudes.
 
-```text
-                 ┌── Real (0°)  ──────> [*~] ──┐
-[ audio in ] ──> [ hilbert~ ]                   ├── [-~] ──> Banda Lateral Superior (fc + fs)
-                 └── Imag (-90°) ────> [*~] ──┤
-                                        ▲   ▲   └── [+~] ──> Banda Lateral Inferior (|fc - fs|)
-                 [ cycle~ fc (cos) ] ───┘   │
-                 [ cycle~ fc (sin) ] ───────┘ (desfase 0.25)
-```
+![FIG 3.2B · Single-Sideband (SSB) Frequency Shifter](/assets/diagrams/diagrama_hilbert_ssb.svg)
 
 ### 4.2. Cancelación Trigonométrica de Bandas en Max
 1. El objeto `[hilbert~]` descompone la entrada en dos señales: salida izquierda (en fase) y salida derecha ($90^\circ$ en cuadratura).

@@ -42,6 +42,8 @@ typedef struct _mi_audio {
 
 Toda librería dinámica exporta una función obligatoria denominada `ext_main(void *r)`, la cual se ejecuta una única vez cuando Max carga el objeto en memoria:
 
+![FIG 6.3 · Ciclo de Vida y Anatomía de un External en C SDK](/assets/diagrams/diagrama_c_sdk_ciclo_vida.svg)
+
 ```c
 #include "ext.h"
 #include "z_dsp.h"

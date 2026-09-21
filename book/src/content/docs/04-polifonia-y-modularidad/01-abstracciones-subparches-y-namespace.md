@@ -79,15 +79,7 @@ Si bien el objeto `[patcherargs]` resuelve con elegancia los valores por defecto
 
 Para resolver esto con máxima economía de objetos, se utiliza el patrón **`ab.sus`** (*Argument Substitution*):
 
-```text
-[ inlet (frecuencia / control) ]
-               │
-             [ f ]
-               │
-          [ sel 0. ]
-          ├── 0. (bang) ──> [ message #1 ] ──> [ outlet ]
-          └── else (val) ─────────────────────> [ outlet ]
-```
+![FIG 4.0C · Patrón ab.sus: Argument Substitution & Fallback](/assets/diagrams/diagrama_argument_fallback_absus.svg)
 
 #### Mecánica de Ejecución:
 1. **Detección de Valor Cero/Nulo**: Al entrar un número flotante por el inlet, pasa por `[sel 0.]`.

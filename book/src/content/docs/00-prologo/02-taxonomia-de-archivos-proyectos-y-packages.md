@@ -9,7 +9,7 @@ En el ecosistema de Max/MSP, un sistema rara vez consiste en un único archivo l
 
 ## 1. Jerarquía de Documentos y Encapsulación
 
-![Taxonomía de Documentos y Encapsulación](/assets/diagrams/diagrama_taxonomia_archivos.svg)
+![FIG 0.4 · Taxonomía de Documentos y Encapsulación](/assets/diagrams/diagrama_taxonomia_archivos.svg)
 
 ### 1.1. El Patcher Raíz (`.maxpat`)
 * **Formato físico:** Archivo de texto plano serializado bajo el estándar **JSON** (JavaScript Object Notation).
@@ -57,7 +57,7 @@ Un **Package** es el estándar canónico de distribución modular establecido po
 ### 3.1. Estructura Canónica de un Package
 En disco (ubicado en `Documentos/Max 8/Packages/nombre_paquete/`), un paquete debe respetar la siguiente topología de carpetas:
 
-![FIG 0.4 · Topología Canónica de un Package y Librerías Académicas Destacadas](/assets/diagrams/diagrama_package_manager_topologia.svg)
+![FIG 0.5 · Topología Canónica de un Package y Librerías Académicas Destacadas](/assets/diagrams/diagrama_package_manager_topologia.svg)
 
 ---
 
@@ -65,7 +65,7 @@ En disco (ubicado en `Documentos/Max 8/Packages/nombre_paquete/`), un paquete de
 
 Cuando se escribe el nombre de un objeto o se carga un archivo de audio mediante su nombre relativo (`[buffer~ muestra drumloop.wav]`), Max busca el archivo respetando un orden de precedencia estricto:
 
-![Árbol de Resolución de Rutas de Búsqueda](/assets/diagrams/diagrama_search_paths.svg)
+![FIG 0.6 · Árbol de Resolución de Rutas de Búsqueda](/assets/diagrams/diagrama_search_paths.svg)
 
 ### Configuración Manual en *File Preferences*:
 Para incorporar directorios personalizados (por ejemplo, una unidad de red o una carpeta compartida de proyectos en Git):

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Lección 5.1: Gen~ y el Paradigma JIT: Compilación en Tiempo Real, Bucles Muestra a Muestra y LLVM"
 description: "Gen~ y el paradigma JIT: compilación LLVM en tiempo real, el operador history (z^-1), ecuaciones en diferencias muestra a muestra y exportación de código C++ nativo desde Max."
 ---
@@ -80,11 +80,7 @@ donde el incremento diferencial de fase por muestra $\Delta \phi$ viene dictado 
 
 $\Delta \phi = \frac{f}{f_s}$
 
-```text
-[in 1: freq] ──> [/ samplerate] ──> [+] ──> [wrap 0 1] ──┬──> [out 1: phasor]
-                                     ▲                   │
-                                     └─── [history] ─────┘
-```
+![FIG 5.1B · Acumulador de Fase Continuo con Operador [history] en gen~](/assets/diagrams/diagrama_gen_phasor_acumulador.svg)
 
 #### Por qué este fasor en `gen~` supera al `[phasor~]` de MSP:
 1. **Modulación de Frecuencia Audio-Rate Pura**: En MSP tradicional, modular la frecuencia de un `[phasor~]` con otra señal a frecuencias de audio introduce sutiles discontinuidades y jitter en los bordes de cada bloque vectorial de 64 muestras. En `gen~`, la fase se integra y evalúa muestra por muestra de forma continua y suave.

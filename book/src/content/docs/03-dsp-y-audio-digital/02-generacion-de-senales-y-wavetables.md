@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Módulo 3.2: Generación de Señales Básicas (`[cycle~]`, `[phasor~]`, `[saw~]`, `[noise~]`), Tablas de Onda y Anti-Aliasing"
 description: "Generación de señales básicas en MSP: [cycle~], [phasor~], [saw~] y [noise~]. Series de Fourier, aliasing, band-limiting, tablas de onda e interpolación cúbica de fase."
 ---
@@ -39,13 +39,7 @@ Durante tres décadas, construir un sintetizador aditivo de tan solo 16 parciale
 #### La Revolución Multichannel en Max (`[mc.cycle~]` y `[mc.*~]`):
 El subsistema **Multichannel (MC)** introducido en Max 8 transforma un circuito de 90 objetos en una arquitectura elegante de **3 objetos**:
 
-```text
-[ flonum f0 ] ──> [ harmonic 1 $1 ] ──> [ mc.cycle~ @chans 16 ]
-                                               │
-[ multislider 16 ] ──> [ applyvalues ... ] ──> [ mc.*~ ]
-                                               │
-                                       [ mc.mixdown~ 1 @autogain 1 ] ──> [ dac~ ]
-```
+![FIG 3.3B · Arquitectura MC de 16 Parciales Simultáneos](/assets/diagrams/diagrama_mc_sintesis_aditiva.svg)
 
 1. **Generación Simultánea de Parciales**: Con `[mc.cycle~ @chans 16]`, Max gestiona 16 osciladores independientes dentro de un único cable virtual multicanal.
 2. **Distribución de Frecuencias Armónicas**: Al enviar el mensaje `harmonic 1 $1`, el objeto calcula instantáneamente una serie armónica perfecta:

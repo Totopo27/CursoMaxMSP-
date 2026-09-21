@@ -39,7 +39,7 @@ Para inspeccionar el contenido de cualquier cable de control:
 
 A diferencia de macOS (donde la API unificada CoreAudio gestiona el enrutamiento con latencias bajas predeterminadas), en el entorno Windows la arquitectura de controladores requiere una selección cuidadosa:
 
-![Subsistema de Audio en Windows: Selección y Latencia](/assets/diagrams/diagrama_drivers_audio.svg)
+![FIG 0.7 · Subsistema de Audio en Windows: Selección y Latencia](/assets/diagrams/diagrama_drivers_audio.svg)
 
 ### 2.1. Comparativa de Controladores en Windows
 

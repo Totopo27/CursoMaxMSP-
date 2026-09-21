@@ -11,7 +11,7 @@ El entorno de desarrollo interactivo de Max/MSP está fundamentado en un lienzo 
 
 La interacción con cualquier documento en Max oscila entre tres estados fundamentales:
 
-![Máquina de Estados del Lienzo](/assets/diagrams/diagrama_estados.svg)
+![FIG 0.1 · Máquina de Estados del Lienzo](/assets/diagrams/diagrama_estados.svg)
 
 ### 1.1. Modo Edición (*Unlocked Mode*)
 * **Atajo de conmutación:** `Ctrl + E` (Windows) / `Cmd + E` (macOS).
@@ -34,7 +34,7 @@ La interacción con cualquier documento en Max oscila entre tres estados fundame
 * **Inclusión de objetos:** `Ctrl + Alt + P` (*Add to Presentation* / *Remove from Presentation*).
 * **Propósito:** Separar la lógica computacional del diseño de usuario. Permite construir una interfaz gráfica limpia (GUI) exhibiendo únicamente faders, medidores y perillas, mientras que la compleja red de cables, operaciones lógicas y objetos auxiliares permanece oculta en el fondo.
 
-![Arquitectura de Vistas: Patching vs. Presentación](/assets/diagrams/diagrama_vistas.svg)
+![FIG 0.3 · Arquitectura de Vistas: Patching vs. Presentación](/assets/diagrams/diagrama_vistas.svg)
 
 ---
 
@@ -42,7 +42,7 @@ La interacción con cualquier documento en Max oscila entre tres estados fundame
 
 El marco de trabajo de Max organiza sus herramientas en cuatro barras perimetrales que rodean el lienzo central:
 
-![Topología Perimetral del Patcher](/assets/diagrams/diagrama_topologia.svg)
+![FIG 0.2 · Topología Perimetral del Patcher](/assets/diagrams/diagrama_topologia.svg)
 
 1. **Barra Superior (*Top Toolbar*):** Acceso rápido para la inserción de objetos canónicos, alineación geométrica, segmentación y opciones de formateo de texto.
 2. **Barra Inferior (*Bottom Toolbar*):**

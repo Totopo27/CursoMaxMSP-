@@ -1,0 +1,86 @@
+<svg viewBox="0 0 940 280" xmlns="http://www.w3.org/2000/svg" style="background: #121318; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-radius: 6px; border: 1px solid #27272a;">
+  <defs>
+    <marker id="arr-neutral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#eb6c36"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER EDITORIAL -->
+  <text x="25" y="20" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="0.08em">SÍNTESIS ADITIVA MULTICANAL · MAX 8 MULTICHANNEL SUBSYSTEM</text>
+  <text x="915" y="20" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8.5" font-weight="700" text-anchor="end">FIG 3.3B · ARQUITECTURA MC DE 16 PARCIALES SIMULTÁNEOS</text>
+  <line x1="25" y1="28" x2="915" y2="28" stroke="#27272a" stroke-width="1"/>
+
+  <g transform="translate(25, 45)">
+    <rect width="890" height="215" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1.2" />
+
+    <!-- ENTRADA FRECUENCIA FUNDAMENTAL -->
+    <g transform="translate(25, 30)">
+      <rect width="110" height="38" rx="4" fill="#27272a" stroke="#52525b" stroke-width="1" />
+      <text x="55" y="23" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" text-anchor="middle">[ flonum f0 ]</text>
+    </g>
+
+    <path d="M 135 49 L 185 49" stroke="#71717a" stroke-width="1.6" marker-end="url(#arr-neutral)" />
+
+    <!-- MENSAJE HARMONIC -->
+    <g transform="translate(190, 30)">
+      <rect width="150" height="38" rx="4" fill="#222226" stroke="#eb6c36" stroke-width="1.2" />
+      <text x="75" y="23" fill="#fed7aa" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">harmonic 1 $1</text>
+    </g>
+
+    <path d="M 340 49 L 400 49" stroke="#eb6c36" stroke-width="1.6" marker-end="url(#arr-accent)" />
+
+    <!-- OBJETO [ mc.cycle~ @chans 16 ] -->
+    <g transform="translate(405, 22)">
+      <rect width="210" height="54" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.4" />
+      <rect width="210" height="18" rx="4" fill="rgba(235, 108, 54, 0.18)" />
+      <rect y="13" width="210" height="5" fill="rgba(235, 108, 54, 0.18)" />
+      <text x="12" y="13" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8" font-weight="700">16 BANCOS OSCILADORES EN 1 CABLE</text>
+      <text x="105" y="40" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700" text-anchor="middle">[ mc.cycle~ @chans 16 ]</text>
+    </g>
+
+    <!-- CABLE MULTICANAL (DOBLE TRAZO O GRUESO) -->
+    <path d="M 510 76 L 510 115" stroke="#eb6c36" stroke-width="3" marker-end="url(#arr-accent)" />
+    <text x="520" y="100" fill="#eb6c36" font-family="ui-monospace, monospace" font-size="8">16 Chans Audio</text>
+
+    <!-- VECTOR DE AMPLITUDES (MULTISLIDER) -->
+    <g transform="translate(25, 120)">
+      <rect width="130" height="38" rx="4" fill="#27272a" stroke="#52525b" stroke-width="1" />
+      <text x="65" y="23" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="600" text-anchor="middle">[ multislider 16 ]</text>
+    </g>
+
+    <path d="M 155 139 L 205 139" stroke="#71717a" stroke-width="1.6" marker-end="url(#arr-neutral)" />
+
+    <g transform="translate(210, 120)">
+      <rect width="170" height="38" rx="4" fill="#222226" stroke="#52525b" stroke-width="1" />
+      <text x="85" y="23" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="9" font-weight="600" text-anchor="middle">prepend applyvalues</text>
+    </g>
+
+    <path d="M 380 139 L 440 139" stroke="#71717a" stroke-width="1.6" marker-end="url(#arr-neutral)" />
+
+    <!-- MULTIPLICADOR MULTICANAL [ mc.*~ ] -->
+    <g transform="translate(445, 118)">
+      <rect width="130" height="42" rx="4" fill="#1c1613" stroke="#eb6c36" stroke-width="1.3" />
+      <text x="65" y="26" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="12" font-weight="700" text-anchor="middle">[ mc.*~ ]</text>
+    </g>
+
+    <!-- CABLE MULTICANAL A MIXDOWN -->
+    <path d="M 575 139 L 635 139" stroke="#eb6c36" stroke-width="3" marker-end="url(#arr-accent)" />
+
+    <!-- OBJETO [ mc.mixdown~ 1 @autogain 1 ] -->
+    <g transform="translate(640, 115)">
+      <rect width="215" height="48" rx="4" fill="#222226" stroke="#52525b" stroke-width="1.2" />
+      <text x="107" y="24" fill="#a7f3d0" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">[ mc.mixdown~ 1 @autogain 1 ]</text>
+      <text x="107" y="40" fill="#71717a" font-size="8" text-anchor="middle">Suma vector y normaliza ganancia</text>
+    </g>
+
+    <!-- CABLE MONO A DAC~ -->
+    <path d="M 747 163 L 747 185" stroke="#71717a" stroke-width="1.8" marker-end="url(#arr-neutral)" />
+    <g transform="translate(712, 185)">
+      <rect width="70" height="24" rx="3" fill="#27272a" stroke="#52525b" stroke-width="1" />
+      <text x="35" y="16" fill="#f4f4f5" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">[ dac~ ]</text>
+    </g>
+  </g>
+</svg>
