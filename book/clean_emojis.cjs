@@ -57,8 +57,8 @@ function traverse(dir) {
   }
 }
 
-// Raíz del repositorio: dos niveles arriba de book/ (donde vive este script)
-const REPO_ROOT = path.resolve(__dirname, '..', '..');
+// Raíz del repositorio: un nivel arriba de book/ (donde vive este script)
+const REPO_ROOT = path.resolve(__dirname, '..');
 const BOOK_DOCS = path.resolve(__dirname, 'src', 'content', 'docs');
 const BOOK_DOCS_ALT = path.resolve(__dirname, 'docs'); // directorio legacy opcional
 

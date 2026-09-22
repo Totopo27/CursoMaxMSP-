@@ -33,6 +33,11 @@ jobs:
           cd book
           npm ci
 
+      - name: Verificar enlaces internos y assets
+        run: |
+          cd book
+          npm run check:links
+
       - name: Compilar libro estatico
         run: |
           cd book
