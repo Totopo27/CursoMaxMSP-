@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "scrape:tutorials": "tsx pipeline/scripts/scrape_series.ts",
-    "lint:patches": "node pipeline/scripts/lint_patches.mjs"
+    "lint:patches": "node pipeline/scripts/lint_patches.mjs",
+    "max:status": "pipeline\\runners\\status_max_patch.bat",
+    "max:stop": "pipeline\\runners\\stop_max_patch.bat"
   },
   "dependencies": {
     "playwright": "^1.48.0"
