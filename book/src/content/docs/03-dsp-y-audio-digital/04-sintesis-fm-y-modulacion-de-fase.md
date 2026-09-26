@@ -133,3 +133,4 @@ Realiza estos ejercicios utilizando el parche interactivo [`laboratorio_10_sinte
 2. **El Índice $I$ regula el ancho de banda:** Mayor índice = más armónicos según las funciones de Bessel $J_k(I)$.
 3. **Relación $C:M$ define el instrumento:** Enteros = Timbres armónicos (trompetas, bajos, clarinetes); Fracciones o Irracionales = Metales y campanas inarmónicas.
 4. **PM es más robusto que FM:** Evita el corrimiento de afinación por offsets de corriente continua.
+5. **Determinismo en el Ruteo de Control:** Al modular parámetros como $f_c$ y el índice $I$, es mandatorio usar objetos `[trigger]` (`[t f f]` o `[t b b b]`) para garantizar que el cálculo de la desviación de frecuencia ($\Delta f = I \times f_m$) y la frecuencia de la portadora se actualicen de manera sincrónica y ordenada antes de alimentar los osciladores `cycle~`, evitando artefactos de afinación transitorios. Tal como se implementa en `laboratorio_10_sintesis_fm.maxpat`.

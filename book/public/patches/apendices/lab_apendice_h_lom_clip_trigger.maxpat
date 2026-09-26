@@ -579,33 +579,28 @@
 						45
 					]
 				}
+			},
+			{
+				"box": {
+					"id": "obj-thisdev-trig",
+					"maxclass": "newobj",
+					"numinlets": 1,
+					"numoutlets": 2,
+					"outlettype": [
+						"bang",
+						"bang"
+					],
+					"patching_rect": [
+						80,
+						160,
+						45,
+						22
+					],
+					"text": "t b b"
+				}
 			}
 		],
 		"lines": [
-			{
-				"patchline": {
-					"destination": [
-						"obj-init-msg",
-						0
-					],
-					"source": [
-						"obj-live-thisdevice",
-						2
-					]
-				}
-			},
-			{
-				"patchline": {
-					"destination": [
-						"obj-listen-tempo-msg",
-						0
-					],
-					"source": [
-						"obj-live-thisdevice",
-						2
-					]
-				}
-			},
 			{
 				"patchline": {
 					"destination": [
@@ -783,6 +778,42 @@
 					"source": [
 						"obj-audio-in",
 						1
+					]
+				}
+			},
+			{
+				"patchline": {
+					"destination": [
+						"obj-thisdev-trig",
+						0
+					],
+					"source": [
+						"obj-live-thisdevice",
+						2
+					]
+				}
+			},
+			{
+				"patchline": {
+					"destination": [
+						"obj-listen-tempo-msg",
+						0
+					],
+					"source": [
+						"obj-thisdev-trig",
+						1
+					]
+				}
+			},
+			{
+				"patchline": {
+					"destination": [
+						"obj-init-msg",
+						0
+					],
+					"source": [
+						"obj-thisdev-trig",
+						0
 					]
 				}
 			}

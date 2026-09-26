@@ -163,8 +163,8 @@ Abre el parche interactivo:
 [`book/patches/modulo-01/laboratorio_01.maxpat`](/patches/modulo-01/laboratorio_01.maxpat)
 
 ### Escenario 1: Operaciones Aritméticas Dinámicas (`+`, `-`, `*`, `/`)
-* **Problema:** Duplicar una variable ($x + x$) conectando un número a ambos inlets genera resultados corruptos si la excitación caliente ocurre antes de la actualización del estado frío.
-* **Solución:** `[t i i]` garantiza que el inlet derecho absorba el valor antes de que el izquierdo dispare la suma.
+* **Problema:** Duplicar una variable ($x + x$) conectando un número a ambos inlets genera resultados corruptos o carreras lógicas si la excitación caliente ocurre antes de la actualización del estado frío.
+* **Solución de Arquitectura SDK:** Intercalar un objeto `[t i i]`. El outlet derecho emite primero hacia el inlet 1 (frío) fijando el nuevo valor de estado en memoria; una fracción lógica de tiempo después ($t=0$), el outlet izquierdo emite hacia el inlet 0 (caliente), disparando la computación con ambos operandos sincronizados en memoria. Este patrón es el que implementa nuestro parche `laboratorio_01.maxpat` tras la auditoría técnica.
 
 ### Escenario 2: Registros de Estado a Demanda (`[int]` / `[i]`)
 * **Problema:** En secuenciación musical, necesitamos almacenar un valor de tono o duración y mantenerlo latente hasta que un pulso rítmico (`bang`) ordene su emisión.
