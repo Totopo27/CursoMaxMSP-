@@ -6,6 +6,7 @@
   "scripts": {
     "scrape:tutorials": "tsx pipeline/scripts/scrape_series.ts",
     "lint:patches": "node pipeline/scripts/lint_patches.mjs",
+    "audit:dynamic": "node pipeline/scripts/dynamic_audit_runner.mjs",
     "max:status": "pipeline\\runners\\status_max_patch.bat",
     "max:stop": "pipeline\\runners\\stop_max_patch.bat"
   },
