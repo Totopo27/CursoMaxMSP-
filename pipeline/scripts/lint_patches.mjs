@@ -79,7 +79,7 @@ function lintPatch(filePath) {
     }
   });
 
-  // 2. Mapear conexiones de control
+  // 2. Mapear conexiones de control y validar destinos ilegales
   const outletConnections = new Map();
   lines.forEach(l => {
     const line = l.patchline;
@@ -88,6 +88,17 @@ function lintPatch(filePath) {
     const srcOutlet = line.source[1];
     const destId = line.destination[0];
     const destInlet = line.destination[1];
+
+    // Regla de Oro Max SDK: NUNCA conectar un cable a un objeto de tipo [comment]
+    const destBox = boxMap.get(destId);
+    if (destBox && destBox.maxclass === 'comment') {
+      findings.push({
+        type: 'ILLEGAL_COMMENT_CONNECTION',
+        severity: 'CRITICAL',
+        boxId: srcId,
+        message: `Cable desde [${srcId} outlet ${srcOutlet}] conectado a un [comment] (${destId}). Los comentarios no procesan datos ni tienen inlets funcionales.`
+      });
+    }
 
     if (!outletConnections.has(srcId)) outletConnections.set(srcId, new Map());
     const srcOutlets = outletConnections.get(srcId);
