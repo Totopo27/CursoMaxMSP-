@@ -1173,7 +1173,7 @@
 			{
 				"patchline": {
 					"destination": [
-						"obj-20",
+						"obj-31",
 						0
 					],
 					"source": [
@@ -1185,7 +1185,7 @@
 			{
 				"patchline": {
 					"destination": [
-						"obj-17",
+						"obj-21",
 						0
 					],
 					"source": [
@@ -1197,7 +1197,7 @@
 			{
 				"patchline": {
 					"destination": [
-						"obj-18",
+						"obj-17",
 						0
 					],
 					"source": [

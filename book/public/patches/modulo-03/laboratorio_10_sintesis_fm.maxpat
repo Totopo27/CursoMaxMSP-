@@ -963,7 +963,7 @@
 			{
 				"patchline": {
 					"destination": [
-						"obj-11",
+						"obj-5",
 						0
 					],
 					"source": [
@@ -975,7 +975,7 @@
 			{
 				"patchline": {
 					"destination": [
-						"obj-12",
+						"obj-8",
 						0
 					],
 					"source": [
@@ -987,7 +987,7 @@
 			{
 				"patchline": {
 					"destination": [
-						"obj-16",
+						"obj-12",
 						0
 					],
 					"source": [
