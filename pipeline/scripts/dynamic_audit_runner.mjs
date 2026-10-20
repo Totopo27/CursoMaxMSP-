@@ -1,10 +1,11 @@
 import { exec, execSync } from 'child_process';
 import path from 'path';
 import fs from 'fs';
+import { resolveMaxLogPath } from '../lib/max_environment.mjs';
 
 const TARGET_PATCH = process.argv[2] || 'book/public/patches/modulo-03/proyecto_03_sintetizador_fm.maxpat';
 const RUN_DURATION_SEC = parseInt(process.argv[3] || '6', 10);
-const LOG_PATH = "C:/Users/Gustavo/AppData/Roaming/Cycling '74/Max 9/Logs/Max.log";
+const LOG_PATH = resolveMaxLogPath();
 
 console.log('=== AUDITORÍA DINÁMICA INTEGRAL CON TELEMETRÍA DE CONSOLA ===');
 console.log(`Parche objetivo: ${TARGET_PATCH}`);
