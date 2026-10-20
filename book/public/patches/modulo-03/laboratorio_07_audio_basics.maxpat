@@ -372,7 +372,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "int" ],
 					"patching_rect" : [ 460.0, 430.0, 93.0, 22.0 ],
-					"text" : "adstatus status"
+					"text" : "adstatus driver"
 				}
 
 			}

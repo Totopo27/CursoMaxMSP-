@@ -1,0 +1,296 @@
+{
+  "total_patches": 46,
+  "harmos_contracts_loaded": 20,
+  "patches_analyzed": [
+    {
+      "patch": "apendices/FreqAnalysis.pfft.maxpat",
+      "boxes_count": 10,
+      "lines_count": 9,
+      "observations": []
+    },
+    {
+      "patch": "apendices/lab_apendice_a_jitter.maxpat",
+      "boxes_count": 24,
+      "lines_count": 18,
+      "observations": []
+    },
+    {
+      "patch": "apendices/lab_apendice_b_touchdesigner.maxpat",
+      "boxes_count": 14,
+      "lines_count": 11,
+      "observations": []
+    },
+    {
+      "patch": "apendices/lab_apendice_c_arduino.maxpat",
+      "boxes_count": 18,
+      "lines_count": 17,
+      "observations": [
+        {
+          "type": "DISCRETE_CONTROL_TO_SIGNAL_DOMAIN",
+          "source": "scale (outlet 0: float)",
+          "destination": "cycle~ (inlet 0: signal)",
+          "note": "El inlet 0 de [cycle~] recibe control num\u00e9rico directo en lugar de flujo continuo a tasa de muestreo. En audio cr\u00edtico se recomienda interpolaci\u00f3n con [line~] o [sig~] para mitigar zippering."
+        }
+      ]
+    },
+    {
+      "patch": "apendices/lab_apendice_d_mindevkit.maxpat",
+      "boxes_count": 8,
+      "lines_count": 5,
+      "observations": []
+    },
+    {
+      "patch": "apendices/lab_apendice_e_machine_learning.maxpat",
+      "boxes_count": 13,
+      "lines_count": 13,
+      "observations": []
+    },
+    {
+      "patch": "apendices/lab_apendice_f_audio_espacial.maxpat",
+      "boxes_count": 11,
+      "lines_count": 8,
+      "observations": []
+    },
+    {
+      "patch": "apendices/lab_apendice_g_casos_estudio.maxpat",
+      "boxes_count": 25,
+      "lines_count": 12,
+      "observations": []
+    },
+    {
+      "patch": "apendices/lab_apendice_h_lom_clip_trigger.maxpat",
+      "boxes_count": 23,
+      "lines_count": 18,
+      "observations": []
+    },
+    {
+      "patch": "modulo-00/test_audio.maxpat",
+      "boxes_count": 6,
+      "lines_count": 3,
+      "observations": []
+    },
+    {
+      "patch": "modulo-01/laboratorio_01.maxpat",
+      "boxes_count": 37,
+      "lines_count": 20,
+      "observations": []
+    },
+    {
+      "patch": "modulo-01/laboratorio_02_timing.maxpat",
+      "boxes_count": 39,
+      "lines_count": 22,
+      "observations": []
+    },
+    {
+      "patch": "modulo-01/laboratorio_03_listas_zl.maxpat",
+      "boxes_count": 26,
+      "lines_count": 11,
+      "observations": []
+    },
+    {
+      "patch": "modulo-01/proyecto_01_secuenciador.maxpat",
+      "boxes_count": 41,
+      "lines_count": 35,
+      "observations": [
+        {
+          "type": "DISCRETE_CONTROL_TO_SIGNAL_DOMAIN",
+          "source": "mtof (outlet 0: float)",
+          "destination": "cycle~ (inlet 0: signal)",
+          "note": "El inlet 0 de [cycle~] recibe control num\u00e9rico directo en lugar de flujo continuo a tasa de muestreo. En audio cr\u00edtico se recomienda interpolaci\u00f3n con [line~] o [sig~] para mitigar zippering."
+        }
+      ]
+    },
+    {
+      "patch": "modulo-02/laboratorio_04_persistencia.maxpat",
+      "boxes_count": 22,
+      "lines_count": 11,
+      "observations": []
+    },
+    {
+      "patch": "modulo-02/laboratorio_05_pattr.maxpat",
+      "boxes_count": 45,
+      "lines_count": 26,
+      "observations": []
+    },
+    {
+      "patch": "modulo-02/laboratorio_06_comunicacion.maxpat",
+      "boxes_count": 37,
+      "lines_count": 17,
+      "observations": []
+    },
+    {
+      "patch": "modulo-02/proyecto_02_morphing.maxpat",
+      "boxes_count": 46,
+      "lines_count": 30,
+      "observations": []
+    },
+    {
+      "patch": "modulo-03/laboratorio_07_audio_basics.maxpat",
+      "boxes_count": 31,
+      "lines_count": 16,
+      "observations": []
+    },
+    {
+      "patch": "modulo-03/laboratorio_08_osciladores.maxpat",
+      "boxes_count": 41,
+      "lines_count": 28,
+      "observations": []
+    },
+    {
+      "patch": "modulo-03/laboratorio_09_modulacion_am_rm.maxpat",
+      "boxes_count": 24,
+      "lines_count": 15,
+      "observations": []
+    },
+    {
+      "patch": "modulo-03/laboratorio_10_sintesis_fm.maxpat",
+      "boxes_count": 37,
+      "lines_count": 28,
+      "observations": []
+    },
+    {
+      "patch": "modulo-03/laboratorio_11_envolventes.maxpat",
+      "boxes_count": 33,
+      "lines_count": 23,
+      "observations": []
+    },
+    {
+      "patch": "modulo-03/laboratorio_12_filtros.maxpat",
+      "boxes_count": 36,
+      "lines_count": 26,
+      "observations": []
+    },
+    {
+      "patch": "modulo-03/laboratorio_13_delays.maxpat",
+      "boxes_count": 32,
+      "lines_count": 21,
+      "observations": []
+    },
+    {
+      "patch": "modulo-03/laboratorio_14_buffer_groove.maxpat",
+      "boxes_count": 29,
+      "lines_count": 18,
+      "observations": []
+    },
+    {
+      "patch": "modulo-03/proyecto_03_sintetizador_fm.maxpat",
+      "boxes_count": 43,
+      "lines_count": 36,
+      "observations": []
+    },
+    {
+      "patch": "modulo-04/ab.sus.maxpat",
+      "boxes_count": 6,
+      "lines_count": 5,
+      "observations": []
+    },
+    {
+      "patch": "modulo-04/laboratorio_15_abstracciones.maxpat",
+      "boxes_count": 33,
+      "lines_count": 18,
+      "observations": []
+    },
+    {
+      "patch": "modulo-04/laboratorio_16_poly.maxpat",
+      "boxes_count": 22,
+      "lines_count": 13,
+      "observations": []
+    },
+    {
+      "patch": "modulo-04/laboratorio_17_multicore.maxpat",
+      "boxes_count": 21,
+      "lines_count": 16,
+      "observations": []
+    },
+    {
+      "patch": "modulo-04/mi_filtro_voz.maxpat",
+      "boxes_count": 11,
+      "lines_count": 8,
+      "observations": []
+    },
+    {
+      "patch": "modulo-04/proyecto_04_sintetizador_polifonico.maxpat",
+      "boxes_count": 22,
+      "lines_count": 15,
+      "observations": []
+    },
+    {
+      "patch": "modulo-04/subsynth.osc~.maxpat",
+      "boxes_count": 13,
+      "lines_count": 15,
+      "observations": []
+    },
+    {
+      "patch": "modulo-04/voz_dsp_pesada.maxpat",
+      "boxes_count": 18,
+      "lines_count": 18,
+      "observations": []
+    },
+    {
+      "patch": "modulo-04/voz_polifonica.maxpat",
+      "boxes_count": 18,
+      "lines_count": 15,
+      "observations": []
+    },
+    {
+      "patch": "modulo-04/voz_sintetizador_completo.maxpat",
+      "boxes_count": 25,
+      "lines_count": 29,
+      "observations": []
+    },
+    {
+      "patch": "modulo-05/laboratorio_18_gen_basics.maxpat",
+      "boxes_count": 18,
+      "lines_count": 15,
+      "observations": []
+    },
+    {
+      "patch": "modulo-05/laboratorio_19_genexpr.maxpat",
+      "boxes_count": 18,
+      "lines_count": 15,
+      "observations": []
+    },
+    {
+      "patch": "modulo-05/laboratorio_20_karplus_gen.maxpat",
+      "boxes_count": 21,
+      "lines_count": 17,
+      "observations": []
+    },
+    {
+      "patch": "modulo-05/laboratorio_21_export_cpp.maxpat",
+      "boxes_count": 12,
+      "lines_count": 9,
+      "observations": []
+    },
+    {
+      "patch": "modulo-05/proyecto_05_waveguide_gen.maxpat",
+      "boxes_count": 18,
+      "lines_count": 17,
+      "observations": []
+    },
+    {
+      "patch": "modulo-06/laboratorio_22_javascript_max.maxpat",
+      "boxes_count": 18,
+      "lines_count": 14,
+      "observations": []
+    },
+    {
+      "patch": "modulo-06/laboratorio_23_node_for_max.maxpat",
+      "boxes_count": 15,
+      "lines_count": 13,
+      "observations": []
+    },
+    {
+      "patch": "modulo-06/laboratorio_24_c_sdk_concept.maxpat",
+      "boxes_count": 9,
+      "lines_count": 5,
+      "observations": []
+    },
+    {
+      "patch": "modulo-06/proyecto_06_sistema_hibrido.maxpat",
+      "boxes_count": 19,
+      "lines_count": 16,
+      "observations": []
+    }
+  ]
+}

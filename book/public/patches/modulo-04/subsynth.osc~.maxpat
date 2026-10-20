@@ -44,6 +44,25 @@
 			},
 			{
 				"box": {
+					"id": "obj-patcherargs",
+					"maxclass": "newobj",
+					"numinlets": 1,
+					"numoutlets": 2,
+					"outlettype": [
+						"",
+						""
+					],
+					"patching_rect": [
+						450,
+						15,
+						100,
+						22
+					],
+					"text": "patcherargs 220."
+				}
+			},
+			{
+				"box": {
 					"comment": "waveform selector (0=saw, 1=tri, 2=rect, 3=noise)",
 					"id": "obj-in-type",
 					"index": 1,
@@ -414,7 +433,7 @@
 			{
 				"patchline": {
 					"destination": [
-						"obj-osc-saw",
+						"obj-saw",
 						0
 					],
 					"source": [
@@ -426,7 +445,7 @@
 			{
 				"patchline": {
 					"destination": [
-						"obj-osc-tri",
+						"obj-tri",
 						0
 					],
 					"source": [
@@ -438,7 +457,7 @@
 			{
 				"patchline": {
 					"destination": [
-						"obj-osc-rect",
+						"obj-rect",
 						0
 					],
 					"source": [

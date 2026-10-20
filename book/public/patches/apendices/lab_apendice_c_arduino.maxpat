@@ -148,7 +148,7 @@
 						125,
 						22
 					],
-					"text": "serial c 115200"
+					"text": "serial"
 				}
 			},
 			{

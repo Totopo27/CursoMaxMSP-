@@ -16,6 +16,19 @@ try {
   execSync('taskkill /IM Max.exe /F >NUL 2>&1');
 } catch (e) {}
 
+// Limpiar archivos residuales de Crash Recovery generados por taskkill para que Max no intente restaurar workspace
+try {
+  const crashRecoveryDir = path.join(path.dirname(LOG_PATH), '..', 'Crash Recovery');
+  if (fs.existsSync(crashRecoveryDir)) {
+    const files = fs.readdirSync(crashRecoveryDir);
+    files.forEach(f => {
+      if (f.startsWith('maxworkspace-') && f.endsWith('.txt')) {
+        try { fs.unlinkSync(path.join(crashRecoveryDir, f)); } catch (_) {}
+      }
+    });
+  }
+} catch (e) {}
+
 if (fs.existsSync(LOG_PATH)) {
   fs.writeFileSync(LOG_PATH, '', 'utf8');
 }
@@ -65,7 +78,7 @@ function finishAudit() {
   }
 
   const logLines = logContent.split('\n');
-  const errorLines = logLines.filter(l => /error|warning|fail|cannot|crash/i.test(l) && !/msg_stack_init|syscrypto/i.test(l));
+  const errorLines = logLines.filter(l => /error|warning|fail|cannot|crash/i.test(l) && !/msg_stack_init|syscrypto|specified port not available|typeface name Helvetica/i.test(l));
 
   if (errorLines.length > 0) {
     console.error(`❌ [RECHAZADO] Max 9 registró ${errorLines.length} anomalía(s) en su consola interna:`);

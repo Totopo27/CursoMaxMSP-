@@ -218,6 +218,7 @@
 			{
 				"box": {
 					"autoout": 1,
+					"fontname": "Arial",
 					"id": "obj-11",
 					"maxclass": "filtergraph~",
 					"nfilters": 1,
